@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Human on a Chip",
+    "date": "2022-09-02",
+    "image": "img/blogs/chip_humano/portada_chip.jpg",
+    "url": "blog/blog_humanchip.html",
+    "category": "Tecnología Médica",
+    "tags": ["IA", "Medicina", "Biotech"]
+  },
+  {
+    "title": "Metaverso Parte 2",
+    "date": "2022-08-02",
+    "image": "img/img/portameta2.jpg",
+    "url": "blog/meta_parte2.html",
+    "category": "Realidad Virtual",
+    "tags": ["VR", "Futuro", "Metaverso"]
+  }
+]
