@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const stats = {
-    anios: 5,
-    lenguajes: 6,
-    talleres: 50,
-    miembros: 34
+    anios: 8,
+    lenguajes: 7,
+    talleres: 10,
+    miembros: 74
   };
 
   // Asigna los valores a los elementos correspondientes
