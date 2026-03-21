@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const stats = {
-    anios: 6,
+    anios: 8,
     lenguajes: 7,
     talleres: 10,
     miembros: 74
