@@ -14,14 +14,18 @@
     <link href="img/css/style.css" rel="stylesheet">
 
     <style>
-        /* === HERO foto full + overlay + CTA central === */
+        /* =============================================
+           HERO con efecto de borde rasgado inferior
+        ============================================= */
         .unete-hero {
             position: relative;
-            height: 90vh;
-            min-height: 520px;
             overflow: hidden;
+            min-height: 480px;
         }
-        .unete-hero img.hero-bg {
+        /* 📸 IMAGEN HERO (fondo del encabezado grande)
+           Actualmente usa: img/index/about.jpg
+           Para cambiarla: modifica el src de la etiqueta <img class="hero-bg"> */
+        .unete-hero .hero-bg {
             position: absolute;
             inset: 0;
             width: 100%;
@@ -32,210 +36,327 @@
         .unete-hero .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom,
-                rgba(4,15,40,0.5) 0%,
-                rgba(4,15,40,0.4) 50%,
-                rgba(4,15,40,0.82) 100%);
+            background: rgba(72, 40, 170, 0.62);
         }
         .unete-hero .hero-content {
             position: relative;
             z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 120px 20px 160px;
         }
-        .unete-hero .hero-tag {
-            display: inline-block;
-            border: 1.5px solid rgba(255,255,255,0.4);
-            color: rgba(255,255,255,0.85);
-            font-size: 11px;
-            letter-spacing: 3px;
+        .unete-hero .hero-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-size: 12px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            padding: 6px 18px;
-            border-radius: 20px;
-            margin-bottom: 24px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 16px;
         }
         .unete-hero h1 {
             font-family: 'Jost', sans-serif;
-            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-size: clamp(2.6rem, 7vw, 5rem);
             font-weight: 700;
             color: #fff;
-            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 20px;
+            line-height: 1.05;
         }
-        .unete-hero p.hero-desc {
-            color: rgba(255,255,255,0.75);
-            font-size: 1.1rem;
-            max-width: 540px;
-            margin: 0 auto 36px;
+        .unete-hero p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1rem;
+            max-width: 520px;
+            margin: 0 auto 32px;
             line-height: 1.7;
         }
-        .hero-cta {
+        .hero-btn {
             display: inline-block;
-            background: #6c3bd5;
+            background: #3d8ef8;
             color: #fff !important;
             font-family: 'Jost', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            padding: 14px 36px;
+            padding: 13px 32px;
             border-radius: 4px;
             text-decoration: none !important;
-            transition: opacity 0.2s, transform 0.2s;
+            transition: background 0.2s, transform 0.2s;
         }
-        .hero-cta:hover { opacity: 0.85; transform: translateY(-2px); }
+        .hero-btn:hover { background: #2a7ae4; transform: translateY(-2px); }
 
-        /* === STATS BAR blanca pegada al hero === */
-        .stats-bar { background: #fff; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-        .stat-block {
-            padding: 28px 20px;
-            text-align: center;
-            border-right: 1px solid #f0f0f0;
+        /* Borde rasgado inferior del hero */
+        .hero-tear {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            z-index: 3;
+            line-height: 0;
         }
-        .stat-block:last-child { border-right: none; }
-        .stat-num {
+        .hero-tear svg { display: block; width: 100%; }
+
+        /* =============================================
+           SECCIÓN: Mantente conectado + QR Instagram
+        ============================================= */
+        .conectado-section { padding: 80px 0 60px; }
+
+        .conectado-eyebrow {
             font-family: 'Jost', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #6c3bd5;
-            line-height: 1;
-        }
-        .stat-num.green  { color: #28a745; }
-        .stat-num.orange { color: #ffc107; }
-        .stat-label {
-            font-size: 0.78rem;
+            font-size: 11px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #999;
-            margin-top: 6px;
+            color: #6c3bd5;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .conectado-eyebrow-line {
+            width: 40px;
+            height: 3px;
+            background: #6c3bd5;
+            margin-bottom: 20px;
+        }
+        .conectado-section h2 {
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: #12103a;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .conectado-section .intro-text {
+            color: #555;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 480px;
         }
 
-        /* === BENEFICIOS: 3 tarjetas con hover y linea inferior === */
-        .beneficios-section { background: #f8f9fa; padding: 100px 0; }
-        .ben-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 56px;
+        /* Mini ítems de beneficios con icono cuadrado */
+        .mini-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 22px;
         }
-        .ben-card {
-            background: #fff;
-            border-radius: 4px;
-            padding: 36px 28px;
+        .mini-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .mini-icon.blue   { background: #3d8ef8; }
+        .mini-icon.red    { background: #e74c3c; }
+        .mini-icon.yellow { background: #f0b429; }
+        .mini-item h6 {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            color: #12103a;
+            margin-bottom: 3px;
+            font-size: 0.98rem;
+        }
+        .mini-item p { color: #777; font-size: 0.85rem; margin: 0; line-height: 1.5; }
+
+        /* Tarjeta QR de Instagram */
+        .qr-card {
+            background: #f4f6fb;
+            border-radius: 12px;
+            padding: 32px 28px;
             text-align: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-            transition: transform 0.25s, box-shadow 0.25s;
+            height: 100%;
+        }
+        .qr-card h5 {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            color: #12103a;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        /* 📸 IMAGEN QR DE INSTAGRAM
+           Actualmente usa: img/index/about.jpg (placeholder)
+           Para cambiarla: modifica el src de <img class="qr-img"> por la imagen real del QR */
+        .qr-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 0 auto 16px;
+            display: block;
+        }
+        .qr-handle {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            color: #12103a;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .qr-sub {
+            color: #888;
+            font-size: 0.82rem;
+            margin-bottom: 20px;
+        }
+        .btn-instagram {
+            display: inline-block;
+            background: #3d8ef8;
+            color: #fff !important;
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-decoration: none !important;
+            transition: background 0.2s;
+        }
+        .btn-instagram:hover { background: #2a7ae4; }
+
+        /* =============================================
+           SECCIÓN: Redes sociales (4 columnas)
+        ============================================= */
+        .redes-section {
+            background: #f0f3f9;
+            padding: 70px 0;
             position: relative;
             overflow: hidden;
         }
-        .ben-card::after {
+        /* Círculos decorativos de fondo */
+        .redes-section::before,
+        .redes-section::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 0; right: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+        }
+        .redes-section::before { width: 180px; height: 180px; top: -60px; left: -40px; }
+        .redes-section::after  { width: 120px; height: 120px; bottom: -40px; right: 80px; }
+
+        .redes-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #6c3bd5;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .redes-eyebrow-line {
+            width: 40px;
             height: 3px;
             background: #6c3bd5;
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        .ben-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
-        .ben-card:hover::after { transform: scaleX(1); }
-        .ben-card .btn-icon {
-            width: 60px; height: 60px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
             margin: 0 auto 20px;
         }
-        .ben-card h5 {
+        .redes-section h2 {
             font-family: 'Jost', sans-serif;
-            font-size: 1.1rem; font-weight: 700;
-            color: #333; margin-bottom: 12px;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 700;
+            color: #12103a;
+            text-align: center;
+            margin-bottom: 48px;
         }
-        .ben-card p { font-size: 0.9rem; color: #777; line-height: 1.65; margin: 0; }
 
-        /* === IMAGEN + PASOS side by side === */
-        .img-with-badge { position: relative; }
-        .img-with-badge img {
-            width: 100%; height: 420px;
-            object-fit: cover; border-radius: 4px;
-        }
-        .img-badge {
-            position: absolute;
-            bottom: -20px; right: -20px;
+        /* Tarjetas de redes */
+        .red-card {
             background: #fff;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.14);
-            border-radius: 4px;
-            padding: 20px 24px;
-            display: flex; align-items: center; gap: 14px;
+            border-radius: 10px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-        .img-badge .badge-icon {
-            width: 48px; height: 48px; border-radius: 4px;
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 1.2rem;
+        .red-card:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.1); }
+        .red-card .red-icon-bar {
+            width: 48px;
+            height: 6px;
+            border-radius: 3px;
+            margin: 0 auto 20px;
         }
-        .img-badge strong { display: block; font-family: 'Jost', sans-serif; font-size: 1.3rem; color: #333; line-height: 1; }
-        .img-badge span { font-size: 0.78rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+        .red-card .red-icon-bar.ig   { background: #3d8ef8; }
+        .red-card .red-icon-bar.li   { background: #e74c3c; }
+        .red-card .red-icon-bar.fb   { background: #f0b429; }
+        .red-card .red-icon-bar.mail { background: #12103a; }
+        .red-card h6 {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            color: #12103a;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .red-card p { color: #888; font-size: 0.82rem; margin: 0; }
 
-        .paso-item { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 36px; }
-        .paso-num {
-            width: 48px; height: 48px; border-radius: 50%;
-            font-family: 'Jost', sans-serif; font-weight: 700; font-size: 1.1rem;
-            color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        /* =============================================
+           SECCIÓN: No te pierdas la convocatoria
+        ============================================= */
+        .proxima-section { padding: 80px 0; }
+        .proxima-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #6c3bd5;
+            font-weight: 700;
+            margin-bottom: 6px;
         }
-        .paso-num.p1 { background: #6c3bd5; }
-        .paso-num.p2 { background: #28a745; }
-        .paso-num.p3 { background: #ffc107; }
-        .paso-text h5 { font-family: 'Jost', sans-serif; font-weight: 700; color: #333; margin-bottom: 4px; }
-        .paso-text p { color: #888; font-size: 0.88rem; margin: 0; line-height: 1.6; }
+        .proxima-eyebrow-line {
+            width: 40px;
+            height: 3px;
+            background: #6c3bd5;
+            margin-bottom: 20px;
+        }
+        .proxima-section h2 {
+            font-family: 'Jost', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 700;
+            color: #12103a;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .proxima-section .proxima-text {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 360px;
+        }
 
-        /* FORMULARIO */
-        .unete-form-wrap { background: #f8f9fa; padding: 44px 40px; border-radius: 4px; }
-        .unete-form-wrap .form-subtitle { color: #999; font-size: 0.88rem; margin-bottom: 28px; font-style: italic; }
-        .unete-form-wrap .form-group label {
-            font-size: 0.78rem; text-transform: uppercase;
-            letter-spacing: 1px; color: #aaa; margin-bottom: 2px; display: block;
+        /* Caja de 4 pasos en grid 2x2 */
+        .pasos-box {
+            background: #f0f3f9;
+            border-radius: 10px;
+            padding: 32px 28px;
         }
-        .unete-form-wrap .form-group input,
-        .unete-form-wrap .form-group select,
-        .unete-form-wrap .form-group textarea {
-            border-top: none; border-left: none; border-right: none;
-            border-bottom: 1px solid #dee2e6;
-            border-radius: 0; background: transparent;
-            padding: 10px 0; font-size: 0.92rem; color: #555;
-            width: 100%; outline: none; transition: border-color 0.2s;
-            display: block;
+        .pasos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
-        .unete-form-wrap .form-group input:focus,
-        .unete-form-wrap .form-group select:focus,
-        .unete-form-wrap .form-group textarea:focus {
-            border-bottom-color: #6c3bd5; box-shadow: none;
+        .paso-mini {
+            font-size: 0.88rem;
+            color: #444;
+            line-height: 1.5;
         }
-        .unete-form-wrap textarea { resize: none; }
-        .btn-submit-unete {
-            background: #6c3bd5; border: none; color: #fff;
-            font-family: 'Jost', sans-serif; font-weight: 600;
-            font-size: 0.95rem; padding: 14px 40px;
-            border-radius: 4px; cursor: pointer;
-            transition: background 0.2s, transform 0.2s; margin-top: 8px;
+        .paso-mini strong {
+            color: #6c3bd5;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
         }
-        .btn-submit-unete:hover { background: #5a2fbd; transform: translateY(-2px); }
 
+        /* Responsive */
         @media (max-width: 991px) {
-            .ben-grid { grid-template-columns: 1fr 1fr; }
-            .img-badge { right: 10px; bottom: 10px; }
+            .qr-card { margin-top: 40px; }
+        }
+        @media (max-width: 767px) {
+            .pasos-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 575px) {
-            .ben-grid { grid-template-columns: 1fr; }
-            .unete-form-wrap { padding: 28px 20px; }
-            .stat-block { border-right: none; border-bottom: 1px solid #f0f0f0; }
+            .unete-hero .hero-content { padding: 90px 20px 130px; }
         }
     </style>
 </head>
 
 <body>
-    <!-- TOPBAR -->
+    <!-- ===== TOPBAR ===== -->
     <div class="container-fluid bg-dark">
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
@@ -255,7 +376,7 @@
         </div>
     </div>
 
-    <!-- NAVBAR -->
+    <!-- ===== NAVBAR ===== -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
@@ -278,190 +399,164 @@
         </nav>
     </div>
 
-    <!-- HERO: foto full con CTA -->
+    <!-- ===== HERO con borde rasgado ===== -->
     <section class="unete-hero">
-        <!-- 📸 IMAGEN HERO: reemplaza la ruta por tu foto preferida -->
+        <!--
+            📸 IMAGEN DE FONDO DEL HERO (encabezado grande)
+            Ruta actual : img/index/about.jpg
+            Para cambiar: reemplaza "img/index/about.jpg" por la ruta de tu foto
+            Ejemplo     : img/SomosCode2025.PNG
+        -->
         <img class="hero-bg" src="img/index/about.jpg" alt="Comunidad Code UP">
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="hero-tag">Club de Programación · UP</span>
-            <h1>Únete a Code UP</h1>
-            <p class="hero-desc">Sé parte de la comunidad más activa de estudiantes que aprenden, construyen y crecen juntos en la Universidad del Pacífico.</p>
-            <a href="#formulario" class="hero-cta">
-                <i class="fa fa-arrow-down mr-2"></i> Postula ahora
-            </a>
+        <div class="hero-content container">
+            <p class="hero-eyebrow">Club Code UP</p>
+            <h1>Únete a la comunidad</h1>
+            <p>Sigue nuestras redes, escanea el QR de Instagram y mantente cerca de los talleres, proyectos y convocatorias de CODE UP.</p>
+            <a href="#redes" class="hero-btn">Ver redes</a>
+        </div>
+        <!-- Borde rasgado SVG igual al del diseño -->
+        <div class="hero-tear">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,80 L0,40 C60,55 120,20 200,35 C280,50 320,15 400,28 C480,40 540,10 620,22 C700,35 760,8 840,18 C920,28 980,5 1060,15 C1140,25 1200,0 1280,12 C1340,22 1400,5 1440,15 L1440,80 Z" fill="#ffffff"/>
+            </svg>
         </div>
     </section>
 
-    <!-- STATS BAR -->
-    <div class="stats-bar">
+    <!-- ===== MANTENTE CONECTADO + QR ===== -->
+    <section class="conectado-section">
         <div class="container">
+            <div class="row align-items-start">
+                <!-- Columna izquierda: texto + mini ítems -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <p class="conectado-eyebrow">Únete</p>
+                    <div class="conectado-eyebrow-line"></div>
+                    <h2>Mantente conectado<br>con CODE UP</h2>
+                    <p class="intro-text">Si quieres enterarte de nuestras actividades y futuras convocatorias, Instagram es el mejor punto de entrada. También puedes encontrarnos en nuestras demás redes y escribirnos directamente.</p>
+
+                    <div class="mini-item">
+                        <div class="mini-icon blue"><i class="fa fa-users"></i></div>
+                        <div>
+                            <h6>Comunidad</h6>
+                            <p>Conecta con estudiantes interesados en tecnología, aprendizaje y trabajo colaborativo.</p>
+                        </div>
+                    </div>
+                    <div class="mini-item">
+                        <div class="mini-icon red"><i class="fa fa-calendar-alt"></i></div>
+                        <div>
+                            <h6>Actividades</h6>
+                            <p>Revisa talleres, asesorías, eventos y novedades publicadas por el club.</p>
+                        </div>
+                    </div>
+                    <div class="mini-item">
+                        <div class="mini-icon yellow"><i class="fa fa-paper-plane"></i></div>
+                        <div>
+                            <h6>Primer paso</h6>
+                            <p>Escanea el QR, síguenos en Instagram y activa notificaciones para no perderte nada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: tarjeta QR -->
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="qr-card">
+                        <h5>Instagram</h5>
+                        <!--
+                            📸 IMAGEN DEL QR DE INSTAGRAM
+                            Ruta actual : img/index/beneficios.jpg  (placeholder temporal)
+                            Para cambiar: reemplaza "img/index/beneficios.jpg" por la imagen real del QR
+                            Ejemplo     : img/qr-instagram.png
+                        -->
+                        <img class="qr-img" src="img/index/beneficios.jpg" alt="QR Instagram Code UP">
+                        <p class="qr-handle">@clubcodeup</p>
+                        <p class="qr-sub">Escanea el QR y entra directo a nuestro perfil.</p>
+                        <a href="https://www.instagram.com/clubcodeup/" target="_blank" class="btn-instagram">
+                            <i class="fab fa-instagram mr-1"></i> Ir a Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REDES SOCIALES ===== -->
+    <section class="redes-section" id="redes">
+        <div class="container" style="position: relative; z-index: 1;">
+            <p class="redes-eyebrow">Redes sociales</p>
+            <div class="redes-eyebrow-line"></div>
+            <h2>Encuéntranos también aquí</h2>
             <div class="row">
-                <div class="col-6 col-md-3"><div class="stat-block"><div class="stat-num">8</div><div class="stat-label">Años activos</div></div></div>
-                <div class="col-6 col-md-3"><div class="stat-block"><div class="stat-num green">70+</div><div class="stat-label">Miembros</div></div></div>
-                <div class="col-6 col-md-3"><div class="stat-block"><div class="stat-num orange">10</div><div class="stat-label">Talleres al año</div></div></div>
-                <div class="col-6 col-md-3"><div class="stat-block"><div class="stat-num">7</div><div class="stat-label">Áreas de trabajo</div></div></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BENEFICIOS: 3 tarjetas -->
-    <section class="beneficios-section">
-        <div class="container">
-            <div class="section-title text-center position-relative">
-                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">¿Por qué Code UP?</h6>
-                <h1 class="display-4">Lo que ganas al unirte</h1>
-            </div>
-            <div class="ben-grid">
-                <div class="ben-card">
-                    <div class="btn-icon bg-primary"><i class="fa fa-2x fa-graduation-cap text-white"></i></div>
-                    <h5>Crecimiento real</h5>
-                    <p>Talleres, asesorías y mentoring para que desarrolles habilidades que el mercado necesita desde la universidad.</p>
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <div class="red-card">
+                        <div class="red-icon-bar ig"></div>
+                        <i class="fab fa-instagram fa-2x mb-3" style="color:#3d8ef8;"></i>
+                        <h6>Instagram</h6>
+                        <p>@clubcodeup</p>
+                    </div>
                 </div>
-                <div class="ben-card">
-                    <div class="btn-icon bg-success"><i class="fa fa-2x fa-users text-white"></i></div>
-                    <h5>Comunidad que impulsa</h5>
-                    <p>Bienvenidas, fiestas de integración y asambleas donde encontrarás personas que piensan como tú.</p>
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <div class="red-card">
+                        <div class="red-icon-bar li"></div>
+                        <i class="fab fa-linkedin fa-2x mb-3" style="color:#e74c3c;"></i>
+                        <h6>LinkedIn</h6>
+                        <p>Club Code Up</p>
+                    </div>
                 </div>
-                <div class="ben-card">
-                    <div class="btn-icon bg-warning"><i class="fa fa-2x fa-trophy text-white"></i></div>
-                    <h5>Tu esfuerzo se celebra</h5>
-                    <p>Desde el "Codito del mes" hasta tu cumple — cada logro, por pequeño que sea, se reconoce y aplaude.</p>
+                <div class="col-6 col-md-3 mb-4 mb-md-0">
+                    <div class="red-card">
+                        <div class="red-icon-bar fb"></div>
+                        <i class="fab fa-facebook fa-2x mb-3" style="color:#f0b429;"></i>
+                        <h6>Facebook</h6>
+                        <p>Club Code Up</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="red-card">
+                        <div class="red-icon-bar mail"></div>
+                        <i class="fa fa-envelope fa-2x mb-3" style="color:#12103a;"></i>
+                        <h6>Correo</h6>
+                        <p>clubcodeup@gmail.com</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- IMAGEN + PASOS -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
+    <!-- ===== NO TE PIERDAS LA CONVOCATORIA ===== -->
+    <section class="proxima-section">
+        <div class="container">
             <div class="row align-items-center">
+                <!-- Texto izquierda -->
                 <div class="col-lg-5 mb-5 mb-lg-0">
-                    <div class="img-with-badge">
-                        <!-- 📸 IMAGEN LATERAL: reemplaza la ruta por tu foto -->
-                        <img src="img/index/beneficios.jpg" alt="Beneficios Code UP">
-                        <div class="img-badge">
-                            <div class="badge-icon bg-primary"><i class="fa fa-code"></i></div>
-                            <div>
-                                <strong>Code UP</strong>
-                                <span>Comunidad activa</span>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="proxima-eyebrow">Siguiente paso</p>
+                    <div class="proxima-eyebrow-line"></div>
+                    <h2>No te pierdas la<br>próxima convocatoria</h2>
+                    <p class="proxima-text">La forma más rápida de enterarte es seguir nuestras redes y revisar nuestras publicaciones con frecuencia.</p>
                 </div>
-                <div class="col-lg-7 pl-lg-5">
-                    <div class="section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Es muy fácil</h6>
-                        <h1 class="display-4">¿Cómo me uno?</h1>
-                    </div>
-                    <p class="mb-5">No necesitas experiencia previa — solo ganas de aprender y ser parte de algo grande.</p>
-                    <div class="paso-item">
-                        <div class="paso-num p1">1</div>
-                        <div class="paso-text">
-                            <h5>Llena el formulario de abajo</h5>
-                            <p>Tus datos básicos y el área que más te llama. Solo toma 2 minutos.</p>
-                        </div>
-                    </div>
-                    <div class="paso-item">
-                        <div class="paso-num p2">2</div>
-                        <div class="paso-text">
-                            <h5>Nosotros te contactamos</h5>
-                            <p>En los próximos días te escribimos al correo con toda la info.</p>
-                        </div>
-                    </div>
-                    <div class="paso-item">
-                        <div class="paso-num p3">3</div>
-                        <div class="paso-text">
-                            <h5>¡Bienvenido/a a la familia!</h5>
-                            <p>Empieza tu aventura en Code UP. Talleres, amigos y proyectos te esperan.</p>
+                <!-- Caja de pasos derecha -->
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="pasos-box">
+                        <div class="pasos-grid">
+                            <div class="paso-mini">
+                                <strong>1.</strong> Escanea el QR o entra a Instagram.
+                            </div>
+                            <div class="paso-mini">
+                                <strong>2.</strong> Sigue la cuenta y revisa historias y posts.
+                            </div>
+                            <div class="paso-mini">
+                                <strong>3.</strong> Mantente atento a talleres y eventos.
+                            </div>
+                            <div class="paso-mini">
+                                <strong>4.</strong> Escríbenos si quieres más información.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- FORMULARIO sobre bg-image del template -->
-    <div class="container-fluid bg-image py-5" id="formulario" style="margin: 60px 0;">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="unete-form-wrap">
-                        <div class="section-title position-relative mb-2">
-                            <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Postulaciones abiertas</h6>
-                            <h1 class="display-4">¡Postula ahora!</h1>
-                        </div>
-                        <p class="form-subtitle">Completa tus datos y nos ponemos en contacto pronto.</p>
-
-                        <form action="https://formsubmit.co/clubcodeup@gmail.com" method="POST">
-                            <input type="hidden" name="_subject" value="Nueva postulación - Code UP">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="contact.html">
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Nombre completo *</label>
-                                        <input type="text" name="nombre" placeholder="Tu nombre" required>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Correo institucional *</label>
-                                        <input type="email" name="correo" placeholder="tu@up.edu.pe" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Carrera *</label>
-                                        <input type="text" name="carrera" placeholder="Tu carrera" required>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Ciclo *</label>
-                                        <select name="ciclo" required>
-                                            <option value="" disabled selected>Selecciona</option>
-                                            <option>1er ciclo</option>
-                                            <option>2do ciclo</option>
-                                            <option>3er ciclo</option>
-                                            <option>4to ciclo</option>
-                                            <option>5to ciclo</option>
-                                            <option>6to o superior</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Área de interés</label>
-                                <select name="area_interes">
-                                    <option value="" disabled selected>¿Qué área te llama la atención?</option>
-                                    <option>Gestión del Aprendizaje (talleres, asesorías)</option>
-                                    <option>Gestión del Talento (comunidad, bienestar)</option>
-                                    <option>Eventos (organización, logística)</option>
-                                    <option>Marketing y Diseño</option>
-                                    <option>Proyectos tecnológicos</option>
-                                    <option>Finanzas</option>
-                                    <option>Aún no lo sé</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>¿Por qué quieres unirte? (opcional)</label>
-                                <textarea name="motivacion" rows="3" placeholder="Cuéntanos un poco sobre ti..."></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit-unete">
-                                <i class="fa fa-paper-plane mr-2"></i> Enviar postulación
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
+    <!-- ===== FOOTER ===== -->
     <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 0;">
         <div class="container mt-5 pt-5">
             <div class="row">
