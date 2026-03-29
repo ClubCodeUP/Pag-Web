@@ -14,17 +14,13 @@
     <link href="img/css/style.css" rel="stylesheet">
 
     <style>
-        /* =============================================
-           HERO con efecto de borde rasgado inferior
-        ============================================= */
+        
         .unete-hero {
             position: relative;
             overflow: hidden;
             min-height: 480px;
         }
-        /* 📸 IMAGEN HERO (fondo del encabezado grande)
-           Actualmente usa: img/index/about.jpg
-           Para cambiarla: modifica el src de la etiqueta <img class="hero-bg"> */
+        /* IMAGEN HERO (fondo del encabezado grande) */
         .unete-hero .hero-bg {
             position: absolute;
             inset: 0;
@@ -94,9 +90,6 @@
         }
         .hero-tear svg { display: block; width: 100%; }
 
-        /* =============================================
-           SECCIÓN: Mantente conectado + QR Instagram
-        ============================================= */
         .conectado-section { padding: 80px 0 60px; }
 
         .conectado-eyebrow {
@@ -175,9 +168,7 @@
             font-size: 1.1rem;
             margin-bottom: 20px;
         }
-        /* 📸 IMAGEN QR DE INSTAGRAM
-           Actualmente usa: img/index/about.jpg (placeholder)
-           Para cambiarla: modifica el src de <img class="qr-img"> por la imagen real del QR */
+        /*  IMAGEN QR DE INSTAGRAM- debemos cambiarlaaaa oño*/
         .qr-img {
             width: 160px;
             height: 160px;
@@ -212,9 +203,6 @@
         }
         .btn-instagram:hover { background: #2a7ae4; }
 
-        /* =============================================
-           SECCIÓN: Redes sociales (4 columnas)
-        ============================================= */
         .redes-section {
             background: #f0f3f9;
             padding: 70px 0;
@@ -286,9 +274,7 @@
         }
         .red-card p { color: #888; font-size: 0.82rem; margin: 0; }
 
-        /* =============================================
-           SECCIÓN: No te pierdas la convocatoria
-        ============================================= */
+
         .proxima-section { padding: 80px 0; }
         .proxima-eyebrow {
             font-family: 'Jost', sans-serif;
@@ -356,7 +342,7 @@
 </head>
 
 <body>
-    <!-- ===== TOPBAR ===== -->
+    
     <div class="container-fluid bg-dark">
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
@@ -376,7 +362,7 @@
         </div>
     </div>
 
-    <!-- ===== NAVBAR ===== -->
+    
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
@@ -399,13 +385,10 @@
         </nav>
     </div>
 
-    <!-- ===== HERO con borde rasgado ===== -->
+    
     <section class="unete-hero">
         <!--
-            📸 IMAGEN DE FONDO DEL HERO (encabezado grande)
-            Ruta actual : img/index/about.jpg
-            Para cambiar: reemplaza "img/index/about.jpg" por la ruta de tu foto
-            Ejemplo     : img/SomosCode2025.PNG
+            IMAGEN DE FONDO DEL HERO (encabezado grande)
         -->
         <img class="hero-bg" src="img/index/about.jpg" alt="Comunidad Code UP">
         <div class="hero-overlay"></div>
@@ -415,7 +398,7 @@
             <p>Sigue nuestras redes, escanea el QR de Instagram y mantente cerca de los talleres, proyectos y convocatorias de CODE UP.</p>
             <a href="#redes" class="hero-btn">Ver redes</a>
         </div>
-        <!-- Borde rasgado SVG igual al del diseño -->
+        
         <div class="hero-tear">
             <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0,80 L0,40 C60,55 120,20 200,35 C280,50 320,15 400,28 C480,40 540,10 620,22 C700,35 760,8 840,18 C920,28 980,5 1060,15 C1140,25 1200,0 1280,12 C1340,22 1400,5 1440,15 L1440,80 Z" fill="#ffffff"/>
@@ -423,11 +406,11 @@
         </div>
     </section>
 
-    <!-- ===== MANTENTE CONECTADO + QR ===== -->
+  
     <section class="conectado-section">
         <div class="container">
             <div class="row align-items-start">
-                <!-- Columna izquierda: texto + mini ítems -->
+                
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <p class="conectado-eyebrow">Únete</p>
                     <div class="conectado-eyebrow-line"></div>
@@ -457,15 +440,12 @@
                     </div>
                 </div>
 
-                <!-- Columna derecha: tarjeta QR -->
+                
                 <div class="col-lg-5 offset-lg-1">
                     <div class="qr-card">
                         <h5>Instagram</h5>
                         <!--
-                            📸 IMAGEN DEL QR DE INSTAGRAM
-                            Ruta actual : img/index/beneficios.jpg  (placeholder temporal)
-                            Para cambiar: reemplaza "img/index/beneficios.jpg" por la imagen real del QR
-                            Ejemplo     : img/qr-instagram.png
+                            IMAGEN DEL QR DE INSTAGRAM
                         -->
                         <img class="qr-img" src="img/index/beneficios.jpg" alt="QR Instagram Code UP">
                         <p class="qr-handle">@clubcodeup</p>
@@ -479,7 +459,7 @@
         </div>
     </section>
 
-    <!-- ===== REDES SOCIALES ===== -->
+    
     <section class="redes-section" id="redes">
         <div class="container" style="position: relative; z-index: 1;">
             <p class="redes-eyebrow">Redes sociales</p>
@@ -522,18 +502,18 @@
         </div>
     </section>
 
-    <!-- ===== NO TE PIERDAS LA CONVOCATORIA ===== -->
+    
     <section class="proxima-section">
         <div class="container">
             <div class="row align-items-center">
-                <!-- Texto izquierda -->
+            
                 <div class="col-lg-5 mb-5 mb-lg-0">
                     <p class="proxima-eyebrow">Siguiente paso</p>
                     <div class="proxima-eyebrow-line"></div>
                     <h2>No te pierdas la<br>próxima convocatoria</h2>
                     <p class="proxima-text">La forma más rápida de enterarte es seguir nuestras redes y revisar nuestras publicaciones con frecuencia.</p>
                 </div>
-                <!-- Caja de pasos derecha -->
+                
                 <div class="col-lg-6 offset-lg-1">
                     <div class="pasos-box">
                         <div class="pasos-grid">
@@ -556,7 +536,7 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+  
     <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 0;">
         <div class="container mt-5 pt-5">
             <div class="row">
