@@ -3,18 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Club CODE UP</title>
+    <title>Club CODE UP - Alianzas</title>
     <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -25,6 +20,172 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <link href="img/css/style.css" rel="stylesheet">
+
+    <style>
+        /* ── Alianzas card layout ── */
+        .ally-card {
+            display: flex;
+            align-items: stretch;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            overflow: hidden;
+            margin-bottom: 28px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .ally-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.13);
+        }
+        /* Logo side */
+        .ally-logo-side {
+            min-width: 180px;
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            background: #f8f9fa;
+            border-right: 2px solid #f0f0f0;
+        }
+        .ally-logo-side img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .ally-logo-side .ally-name {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: #222;
+            text-align: center;
+        }
+        .ally-logo-side .ally-type {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 2px;
+        }
+        /* Info side */
+        .ally-info-side {
+            flex: 1;
+            padding: 24px 28px;
+            display: flex;
+            gap: 24px;
+        }
+        .ally-info-block {
+            flex: 1;
+        }
+        .ally-info-block .info-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .ally-info-block .info-label .icon-box {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: #fff;
+        }
+        .ally-info-block p {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .icon-box.green  { background: #28a745; }
+        .icon-box.orange { background: #fd7e14; }
+        .icon-box.blue   { background: #007bff; }
+        .icon-box.purple { background: #6f42c1; }
+
+        /* reversed card (logo on right) */
+        .ally-card.reversed .ally-logo-side {
+            order: 2;
+            border-right: none;
+            border-left: 2px solid #f0f0f0;
+        }
+        .ally-card.reversed .ally-info-side {
+            order: 1;
+        }
+
+        /* Section label */
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+
+        /* Stats image replacement */
+        .stats-image-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .stats-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* CTA section */
+        .cta-section {
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+        .contact-pill {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 14px 20px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            font-size: 15px;
+            color: #333;
+        }
+        .contact-pill .pill-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .pill-icon.mail { background: #007bff; }
+        .pill-icon.insta { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); }
+
+        @media (max-width: 768px) {
+            .ally-card { flex-direction: column; }
+            .ally-card.reversed .ally-logo-side,
+            .ally-card.reversed .ally-info-side { order: unset; }
+            .ally-logo-side { width: 100%; min-width: unset; border-right: none; border-bottom: 2px solid #f0f0f0; }
+            .ally-info-side { flex-direction: column; padding: 16px; }
+        }
+    </style>
 </head>
 
 <body>
@@ -33,115 +194,86 @@
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center text-white">
-                    <!--<small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
-                    <small class="px-3">|</small>-->
                     <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    
-                    <!--
-                    <a class="text-white px-2" href="">     
-                        <i class="fab fa-twitter"></i>
-                    </a>-->
-                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-white pl-2" href="" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="text-white pl-2" href="" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
 
-
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
-                    <img src="./img/GeneralUse/logo.png" width="100" height="100" >  
+                <img src="./img/GeneralUse/logo.png" width="100" height="100">
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">INICIO</a>
+                    <a href="index.html" class="nav-item nav-link">INICIO</a>
                     <a href="blog.html" class="nav-item nav-link">BLOG</a>
-                    <a href="course.html" class="nav-item nav-link">ALIANZAS</a>
-                    <!--|
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">PAGINAS</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="detail.html" class="dropdown-item">Course Detail</a>
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="team.html" class="dropdown-item">Instructors</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        </div>
-                    </div>-->
+                    <a href="course.html" class="nav-item nav-link active">ALIANZAS</a>
                     <a href="proyectos.html" class="nav-item nav-link">PROYECTOS</a>
                     <a href="#" class="nav-item nav-link">ASESORIAS Y CURSOS</a>
                     <a href="team.html" class="nav-item nav-link">NOSOTROS</a>
                     <a href="contact.html" class="nav-item nav-link">ÚNETE</a>
-                    </div>
-                    <!--<a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>-->
+                </div>
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
-    
+
     <!-- Header Start -->
-    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom " style="margin-bottom: 45px;">
+    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom: 45px;">
         <div class="container text-center my-5 py-5">
             <p class="text-white mt-4 mb-4" style="font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 4px;">CLUB CODE UP</p>
             <h1 class="text-white display-1 mb-5">Nuestras Alianzas</h1>
             <p class="text-white">Trabajamos junto a organizaciones y áreas de la Universidad del Pacífico para potenciar <br> el impacto de nuestras actividades</p>
-            <script src="js/randomMessages.js"></script>
         </div>
     </div>
     <!-- Header End -->
 
-    <!-- Alianzas Start -->
+    <!-- ═══════════════════════════════════════════
+         SECCIÓN 1 — Crecemos junto a la comunidad UP
+         ═══════════════════════════════════════════ -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-lg-6">
 
-                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2" style="border-bottom: 2px dashed #6c757d;">
-                    ALIANZAS ESTRATÉGICAS
-                    </h6>
+                <!-- Texto izquierda -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="section-label">ALIANZAS ESTRATÉGICAS</span>
                     <h1 class="display-4 mb-4">Crecemos junto a la comunidad UP</h1>
-
                     <p class="mb-4">
-                        Nuestras alianzas nos permiten ampliar el alcance de lo que hacemos: desde talleres de refuerzo académico y eventos de integración, hasta hackathones y proyectos colaborativos con otras organizaciones de la universidad.
+                        Nuestras alianzas nos permiten ampliar el alcance de lo que hacemos: desde talleres
+                        de refuerzo académico y eventos de integración, hasta hackathones y proyectos
+                        colaborativos con otras organizaciones de la universidad.
                     </p>
 
-                    <!-- ITEM -->
                     <div class="d-flex mb-3">
                         <div class="btn-icon bg-primary mr-4">
-                            <i class="fa fa-2x fa-solid fa-handshake text-white"></i>
+                            <i class="fa fa-2x fa-handshake text-white"></i>
                         </div>
                         <div>
                             <h5>Colaboración real</h5>
-                            <p class="mb-0">Cada alianza tiene actividades concretas en conjunto que benefician a ambas partes y a la comunidad</p>
+                            <p class="mb-0">Cada alianza tiene actividades concretas en conjunto que benefician a ambas partes y a la comunidad.</p>
                         </div>
                     </div>
 
                     <div class="d-flex mb-3">
                         <div class="btn-icon bg-secondary mr-4">
-                            <i class="fa fa-2x fa-solid fa-bullseye text-white"></i>
+                            <i class="fa fa-2x fa-bullseye text-white"></i>
                         </div>
                         <div>
                             <h5>Visibilidad y alcance</h5>
@@ -151,62 +283,288 @@
 
                     <div class="d-flex">
                         <div class="btn-icon bg-warning mr-4">
-                            <i class="fa fa-2x fa-solid fa-rocket text-white"></i>
+                            <i class="fa fa-2x fa-rocket text-white"></i>
                         </div>
                         <div>
                             <h5>Impacto en la UP</h5>
-                            <p class="mb-0">Juntos generamos eventos talleres y hackathones que marcan la diferencia en la comunidad universitaria.</p>
+                            <p class="mb-0">Juntos generamos eventos, talleres y hackathones que marcan la diferencia en la comunidad universitaria.</p>
                         </div>
                     </div>
-
                 </div>
+
+                <!-- ⬇️ IMAGEN (reemplaza el cuadro de estadísticas) -->
                 <div class="col-lg-6">
-                    <div class="row mx-0">
-
-                        <!-- 1 -->
-                        <div class="col-6 px-0">
-                            <div class="bg-success text-center p-4">
-                                <h1 class="text-white" data-toggle="counter-up">5</h1>
-                                <h6 class="text-uppercase text-white">
-                                    Aliados<span class="d-block">Activos</span>
-                                </h6>
-                            </div>
+                    <div class="stats-image-wrapper">
+                        <!--
+                            INSTRUCCIÓN PARA SUBIR LA IMAGEN:
+                            1. Guarda tu imagen en la carpeta:  img/Alianzas/stats-alianzas.png
+                               (o el nombre/formato que prefieras)
+                            2. Cambia el src de abajo por la ruta correcta.
+                            3. Si la imagen aún no existe, el placeholder gris se mostrará hasta que la subas.
+                        -->
+                        <img
+                            src="img/Alianzas/stats-alianzas.png"
+                            alt="Estadísticas de alianzas Code UP"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        >
+                        <!-- Placeholder visible solo si la imagen no carga -->
+                        <div style="display:none; background:#e9ecef; height:320px; align-items:center; justify-content:center; flex-direction:column; color:#999;">
+                            <i class="fa fa-image fa-3x mb-3"></i>
+                            <p style="margin:0; font-size:14px;">Sube tu imagen en <code>img/Alianzas/stats-alianzas.png</code></p>
                         </div>
-
-                        <!-- 2 -->
-                        <div class="col-6 px-0">
-                            <div class="bg-primary text-center p-4">
-                                <h1 class="text-white" data-toggle="counter-up">3</h1>
-                                <h6 class="text-uppercase text-white">
-                                    Hackathones<span class="d-block">Planeados</span>
-                                </h6>
-                            </div>
-                        </div>
-
-                        <!-- 3 -->
-                        <div class="col-6 px-0">
-                            <div class="bg-danger text-center p-4">
-                                <h1 class="text-white" data-toggle="counter-up">4</h1>
-                                <h6 class="text-uppercase text-white">
-                                    Tipos de<span class="d-block">Actividad</span>
-                                </h6>
-                            </div>
-                        </div>
-
-                        <!-- 4 -->
-                        <div class="col-6 px-0">
-                            <div class="bg-warning text-center p-4">
-                                <h1 class="text-white" data-toggle="counter-up">1</h1>
-                                <h6 class="text-uppercase text-white">
-                                    Objetivo<span class="d-block">Común</span>
-                                </h6>
-                            </div>
-                        </div>
-
                     </div>
-</div>
+                </div>
+
             </div>
         </div>
     </div>
 
+    <!-- ═══════════════════════════════════════════
+         SECCIÓN 2 — Organizaciones que nos acompañan
+         ═══════════════════════════════════════════ -->
+    <div class="container-fluid py-5" style="background:#f8f9fa;">
+        <div class="container py-5">
+
+            <div class="text-center mb-5">
+                <span class="section-label">NUESTROS ALIADOS</span>
+                <h1 class="display-4">Organizaciones que nos acompañan</h1>
+            </div>
+
+            <!-- ── ALIADO 1: Programa REA ── -->
+            <div class="ally-card">
+                <div class="ally-logo-side">
+                    <!--
+                        IMAGEN: img/Alianzas/rea.png
+                        Sube el logo de Programa REA con ese nombre.
+                    -->
+                    <img src="img/Alianzas/rea.png"
+                         alt="Programa REA"
+                         onerror="this.src='https://via.placeholder.com/90x90/6c757d/ffffff?text=REA'">
+                    <div class="ally-name">Programa REA</div>
+                    <div class="ally-type">Unidad Académica UP</div>
+                </div>
+                <div class="ally-info-side">
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box green"><i class="fa fa-eye"></i></span>
+                            Beneficio
+                        </div>
+                        <p>Visibilidad con todos los salones de la UP, lo que nos permite llegar a más estudiantes de diversas carreras.</p>
+                    </div>
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box orange"><i class="fa fa-bolt"></i></span>
+                            Actividades
+                        </div>
+                        <p>Comunicación constante y apoyo con refuerzo en talleres académicos y técnicos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── ALIADO 2: IEEE ── -->
+            <div class="ally-card reversed">
+                <div class="ally-logo-side">
+                    <!--
+                        IMAGEN: img/Alianzas/ieee.png
+                    -->
+                    <img src="img/Alianzas/ieee.png"
+                         alt="IEEE"
+                         onerror="this.src='https://via.placeholder.com/90x90/003087/ffffff?text=IEEE'">
+                    <div class="ally-name">IEEE</div>
+                    <div class="ally-type">Organización de Tecnología</div>
+                </div>
+                <div class="ally-info-side">
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box blue"><i class="fa fa-eye"></i></span>
+                            Beneficio
+                        </div>
+                        <p>Alianza con una organización directamente relacionada a la tecnología que complementa nuestra visión.</p>
+                    </div>
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box orange"><i class="fa fa-bolt"></i></span>
+                            Actividades
+                        </div>
+                        <p>Brindar apoyo en sus proyectos y actividades de programación de manera conjunta.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── ALIADO 3: Proyectos UP ── -->
+            <div class="ally-card">
+                <div class="ally-logo-side">
+                    <!--
+                        IMAGEN: img/Alianzas/proyectos-up.png
+                    -->
+                    <img src="img/Alianzas/proyectos-up.png"
+                         alt="Proyectos UP"
+                         onerror="this.src='https://via.placeholder.com/90x90/007bff/ffffff?text=PUP'">
+                    <div class="ally-name">Proyectos UP</div>
+                    <div class="ally-type">Gestión de Proyectos</div>
+                </div>
+                <div class="ally-info-side">
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box green"><i class="fa fa-eye"></i></span>
+                            Beneficio
+                        </div>
+                        <p>Organización orientada a la gestión de proyectos, complementando nuestro enfoque técnico con metodologías de gestión.</p>
+                    </div>
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box orange"><i class="fa fa-trophy"></i></span>
+                            Actividades
+                        </div>
+                        <p>Hackathon conjunto a medio año para fomentar la innovación y el trabajo colaborativo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── ALIADO 4: Gaming UP ── -->
+            <div class="ally-card reversed">
+                <div class="ally-logo-side">
+                    <!--
+                        IMAGEN: img/Alianzas/gaming-up.png
+                    -->
+                    <img src="img/Alianzas/gaming-up.png"
+                         alt="Gaming UP"
+                         onerror="this.src='https://via.placeholder.com/90x90/6f42c1/ffffff?text=GUP'">
+                    <div class="ally-name">Gaming UP</div>
+                    <div class="ally-type">Organización de Gaming</div>
+                </div>
+                <div class="ally-info-side">
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box purple"><i class="fa fa-eye"></i></span>
+                            Beneficio
+                        </div>
+                        <p>Organización orientada al gaming y al entretenimiento, conectando la programación con el mundo de los videojuegos.</p>
+                    </div>
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box orange"><i class="fa fa-gamepad"></i></span>
+                            Actividades
+                        </div>
+                        <p>Hackathon conjunto a medio año enfocado en desarrollo de videojuegos y soluciones creativas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── ALIADO 5: CEUP ── -->
+            <div class="ally-card">
+                <div class="ally-logo-side">
+                    <!--
+                        IMAGEN: img/Alianzas/ceup.png
+                    -->
+                    <img src="img/Alianzas/ceup.png"
+                         alt="CEUP"
+                         onerror="this.src='https://via.placeholder.com/90x90/28a745/ffffff?text=CEUP'">
+                    <div class="ally-name">CEUP</div>
+                    <div class="ally-type">Centro Estudiantil UP</div>
+                </div>
+                <div class="ally-info-side">
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box green"><i class="fa fa-eye"></i></span>
+                            Beneficio
+                        </div>
+                        <p>Mayor alcance con la comunidad UP al contar con el respaldo del centro estudiantil.</p>
+                    </div>
+                    <div class="ally-info-block">
+                        <div class="info-label">
+                            <span class="icon-box orange"><i class="fa fa-bolt"></i></span>
+                            Actividades
+                        </div>
+                        <p>Talleres de empleabilidad "top" dirigidos a preparar a los estudiantes para la vida profesional.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SECCIÓN 3 — CTA ¿Quieres ser nuestro próximo aliado?
+         ═══════════════════════════════════════════ -->
+    <div class="container-fluid py-5 cta-section">
+        <div class="container py-5">
+            <div class="row align-items-center">
+
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <span class="section-label">COLABORA CON NOSOTROS</span>
+                    <h1 class="display-4 mb-4">¿Quieres ser<br>nuestro próximo<br>aliado?</h1>
+                    <p class="text-muted">
+                        Si representas una organización dentro de la UP y deseas generar actividades en conjunto, escríbenos.
+                        Estamos abiertos a nuevas alianzas que sumen a la comunidad.
+                    </p>
+                </div>
+
+                <div class="col-lg-4 offset-lg-1">
+                    <div class="contact-pill">
+                        <div class="pill-icon mail"><i class="fa fa-envelope"></i></div>
+                        <div>
+                            <div style="font-size:12px; color:#888; text-transform:uppercase; letter-spacing:1px;">Correo</div>
+                            <strong>clubcodeup@gmail.com</strong>
+                        </div>
+                    </div>
+                    <div class="contact-pill">
+                        <div class="pill-icon insta"><i class="fab fa-instagram"></i></div>
+                        <div>
+                            <div style="font-size:12px; color:#888; text-transform:uppercase; letter-spacing:1px;">Instagram</div>
+                            <strong>@clubcodeup</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style="margin-top:0;">
+        <div class="row pt-5">
+            <div class="col-lg-4 col-md-6 mb-5">
+                <a href="index.html" class="navbar-brand">
+                    <img src="./img/GeneralUse/logo.png" width="80" height="80" alt="Code UP Logo">
+                </a>
+                <p class="mt-3 text-white-50" style="font-size:14px;">Aprende los primeros pasos en la programación</p>
+                <h6 class="text-uppercase mt-4 mb-3" style="letter-spacing:2px;">Encuéntranos</h6>
+                <p class="mb-1 text-white-50" style="font-size:14px;"><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pacífico</p>
+                <p class="mb-0 text-white-50" style="font-size:14px;"><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
+                <div class="d-flex mt-3">
+                    <a class="btn btn-outline-light btn-square mr-2" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a class="btn btn-outline-light btn-square mr-2" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-square mr-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-square" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h5 class="text-uppercase mb-4" style="letter-spacing:2px;">Newsletter</h5>
+                <div class="input-group">
+                    <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Correo">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary px-4">Suscribirse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid pt-4" style="border-top:1px solid rgba(255,255,255,0.1);">
+            <p class="text-center text-white-50 mb-0" style="font-size:13px;">
+                &copy; Copyright <strong>CODEUP</strong>. All Rights Reserved &nbsp;|&nbsp; Designed by <a href="https://htmlcodex.com" style="color:#fff;">HTML Codex</a>
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
+</html>
