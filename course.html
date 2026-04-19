@@ -15,78 +15,215 @@
     <link href="img/css/style.css" rel="stylesheet">
 
     <style>
-        /* ── Labels de sección ── */
-        .label-red    { font-family:'Jost',sans-serif; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#e84545; display:inline-block; margin-bottom:8px; }
-        .label-purple { font-family:'Jost',sans-serif; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#7c3fe4; display:inline-block; margin-bottom:8px; }
-        .label-blue   { font-family:'Jost',sans-serif; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:#007bff; display:inline-block; margin-bottom:8px; }
 
-        /* ── Imagen que reemplaza el cuadro de stats ── */
-        .stats-image-wrapper { width:100%; border-radius:8px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.10); }
-        .stats-image-wrapper img { width:100%; height:auto; display:block; }
-        .stats-placeholder { background:#e9ecef; height:280px; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#aaa; font-size:14px; border-radius:8px; }
-
-        /* ── Sección aliados ── */
-        .section-aliados { background:#f4f5f9; }
-
-        /* ── Tarjeta de aliado ── */
-        .ally-row {
-            display:flex; align-items:stretch;
-            background:#fff; border-radius:8px;
-            box-shadow:0 2px 12px rgba(0,0,0,.06);
-            margin-bottom:32px; overflow:hidden;
+        /* ══════════════════════════════════════
+           LABELS DE SECCIÓN
+        ══════════════════════════════════════ */
+        .label-red {
+            font-family: 'Jost', sans-serif;
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: #e84545; display: inline-block; margin-bottom: 8px;
         }
-        /* Logo panel */
-        .ally-logo-panel {
-            min-width:200px; width:200px;
-            background:#fff;
-            display:flex; flex-direction:column; align-items:center; justify-content:center;
-            padding:28px 20px;
-            border-right:1px solid #f0f0f0;
+        .label-purple {
+            font-family: 'Jost', sans-serif;
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: #7c3fe4; display: inline-block; margin-bottom: 8px;
         }
-        .ally-logo-panel img { width:80px; height:80px; object-fit:contain; margin-bottom:12px; }
-        .ally-logo-panel .ally-name { font-family:'Jost',sans-serif; font-weight:700; font-size:14px; color:#222; text-align:center; line-height:1.3; }
-        .ally-logo-panel .ally-type { font-size:10px; color:#999; text-transform:uppercase; letter-spacing:1.5px; text-align:center; margin-top:4px; }
+        .label-blue {
+            font-family: 'Jost', sans-serif;
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: #007bff; display: inline-block; margin-bottom: 8px;
+        }
 
-        /* Alternado: logo a la derecha */
-        .ally-row.alt .ally-logo-panel { order:2; border-right:none; border-left:1px solid #f0f0f0; }
-        .ally-row.alt .ally-info-panel { order:1; }
+        /* ══════════════════════════════════════
+           IMAGEN QUE REEMPLAZA EL CUADRO STATS
+        ══════════════════════════════════════ */
+        .stats-image-wrapper {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(0,0,0,.12);
+        }
+        .stats-image-wrapper img {
+            width: 100%; height: auto; display: block;
+        }
 
-        /* Info panel */
-        .ally-info-panel { flex:1; display:flex; align-items:stretch; }
-        .ally-info-block { flex:1; padding:28px 24px; border-right:1px solid #f4f5f9; }
-        .ally-info-block:last-child { border-right:none; }
+        /* ══════════════════════════════════════
+           SECCIÓN ALIADOS — fondo celeste + triángulos
+        ══════════════════════════════════════ */
+        .section-aliados {
+            background-color: #dde8f5;
+            position: relative;
+            overflow: hidden;
+        }
 
-        /* Título del bloque */
-        .ally-block-title { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-        .ally-block-title .bicon { width:30px; height:30px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px; color:#fff; flex-shrink:0; }
-        .bicon.eye    { background:#007bff; }
-        .bicon.bolt   { background:#ff6b35; }
-        .bicon.trophy { background:#ffc107; }
-        .bicon.game   { background:#28a745; }
-        .ally-block-title .title-text { font-family:'Jost',sans-serif; font-weight:700; font-size:14px; color:#222; }
-        .ally-info-block p { font-size:13.5px; color:#555; margin:0; line-height:1.65; }
+        /* Triángulos decorativos SVG inline como pseudo-elementos */
+        .section-aliados::before,
+        .section-aliados::after {
+            content: '';
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* Triángulo grande derecha arriba */
+        .section-aliados::before {
+            width: 220px; height: 220px;
+            top: 40px; right: -30px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpolygon points='200,0 200,200 0,200' fill='%23a8c4e8'/%3E%3C/svg%3E");
+        }
+        /* Triángulo mediano izquierda abajo */
+        .section-aliados::after {
+            width: 160px; height: 160px;
+            bottom: 60px; left: -20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpolygon points='0,0 200,0 0,200' fill='%23a8c4e8'/%3E%3C/svg%3E");
+        }
 
-        /* ── CTA ── */
-        .cta-section { background:#fff; }
-        .contact-pill { display:flex; align-items:center; gap:16px; background:#f4f5f9; border-radius:8px; padding:16px 20px; margin-bottom:14px; }
-        .pill-icon { width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; color:#fff; flex-shrink:0; }
-        .pill-icon.mail  { background:#007bff; }
-        .pill-icon.insta { background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af); }
+        /* Triángulos adicionales con divs */
+        .tri-deco {
+            position: absolute;
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .tri-deco svg { display: block; }
+
+        .section-aliados .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ══════════════════════════════════════
+           TARJETA DE ALIADO
+           Layout: dos mitades dentro de un row Bootstrap
+           Mitad izquierda: logo card (fondo blanco)
+           Mitad derecha: info con Beneficio + Actividades
+           Para .alt: logo va a la derecha
+        ══════════════════════════════════════ */
+
+        .ally-block {
+            margin-bottom: 40px;
+        }
+
+        /* La "card" del logo */
+        .ally-logo-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.07);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 36px 24px;
+            height: 100%;
+            min-height: 200px;
+        }
+        .ally-logo-card img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            margin-bottom: 16px;
+        }
+        .ally-logo-card .a-name {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            color: #222;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        .ally-logo-card .a-type {
+            font-size: 10px;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+        }
+
+        /* La "card" de info */
+        .ally-info-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.07);
+            padding: 32px 28px;
+            height: 100%;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .ally-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .ally-ibox {
+            width: 36px;
+            height: 36px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            color: #fff;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .ally-info-text .i-title {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: #222;
+            margin-bottom: 4px;
+        }
+        .ally-info-text p {
+            font-size: 13.5px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ── Colores de iconos por aliado ──
+           REA:          ojo azul / rayo rojo-naranja
+           IEEE:         pantalla amarillo / código verde
+           Proyectos UP: flecha azul / trofeo amarillo
+           Gaming UP:    gente verde / trofeo amarillo
+           CEUP:         megáfono rojo / maletín naranja
+        */
+
+        /* CTA */
+        .cta-section { background: #fff; }
+        .contact-pill {
+            display: flex; align-items: center; gap: 16px;
+            background: #f4f5f9; border-radius: 8px;
+            padding: 16px 20px; margin-bottom: 14px;
+        }
+        .pill-icon {
+            width: 40px; height: 40px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; color: #fff; flex-shrink: 0;
+        }
+        .pill-icon.mail  { background: #007bff; }
+        .pill-icon.insta { background: linear-gradient(135deg,#f58529,#dd2a7b,#8134af); }
         .contact-pill .pill-label { font-size:11px; color:#999; text-transform:uppercase; letter-spacing:1px; }
         .contact-pill .pill-value { font-family:'Jost',sans-serif; font-weight:600; font-size:15px; color:#222; }
 
-        /* ── Responsive ── */
         @media(max-width:767px){
-            .ally-row,.ally-row.alt{flex-direction:column;}
-            .ally-row.alt .ally-logo-panel,.ally-row.alt .ally-info-panel{order:unset;}
-            .ally-logo-panel{width:100%;min-width:unset;border-right:none;border-bottom:1px solid #f0f0f0;}
-            .ally-info-panel{flex-direction:column;}
-            .ally-info-block{border-right:none;border-bottom:1px solid #f4f5f9;}
+            .ally-logo-card, .ally-info-card { min-height:unset; }
+            .ally-block .row > div + div { margin-top: 16px; }
         }
     </style>
 </head>
 
 <body>
+
     <!-- Topbar -->
     <div class="container-fluid bg-dark">
         <div class="row py-2 px-lg-5">
@@ -139,10 +276,14 @@
         </div>
     </div>
 
-    <!-- SECCIÓN 1 -->
+    <!-- ══════════════════════════════════════
+         SECCIÓN 1 — Crecemos junto a la UP
+    ══════════════════════════════════════ -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="row align-items-center">
+
+                <!-- Izquierda: texto -->
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <span class="label-red">ALIANZAS ESTRATÉGICAS</span>
                     <h1 class="display-4 mb-4">Crecemos junto a la comunidad UP</h1>
@@ -150,186 +291,247 @@
 
                     <div class="d-flex align-items-start mb-3">
                         <div class="btn-icon bg-primary mr-4"><i class="fa fa-2x fa-handshake text-white"></i></div>
-                        <div><h5>Colaboración real</h5><p class="mb-0">Cada alianza tiene actividades concretas en conjunto que benefician a ambas partes y a la comunidad.</p></div>
+                        <div>
+                            <h5>Colaboración real</h5>
+                            <p class="mb-0">Cada alianza tiene actividades concretas en conjunto que benefician a ambas partes y a la comunidad.</p>
+                        </div>
                     </div>
                     <div class="d-flex align-items-start mb-3">
                         <div class="btn-icon bg-secondary mr-4"><i class="fa fa-2x fa-bullseye text-white"></i></div>
-                        <div><h5>Visibilidad y alcance</h5><p class="mb-0">Llegamos a más estudiantes a través del respaldo compartido con nuestros aliados.</p></div>
+                        <div>
+                            <h5>Visibilidad y alcance</h5>
+                            <p class="mb-0">Llegamos a más estudiantes a través del respaldo compartido con nuestros aliados.</p>
+                        </div>
                     </div>
                     <div class="d-flex align-items-start">
                         <div class="btn-icon bg-warning mr-4"><i class="fa fa-2x fa-rocket text-white"></i></div>
-                        <div><h5>Impacto en la UP</h5><p class="mb-0">Juntos generamos eventos, talleres y hackathones que marcan la diferencia en la comunidad universitaria.</p></div>
+                        <div>
+                            <h5>Impacto en la UP</h5>
+                            <p class="mb-0">Juntos generamos eventos, talleres y hackathones que marcan la diferencia en la comunidad universitaria.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Imagen (reemplaza cuadro de stats) -->
+                <!-- Derecha: IMAGEN (reemplaza cuadro de stats) -->
+                <!-- Ruta: img/para aliados.jpg  (exactamente como está en el repo) -->
                 <div class="col-lg-6">
-                    <!--
-                    ══════════════════════════════════════════════════
-                    CÓMO SUBIR ESTA IMAGEN:
-                    1. Crea la carpeta  img/Alianzas/  en tu proyecto
-                    2. Guarda tu imagen como  img/Alianzas/stats-alianzas.png
-                    3. En GitHub: arrastra el archivo a esa carpeta
-                       o usa:
-                         git add img/Alianzas/stats-alianzas.png
-                         git commit -m "Agrega imagen alianzas"
-                         git push
-                    Mientras no exista, aparece un cuadro gris de placeholder.
-                    ══════════════════════════════════════════════════
-                    -->
                     <div class="stats-image-wrapper">
-                        <img src="img/Alianzas/stats-alianzas.png"
+                        <img src="img/para aliados.jpg"
                              alt="Alianzas Code UP"
-                             onerror="this.parentNode.style.display='none';document.getElementById('ph-stats').style.display='flex';">
-                    </div>
-                    <div id="ph-stats" class="stats-placeholder" style="display:none;">
-                        <i class="fa fa-image fa-3x mb-3"></i>
-                        <p style="margin:0;text-align:center;">Sube tu imagen en<br><code>img/Alianzas/stats-alianzas.png</code></p>
+                             onerror="this.parentNode.innerHTML='<div style=\'background:#e9ecef;height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#aaa;border-radius:8px;\'><i class=\'fa fa-image fa-3x\'></i><p style=\'margin-top:12px;\'>img/para aliados.jpg</p></div>'">
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!-- SECCIÓN 2 — Aliados -->
+    <!-- ══════════════════════════════════════
+         SECCIÓN 2 — Organizaciones aliadas
+         Fondo: celeste #dde8f5 + triángulos decorativos
+    ══════════════════════════════════════ -->
     <div class="container-fluid py-5 section-aliados">
+
+        <!-- Triángulos decorativos extra -->
+        <div class="tri-deco" style="top:10%;right:8%;width:100px;height:100px;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,0 100,100 0,100" fill="#8ab0d8"/>
+            </svg>
+        </div>
+        <div class="tri-deco" style="top:30%;left:2%;width:70px;height:70px;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="0,0 100,0 0,100" fill="#8ab0d8"/>
+            </svg>
+        </div>
+        <div class="tri-deco" style="bottom:20%;right:3%;width:80px;height:80px;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="100,0 100,100 0,100" fill="#8ab0d8"/>
+            </svg>
+        </div>
+        <div class="tri-deco" style="bottom:5%;left:6%;width:60px;height:60px;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="0,100 100,0 100,100" fill="#8ab0d8"/>
+            </svg>
+        </div>
+        <div class="tri-deco" style="top:55%;right:12%;width:50px;height:50px;opacity:0.15;">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,0 100,100 0,100" fill="#8ab0d8"/>
+            </svg>
+        </div>
+
         <div class="container py-5">
+
             <div class="text-center mb-5">
                 <span class="label-purple">NUESTROS ALIADOS</span>
                 <h1 class="display-4">Organizaciones que nos acompañan</h1>
             </div>
 
-            <!-- 1. Programa REA -->
-            <div class="ally-row">
-                <div class="ally-logo-panel">
-                    <!-- Sube logo en: img/Alianzas/rea.png -->
-                    <img src="img/Alianzas/rea.png" alt="Programa REA"
-                         onerror="this.src='https://via.placeholder.com/80x80/6c757d/ffffff?text=REA'">
-                    <div class="ally-name">Programa REA</div>
-                    <div class="ally-type">Unidad Académica UP</div>
-                </div>
-                <div class="ally-info-panel">
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon eye"><i class="fa fa-eye"></i></span>
-                            <span class="title-text">Beneficio</span>
+            <!-- ══ 1. Programa REA — logo IZQ, info DER ══ -->
+            <div class="ally-block">
+                <div class="row align-items-stretch">
+                    <div class="col-md-5">
+                        <div class="ally-logo-card">
+                            <!-- img/LOGO PROGRAMA REA.jpg -->
+                            <img src="img/LOGO PROGRAMA REA.jpg"
+                                 alt="Programa REA"
+                                 onerror="this.src='https://via.placeholder.com/110x110/4e73df/ffffff?text=REA'">
+                            <div class="a-name">Programa REA</div>
+                            <div class="a-type">Unidad Académica UP</div>
                         </div>
-                        <p>Visibilidad con todos los salones de la UP, lo que nos permite llegar a más estudiantes de diversas carreras.</p>
                     </div>
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon bolt"><i class="fa fa-bolt"></i></span>
-                            <span class="title-text">Actividades</span>
+                    <div class="col-md-7">
+                        <div class="ally-info-card">
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#007bff;"><i class="fa fa-eye"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Beneficio</div>
+                                    <p>Visibilidad con todos los salones de la UP, lo que nos permite llegar a más estudiantes de diversas carreras.</p>
+                                </div>
+                            </div>
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#e84545;"><i class="fa fa-exchange-alt"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Actividades</div>
+                                    <p>Comunicación constante y apoyo con refuerzo en talleres académicos y técnicos.</p>
+                                </div>
+                            </div>
                         </div>
-                        <p>Comunicación constante y apoyo con refuerzo en talleres académicos y técnicos.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. IEEE (logo derecha) -->
-            <div class="ally-row alt">
-                <div class="ally-logo-panel">
-                    <!-- Sube logo en: img/Alianzas/ieee.png -->
-                    <img src="img/Alianzas/ieee.png" alt="IEEE"
-                         onerror="this.src='https://via.placeholder.com/80x80/003087/ffffff?text=IEEE'">
-                    <div class="ally-name">IEEE</div>
-                    <div class="ally-type">Organización de Tecnología</div>
-                </div>
-                <div class="ally-info-panel">
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon eye"><i class="fa fa-eye"></i></span>
-                            <span class="title-text">Beneficio</span>
-                        </div>
-                        <p>Alianza con una organización directamente relacionada a la tecnología que complementa nuestra visión.</p>
-                    </div>
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon bolt"><i class="fa fa-code"></i></span>
-                            <span class="title-text">Actividades</span>
-                        </div>
-                        <p>Brindar apoyo en sus proyectos y actividades de programación de manera conjunta.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. Proyectos UP -->
-            <div class="ally-row">
-                <div class="ally-logo-panel">
-                    <!-- Sube logo en: img/Alianzas/proyectos-up.png -->
-                    <img src="img/Alianzas/proyectos-up.png" alt="Proyectos UP"
-                         onerror="this.src='https://via.placeholder.com/80x80/007bff/ffffff?text=PUP'">
-                    <div class="ally-name">Proyectos UP</div>
-                    <div class="ally-type">Gestión de Proyectos</div>
-                </div>
-                <div class="ally-info-panel">
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon eye"><i class="fa fa-eye"></i></span>
-                            <span class="title-text">Beneficio</span>
+            <!-- ══ 2. IEEE — info IZQ, logo DER ══ -->
+            <div class="ally-block">
+                <div class="row align-items-stretch">
+                    <div class="col-md-7">
+                        <div class="ally-info-card">
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#f5a623;"><i class="fa fa-desktop"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Beneficio</div>
+                                    <p>Alianza con una organización directamente relacionada a la tecnología que complementa nuestra visión.</p>
+                                </div>
+                            </div>
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#28a745;"><i class="fa fa-code"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Actividades</div>
+                                    <p>Brindar apoyo en sus proyectos y actividades de programación de manera conjunta.</p>
+                                </div>
+                            </div>
                         </div>
-                        <p>Organización orientada a la gestión de proyectos, complementando nuestro enfoque técnico con metodologías de gestión.</p>
                     </div>
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon trophy"><i class="fa fa-trophy"></i></span>
-                            <span class="title-text">Actividades</span>
+                    <div class="col-md-5">
+                        <div class="ally-logo-card">
+                            <!-- img/LOGO IEEE.jpg -->
+                            <img src="img/LOGO IEEE.jpg"
+                                 alt="IEEE"
+                                 onerror="this.src='https://via.placeholder.com/110x110/003087/ffffff?text=IEEE'">
+                            <div class="a-name">IEEE</div>
+                            <div class="a-type">Organización de Tecnología</div>
                         </div>
-                        <p>Hackathon conjunto a medio año para fomentar la innovación y el trabajo colaborativo.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Gaming UP (logo derecha) -->
-            <div class="ally-row alt">
-                <div class="ally-logo-panel">
-                    <!-- Sube logo en: img/Alianzas/gaming-up.png -->
-                    <img src="img/Alianzas/gaming-up.png" alt="Gaming UP"
-                         onerror="this.src='https://via.placeholder.com/80x80/6f42c1/ffffff?text=GUP'">
-                    <div class="ally-name">Gaming UP</div>
-                    <div class="ally-type">Organización de Gaming</div>
-                </div>
-                <div class="ally-info-panel">
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon game"><i class="fa fa-users"></i></span>
-                            <span class="title-text">Beneficio</span>
-                        </div>
-                        <p>Organización orientada al gaming y al entretenimiento, conectando la programación con el mundo de los videojuegos.</p>
-                    </div>
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon trophy"><i class="fa fa-trophy"></i></span>
-                            <span class="title-text">Actividades</span>
-                        </div>
-                        <p>Hackathon conjunto a medio año enfocado en desarrollo de videojuegos y soluciones creativas.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 5. CEUP -->
-            <div class="ally-row">
-                <div class="ally-logo-panel">
-                    <!-- Sube logo en: img/Alianzas/ceup.png -->
-                    <img src="img/Alianzas/ceup.png" alt="CEUP"
-                         onerror="this.src='https://via.placeholder.com/80x80/28a745/ffffff?text=CEUP'">
-                    <div class="ally-name">CEUP</div>
-                    <div class="ally-type">Centro Estudiantil UP</div>
-                </div>
-                <div class="ally-info-panel">
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon eye"><i class="fa fa-eye"></i></span>
-                            <span class="title-text">Beneficio</span>
+            <!-- ══ 3. Proyectos UP — logo IZQ, info DER ══ -->
+            <div class="ally-block">
+                <div class="row align-items-stretch">
+                    <div class="col-md-5">
+                        <div class="ally-logo-card">
+                            <!-- img/LOGO PROYECTOS UP.jpg -->
+                            <img src="img/LOGO PROYECTOS UP.jpg"
+                                 alt="Proyectos UP"
+                                 onerror="this.src='https://via.placeholder.com/110x110/007bff/ffffff?text=PUP'">
+                            <div class="a-name">Proyectos UP</div>
+                            <div class="a-type">Gestión de Proyectos</div>
                         </div>
-                        <p>Mayor alcance con la comunidad UP al contar con el respaldo del centro estudiantil.</p>
                     </div>
-                    <div class="ally-info-block">
-                        <div class="ally-block-title">
-                            <span class="bicon bolt"><i class="fa fa-bolt"></i></span>
-                            <span class="title-text">Actividades</span>
+                    <div class="col-md-7">
+                        <div class="ally-info-card">
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#007bff;"><i class="fa fa-share-alt"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Beneficio</div>
+                                    <p>Organización orientada a la gestión de proyectos, complementando nuestro enfoque técnico con metodologías de gestión.</p>
+                                </div>
+                            </div>
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#ffc107;"><i class="fa fa-trophy"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Actividades</div>
+                                    <p>Hackathon conjunto a medio año para fomentar la innovación y el trabajo colaborativo.</p>
+                                </div>
+                            </div>
                         </div>
-                        <p>Talleres de empleabilidad "top" dirigidos a preparar a los estudiantes para la vida profesional.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ 4. Gaming UP — info IZQ, logo DER ══ -->
+            <div class="ally-block">
+                <div class="row align-items-stretch">
+                    <div class="col-md-7">
+                        <div class="ally-info-card">
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#28a745;"><i class="fa fa-users"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Beneficio</div>
+                                    <p>Organización orientada al gaming y al entretenimiento, conectando la programación con el mundo de los videojuegos.</p>
+                                </div>
+                            </div>
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#ffc107;"><i class="fa fa-trophy"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Actividades</div>
+                                    <p>Hackathon conjunto a medio año enfocado en desarrollo de videojuegos y soluciones creativas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="ally-logo-card">
+                            <!-- img/LOGO GAMING UP.jpg -->
+                            <img src="img/LOGO GAMING UP.jpg"
+                                 alt="Gaming UP"
+                                 onerror="this.src='https://via.placeholder.com/110x110/6f42c1/ffffff?text=GUP'">
+                            <div class="a-name">Gaming UP</div>
+                            <div class="a-type">Organización de Gaming</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ 5. CEUP — logo IZQ, info DER ══ -->
+            <div class="ally-block">
+                <div class="row align-items-stretch">
+                    <div class="col-md-5">
+                        <div class="ally-logo-card">
+                            <!-- img/LOGO CEUP.jpg -->
+                            <img src="img/LOGO CEUP.jpg"
+                                 alt="CEUP"
+                                 onerror="this.src='https://via.placeholder.com/110x110/28a745/ffffff?text=CEUP'">
+                            <div class="a-name">CEUP</div>
+                            <div class="a-type">Centro Estudiantil UP</div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="ally-info-card">
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#e84545;"><i class="fa fa-bullhorn"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Beneficio</div>
+                                    <p>Mayor alcance con la comunidad UP al contar con el respaldo del centro estudiantil.</p>
+                                </div>
+                            </div>
+                            <div class="ally-info-item">
+                                <div class="ally-ibox" style="background:#f5a623;"><i class="fa fa-briefcase"></i></div>
+                                <div class="ally-info-text">
+                                    <div class="i-title">Actividades</div>
+                                    <p>Talleres de empleabilidad "top" dirigidos a preparar a los estudiantes para la vida profesional.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -337,7 +539,9 @@
         </div>
     </div>
 
-    <!-- SECCIÓN 3 — CTA -->
+    <!-- ══════════════════════════════════════
+         SECCIÓN 3 — CTA
+    ══════════════════════════════════════ -->
     <div class="container-fluid py-5 cta-section">
         <div class="container py-5">
             <div class="row align-items-center">
