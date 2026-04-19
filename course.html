@@ -8,241 +8,225 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="img/css/style.css" rel="stylesheet">
 
     <style>
+        /* ── VARIABLES ── */
+        :root {
+            --navy:    #12133a;
+            --purple:  #7c3fe4;
+            --red-lbl: #e84545;
+            --ally-bg: #e8f0fb;
+        }
 
-        /* ══════════════════════════════════════
-           LABELS DE SECCIÓN
-        ══════════════════════════════════════ */
-        .label-red {
+        body { font-family: 'Open Sans', sans-serif; }
+        h1,h2,h3,h4,h5 { font-family: 'Jost', sans-serif; color: var(--navy); }
+
+        /* ── LABELS con punteado ── */
+        .section-label {
             font-family: 'Jost', sans-serif;
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: #e84545; display: inline-block; margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 4px;
         }
-        .label-purple {
-            font-family: 'Jost', sans-serif;
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: #7c3fe4; display: inline-block; margin-bottom: 8px;
-        }
-        .label-blue {
-            font-family: 'Jost', sans-serif;
-            font-size: 12px; font-weight: 600;
-            letter-spacing: 3px; text-transform: uppercase;
-            color: #007bff; display: inline-block; margin-bottom: 8px;
-        }
-
-        /* ══════════════════════════════════════
-           IMAGEN QUE REEMPLAZA EL CUADRO STATS
-        ══════════════════════════════════════ */
-        .stats-image-wrapper {
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 6px 24px rgba(0,0,0,.12);
-        }
-        .stats-image-wrapper img {
-            width: 100%; height: auto; display: block;
-        }
-
-        /* ══════════════════════════════════════
-           SECCIÓN ALIADOS — fondo celeste + triángulos
-        ══════════════════════════════════════ */
-        .section-aliados {
-            background-color: #dde8f5;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Triángulos decorativos SVG inline como pseudo-elementos */
-        .section-aliados::before,
-        .section-aliados::after {
+        .section-label::after {
             content: '';
-            position: absolute;
-            background-repeat: no-repeat;
-            background-size: contain;
-            opacity: 0.35;
-            pointer-events: none;
-            z-index: 0;
+            display: block;
+            width: 100%;
+            border-bottom: 2px dashed currentColor;
+            margin-top: 5px;
         }
-        /* Triángulo grande derecha arriba */
-        .section-aliados::before {
-            width: 220px; height: 220px;
-            top: 40px; right: -30px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpolygon points='200,0 200,200 0,200' fill='%23a8c4e8'/%3E%3C/svg%3E");
-        }
-        /* Triángulo mediano izquierda abajo */
-        .section-aliados::after {
-            width: 160px; height: 160px;
-            bottom: 60px; left: -20px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpolygon points='0,0 200,0 0,200' fill='%23a8c4e8'/%3E%3C/svg%3E");
+        .lbl-purple { color: var(--purple); }
+        .lbl-red    { color: var(--red-lbl); }
+
+        /* ── SECCIÓN 1: Crecemos ── */
+        .section-grow { background: #fff; padding: 80px 0; }
+
+        .feature-icon {
+            width: 52px; height: 52px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #fff; flex-shrink: 0; margin-right: 20px;
         }
 
-        /* Triángulos adicionales con divs */
+        .stats-image-wrapper { width: 100%; }
+        .stats-image-wrapper img { width: 100%; height: auto; display: block; }
+
+        /* ── SECCIÓN 2: Aliados ── */
+        .section-aliados {
+            background-color: var(--ally-bg);
+            position: relative; overflow: hidden; padding: 80px 0;
+        }
         .tri-deco {
-            position: absolute;
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 0;
+            position: absolute; opacity: 0.18;
+            pointer-events: none; z-index: 0;
         }
         .tri-deco svg { display: block; }
+        .section-aliados .container { position: relative; z-index: 1; }
 
-        .section-aliados .container {
-            position: relative;
-            z-index: 1;
-        }
+        .ally-block { margin-bottom: 28px; }
 
-        /* ══════════════════════════════════════
-           TARJETA DE ALIADO
-        ══════════════════════════════════════ */
-
-        .ally-block {
-            margin-bottom: 40px;
-        }
-
-        /* La "card" del logo — fondo BLANCO, logo CIRCULAR */
+        /* Card logo: blanco, SIN border-radius */
         .ally-logo-card {
             background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,.07);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 36px 24px;
-            height: 100%;
-            min-height: 200px;
+            border-radius: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 40px 24px; height: 100%; min-height: 220px;
         }
-
-        /* ★ LOGO CIRCULAR ★ */
+        /* Logo CIRCULAR */
         .ally-logo-card img {
-            width: 110px;
-            height: 110px;
+            width: 120px; height: 120px;
             object-fit: cover;
-            border-radius: 50%;        /* círculo */
+            border-radius: 50%;
             margin-bottom: 16px;
         }
-
         .ally-logo-card .a-name {
-            font-family: 'Jost', sans-serif;
-            font-weight: 700;
-            font-size: 17px;
-            color: #222;
-            text-align: center;
-            margin-bottom: 4px;
+            font-family: 'Jost', sans-serif; font-weight: 700;
+            font-size: 16px; color: var(--navy);
+            text-align: center; margin-bottom: 4px;
         }
         .ally-logo-card .a-type {
-            font-size: 10px;
-            color: #bbb;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-align: center;
+            font-size: 9px; color: #aaa;
+            text-transform: uppercase; letter-spacing: 2px; text-align: center;
         }
 
-        /* ★ FONDO CELESTE en la card de info ★ */
+        /* Card info: azul claro, SIN border-radius */
         .ally-info-card {
-            background: #dde8f5;          /* mismo celeste del fondo de sección */
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,.07);
-            padding: 32px 28px;
-            height: 100%;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 20px;
+            background: var(--ally-bg);
+            border-radius: 0;
+            padding: 36px 28px; height: 100%; min-height: 220px;
+            display: flex; flex-direction: column;
+            justify-content: center; gap: 24px;
         }
-
-        .ally-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-        }
+        .ally-info-item { display: flex; align-items: flex-start; gap: 14px; }
         .ally-ibox {
-            width: 36px;
-            height: 36px;
-            border-radius: 7px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            color: #fff;
-            flex-shrink: 0;
-            margin-top: 2px;
+            width: 38px; height: 38px; border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 15px; color: #fff; flex-shrink: 0; margin-top: 2px;
         }
+        /* Títulos Beneficio/Actividades: navy, bold, SIN subrayado */
         .ally-info-text .i-title {
-            font-family: 'Jost', sans-serif;
-            font-weight: 700;
-            font-size: 15px;
-            color: #222;
-            margin-bottom: 4px;
-            /* ★ SUBRAYADO ★ */
-            text-decoration: underline;
+            font-family: 'Jost', sans-serif; font-weight: 700;
+            font-size: 15px; color: var(--navy);
+            margin-bottom: 4px; text-decoration: none;
         }
-        .ally-info-text p {
-            font-size: 13.5px;
-            color: #444;
-            margin: 0;
-            line-height: 1.6;
+        .ally-info-text p { font-size: 13px; color: #444; margin: 0; line-height: 1.6; }
+
+        /* ── SECCIÓN 3: CTA ── */
+        .section-cta { background: #fff; padding: 80px 0; }
+
+        .contact-box { background: var(--ally-bg); padding: 32px 36px; }
+
+        .contact-pill {
+            display: flex; align-items: center;
+            gap: 20px; margin-bottom: 24px;
+        }
+        .contact-pill:last-child { margin-bottom: 0; }
+        .pill-icon {
+            width: 52px; height: 52px; border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #fff; flex-shrink: 0;
+        }
+        .pill-icon.mail  { background: #4285f4; }
+        .pill-icon.insta { background: #e84545; }
+        .contact-pill .pill-label {
+            font-family: 'Jost', sans-serif; font-weight: 700;
+            font-size: 17px; color: var(--navy); display: block; margin-bottom: 2px;
+        }
+        .contact-pill .pill-value { font-size: 14px; color: #555; }
+
+        /* ── FOOTER WAVE (borde rasgado) ── */
+        .footer-wave { background: #fff; line-height: 0; }
+        .footer-wave svg { display: block; width: 100%; }
+
+        /* ── FOOTER ── */
+        .site-footer { background: #0d1136; padding: 60px 0 0; }
+        .footer-brand {
+            font-family: 'Jost', sans-serif; font-weight: 800;
+            font-size: 28px; color: #fff; text-decoration: none;
+        }
+        .footer-tagline { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 8px; }
+
+        .site-footer h6 {
+            color: #fff; font-family: 'Jost', sans-serif;
+            font-weight: 700; font-size: 15px; letter-spacing: 1px; margin-bottom: 16px;
+        }
+        .site-footer .foot-info p { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+        .foot-social a {
+            color: rgba(255,255,255,.7); font-size: 20px;
+            margin-right: 18px; text-decoration: none;
+        }
+        .foot-social a:hover { color: #fff; }
+
+        .newsletter-group { display: flex; }
+        .newsletter-group input {
+            flex: 1; padding: 14px 18px; border: none;
+            font-size: 14px; outline: none; color: #333;
+        }
+        .newsletter-group button {
+            background: #4285f4; color: #fff; border: none;
+            padding: 14px 22px; font-family: 'Jost', sans-serif;
+            font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap;
         }
 
-        /* CTA */
-        .cta-section { background: #fff; }
-        .contact-pill {
-            display: flex; align-items: center; gap: 16px;
-            background: #f4f5f9; border-radius: 8px;
-            padding: 16px 20px; margin-bottom: 14px;
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.1);
+            padding: 20px 0 20px; margin-top: 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 13px; color: rgba(255,255,255,.4);
         }
-        .pill-icon {
-            width: 40px; height: 40px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 16px; color: #fff; flex-shrink: 0;
+        .footer-bottom a { color: rgba(255,255,255,.6); text-decoration: none; }
+        .footer-bottom strong { color: #fff; }
+        .scroll-top-btn {
+            width: 38px; height: 38px; background: #4285f4;
+            color: #fff; border: none; cursor: pointer;
+            font-size: 14px; display: inline-flex;
+            align-items: center; justify-content: center;
         }
-        .pill-icon.mail  { background: #007bff; }
-        .pill-icon.insta { background: linear-gradient(135deg,#f58529,#dd2a7b,#8134af); }
-        .contact-pill .pill-label { font-size:11px; color:#999; text-transform:uppercase; letter-spacing:1px; }
-        .contact-pill .pill-value { font-family:'Jost',sans-serif; font-weight:600; font-size:15px; color:#222; }
+
+        /* ── TOPBAR ── */
+        .topbar { background: #12133a; padding: 8px 0; }
+        .topbar, .topbar a { color: rgba(255,255,255,.8); font-size: 13px; text-decoration: none; }
+        .topbar a:hover { color: #fff; }
+        .topbar-social a { margin-left: 14px; }
 
         @media(max-width:767px){
-            .ally-logo-card, .ally-info-card { min-height:unset; }
-            .ally-block .row > div + div { margin-top: 16px; }
+            .ally-logo-card, .ally-info-card { min-height: unset; }
+            .contact-box { margin-top: 30px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Topbar -->
-    <div class="container-fluid bg-dark">
-        <div class="row py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center text-white">
-                    <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a class="text-white pl-2" href="" target="_blank"><i class="fab fa-youtube"></i></a>
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <div class="container-fluid px-lg-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
+                <div class="topbar-social">
+                    <a href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Navbar -->
+    <!-- NAVBAR -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
-                <img src="./img/GeneralUse/logo.png" width="100" height="100">
+                <img src="./img/GeneralUse/logo.png" width="90" height="90" alt="Code UP">
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -261,57 +245,64 @@
         </nav>
     </div>
 
-    <!-- Header -->
-    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom:45px;">
+    <!-- HEADER JUMBOTRON -->
+    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom:0;">
         <div class="container text-center my-5 py-5">
             <p class="text-white mt-4 mb-4" style="font-family:'Jost',sans-serif;font-size:14px;letter-spacing:4px;">CLUB CODE UP</p>
-            <h1 class="text-white display-1 mb-5">Nuestras Alianzas</h1>
-            <p class="text-white">Trabajamos junto a organizaciones y áreas de la Universidad del Pacífico para potenciar <br> el impacto de nuestras actividades</p>
+            <h1 class="text-white display-1 mb-5" style="font-weight:800;">Nuestras Alianzas</h1>
+            <p class="text-white">Trabajamos junto a organizaciones y áreas de la Universidad del Pacífico para potenciar <br>el impacto de nuestras actividades</p>
         </div>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- ═══════════════════════════════════════
          SECCIÓN 1 — Crecemos junto a la UP
-    ══════════════════════════════════════ -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
+    ═══════════════════════════════════════ -->
+    <div class="section-grow">
+        <div class="container">
             <div class="row align-items-center">
 
-                <!-- Izquierda: texto -->
+                <!-- Izquierda -->
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <span class="label-red">ALIANZAS ESTRATÉGICAS</span>
-                    <h1 class="display-4 mb-4">Crecemos junto a la comunidad UP</h1>
-                    <p class="mb-4">Nuestras alianzas nos permiten ampliar el alcance de lo que hacemos: desde talleres de refuerzo académico y eventos de integración, hasta hackathones y proyectos colaborativos con otras organizaciones de la universidad.</p>
+                    <span class="section-label lbl-purple">ALIANZAS ESTRATÉGICAS</span>
+                    <h1 style="font-size:46px;font-weight:800;color:var(--navy);margin:16px 0 20px;line-height:1.15;">
+                        Crecemos junto a la comunidad UP
+                    </h1>
+                    <p style="color:#555;font-size:14px;line-height:1.75;margin-bottom:28px;">
+                        Nuestras alianzas nos permiten ampliar el alcance de lo que hacemos: desde talleres de refuerzo académico y eventos de integración, hasta hackathones y proyectos colaborativos con otras organizaciones de la universidad.
+                    </p>
 
-                    <div class="d-flex align-items-start mb-3">
-                        <div class="btn-icon bg-primary mr-4"><i class="fa fa-2x fa-handshake text-white"></i></div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="feature-icon" style="background:#4285f4;"><i class="fa fa-handshake"></i></div>
                         <div>
-                            <h5>Colaboración real</h5>
-                            <p class="mb-0">Cada alianza tiene actividades concretas en conjunto que benefician a ambas partes y a la comunidad.</p>
+                            <h5 style="font-weight:700;color:var(--navy);margin-bottom:6px;">Colaboración real</h5>
+                            <p style="color:#555;font-size:14px;margin:0;line-height:1.65;">Cada alianza tiene actividades concretas en conjunto que benefician a ambas partes y a la comunidad.</p>
                         </div>
                     </div>
-                    <div class="d-flex align-items-start mb-3">
-                        <div class="btn-icon bg-secondary mr-4"><i class="fa fa-2x fa-bullseye text-white"></i></div>
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="feature-icon" style="background:#e84545;"><i class="fa fa-bullseye"></i></div>
                         <div>
-                            <h5>Visibilidad y alcance</h5>
-                            <p class="mb-0">Llegamos a más estudiantes a través del respaldo compartido con nuestros aliados.</p>
+                            <h5 style="font-weight:700;color:var(--navy);margin-bottom:6px;">Visibilidad y alcance</h5>
+                            <p style="color:#555;font-size:14px;margin:0;line-height:1.65;">Llegamos a más estudiantes a través del respaldo compartido con nuestros aliados.</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-start">
-                        <div class="btn-icon bg-warning mr-4"><i class="fa fa-2x fa-rocket text-white"></i></div>
+                        <div class="feature-icon" style="background:#f5a623;"><i class="fa fa-rocket"></i></div>
                         <div>
-                            <h5>Impacto en la UP</h5>
-                            <p class="mb-0">Juntos generamos eventos, talleres y hackathones que marcan la diferencia en la comunidad universitaria.</p>
+                            <h5 style="font-weight:700;color:var(--navy);margin-bottom:6px;">Impacto en la UP</h5>
+                            <p style="color:#555;font-size:14px;margin:0;line-height:1.65;">Juntos generamos eventos, talleres y hackathones que marcan la diferencia en la comunidad universitaria.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Derecha: IMAGEN (reemplaza cuadro de stats) -->
+                <!-- Derecha: imagen "img/para aliados.jpg" -->
                 <div class="col-lg-6">
                     <div class="stats-image-wrapper">
-                        <img src="img/para aliados.jpg"
-                             alt="Alianzas Code UP"
-                             onerror="this.parentNode.innerHTML='<div style=\'background:#e9ecef;height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#aaa;border-radius:8px;\'><i class=\'fa fa-image fa-3x\'></i><p style=\'margin-top:12px;\'>img/para aliados.jpg</p></div>'">
+                        <img src="img/para aliados.jpg" alt="Alianzas Code UP"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                        <div style="display:none;background:#e9ecef;height:320px;align-items:center;justify-content:center;flex-direction:column;color:#aaa;">
+                            <i class="fa fa-image fa-3x"></i>
+                            <p style="margin-top:12px;font-size:13px;">img/para aliados.jpg</p>
+                        </div>
                     </div>
                 </div>
 
@@ -319,54 +310,39 @@
         </div>
     </div>
 
-    <!-- ══════════════════════════════════════
+    <!-- ═══════════════════════════════════════
          SECCIÓN 2 — Organizaciones aliadas
-         Fondo: celeste #dde8f5 + triángulos decorativos
-    ══════════════════════════════════════ -->
-    <div class="container-fluid py-5 section-aliados">
+    ═══════════════════════════════════════ -->
+    <div class="section-aliados">
 
-        <!-- Triángulos decorativos extra -->
-        <div class="tri-deco" style="top:10%;right:8%;width:100px;height:100px;">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,0 100,100 0,100" fill="#8ab0d8"/>
-            </svg>
+        <!-- Triángulos decorativos -->
+        <div class="tri-deco" style="top:5%;right:6%;width:110px;height:110px;">
+            <svg viewBox="0 0 100 100"><polygon points="50,0 100,100 0,100" fill="#7c9ed8"/></svg>
         </div>
-        <div class="tri-deco" style="top:30%;left:2%;width:70px;height:70px;">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="0,0 100,0 0,100" fill="#8ab0d8"/>
-            </svg>
+        <div class="tri-deco" style="top:28%;left:1%;width:75px;height:75px;">
+            <svg viewBox="0 0 100 100"><polygon points="0,0 100,0 0,100" fill="#7c9ed8"/></svg>
         </div>
-        <div class="tri-deco" style="bottom:20%;right:3%;width:80px;height:80px;">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="100,0 100,100 0,100" fill="#8ab0d8"/>
-            </svg>
+        <div class="tri-deco" style="bottom:22%;right:2%;width:85px;height:85px;">
+            <svg viewBox="0 0 100 100"><polygon points="100,0 100,100 0,100" fill="#7c9ed8"/></svg>
         </div>
-        <div class="tri-deco" style="bottom:5%;left:6%;width:60px;height:60px;">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="0,100 100,0 100,100" fill="#8ab0d8"/>
-            </svg>
-        </div>
-        <div class="tri-deco" style="top:55%;right:12%;width:50px;height:50px;opacity:0.15;">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,0 100,100 0,100" fill="#8ab0d8"/>
-            </svg>
+        <div class="tri-deco" style="bottom:4%;left:5%;width:65px;height:65px;">
+            <svg viewBox="0 0 100 100"><polygon points="0,100 100,0 100,100" fill="#7c9ed8"/></svg>
         </div>
 
-        <div class="container py-5">
+        <div class="container">
 
             <div class="text-center mb-5">
-                <span class="label-purple">NUESTROS ALIADOS</span>
-                <h1 class="display-4">Organizaciones que nos acompañan</h1>
+                <span class="section-label lbl-red" style="display:block;text-align:center;">NUESTROS ALIADOS</span>
+                <h1 style="font-size:44px;font-weight:800;color:var(--navy);margin-top:10px;">Organizaciones que nos acompañan</h1>
             </div>
 
-            <!-- ══ 1. Programa REA — logo IZQ, info DER ══ -->
+            <!-- 1. Programa REA -->
             <div class="ally-block">
-                <div class="row align-items-stretch">
+                <div class="row no-gutters align-items-stretch">
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <img src="img/LOGO PROGRAMA REA.jpg"
-                                 alt="Programa REA"
-                                 onerror="this.src='https://via.placeholder.com/110x110/4e73df/ffffff?text=REA'">
+                            <img src="img/LOGO PROGRAMA REA.jpg" alt="Programa REA"
+                                 onerror="this.src='https://via.placeholder.com/120x120/4e73df/ffffff?text=REA'">
                             <div class="a-name">Programa REA</div>
                             <div class="a-type">Unidad Académica UP</div>
                         </div>
@@ -374,7 +350,7 @@
                     <div class="col-md-7">
                         <div class="ally-info-card">
                             <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#007bff;"><i class="fa fa-eye"></i></div>
+                                <div class="ally-ibox" style="background:#4285f4;"><i class="fa fa-eye"></i></div>
                                 <div class="ally-info-text">
                                     <div class="i-title">Beneficio</div>
                                     <p>Visibilidad con todos los salones de la UP, lo que nos permite llegar a más estudiantes de diversas carreras.</p>
@@ -392,9 +368,9 @@
                 </div>
             </div>
 
-            <!-- ══ 2. IEEE — info IZQ, logo DER ══ -->
+            <!-- 2. IEEE -->
             <div class="ally-block">
-                <div class="row align-items-stretch">
+                <div class="row no-gutters align-items-stretch">
                     <div class="col-md-7">
                         <div class="ally-info-card">
                             <div class="ally-info-item">
@@ -415,9 +391,8 @@
                     </div>
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <img src="img/LOGO IEEE.jpg"
-                                 alt="IEEE"
-                                 onerror="this.src='https://via.placeholder.com/110x110/003087/ffffff?text=IEEE'">
+                            <img src="img/LOGO IEEE.jpg" alt="IEEE"
+                                 onerror="this.src='https://via.placeholder.com/120x120/003087/ffffff?text=IEEE'">
                             <div class="a-name">IEEE</div>
                             <div class="a-type">Organización de Tecnología</div>
                         </div>
@@ -425,14 +400,13 @@
                 </div>
             </div>
 
-            <!-- ══ 3. Proyectos UP — logo IZQ, info DER ══ -->
+            <!-- 3. Proyectos UP -->
             <div class="ally-block">
-                <div class="row align-items-stretch">
+                <div class="row no-gutters align-items-stretch">
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <img src="img/LOGO PROYECTOS UP.jpg"
-                                 alt="Proyectos UP"
-                                 onerror="this.src='https://via.placeholder.com/110x110/007bff/ffffff?text=PUP'">
+                            <img src="img/LOGO PROYECTOS UP.jpg" alt="Proyectos UP"
+                                 onerror="this.src='https://via.placeholder.com/120x120/007bff/ffffff?text=PUP'">
                             <div class="a-name">Proyectos UP</div>
                             <div class="a-type">Gestión de Proyectos</div>
                         </div>
@@ -440,7 +414,7 @@
                     <div class="col-md-7">
                         <div class="ally-info-card">
                             <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#007bff;"><i class="fa fa-share-alt"></i></div>
+                                <div class="ally-ibox" style="background:#4285f4;"><i class="fa fa-share-alt"></i></div>
                                 <div class="ally-info-text">
                                     <div class="i-title">Beneficio</div>
                                     <p>Organización orientada a la gestión de proyectos, complementando nuestro enfoque técnico con metodologías de gestión.</p>
@@ -458,9 +432,9 @@
                 </div>
             </div>
 
-            <!-- ══ 4. Gaming UP — info IZQ, logo DER ══ -->
+            <!-- 4. Gaming UP -->
             <div class="ally-block">
-                <div class="row align-items-stretch">
+                <div class="row no-gutters align-items-stretch">
                     <div class="col-md-7">
                         <div class="ally-info-card">
                             <div class="ally-info-item">
@@ -481,9 +455,8 @@
                     </div>
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <img src="img/LOGO GAMING UP.jpg"
-                                 alt="Gaming UP"
-                                 onerror="this.src='https://via.placeholder.com/110x110/6f42c1/ffffff?text=GUP'">
+                            <img src="img/LOGO GAMING UP.jpg" alt="Gaming UP"
+                                 onerror="this.src='https://via.placeholder.com/120x120/6f42c1/ffffff?text=GUP'">
                             <div class="a-name">Gaming UP</div>
                             <div class="a-type">Organización de Gaming</div>
                         </div>
@@ -491,14 +464,13 @@
                 </div>
             </div>
 
-            <!-- ══ 5. CEUP — logo IZQ, info DER ══ -->
+            <!-- 5. CEUP -->
             <div class="ally-block">
-                <div class="row align-items-stretch">
+                <div class="row no-gutters align-items-stretch">
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <img src="img/LOGO CEUP.jpg"
-                                 alt="CEUP"
-                                 onerror="this.src='https://via.placeholder.com/110x110/28a745/ffffff?text=CEUP'">
+                            <img src="img/LOGO CEUP.jpg" alt="CEUP"
+                                 onerror="this.src='https://via.placeholder.com/120x120/28a745/ffffff?text=CEUP'">
                             <div class="a-name">CEUP</div>
                             <div class="a-type">Centro Estudiantil UP</div>
                         </div>
@@ -527,72 +499,120 @@
         </div>
     </div>
 
-    <!-- ══════════════════════════════════════
-         SECCIÓN 3 — CTA
-    ══════════════════════════════════════ -->
-    <div class="container-fluid py-5 cta-section">
-        <div class="container py-5">
+    <!-- ═══════════════════════════════════════
+         SECCIÓN 3 — ¿Quieres ser nuestro aliado?
+    ═══════════════════════════════════════ -->
+    <div class="section-cta">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <span class="label-blue">COLABORA CON NOSOTROS</span>
-                    <h1 class="display-4 mb-4">¿Quieres ser<br>nuestro próximo<br>aliado?</h1>
-                    <p class="text-muted">Si representas una organización dentro de la UP y deseas generar actividades en conjunto, escríbenos. Estamos abiertos a nuevas alianzas que sumen a la comunidad.</p>
+
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <span class="section-label lbl-purple">COLABORA CON NOSOTROS</span>
+                    <h1 style="font-size:46px;font-weight:800;color:var(--navy);line-height:1.15;margin:16px 0 20px;">
+                        ¿Quieres ser nuestro próximo aliado?
+                    </h1>
+                    <p style="color:#555;font-size:14px;line-height:1.75;">
+                        Si representas una organización dentro de la UP y deseas generar actividades en conjunto, escríbenos. Estamos abiertos a nuevas alianzas que sumen a la comunidad.
+                    </p>
                 </div>
-                <div class="col-lg-5 offset-lg-1">
-                    <div class="contact-pill">
-                        <div class="pill-icon mail"><i class="fa fa-envelope"></i></div>
-                        <div>
-                            <div class="pill-label">Correo</div>
-                            <div class="pill-value">clubcodeup@gmail.com</div>
+
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="contact-box">
+                        <div class="contact-pill">
+                            <div class="pill-icon mail"><i class="fa fa-envelope"></i></div>
+                            <div>
+                                <span class="pill-label">Correo</span>
+                                <span class="pill-value">clubcodeup@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-pill">
+                            <div class="pill-icon insta"><i class="fab fa-instagram"></i></div>
+                            <div>
+                                <span class="pill-label">Instagram</span>
+                                <span class="pill-value">@clubcodeup</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-pill">
-                        <div class="pill-icon insta"><i class="fab fa-instagram"></i></div>
-                        <div>
-                            <div class="pill-label">Instagram</div>
-                            <div class="pill-value">@clubcodeup</div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5">
-        <div class="row pt-5">
-            <div class="col-lg-4 col-md-6 mb-5">
-                <a href="index.html" class="navbar-brand">
-                    <img src="./img/GeneralUse/logo.png" width="80" height="80" alt="Code UP">
-                </a>
-                <p class="mt-3" style="color:rgba(255,255,255,.5);font-size:14px;">Aprende los primeros pasos en la programación</p>
-                <h6 class="text-uppercase mt-4 mb-3" style="letter-spacing:2px;">Encuéntranos</h6>
-                <p class="mb-1" style="color:rgba(255,255,255,.5);font-size:14px;"><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pacífico</p>
-                <p class="mb-0" style="color:rgba(255,255,255,.5);font-size:14px;"><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
-                <div class="d-flex mt-3">
-                    <a class="btn btn-outline-light btn-square mr-2" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a class="btn btn-outline-light btn-square mr-2" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-square mr-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-square" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <!-- ═══════════════════════════════════════
+         FOOTER WAVE — borde tipo sierra/rasgado
+    ═══════════════════════════════════════ -->
+    <div class="footer-wave">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" height="90" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,90 L0,45
+                C15,58 28,22 45,40 C62,58 78,16 95,34
+                C112,52 128,10 145,28 C162,46 178,6 195,22
+                C212,38 228,0 245,16 C262,32 278,0 295,14
+                C312,28 328,0 345,12 C362,24 378,0 395,11
+                C412,22 428,0 445,10 C462,20 478,0 495,8
+                C512,16 528,0 545,7 C562,14 578,0 595,6
+                C612,12 628,0 645,5 C662,10 678,0 695,4
+                C712,8 728,0 745,3 C762,6 778,0 795,2
+                C812,4 828,0 845,2 C862,4 878,0 895,1
+                C912,2 928,0 945,1 C962,2 978,0 995,1
+                C1012,2 1028,0 1045,1 C1062,2 1078,0 1095,1
+                C1112,2 1128,0 1145,1 C1162,2 1178,0 1195,1
+                C1212,2 1228,0 1245,1 C1262,2 1278,0 1295,1
+                C1312,2 1328,0 1345,1 C1362,2 1378,0 1410,1 L1440,1
+                L1440,90 Z"
+                fill="#0d1136"/>
+        </svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Columna izquierda -->
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <a href="index.html" class="footer-brand">CODE UP</a>
+                    <p class="footer-tagline">Aprende tus primeros pasos en la programación</p>
+
+                    <div class="mt-4">
+                        <h6>Encuentranos</h6>
+                        <div class="foot-info">
+                            <p><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pacífico</p>
+                            <p><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="foot-social mt-3">
+                        <a href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <h5 class="text-uppercase mb-4" style="letter-spacing:2px;">Newsletter</h5>
-                <div class="input-group">
-                    <input type="text" class="form-control border-light" style="padding:25px;" placeholder="Correo">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary px-4">Suscribirse</button>
+
+                <!-- Columna derecha: Newsletter -->
+                <div class="col-lg-5 offset-lg-2">
+                    <h6>Newsletter</h6>
+                    <div class="newsletter-group">
+                        <input type="email" placeholder="Correo">
+                        <button>Subscríbete</button>
                     </div>
                 </div>
             </div>
+
+            <!-- Copyright bar -->
+            <div class="footer-bottom">
+                <span>Copyright &copy; <strong>CODEUP</strong>. All Rights Reserved.</span>
+                <div class="d-flex align-items-center">
+                    <span>Designed by <a href="https://htmlcodex.com" target="_blank">HTML Codex</a></span>
+                    <button class="scroll-top-btn ml-3" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                        <i class="fa fa-chevron-up"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="container-fluid pt-4" style="border-top:1px solid rgba(255,255,255,.1);">
-            <p class="text-center mb-0" style="color:rgba(255,255,255,.5);font-size:13px;">
-                &copy; Copyright <strong>CODEUP</strong>. All Rights Reserved &nbsp;|&nbsp;
-                Designed by <a href="https://htmlcodex.com" style="color:#fff;">HTML Codex</a>
-            </p>
-        </div>
-    </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
