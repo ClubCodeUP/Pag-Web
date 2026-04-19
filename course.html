@@ -100,17 +100,13 @@
 
         /* ══════════════════════════════════════
            TARJETA DE ALIADO
-           Layout: dos mitades dentro de un row Bootstrap
-           Mitad izquierda: logo card (fondo blanco)
-           Mitad derecha: info con Beneficio + Actividades
-           Para .alt: logo va a la derecha
         ══════════════════════════════════════ */
 
         .ally-block {
             margin-bottom: 40px;
         }
 
-        /* La "card" del logo */
+        /* La "card" del logo — fondo BLANCO, logo CIRCULAR */
         .ally-logo-card {
             background: #fff;
             border-radius: 10px;
@@ -123,12 +119,16 @@
             height: 100%;
             min-height: 200px;
         }
+
+        /* ★ LOGO CIRCULAR ★ */
         .ally-logo-card img {
             width: 110px;
             height: 110px;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 50%;        /* círculo */
             margin-bottom: 16px;
         }
+
         .ally-logo-card .a-name {
             font-family: 'Jost', sans-serif;
             font-weight: 700;
@@ -145,9 +145,9 @@
             text-align: center;
         }
 
-        /* La "card" de info */
+        /* ★ FONDO CELESTE en la card de info ★ */
         .ally-info-card {
-            background: #fff;
+            background: #dde8f5;          /* mismo celeste del fondo de sección */
             border-radius: 10px;
             box-shadow: 0 2px 12px rgba(0,0,0,.07);
             padding: 32px 28px;
@@ -182,21 +182,15 @@
             font-size: 15px;
             color: #222;
             margin-bottom: 4px;
+            /* ★ SUBRAYADO ★ */
+            text-decoration: underline;
         }
         .ally-info-text p {
             font-size: 13.5px;
-            color: #555;
+            color: #444;
             margin: 0;
             line-height: 1.6;
         }
-
-        /* ── Colores de iconos por aliado ──
-           REA:          ojo azul / rayo rojo-naranja
-           IEEE:         pantalla amarillo / código verde
-           Proyectos UP: flecha azul / trofeo amarillo
-           Gaming UP:    gente verde / trofeo amarillo
-           CEUP:         megáfono rojo / maletín naranja
-        */
 
         /* CTA */
         .cta-section { background: #fff; }
@@ -313,7 +307,6 @@
                 </div>
 
                 <!-- Derecha: IMAGEN (reemplaza cuadro de stats) -->
-                <!-- Ruta: img/para aliados.jpg  (exactamente como está en el repo) -->
                 <div class="col-lg-6">
                     <div class="stats-image-wrapper">
                         <img src="img/para aliados.jpg"
@@ -371,7 +364,6 @@
                 <div class="row align-items-stretch">
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <!-- img/LOGO PROGRAMA REA.jpg -->
                             <img src="img/LOGO PROGRAMA REA.jpg"
                                  alt="Programa REA"
                                  onerror="this.src='https://via.placeholder.com/110x110/4e73df/ffffff?text=REA'">
@@ -423,7 +415,6 @@
                     </div>
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <!-- img/LOGO IEEE.jpg -->
                             <img src="img/LOGO IEEE.jpg"
                                  alt="IEEE"
                                  onerror="this.src='https://via.placeholder.com/110x110/003087/ffffff?text=IEEE'">
@@ -439,7 +430,6 @@
                 <div class="row align-items-stretch">
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <!-- img/LOGO PROYECTOS UP.jpg -->
                             <img src="img/LOGO PROYECTOS UP.jpg"
                                  alt="Proyectos UP"
                                  onerror="this.src='https://via.placeholder.com/110x110/007bff/ffffff?text=PUP'">
@@ -491,7 +481,6 @@
                     </div>
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <!-- img/LOGO GAMING UP.jpg -->
                             <img src="img/LOGO GAMING UP.jpg"
                                  alt="Gaming UP"
                                  onerror="this.src='https://via.placeholder.com/110x110/6f42c1/ffffff?text=GUP'">
@@ -507,7 +496,6 @@
                 <div class="row align-items-stretch">
                     <div class="col-md-5">
                         <div class="ally-logo-card">
-                            <!-- img/LOGO CEUP.jpg -->
                             <img src="img/LOGO CEUP.jpg"
                                  alt="CEUP"
                                  onerror="this.src='https://via.placeholder.com/110x110/28a745/ffffff?text=CEUP'">
