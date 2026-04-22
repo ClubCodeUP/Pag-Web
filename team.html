@@ -99,8 +99,21 @@
 
 <style>
 .image-strip {
+  position: relative;
   height: 500px; /* Ajusta esta altura según lo necesites */
   overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+}
+
+.image-strip::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background: url("img/overlay-bottom.png") no-repeat;
+  background-size: cover;
+  z-index: 3;
 }
 
 .image-strip img {
@@ -111,8 +124,8 @@
 }
 </style>
     <!-- Header Start  -->
-    <div class="image-strip" style="padding-top: 20px;">
-        <img src="img/SomosCode2025.PNG" >
+    <div class="image-strip" style="padding-top: 20px; margin-bottom: 45px;">
+        <img src="img/directivanosotros.jpg" >
     </div>
      <!-- Header End -->
 
