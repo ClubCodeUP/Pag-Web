@@ -18,7 +18,7 @@
         .unete-hero {
             position: relative;
             overflow: hidden;
-            min-height: 480px;
+            min-height: 400px;
         }
 
         .unete-hero::after {
@@ -45,13 +45,13 @@
         .unete-hero .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(72, 40, 170, 0.62);
+            background: linear-gradient(rgba(98, 75, 173, 0.65), rgba(63, 59, 141, 0.9));
         }
         .unete-hero .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            padding: 120px 20px 160px;
+            padding: 92px 20px 124px;
         }
         .unete-hero .hero-eyebrow {
             font-family: 'Jost', sans-serif;
@@ -63,19 +63,19 @@
         }
         .unete-hero h1 {
             font-family: 'Jost', sans-serif;
-            font-size: clamp(2.6rem, 7vw, 5rem);
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
             font-weight: 700;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.05;
         }
         .unete-hero p {
             color: rgba(255,255,255,0.85);
-            font-size: 1rem;
+            font-size: 0.96rem;
             max-width: 520px;
-            margin: 0 auto 32px;
+            margin: 0 auto 24px;
             line-height: 1.7;
         }
         .hero-btn {
@@ -349,12 +349,15 @@
             .pasos-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 575px) {
-            .unete-hero .hero-content { padding: 90px 20px 130px; }
+            .unete-hero {
+                min-height: 360px;
+            }
+            .unete-hero .hero-content { padding: 78px 20px 108px; }
         }
     </style>
 </head>
 
-<body>
+<body class="internal-page">
     
     <div class="container-fluid bg-dark">
         <div class="row py-2 px-lg-5">

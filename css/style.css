@@ -9790,9 +9790,28 @@ h6,
   color: #2878EB;
 }
 
+/* Internal pages reuse the stronger "Unete" header typography without affecting home */
+.internal-page .jumbotron h1,
+.internal-page .display-1,
+.internal-page .display-4,
+.internal-page .section-title h1 {
+  font-family: 'Jost', sans-serif;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.05;
+}
+
 @media (max-width: 991.98px) {
   .navbar-light .navbar-nav .nav-link {
     padding: 10px 15px;
+  }
+
+  .internal-page .jumbotron h1,
+  .internal-page .display-1,
+  .internal-page .display-4,
+  .internal-page .section-title h1 {
+    letter-spacing: 1px;
   }
 }
 
