@@ -98,6 +98,85 @@
     <!-- Navbar End -->
 
 <style>
+.nosotros-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  margin-bottom: 45px;
+}
+
+.nosotros-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background: url("img/overlay-bottom.png") no-repeat;
+  background-size: cover;
+  z-index: 3;
+}
+
+.nosotros-hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.nosotros-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(98, 75, 173, 0.65), rgba(63, 59, 141, 0.9));
+}
+
+.nosotros-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 92px 20px 124px;
+}
+
+.nosotros-hero .hero-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 16px;
+}
+
+.nosotros-hero h1 {
+  font-family: 'Jost', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.nosotros-hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 24px;
+}
+
+@media (max-width: 575px) {
+  .nosotros-hero {
+    min-height: 360px;
+  }
+
+  .nosotros-hero .hero-content {
+    padding: 78px 20px 108px;
+  }
+}
+
 .image-strip {
   position: relative;
   height: 500px; /* Ajusta esta altura según lo necesites */
@@ -124,9 +203,15 @@
 }
 </style>
     <!-- Header Start  -->
-    <div class="image-strip" style="padding-top: 20px; margin-bottom: 45px;">
-        <img src="img/directivanosotros.jpg" >
-    </div>
+    <section class="nosotros-hero">
+        <img class="hero-bg" src="img/directivanosotros.jpg" alt="Equipo Code UP">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <p class="hero-eyebrow">Club Code UP</p>
+            <h1>Nosotros</h1>
+            <p>Conoce a la directiva y a los equipos que impulsan los proyectos, eventos y espacios de aprendizaje de CODE UP.</p>
+        </div>
+    </section>
      <!-- Header End -->
 
     
