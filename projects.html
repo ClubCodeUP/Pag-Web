@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Club CODE UP - Proyectos</title>
+    <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Proyectos desarrollados por CODE UP" name="description">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --code-dark: #120f2d;
+            --code-purple: #6f42c1;
+            --code-magenta: #8b0f6d;
+            --code-blue: #2878eb;
+            --code-red: #f14d5d;
+            --code-yellow: #ffc107;
+            --code-green: #28a745;
+            --project-bg: #edf4ff;
+            --project-text: #171239;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            color: var(--project-text);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Jost", sans-serif;
+        }
+
+        .projects-hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            margin-bottom: 0;
+        }
+
+        .projects-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 92px;
+            background: url("img/overlay-bottom.png") no-repeat bottom center;
+            background-size: cover;
+            z-index: 3;
+        }
+
+        .projects-hero .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 54%;
+        }
+
+        .projects-hero .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(124, 93, 196, 0.70), rgba(41, 35, 119, 0.88));
+            z-index: 1;
+        }
+
+        .projects-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 116px 20px 146px;
+        }
+
+        .hero-eyebrow,
+        .section-label {
+            font-family: "Jost", sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-eyebrow {
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 22px;
+        }
+
+        .projects-hero h1 {
+            color: #fff;
+            font-size: clamp(2.7rem, 6vw, 4.7rem);
+            font-weight: 800;
+            line-height: 1.03;
+            margin-bottom: 26px;
+        }
+
+        .projects-hero p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #fff;
+            font-size: 1.12rem;
+            line-height: 1.65;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--code-magenta);
+            margin-bottom: 18px;
+        }
+
+        .section-label::after {
+            content: "";
+            display: block;
+            width: 126px;
+            border-bottom: 2px dashed currentColor;
+            margin-top: 7px;
+        }
+
+        .section-label.center {
+            display: block;
+            text-align: center;
+        }
+
+        .section-label.center::after {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projects-overview,
+        .projects-cta {
+            background: #fff;
+            padding: 98px 0;
+        }
+
+        .display-heading {
+            color: var(--code-dark);
+            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.12;
+            margin-bottom: 26px;
+        }
+
+        .overview-copy {
+            max-width: 1040px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .feature-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 26px;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon,
+        .project-icon,
+        .contact-icon {
+            width: 96px;
+            height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 96px;
+            color: #fff;
+            font-size: 38px;
+        }
+
+        .feature-line h3,
+        .project-info h3,
+        .contact-item h3 {
+            color: var(--code-dark);
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .feature-line p,
+        .project-info p,
+        .projects-cta p,
+        .contact-item p {
+            color: #2a2449;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .project-band {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--project-bg);
+            padding: 92px 0;
+        }
+
+        .project-band::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.48;
+            background:
+                linear-gradient(135deg, transparent 0 78%, rgba(18, 15, 45, 0.06) 78% 100%) 5% 17% / 180px 180px no-repeat,
+                linear-gradient(45deg, transparent 0 72%, rgba(18, 15, 45, 0.05) 72% 100%) 92% 20% / 210px 210px no-repeat,
+                radial-gradient(rgba(18, 15, 45, 0.09) 1px, transparent 1px) 28% 6% / 10px 10px no-repeat,
+                radial-gradient(rgba(18, 15, 45, 0.08) 1px, transparent 1px) 97% 72% / 11px 11px no-repeat;
+            pointer-events: none;
+        }
+
+        .project-band .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-heading {
+            text-align: center;
+            margin-bottom: 58px;
+        }
+
+        .project-heading h2 {
+            color: var(--code-dark);
+            font-size: clamp(2.4rem, 5vw, 4.4rem);
+            font-weight: 800;
+            line-height: 1.08;
+        }
+
+        .project-row {
+            align-items: stretch;
+            margin-bottom: 72px;
+        }
+
+        .project-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-card,
+        .project-info {
+            height: 100%;
+            background: #fff;
+            box-shadow: 0 18px 34px rgba(28, 35, 70, 0.08);
+        }
+
+        .project-card {
+            padding: 32px;
+            text-align: center;
+        }
+
+        .project-preview {
+            min-height: 260px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .project-card h3 {
+            color: var(--code-dark);
+            font-size: 1.65rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .project-card .meta {
+            color: #777;
+            font-size: 0.84rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+            background: #e4eefb;
+            padding: 52px 62px;
+        }
+
+        .project-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 28px;
+        }
+
+        .review-mockup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #fbf8ff, #f0eafb);
+            border: 2px solid rgba(139, 15, 109, 0.45);
+            padding: 26px;
+        }
+
+        .review-panel {
+            width: 88%;
+            max-width: 350px;
+            color: var(--code-magenta);
+            font-family: "Jost", sans-serif;
+            text-align: center;
+        }
+
+        .review-panel .mini-title {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .review-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            min-height: 76px;
+            margin-bottom: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 8px 18px rgba(78, 31, 139, 0.08);
+            font-weight: 800;
+        }
+
+        .game-mockup,
+        .runner-mockup,
+        .tour-mockup {
+            position: relative;
+        }
+
+        .game-mockup {
+            background: linear-gradient(180deg, #60646d 0 44%, #353841 44% 100%);
+        }
+
+        .game-mockup::before {
+            content: "UN GATO C.CAT, APARECIO DESDE EL PARAISO";
+            position: absolute;
+            top: 28px;
+            left: 34px;
+            right: 34px;
+            padding: 12px;
+            background: #2b2c31;
+            color: #29d7ff;
+            font-family: "Jost", sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            transform: rotate(-3deg);
+            text-align: center;
+        }
+
+        .game-mockup::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 42%;
+            background:
+                linear-gradient(100deg, transparent 0 12%, rgba(255,255,255,.16) 12% 14%, transparent 14% 22%, rgba(255,255,255,.16) 22% 24%, transparent 24% 100%),
+                linear-gradient(#8b8f98, #4b4f59);
+            clip-path: polygon(0 72%, 100% 42%, 100% 100%, 0 100%);
+        }
+
+        .runner-mockup {
+            background: linear-gradient(180deg, #1d74d8, #194fa7);
+            image-rendering: pixelated;
+        }
+
+        .runner-mockup::before {
+            content: "Top 10";
+            position: absolute;
+            left: 28px;
+            bottom: 34px;
+            width: 210px;
+            padding: 20px 22px;
+            color: #fff;
+            background: rgba(18, 15, 45, 0.72);
+            font-family: "Jost", sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .runner-mockup::after {
+            content: "C.cat";
+            position: absolute;
+            right: 38px;
+            bottom: 34px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #120f2d;
+            background: #d7edf9;
+            border: 8px solid #fff;
+            font-family: "Jost", sans-serif;
+            font-weight: 800;
+        }
+
+        .tour-mockup {
+            background: linear-gradient(135deg, #4d17ad, #7e27cf 48%, #2b1d68);
+        }
+
+        .tour-mockup::before {
+            content: "NUEVO VIDEOJUEGO";
+            position: absolute;
+            top: 58px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 76%;
+            padding: 18px 26px;
+            color: #fff;
+            background: rgba(122, 39, 207, 0.96);
+            font-family: "Jost", sans-serif;
+            font-size: 1.65rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .tour-mockup::after {
+            content: "";
+            position: absolute;
+            right: 54px;
+            bottom: 30px;
+            width: 128px;
+            height: 164px;
+            border-radius: 12px;
+            background: linear-gradient(160deg, #fff 0 12%, #ff8a00 12% 68%, #31135f 68% 100%);
+            transform: rotate(-16deg);
+            box-shadow: 0 10px 16px rgba(18, 15, 45, 0.25);
+        }
+
+        .projects-cta {
+            padding-bottom: 72px;
+        }
+
+        .contact-box {
+            background: var(--project-bg);
+            padding: 44px 56px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 991px) {
+            .projects-hero {
+                min-height: 430px;
+            }
+
+            .projects-hero .hero-content {
+                padding: 96px 20px 126px;
+            }
+
+            .contact-box {
+                margin-top: 40px;
+            }
+
+            .project-info {
+                padding: 42px 36px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .projects-overview,
+            .project-band,
+            .projects-cta {
+                padding: 72px 0;
+            }
+
+            .feature-line,
+            .project-detail,
+            .contact-item {
+                gap: 18px;
+            }
+
+            .feature-icon,
+            .project-icon,
+            .contact-icon {
+                width: 72px;
+                height: 72px;
+                flex-basis: 72px;
+                font-size: 28px;
+            }
+
+            .project-row {
+                margin-bottom: 54px;
+            }
+
+            .project-card,
+            .project-info {
+                min-height: auto;
+            }
+
+            .project-preview {
+                min-height: 210px;
+            }
+
+            .contact-box {
+                padding: 34px 28px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .projects-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .projects-hero p {
+                font-size: 1rem;
+            }
+
+            .display-heading,
+            .project-heading h2 {
+                font-size: 2.45rem;
+            }
+
+            .project-card {
+                padding: 24px;
+            }
+
+            .project-info {
+                padding: 34px 24px;
+            }
+
+            .project-card .meta {
+                letter-spacing: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body class="internal-page">
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark">
+        <div class="row py-2 px-lg-5">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center text-white">
+                    <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="text-white pl-2" href="" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+            <a href="index.html" class="navbar-brand ml-lg-3">
+                <img src="./img/GeneralUse/logo.png" width="100" height="100" alt="Code UP">
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="index.html" class="nav-item nav-link">INICIO</a>
+                    <a href="blog.html" class="nav-item nav-link">BLOG</a>
+                    <a href="course.html" class="nav-item nav-link">ALIANZAS</a>
+                    <a href="projects.html" class="nav-item nav-link active">PROYECTOS</a>
+                    <a href="#" class="nav-item nav-link">ASESORÍAS Y CURSOS</a>
+                    <a href="team.html" class="nav-item nav-link">NOSOTROS</a>
+                    <a href="contact.html" class="nav-item nav-link">ÚNETE</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <section class="projects-hero">
+        <img class="hero-bg" src="img/code.jpeg" alt="Equipo de Code UP">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <p class="hero-eyebrow">Club Code UP</p>
+            <h1>Nuestros Proyectos</h1>
+            <p>Creamos soluciones digitales para la comunidad universitaria, desde apps web hasta videojuegos, todo desarrollado por estudiantes de la UP.</p>
+        </div>
+    </section>
+    <!-- Header End -->
+
+    <!-- Overview Start -->
+    <section class="projects-overview">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <span class="section-label">Proyectos de código</span>
+                    <h2 class="display-heading">Construimos con propósito</h2>
+                    <p class="overview-copy">En CODE UP creamos proyectos reales que resuelven problemas de nuestra comunidad universitaria. Cada producto es desarrollado íntegramente por estudiantes de la UP, aplicando programación, diseño y trabajo en equipo.</p>
+
+                    <div class="feature-line">
+                        <div class="feature-icon bg-primary"><i class="fa fa-lightbulb"></i></div>
+                        <div>
+                            <h3>Innovación estudiantil</h3>
+                            <p>Ideas que nacen de la experiencia universitaria y se convierten en soluciones concretas y funcionales.</p>
+                        </div>
+                    </div>
+                    <div class="feature-line">
+                        <div class="feature-icon bg-secondary"><i class="fa fa-code"></i></div>
+                        <div>
+                            <h3>Desarrollo real</h3>
+                            <p>Proyectos completos: diseño, programación y lanzamiento, todo hecho por miembros del club.</p>
+                        </div>
+                    </div>
+                    <div class="feature-line mb-lg-0">
+                        <div class="feature-icon bg-warning"><i class="fa fa-users"></i></div>
+                        <div>
+                            <h3>Impacto en la comunidad</h3>
+                            <p>Nuestros proyectos están diseñados para mejorar la experiencia de los estudiantes de la UP.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Overview End -->
+
+    <!-- Active Projects Start -->
+    <section class="project-band">
+        <div class="container">
+            <div class="project-heading">
+                <span class="section-label center">Activos</span>
+                <h2>Proyectos en marcha</h2>
+            </div>
+
+            <div class="row project-row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="project-card">
+                        <div class="project-preview review-mockup">
+                            <div class="review-panel">
+                                <span class="mini-title">¡Ayúdanos con tu experiencia!</span>
+                                <div class="review-option"><i class="fa fa-school"></i> Califica a tu profe</div>
+                                <div class="review-option"><i class="fa fa-id-card"></i> Profesores</div>
+                            </div>
+                        </div>
+                        <h3>Mi Profe UP</h3>
+                        <p class="meta">App de reseñas - Activo</p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="project-info">
+                        <div class="project-detail">
+                            <div class="project-icon bg-success"><i class="fa fa-star"></i></div>
+                            <div>
+                                <h3>¿Qué es?</h3>
+                                <p>Plataforma donde estudiantes de la UP pueden dejar reseñas sobre profesores por curso y consultar las opiniones de sus compañeros para tomar mejores decisiones en la matrícula.</p>
+                            </div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="project-icon bg-primary"><i class="fa fa-chart-bar"></i></div>
+                            <div>
+                                <h3>Objetivo e indicadores</h3>
+                                <p>Facilitar una toma de decisiones más informada. Medimos el número de estudiantes activos, reseñas por profesor y nivel de satisfacción mediante encuestas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-heading">
+                <span class="section-label center">Próximamente</span>
+                <h2>En desarrollo</h2>
+            </div>
+
+            <div class="row project-row">
+                <div class="col-lg-7 order-2 order-lg-1">
+                    <div class="project-info">
+                        <div class="project-detail">
+                            <div class="project-icon bg-primary"><i class="fa fa-gamepad"></i></div>
+                            <div>
+                                <h3>¿Qué viene?</h3>
+                                <p>Un nuevo videojuego protagonizado por C.cat, la mascota de CODE UP. Nuevas mecánicas, dos pisos y un timer lo hacen más desafiante que nunca.</p>
+                            </div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="project-icon bg-warning"><i class="fa fa-users"></i></div>
+                            <div>
+                                <h3>Equipo</h3>
+                                <p>Alyssa Trujillo, Anderson Rua, Vladislav Bringas, Matías Desmonteix, Luciana Carpio y Johao Mendoza.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 mb-4 mb-lg-0 order-1 order-lg-2">
+                    <div class="project-card">
+                        <div class="project-preview game-mockup"></div>
+                        <h3>Nuevo videojuego</h3>
+                        <p class="meta">Videojuego - En desarrollo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-heading">
+                <span class="section-label center">Histórico</span>
+                <h2>Proyectos anteriores</h2>
+            </div>
+
+            <div class="row project-row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="project-card">
+                        <div class="project-preview runner-mockup"></div>
+                        <h3>Ayuda a C.cat</h3>
+                        <p class="meta">Videojuego - 2021 · Segundo semestre</p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="project-info">
+                        <div class="project-detail">
+                            <div class="project-icon bg-secondary"><i class="fa fa-cat"></i></div>
+                            <div>
+                                <h3>Descripción</h3>
+                                <p>C.cat quiere graduarse de la UP. Recoge exámenes en la plaza Geis, esquiva cuchillos y machetes, y sobrevive con sus 3 vidas para llegar a la ceremonia de graduación.</p>
+                            </div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="project-icon bg-warning"><i class="fa fa-bolt"></i></div>
+                            <div>
+                                <h3>Power-ups</h3>
+                                <p>El café aumenta la velocidad de C.cat. La carta del rector otorga una vida extra. ¿Lograrás que se gradúe?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row project-row">
+                <div class="col-lg-7 order-2 order-lg-1">
+                    <div class="project-info">
+                        <div class="project-detail">
+                            <div class="project-icon bg-primary"><i class="fa fa-map"></i></div>
+                            <div>
+                                <h3>Descripción</h3>
+                                <p>Recorre los establecimientos de la Universidad del Pacífico de manera virtual. Un tour interactivo que te permite explorar la UP desde una perspectiva diferente.</p>
+                            </div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="project-icon bg-success"><i class="fa fa-book"></i></div>
+                            <div>
+                                <h3>Misión del juego</h3>
+                                <p>Ayuda a la bibliotecaria luego de tus finales y descubre todos los rincones de la UP en esta aventura de exploración.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 mb-4 mb-lg-0 order-1 order-lg-2">
+                    <div class="project-card">
+                        <div class="project-preview tour-mockup"></div>
+                        <h3>Recorre la UP</h3>
+                        <p class="meta">Tour virtual - 2021 · Primer semestre</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Active Projects End -->
+
+    <!-- CTA Start -->
+    <section class="projects-cta">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-5">
+                    <span class="section-label">Forma parte</span>
+                    <h2 class="display-heading">¿Quieres crear el siguiente proyecto?</h2>
+                    <p>Si tienes una idea o quieres unirte a nuestro equipo de desarrollo, escríbenos. En CODE UP siempre hay un proyecto en el que puedes participar y dejar tu huella.</p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="contact-box">
+                        <div class="contact-item">
+                            <div class="contact-icon bg-primary"><i class="fa fa-envelope"></i></div>
+                            <div>
+                                <h3>Correo</h3>
+                                <p>clubcodeup@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon bg-secondary"><i class="fab fa-instagram"></i></div>
+                            <div>
+                                <h3>Instagram</h3>
+                                <p>@clubcodeup</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+        <div class="container mt-5 pt-5">
+            <div class="row align-items-start justify-content-between">
+                <div class="col-lg-5 col-md-6 mb-5 mb-md-0 text-center text-md-left">
+                    <a href="index.html" class="navbar-brand d-inline-block mb-3">
+                        <h1 class="mt-n2 text-uppercase text-white">CODE UP</h1>
+                    </a>
+                    <p class="m-0">Aprende tus primeros pasos en la programación</p>
+                </div>
+
+                <div class="col-lg-4 col-md-6 text-center text-md-right">
+                    <h3 class="text-white mb-4">Encuéntranos</h3>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pacífico</p>
+                    <p><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
+                    <div class="d-flex justify-content-center justify-content-md-end mt-4">
+                        <a class="text-white mr-3" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a class="text-white mr-3" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="text-white mr-3" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="text-white" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">CODEUP</a>. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-right">
+                    <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
