@@ -14,772 +14,586 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- Bootstrap -->
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        /* ========== HERO ========== */
-        .advisories-hero {
-            position: relative;
-            overflow: hidden;
-            min-height: 380px;
-            background: #0e0b1f;
+
+        body.internal-page{
+            background:#0f0830;
+            font-family:'Open Sans',sans-serif;
+            overflow-x:hidden;
         }
 
-        .advisories-hero::after {
-            content: "";
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 90px;
-            background: url("img/overlay-bottom.png") no-repeat;
-            background-size: cover;
-            z-index: 3;
+        /* ================= HERO ================= */
+
+        .hero-section{
+            position:relative;
+            min-height:540px;
+            background:#f8f8fb;
+            overflow:hidden;
         }
 
-        .advisories-hero .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(83,74,183,0.85) 0%, rgba(14,11,31,0.95) 70%);
-            z-index: 1;
+        .hero-section::after{
+            content:"";
+            position:absolute;
+            bottom:-2px;
+            left:0;
+            width:100%;
+            height:120px;
+            background:url('img/overlay-bottom.png');
+            background-size:cover;
+            background-repeat:no-repeat;
+            z-index:4;
         }
 
-        .advisories-hero .hero-deco {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
+        .hero-bg{
+            position:absolute;
+            inset:0;
+            background:
+            linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
+            url('img/bg.jpg');
+            background-size:cover;
+            background-position:center;
+            opacity:.9;
         }
 
-        .advisories-hero .hero-deco::before,
-        .advisories-hero .hero-deco::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.15;
+        .hero-content{
+            position:relative;
+            z-index:3;
+            padding-top:120px;
+            text-align:center;
         }
 
-        .advisories-hero .hero-deco::before {
-            width: 500px;
-            height: 500px;
-            background: #8b5cf6;
-            top: -150px;
-            right: -100px;
+        .hero-mini{
+            color:#8c6bdb;
+            letter-spacing:6px;
+            font-size:11px;
+            text-transform:uppercase;
+            font-family:'Jost',sans-serif;
+            margin-bottom:20px;
         }
 
-        .advisories-hero .hero-deco::after {
-            width: 300px;
-            height: 300px;
-            background: #06b6d4;
-            bottom: -80px;
-            left: 10%;
+        .hero-title{
+            font-family:'Jost',sans-serif;
+            font-size:72px;
+            font-weight:700;
+            text-transform:uppercase;
+            line-height:1;
+            color:#140b3d;
+            margin-bottom:22px;
         }
 
-        .advisories-hero .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 90px 20px 120px;
+        .hero-title span{
+            color:#8b5cf6;
         }
 
-        .advisories-hero .hero-eyebrow {
-            font-family: 'Jost', sans-serif;
-            font-size: 11px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 14px;
+        .hero-sub{
+            max-width:650px;
+            margin:auto;
+            font-size:14px;
+            color:#666;
+            line-height:1.8;
         }
 
-        .advisories-hero h1 {
-            font-family: 'Jost', sans-serif;
-            font-size: clamp(2.4rem, 6vw, 4rem);
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.05;
-            margin-bottom: 16px;
+        /* ================= SECTION ================= */
+
+        .dark-wrapper{
+            background:#0f0830;
+            padding:70px 0;
         }
 
-        .advisories-hero h1 span {
-            color: #a78bfa;
+        .section-label{
+            color:#ff7b7b;
+            text-transform:uppercase;
+            font-size:11px;
+            letter-spacing:4px;
+            margin-bottom:18px;
+            font-family:'Jost',sans-serif;
         }
 
-        .advisories-hero p.hero-sub {
-            color: rgba(255,255,255,0.75);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            max-width: 560px;
-            margin: 0 auto;
+        .section-title{
+            font-family:'Jost',sans-serif;
+            color:white;
+            font-size:58px;
+            text-transform:uppercase;
+            font-weight:700;
+            line-height:1;
+            margin-bottom:40px;
         }
 
-        /* ========== TOOL BADGES ========== */
-        .tools-bar {
-            background: #0e0b1f;
-            padding: 28px 0 36px;
+        .section-title span{
+            color:#9d6cff;
         }
 
-        .tools-bar .label {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            font-family: 'Jost', sans-serif;
-            margin-bottom: 14px;
+        /* ================= FILTER ================= */
+
+        .filter-box{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
         }
 
-        .tool-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 8px;
-            padding: 7px 16px;
-            font-size: 13px;
-            font-weight: 600;
-            font-family: 'Jost', sans-serif;
-            margin: 4px 5px;
-            cursor: default;
-            transition: background 0.2s;
+        .filter-btn{
+            background:#2a1d62;
+            border:none;
+            color:#d0c7ff;
+            padding:10px 18px;
+            font-size:11px;
+            text-transform:uppercase;
+            font-weight:700;
+            letter-spacing:1px;
+            font-family:'Jost',sans-serif;
+            transition:.3s;
         }
 
-        .tool-badge:hover { background: rgba(255,255,255,0.12); }
-        .tool-badge.excel { color: #22c55e; }
-        .tool-badge.python { color: #60a5fa; }
-        .tool-badge.stata { color: #f97316; }
-        .tool-badge.sql { color: #e879f9; }
-        .tool-badge.powerbi { color: #facc15; }
-
-        /* ========== SECTION COMMONS ========== */
-        .dark-section {
-            background: #0e0b1f;
-            padding: 20px 0 60px;
+        .filter-btn.active,
+        .filter-btn:hover{
+            background:#8b5cf6;
+            color:white;
         }
 
-        .section-eyebrow {
-            font-family: 'Jost', sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 6px;
+        /* ================= TOOLS ================= */
+
+        .tools-wrapper{
+            border-top:1px solid rgba(255,255,255,.08);
+            border-bottom:1px solid rgba(255,255,255,.08);
+            padding:30px 0;
+            margin-bottom:70px;
         }
 
-        .section-eyebrow.free-tag { color: #f97316; }
-        .section-eyebrow.paid-tag { color: #a78bfa; }
-
-        .section-heading {
-            font-family: 'Jost', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
+        .tools-title{
+            color:white;
+            font-size:12px;
+            text-transform:uppercase;
+            font-weight:700;
+            letter-spacing:2px;
+            margin-bottom:18px;
+            font-family:'Jost',sans-serif;
         }
 
-        .section-heading span { color: #a78bfa; }
-
-        /* ========== FILTER TABS ========== */
-        .filter-tabs {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
+        .tool-item{
+            display:inline-flex;
+            align-items:center;
+            gap:7px;
+            background:#1d124f;
+            color:white;
+            border:1px solid rgba(255,255,255,.08);
+            padding:9px 18px;
+            margin-right:10px;
+            font-size:12px;
+            font-family:'Jost',sans-serif;
+            text-transform:uppercase;
         }
 
-        .filter-tab {
-            padding: 6px 18px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            font-family: 'Jost', sans-serif;
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.6);
-            background: transparent;
-            transition: all 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        /* ================= CARDS ================= */
+
+        .cards-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+            gap:30px;
         }
 
-        .filter-tab:hover,
-        .filter-tab.active {
-            background: #7c3aed;
-            border-color: #7c3aed;
-            color: #fff;
+        .service-card{
+            background:#291160;
+            overflow:hidden;
+            transition:.35s;
         }
 
-        /* ========== CARDS GRID ========== */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 22px;
-            margin-top: 24px;
+        .service-card:hover{
+            transform:translateY(-6px);
         }
 
-        /* ========== SERVICE CARD ========== */
-        .service-card {
-            border-radius: 14px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background: #1a1535;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: transform 0.25s, border-color 0.25s;
+        .card-top{
+            height:185px;
+            position:relative;
+            padding:28px;
         }
 
-        .service-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(167,139,250,0.4);
+        .grad-purple{
+            background:linear-gradient(135deg,#6d28d9,#7c3aed,#9333ea);
         }
 
-        .card-header-img {
-            height: 148px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        .grad-pink{
+            background:linear-gradient(135deg,#e11d48,#db2777,#9333ea);
         }
 
-        /* Gradient variants for card headers */
-        .grad-excel    { background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%); }
-        .grad-python   { background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%); }
-        .grad-data     { background: linear-gradient(135deg, #ca8a04 0%, #b45309 100%); }
-        .grad-stata    { background: linear-gradient(135deg, #0891b2 0%, #6d28d9 100%); }
-        .grad-sql      { background: linear-gradient(135deg, #1d4ed8 0%, #0e7490 100%); }
-        .grad-excelws  { background: linear-gradient(135deg, #065f46 0%, #1d4ed8 100%); }
-        .grad-powerbi  { background: linear-gradient(135deg, #78350f 0%, #b45309 100%); }
-
-        .card-header-img .card-type-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 6px;
-            padding: 4px 10px;
-            font-size: 10px;
-            font-weight: 600;
-            color: #fff;
-            font-family: 'Jost', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .grad-yellow{
+            background:linear-gradient(135deg,#facc15,#fb923c,#9333ea);
         }
 
-        .card-header-img .card-icon-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: #fff;
+        .grad-blue{
+            background:linear-gradient(135deg,#0ea5e9,#2563eb,#4338ca);
         }
 
-        .card-body {
-            padding: 18px 20px 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        .grad-green{
+            background:linear-gradient(135deg,#16a34a,#059669,#2563eb);
         }
 
-        .card-category-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
+        .icon-box{
+            width:52px;
+            height:52px;
+            background:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#8b5cf6;
+            font-size:22px;
         }
 
-        .card-category {
-            font-size: 11px;
-            font-weight: 600;
-            font-family: 'Jost', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .card-badge{
+            position:absolute;
+            right:20px;
+            bottom:20px;
+            background:#160b3f;
+            color:white;
+            font-size:10px;
+            padding:7px 14px;
+            text-transform:uppercase;
+            font-family:'Jost',sans-serif;
+            letter-spacing:1px;
         }
 
-        .cat-excel  { color: #60a5fa; }
-        .cat-python { color: #c084fc; }
-        .cat-datos  { color: #f9a8d4; }
-        .cat-stata  { color: #67e8f9; }
-        .cat-sql    { color: #86efac; }
-
-        .card-level {
-            font-size: 11px;
-            color: rgba(255,255,255,0.45);
-            font-family: 'Jost', sans-serif;
+        .card-body-custom{
+            padding:28px;
         }
 
-        .card-title {
-            font-family: 'Jost', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-            line-height: 1.3;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+        .card-mini{
+            display:flex;
+            justify-content:space-between;
+            color:#c6b8ff;
+            font-size:11px;
+            margin-bottom:14px;
         }
 
-        .card-desc {
-            font-size: 13px;
-            color: rgba(255,255,255,0.55);
-            line-height: 1.6;
-            margin-bottom: 14px;
-            flex: 1;
+        .card-title{
+            color:white;
+            font-family:'Jost',sans-serif;
+            font-size:28px;
+            text-transform:uppercase;
+            margin-bottom:16px;
+            line-height:1.2;
         }
 
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
+        .card-text{
+            color:rgba(255,255,255,.75);
+            line-height:1.8;
+            font-size:13px;
+            margin-bottom:22px;
         }
 
-        .card-tag {
-            background: rgba(255,255,255,0.07);
-            border-radius: 5px;
-            padding: 3px 10px;
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.55);
-            font-family: 'Jost', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+        .tags{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
         }
 
-        /* ========== DIVIDER WAVE ========== */
-        .wave-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
-            margin: 10px 0 50px;
+        .tag{
+            border:1px solid rgba(255,255,255,.15);
+            color:white;
+            font-size:10px;
+            padding:6px 12px;
+            text-transform:uppercase;
+            font-family:'Jost',sans-serif;
         }
 
-        /* ========== CTA SECTION ========== */
-        .cta-section {
-            background: #0e0b1f;
-            padding: 10px 0 80px;
+        /* ================= CTA ================= */
+
+        .cta-section{
+            background:#f5f5f8;
+            padding:120px 0;
+            position:relative;
         }
 
-        .cta-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
+        .cta-section::before{
+            content:"";
+            position:absolute;
+            top:-1px;
+            left:0;
+            width:100%;
+            height:120px;
+            background:url('img/overlay-top.png');
+            background-size:cover;
         }
 
-        @media (max-width: 767px) {
-            .cta-box { grid-template-columns: 1fr; }
+        .cta-title{
+            font-family:'Jost',sans-serif;
+            font-size:62px;
+            line-height:1;
+            text-transform:uppercase;
+            font-weight:700;
+            color:#140b3d;
         }
 
-        .cta-left h2 {
-            font-family: 'Jost', sans-serif;
-            font-size: clamp(1.6rem, 4vw, 2.4rem);
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-            line-height: 1.15;
-            margin-bottom: 0;
+        .cta-box{
+            background:#eef1f7;
+            padding:40px;
         }
 
-        .cta-right {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
-            padding: 28px 30px;
+        .cta-box h4{
+            font-family:'Jost',sans-serif;
+            font-weight:700;
+            color:#140b3d;
+            margin-bottom:15px;
         }
 
-        .cta-right h4 {
-            font-family: 'Jost', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 8px;
+        .cta-box p{
+            color:#666;
+            line-height:1.8;
+            font-size:14px;
         }
 
-        .cta-right p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.55);
-            line-height: 1.6;
-            margin-bottom: 14px;
+        @media(max-width:768px){
+
+            .hero-title{
+                font-size:42px;
+            }
+
+            .section-title{
+                font-size:40px;
+            }
+
+            .cta-title{
+                font-size:42px;
+                margin-bottom:40px;
+            }
+
         }
 
-        .cta-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 6px;
-        }
-
-        .cta-contact-item i {
-            color: #a78bfa;
-        }
-
-        /* ========== OVERLAY BOTTOM WAVE ========== */
-        .dark-section-bottom {
-            background: #0e0b1f;
-            padding-bottom: 0;
-        }
     </style>
+
 </head>
 
 <body class="internal-page">
 
-    <!-- Topbar Start -->
+    <!-- TOPBAR -->
+
     <div class="container-fluid bg-dark">
         <div class="row py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+
+            <div class="col-lg-6 text-center text-lg-left">
                 <div class="d-inline-flex align-items-center text-white">
                     <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
                 </div>
             </div>
+
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a class="text-white pl-2" href="" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a class="text-white px-2"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white px-2"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="text-white px-2"><i class="fab fa-instagram"></i></a>
+                    <a class="text-white px-2"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- Topbar End -->
 
-    <!-- Navbar Start -->
+    <!-- NAVBAR -->
+
     <div class="container-fluid p-0">
+
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
-                <img src="./img/GeneralUse/logo.png" width="100" height="100">
+
+            <a href="" class="navbar-brand ml-lg-3">
+                <img src="./img/GeneralUse/logo.png" width="90">
             </a>
+
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">INICIO</a>
-                    <a href="blog.html" class="nav-item nav-link">BLOG</a>
-                    <a href="course.html" class="nav-item nav-link">ALIANZAS</a>
-                    <a href="projects.html" class="nav-item nav-link">PROYECTOS</a>
-                    <a href="advisories.html" class="nav-item nav-link active">ASESORIAS Y CURSOS</a>
-                    <a href="team.html" class="nav-item nav-link">NOSOTROS</a>
-                    <a href="contact.html" class="nav-item nav-link">ÚNETE</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
 
-    <!-- ===== HERO ===== -->
-    <section class="advisories-hero">
-        <div class="hero-deco"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content container">
-            <p class="hero-eyebrow">Club Code UP</p>
-            <h1>Asesorías y <span>Talleres</span></h1>
-            <p class="hero-sub">Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales: Excel, Python, Stata, SQL y Power BI.</p>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="" class="nav-item nav-link">INICIO</a>
+                    <a href="" class="nav-item nav-link">BLOG</a>
+                    <a href="" class="nav-item nav-link">ALIANZAS</a>
+                    <a href="" class="nav-item nav-link">PROYECTOS</a>
+                    <a href="" class="nav-item nav-link active">ASESORÍAS Y TALLERES</a>
+                    <a href="" class="nav-item nav-link">NOSOTROS</a>
+                    <a href="" class="nav-item nav-link">ÚNETE</a>
+                </div>
+
+            </div>
+
+        </nav>
+
+    </div>
+
+    <!-- HERO -->
+
+    <section class="hero-section">
+
+        <div class="hero-bg"></div>
+
+        <div class="container hero-content">
+
+            <div class="hero-mini">CLUB CODE UP</div>
+
+            <h1 class="hero-title">
+                ASESORÍAS Y <span>TALLERES</span>
+            </h1>
+
+            <p class="hero-sub">
+                Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales: Excel, Python, Stata, SQL y Power BI.
+            </p>
+
         </div>
+
     </section>
 
-    <!-- ===== TOOLS BAR ===== -->
-    <div class="tools-bar">
-        <div class="container">
-            <div class="label">Herramientas que trabajamos</div>
-            <div>
-                <span class="tool-badge excel"><i class="fas fa-table fa-sm"></i> Excel</span>
-                <span class="tool-badge python"><i class="fab fa-python fa-sm"></i> Python</span>
-                <span class="tool-badge stata"><i class="fas fa-chart-line fa-sm"></i> Stata</span>
-                <span class="tool-badge sql"><i class="fas fa-database fa-sm"></i> SQL</span>
-                <span class="tool-badge powerbi"><i class="fas fa-bolt fa-sm"></i> Power BI</span>
-            </div>
-        </div>
-    </div>
+    <!-- DARK CONTENT -->
 
-    <!-- ===== ASESORÍAS GRATUITAS ===== -->
-    <div class="dark-section" id="section-asesorias">
+    <section class="dark-wrapper">
+
         <div class="container">
 
-            <p class="section-eyebrow free-tag">● Sin costo</p>
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
-                <h2 class="section-heading mb-0">Asesorías <span>Gratuitas</span></h2>
-                <div class="filter-tabs">
-                    <button class="filter-tab active" onclick="filterCards('asesorias','todos',this)">Todos</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','excel',this)">Excel</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','python',this)">Python</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','datos',this)">Datos</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','stata',this)">Stata</button>
-                </div>
-            </div>
+            <!-- TOOLS -->
 
-            <div class="cards-grid" id="asesorias-grid">
+            <div class="tools-wrapper">
 
-                <!-- Card 1: Nivelación en Informática -->
-                <div class="service-card" data-section="asesorias" data-tag="excel">
-                    <div class="card-header-img grad-excel">
-                        <div class="card-icon-circle"><i class="fas fa-table"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-excel">▶ Excel</span>
-                            <span class="card-level">Básico a avanzado</span>
-                        </div>
-                        <h5 class="card-title">Nivelación en Informática</h5>
-                        <p class="card-desc">Asesorías enfocadas en el manejo de Excel desde funciones básicas hasta herramientas avanzadas para organizar, analizar y automatizar datos.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Fórmulas</span>
-                            <span class="card-tag">Tablas dinámicas</span>
-                            <span class="card-tag">Dashboards</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="row align-items-center">
 
-                <!-- Card 2: Herramientas de Programación -->
-                <div class="service-card" data-section="asesorias" data-tag="python">
-                    <div class="card-header-img grad-python">
-                        <div class="card-icon-circle"><i class="fab fa-python"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-python">▶ Python</span>
-                            <span class="card-level">Programación</span>
-                        </div>
-                        <h5 class="card-title">Herramientas de Programación</h5>
-                        <p class="card-desc">Curso enfocado en Python, desde conceptos básicos hasta estructuras aplicadas a automatización, análisis de datos y resolución de problemas computacionales.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Fundamentos</span>
-                            <span class="card-tag">Automatización</span>
-                            <span class="card-tag">Problemas</span>
+                    <div class="col-lg-3">
+                        <div class="tools-title">
+                            Herramientas que trabajamos
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 3: Analítica de Datos -->
-                <div class="service-card" data-section="asesorias" data-tag="datos">
-                    <div class="card-header-img grad-data">
-                        <div class="card-icon-circle"><i class="fas fa-chart-bar"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-datos">▶ Excel y Python</span>
-                            <span class="card-level">Datos</span>
-                        </div>
-                        <h5 class="card-title">Analítica de Datos</h5>
-                        <p class="card-desc">Curso orientado al análisis e interpretación de datos usando Excel y Python para limpiar información, visualizar hallazgos y crear reportes útiles.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Limpieza</span>
-                            <span class="card-tag">Visualización</span>
-                            <span class="card-tag">Reportes</span>
-                        </div>
-                    </div>
-                </div>
+                    <div class="col-lg-9">
 
-                <!-- Card 4: Estadística Aplicada -->
-                <div class="service-card" data-section="asesorias" data-tag="stata">
-                    <div class="card-header-img grad-stata">
-                        <div class="card-icon-circle"><i class="fas fa-chart-line"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
+                        <span class="tool-item"><i class="fas fa-table"></i> Excel</span>
+                        <span class="tool-item"><i class="fab fa-python"></i> Python</span>
+                        <span class="tool-item"><i class="fas fa-chart-line"></i> Stata</span>
+                        <span class="tool-item"><i class="fas fa-database"></i> SQL</span>
+                        <span class="tool-item"><i class="fas fa-bolt"></i> Power BI</span>
+
                     </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-stata">▶ Stata</span>
-                            <span class="card-level">Estadística</span>
-                        </div>
-                        <h5 class="card-title">Estadística Aplicada</h5>
-                        <p class="card-desc">Curso orientado al uso de Stata para análisis descriptivo, inferencial y manejo de bases de datos en investigaciones y proyectos académicos.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Descriptiva</span>
-                            <span class="card-tag">Inferencia</span>
-                            <span class="card-tag">Bases de datos</span>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>
+
+            <!-- SECTION -->
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-5">
+
+                <div>
+
+                    <div class="section-label">
+                        ● SIN COSTO
+                    </div>
+
+                    <h2 class="section-title">
+                        ASESORÍAS <span>GRATUITAS</span>
+                    </h2>
+
+                </div>
+
+                <div class="filter-box">
+
+                    <button class="filter-btn active">TODOS</button>
+                    <button class="filter-btn">EXCEL</button>
+                    <button class="filter-btn">PYTHON</button>
+                    <button class="filter-btn">DATOS</button>
+                    <button class="filter-btn">STATA</button>
+
+                </div>
+
+            </div>
+
+            <!-- CARDS -->
+
+            <div class="cards-grid">
+
+                <!-- CARD -->
+
+                <div class="service-card">
+
+                    <div class="card-top grad-purple">
+
+                        <div class="icon-box">
+                            <i class="fas fa-table"></i>
+                        </div>
+
+                        <div class="card-badge">
+                            ASESORÍA GRATUITA
+                        </div>
+
+                    </div>
+
+                    <div class="card-body-custom">
+
+                        <div class="card-mini">
+                            <span>▶ Excel</span>
+                            <span>Básico a avanzado</span>
+                        </div>
+
+                        <h3 class="card-title">
+                            Nivelación en Informática
+                        </h3>
+
+                        <div class="card-text">
+                            Asesorías enfocadas en el manejo de Excel desde funciones básicas hasta herramientas avanzadas.
+                        </div>
+
+                        <div class="tags">
+                            <span class="tag">Fórmulas</span>
+                            <span class="tag">Tablas dinámicas</span>
+                            <span class="tag">Dashboards</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="service-card">
+
+                    <div class="card-top grad-pink">
+
+                        <div class="icon-box">
+                            <i class="fab fa-python"></i>
+                        </div>
+
+                        <div class="card-badge">
+                            ASESORÍA GRATUITA
+                        </div>
+
+                    </div>
+
+                    <div class="card-body-custom">
+
+                        <div class="card-mini">
+                            <span>▶ Python</span>
+                            <span>Programación</span>
+                        </div>
+
+                        <h3 class="card-title">
+                            Herramientas de Programación
+                        </h3>
+
+                        <div class="card-text">
+                            Curso enfocado en Python desde conceptos básicos hasta automatización y análisis de datos.
+                        </div>
+
+                        <div class="tags">
+                            <span class="tag">Fundamentos</span>
+                            <span class="tag">Automatización</span>
+                            <span class="tag">Problemas</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- ===== TALLERES APLICADOS ===== -->
-    <div class="dark-section" id="section-talleres" style="padding-top: 10px;">
-        <div class="container">
+    </section>
 
-            <div class="wave-divider"></div>
-
-            <p class="section-eyebrow paid-tag">● Prácticos</p>
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
-                <h2 class="section-heading mb-0">Talleres <span>Aplicados</span></h2>
-                <div class="filter-tabs">
-                    <button class="filter-tab active" onclick="filterCards('talleres','todos',this)">Todos</button>
-                    <button class="filter-tab" onclick="filterCards('talleres','sql',this)">SQL</button>
-                    <button class="filter-tab" onclick="filterCards('talleres','excel',this)">Excel</button>
-                    <button class="filter-tab" onclick="filterCards('talleres','powerbi',this)">Power BI</button>
-                </div>
-            </div>
-
-            <div class="cards-grid" id="talleres-grid">
-
-                <!-- Card: Taller de SQL -->
-                <div class="service-card" data-section="talleres" data-tag="sql">
-                    <div class="card-header-img grad-sql">
-                        <div class="card-icon-circle"><i class="fas fa-database"></i></div>
-                        <span class="card-type-badge">Taller</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-sql">▶ SQL</span>
-                            <span class="card-level">Bases de datos</span>
-                        </div>
-                        <h5 class="card-title">Taller de SQL</h5>
-                        <p class="card-desc">Taller práctico para consultar bases de datos mediante filtros, joins, subconsultas y manejo de información.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Consultas</span>
-                            <span class="card-tag">Joins</span>
-                            <span class="card-tag">Subconsultas</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card: Taller de Excel -->
-                <div class="service-card" data-section="talleres" data-tag="excel">
-                    <div class="card-header-img grad-excelws">
-                        <div class="card-icon-circle"><i class="fas fa-file-excel"></i></div>
-                        <span class="card-type-badge">Taller</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-excel">▶ Excel</span>
-                            <span class="card-level">Productividad</span>
-                        </div>
-                        <h5 class="card-title">Taller de Excel</h5>
-                        <p class="card-desc">Taller para organizar, analizar y visualizar datos con fórmulas, tablas dinámicas, gráficos y automatización.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Gráficos</span>
-                            <span class="card-tag">Tablas</span>
-                            <span class="card-tag">Automatización</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card: Taller de Power BI -->
-                <div class="service-card" data-section="talleres" data-tag="powerbi">
-                    <div class="card-header-img grad-powerbi">
-                        <div class="card-icon-circle"><i class="fas fa-bolt"></i></div>
-                        <span class="card-type-badge">Taller</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-datos">▶ Power BI</span>
-                            <span class="card-level">Dashboards</span>
-                        </div>
-                        <h5 class="card-title">Taller de Power BI</h5>
-                        <p class="card-desc">Taller orientado a crear dashboards e informes interactivos para transformar datos en reportes de decisión.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Power Query</span>
-                            <span class="card-tag">Visuales</span>
-                            <span class="card-tag">Reportes</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== CTA ===== -->
-    <div class="cta-section">
-        <div class="container">
-            <div class="wave-divider" style="margin-bottom: 40px;"></div>
-            <div class="cta-box">
-                <div class="cta-left">
-                    <p class="section-eyebrow paid-tag">● Participa</p>
-                    <h2>¿Quieres reforzar un curso o aprender una herramienta?</h2>
-                </div>
-                <div class="cta-right">
-                    <h4>Escríbenos para conocer las próximas fechas</h4>
-                    <p>Publicamos convocatorias, horarios y formularios de inscripción en nuestras redes.</p>
-                    <div class="cta-contact-item"><i class="fa fa-envelope"></i> clubcodeup@gmail.com</div>
-                    <div class="cta-contact-item"><i class="fab fa-tiktok"></i> @clubcode.up</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Start -->
-    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
-        <div class="container mt-5 pt-5">
-            <div class="row align-items-start justify-content-between">
-                <div class="col-lg-5 col-md-6 mb-5 mb-md-0 text-center text-md-left">
-                    <a href="index.html" class="navbar-brand d-inline-block mb-3">
-                        <h1 class="mt-n2 text-uppercase text-white">CODE UP</h1>
-                    </a>
-                    <p class="m-0">Aprende tus primeros pasos en la programación</p>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center text-md-right">
-                    <h3 class="text-white mb-4">Encuéntranos</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pacífico</p>
-                    <p><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
-                    <div class="d-flex justify-content-center justify-content-md-end mt-4">
-                        <a class="text-white mr-3" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a class="text-white mr-3" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a class="text-white mr-3" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="text-white" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256,256,256,.1) !important;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">CODEUP</a>. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <script>
-        function filterCards(section, tag, btn) {
-            // Update active button within that section's filter group
-            var allBtns = btn.parentElement.querySelectorAll('.filter-tab');
-            allBtns.forEach(function(b){ b.classList.remove('active'); });
-            btn.classList.add('active');
-
-            var grid = document.getElementById(section + '-grid');
-            var cards = grid.querySelectorAll('.service-card');
-            cards.forEach(function(card) {
-                if (tag === 'todos' || card.getAttribute('data-tag') === tag) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
 </body>
 </html>
