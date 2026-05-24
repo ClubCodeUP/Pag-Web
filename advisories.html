@@ -4,353 +4,325 @@
 <head>
     <meta charset="utf-8">
     <title>Asesorías y Talleres – Club CODE UP</title>
-
+    <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- FONTS -->
+    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- FONT AWESOME -->
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- BOOTSTRAP -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/style.css" rel="stylesheet">
 
     <style>
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        body{
-            font-family:'Open Sans', sans-serif;
-            background:#0b0320;
+        body.internal-page{
+            background:#0f0830;
+            font-family:'Open Sans',sans-serif;
             overflow-x:hidden;
-        }
-
-        /* ================= TOPBAR ================= */
-
-        .topbar{
-            background:#0a0620;
-            padding:7px 0;
-            font-size:11px;
-        }
-
-        .topbar a,
-        .topbar span{
-            color:white;
-            opacity:.85;
-        }
-
-        .topbar i{
-            font-size:11px;
-        }
-
-        /* ================= NAVBAR ================= */
-
-        .navbar-custom{
-            background:white;
-            padding:14px 60px;
-        }
-
-        .navbar-nav .nav-link{
-            color:#111 !important;
-            font-size:12px;
-            font-weight:600;
-            margin:0 10px;
-            letter-spacing:.3px;
-        }
-
-        .navbar-nav .active{
-            color:#4f46e5 !important;
-        }
-
-        .logo{
-            width:55px;
         }
 
         /* ================= HERO ================= */
 
-        .hero{
+        .hero-section{
             position:relative;
-            min-height:520px;
-            background:white;
+            min-height:540px;
+            background:#f8f8fb;
             overflow:hidden;
         }
 
-        /* IMAGEN DIFUMINADA DEL FONDO */
-        .hero::before{
+        .hero-section::after{
             content:"";
             position:absolute;
-            inset:0;
-
-            background:
-            linear-gradient(rgba(255,255,255,.90), rgba(255,255,255,.90)),
-            url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop');
-
+            bottom:-2px;
+            left:0;
+            width:100%;
+            height:120px;
+            background:url('img/overlay-bottom.png');
             background-size:cover;
-            background-position:center;
-
-            opacity:.95;
+            background-repeat:no-repeat;
+            z-index:4;
         }
 
-        /* DECORACIONES */
-        .hero::after{
-            content:"";
+        .hero-bg{
             position:absolute;
             inset:0;
             background:
-            radial-gradient(circle at top right, rgba(140,92,255,.18), transparent 35%),
-            radial-gradient(circle at bottom left, rgba(89,160,255,.10), transparent 30%);
+            linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
+            url('img/bg.jpg');
+            background-size:cover;
+            background-position:center;
+            opacity:.9;
         }
 
         .hero-content{
             position:relative;
-            z-index:2;
+            z-index:3;
+            padding-top:120px;
             text-align:center;
-            padding-top:130px;
         }
 
-        .mini-text{
+        .hero-mini{
+            color:#8c6bdb;
+            letter-spacing:6px;
             font-size:11px;
-            letter-spacing:4px;
-            color:#7c3aed;
-            font-weight:600;
-            margin-bottom:18px;
+            text-transform:uppercase;
+            font-family:'Jost',sans-serif;
+            margin-bottom:20px;
         }
 
         .hero-title{
-            font-family:'Jost', sans-serif;
+            font-family:'Jost',sans-serif;
             font-size:72px;
-            line-height:1;
             font-weight:700;
-            color:#12052d;
             text-transform:uppercase;
+            line-height:1;
+            color:#140b3d;
+            margin-bottom:22px;
         }
 
         .hero-title span{
-            color:#7c3aed;
+            color:#8b5cf6;
         }
 
         .hero-sub{
-            margin-top:25px;
+            max-width:650px;
+            margin:auto;
+            font-size:14px;
             color:#666;
-            font-size:13px;
-            line-height:1.9;
+            line-height:1.8;
         }
 
-        /* ONDA NEGRA */
+        /* ================= SECTION ================= */
 
-        .hero-wave{
-            position:absolute;
-            bottom:-1px;
-            left:0;
-            width:100%;
-            z-index:3;
+        .dark-wrapper{
+            background:#0f0830;
+            padding:70px 0;
         }
 
-        /* ================= DARK SECTION ================= */
-
-        .main-dark{
-            background:#0b0320;
-            padding:60px 0 90px;
-        }
-
-        .section-mini{
-            color:#ffb347;
-            font-size:11px;
-            letter-spacing:3px;
+        .section-label{
+            color:#ff7b7b;
             text-transform:uppercase;
-            font-weight:700;
-            margin-bottom:15px;
+            font-size:11px;
+            letter-spacing:4px;
+            margin-bottom:18px;
+            font-family:'Jost',sans-serif;
         }
 
         .section-title{
-            font-family:'Jost', sans-serif;
-            font-size:60px;
-            line-height:1;
-            font-weight:700;
+            font-family:'Jost',sans-serif;
             color:white;
+            font-size:58px;
             text-transform:uppercase;
+            font-weight:700;
+            line-height:1;
             margin-bottom:40px;
         }
 
         .section-title span{
-            color:#9d6bff;
+            color:#9d6cff;
+        }
+
+        /* ================= FILTER ================= */
+
+        .filter-box{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+
+        .filter-btn{
+            background:#2a1d62;
+            border:none;
+            color:#d0c7ff;
+            padding:10px 18px;
+            font-size:11px;
+            text-transform:uppercase;
+            font-weight:700;
+            letter-spacing:1px;
+            font-family:'Jost',sans-serif;
+            transition:.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover{
+            background:#8b5cf6;
+            color:white;
         }
 
         /* ================= TOOLS ================= */
 
-        .tools{
-            margin-bottom:80px;
+        .tools-wrapper{
+            border-top:1px solid rgba(255,255,255,.08);
+            border-bottom:1px solid rgba(255,255,255,.08);
+            padding:30px 0;
+            margin-bottom:70px;
         }
 
-        .tool-title{
+        .tools-title{
             color:white;
             font-size:12px;
-            font-weight:700;
-            margin-bottom:20px;
             text-transform:uppercase;
+            font-weight:700;
+            letter-spacing:2px;
+            margin-bottom:18px;
+            font-family:'Jost',sans-serif;
         }
 
-        .tool-badge{
-            display:inline-block;
+        .tool-item{
+            display:inline-flex;
+            align-items:center;
+            gap:7px;
+            background:#1d124f;
+            color:white;
+            border:1px solid rgba(255,255,255,.08);
             padding:9px 18px;
-            border:1px solid rgba(255,255,255,.15);
-            color:white;
-            font-size:11px;
-            margin-right:8px;
-            margin-bottom:10px;
-            font-weight:600;
-            background:rgba(255,255,255,.03);
-        }
-
-        /* ================= FILTERS ================= */
-
-        .filters{
-            margin-top:15px;
-        }
-
-        .filter-btn{
-            border:none;
-            background:#241241;
-            color:#cfcfcf;
-            font-size:10px;
-            padding:10px 16px;
-            margin-left:6px;
-            font-weight:700;
+            margin-right:10px;
+            font-size:12px;
+            font-family:'Jost',sans-serif;
             text-transform:uppercase;
-        }
-
-        .filter-btn.active{
-            background:#7c3aed;
-            color:white;
         }
 
         /* ================= CARDS ================= */
 
         .cards-grid{
             display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:28px;
+            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+            gap:30px;
         }
 
         .service-card{
-            background:#2a1457;
-            border:1px solid rgba(255,255,255,.06);
+            background:#291160;
+            overflow:hidden;
+            transition:.35s;
+        }
+
+        .service-card:hover{
+            transform:translateY(-6px);
         }
 
         .card-top{
-            height:130px;
+            height:185px;
             position:relative;
-            padding:25px;
+            padding:28px;
         }
 
-        .gradient-purple{
-            background:linear-gradient(135deg,#6b2fff,#8c52ff);
+        .grad-purple{
+            background:linear-gradient(135deg,#6d28d9,#7c3aed,#9333ea);
         }
 
-        .gradient-red{
-            background:linear-gradient(135deg,#c92f67,#f04d5d);
+        .grad-pink{
+            background:linear-gradient(135deg,#e11d48,#db2777,#9333ea);
         }
 
-        .gradient-gold{
-            background:linear-gradient(135deg,#f0b018,#be7d18);
+        .grad-yellow{
+            background:linear-gradient(135deg,#facc15,#fb923c,#9333ea);
         }
 
-        .gradient-blue{
-            background:linear-gradient(135deg,#2db5ff,#2454d8);
+        .grad-blue{
+            background:linear-gradient(135deg,#0ea5e9,#2563eb,#4338ca);
         }
 
-        .gradient-blue2{
-            background:linear-gradient(135deg,#2962ff,#0e7ae6);
-        }
-
-        .gradient-green{
-            background:linear-gradient(135deg,#2ab66f,#0f8c72);
-        }
-
-        .gradient-orange{
-            background:linear-gradient(135deg,#ffb11b,#c57b15);
+        .grad-green{
+            background:linear-gradient(135deg,#16a34a,#059669,#2563eb);
         }
 
         .icon-box{
-            width:48px;
-            height:48px;
-            background:rgba(255,255,255,.88);
+            width:52px;
+            height:52px;
+            background:white;
             display:flex;
             align-items:center;
             justify-content:center;
-            color:#7c3aed;
-            font-size:18px;
+            color:#8b5cf6;
+            font-size:22px;
         }
 
-        .type-badge{
+        .card-badge{
             position:absolute;
-            right:18px;
-            bottom:18px;
-            background:#16092d;
+            right:20px;
+            bottom:20px;
+            background:#160b3f;
             color:white;
-            padding:6px 10px;
-            font-size:9px;
-            font-weight:700;
-            letter-spacing:1px;
+            font-size:10px;
+            padding:7px 14px;
             text-transform:uppercase;
+            font-family:'Jost',sans-serif;
+            letter-spacing:1px;
         }
 
         .card-body-custom{
-            padding:25px;
+            padding:28px;
         }
 
-        .small-category{
-            color:#d7c6ff;
-            font-size:10px;
-            margin-bottom:10px;
-        }
-
-        .small-category span{
-            float:right;
-            opacity:.7;
+        .card-mini{
+            display:flex;
+            justify-content:space-between;
+            color:#c6b8ff;
+            font-size:11px;
+            margin-bottom:14px;
         }
 
         .card-title{
             color:white;
-            font-family:'Jost', sans-serif;
+            font-family:'Jost',sans-serif;
             font-size:28px;
-            line-height:1.1;
-            font-weight:700;
             text-transform:uppercase;
-            margin-bottom:15px;
+            margin-bottom:16px;
+            line-height:1.2;
         }
 
-        .card-desc{
-            color:rgba(255,255,255,.72);
-            font-size:13px;
+        .card-text{
+            color:rgba(255,255,255,.75);
             line-height:1.8;
-            margin-bottom:18px;
+            font-size:13px;
+            margin-bottom:22px;
+        }
+
+        .tags{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
         }
 
         .tag{
-            display:inline-block;
-            background:rgba(255,255,255,.08);
+            border:1px solid rgba(255,255,255,.15);
             color:white;
-            font-size:9px;
-            padding:6px 10px;
-            margin-right:5px;
-            margin-bottom:6px;
-            font-weight:700;
+            font-size:10px;
+            padding:6px 12px;
             text-transform:uppercase;
+            font-family:'Jost',sans-serif;
         }
 
         /* ================= CTA ================= */
 
-        .cta{
-            background:#f4f4f7;
-            padding:90px 0 120px;
+        .cta-section{
+            background:#f5f5f8;
+            padding:120px 0;
             position:relative;
+        }
+
+        .cta-section::before{
+            content:"";
+            position:absolute;
+            top:-1px;
+            left:0;
+            width:100%;
+            height:120px;
+            background:url('img/overlay-top.png');
+            background-size:cover;
+        }
+
+        .cta-title{
+            font-family:'Jost',sans-serif;
+            font-size:62px;
+            line-height:1;
+            text-transform:uppercase;
+            font-weight:700;
+            color:#140b3d;
         }
 
         .cta-box{
@@ -358,216 +330,144 @@
             padding:40px;
         }
 
-        .cta h2{
-            font-family:'Jost', sans-serif;
-            font-size:60px;
-            line-height:1;
+        .cta-box h4{
+            font-family:'Jost',sans-serif;
             font-weight:700;
-            text-transform:uppercase;
-            color:#0f0a2d;
-        }
-
-        .cta-right{
-            border-left:3px solid #7c3aed;
-            padding-left:30px;
-        }
-
-        .cta-right h4{
-            font-weight:700;
-            color:#111;
-        }
-
-        .cta-right p{
-            font-size:13px;
-            color:#555;
-            line-height:1.8;
-        }
-
-        /* ================= FOOTER ================= */
-
-        .footer{
-            background:#0b0320;
-            color:white;
-            padding:110px 0 40px;
-            position:relative;
-        }
-
-        .footer-wave{
-            position:absolute;
-            top:-1px;
-            left:0;
-            width:100%;
-            transform:rotate(180deg);
-        }
-
-        .footer-title{
-            font-family:'Jost', sans-serif;
-            font-size:42px;
-            font-weight:700;
+            color:#140b3d;
             margin-bottom:15px;
         }
 
-        .footer p{
-            color:rgba(255,255,255,.7);
-            font-size:13px;
+        .cta-box p{
+            color:#666;
+            line-height:1.8;
+            font-size:14px;
         }
 
-        .newsletter input{
-            height:45px;
-            border:none;
-            padding:0 15px;
-            width:70%;
-        }
-
-        .newsletter button{
-            height:45px;
-            border:none;
-            background:#2d8cff;
-            color:white;
-            padding:0 20px;
-            font-size:13px;
-            font-weight:600;
-        }
-
-        .footer-bottom{
-            border-top:1px solid rgba(255,255,255,.08);
-            margin-top:80px;
-            padding-top:25px;
-            font-size:12px;
-            color:rgba(255,255,255,.5);
-        }
-
-        /* ================= RESPONSIVE ================= */
-
-        @media(max-width:991px){
+        @media(max-width:768px){
 
             .hero-title{
-                font-size:48px;
+                font-size:42px;
             }
 
             .section-title{
+                font-size:40px;
+            }
+
+            .cta-title{
                 font-size:42px;
+                margin-bottom:40px;
             }
 
-            .cards-grid{
-                grid-template-columns:1fr;
-            }
-
-            .cta h2{
-                font-size:42px;
-                margin-bottom:30px;
-            }
-
-            .navbar-custom{
-                padding:15px 20px;
-            }
         }
 
     </style>
+
 </head>
 
-<body>
+<body class="internal-page">
 
     <!-- TOPBAR -->
 
-    <div class="container-fluid topbar">
-        <div class="container d-flex justify-content-between">
-            <span><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</span>
+    <div class="container-fluid bg-dark">
+        <div class="row py-2 px-lg-5">
 
-            <div>
-                <a href="#" class="mr-3"><i class="fab fa-tiktok"></i></a>
-                <a href="#" class="mr-3"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="mr-3"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="mr-3"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="col-lg-6 text-center text-lg-left">
+                <div class="d-inline-flex align-items-center text-white">
+                    <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
+                </div>
             </div>
+
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white px-2"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white px-2"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="text-white px-2"><i class="fab fa-instagram"></i></a>
+                    <a class="text-white px-2"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <!-- NAVBAR -->
 
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <div class="container-fluid p-0">
 
-        <a class="navbar-brand" href="#">
-            <img src="img/GeneralUse/logo.png" class="logo">
-        </a>
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <a href="" class="navbar-brand ml-lg-3">
+                <img src="./img/GeneralUse/logo.png" width="90">
+            </a>
 
-        <div class="collapse navbar-collapse justify-content-center" id="nav">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">INICIO</a>
-                <a class="nav-item nav-link" href="#">BLOG</a>
-                <a class="nav-item nav-link" href="#">ALIANZAS</a>
-                <a class="nav-item nav-link" href="#">PROYECTOS</a>
-                <a class="nav-item nav-link active" href="#">ASESORÍAS Y TALLERES</a>
-                <a class="nav-item nav-link" href="#">NOSOTROS</a>
-                <a class="nav-item nav-link" href="#">ÚNETE</a>
+            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="" class="nav-item nav-link">INICIO</a>
+                    <a href="" class="nav-item nav-link">BLOG</a>
+                    <a href="" class="nav-item nav-link">ALIANZAS</a>
+                    <a href="" class="nav-item nav-link">PROYECTOS</a>
+                    <a href="" class="nav-item nav-link active">ASESORÍAS Y TALLERES</a>
+                    <a href="" class="nav-item nav-link">NOSOTROS</a>
+                    <a href="" class="nav-item nav-link">ÚNETE</a>
+                </div>
+
             </div>
 
-        </div>
+        </nav>
 
-    </nav>
+    </div>
 
     <!-- HERO -->
 
-    <section class="hero">
+    <section class="hero-section">
 
-        <div class="hero-content container">
+        <div class="hero-bg"></div>
 
-            <div class="mini-text">CLUB CODE UP</div>
+        <div class="container hero-content">
+
+            <div class="hero-mini">CLUB CODE UP</div>
 
             <h1 class="hero-title">
-                ASESORÍAS Y
-                <span>TALLERES</span>
+                ASESORÍAS Y <span>TALLERES</span>
             </h1>
 
             <p class="hero-sub">
-                Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales:
-                Excel, Python, Stata, SQL y Power BI.
+                Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales: Excel, Python, Stata, SQL y Power BI.
             </p>
 
         </div>
-
-        <!-- ONDA -->
-
-        <svg class="hero-wave" viewBox="0 0 1440 170">
-            <path fill="#0b0320"
-                d="M0,96L48,106.7C96,117,192,139,288,133.3C384,128,480,96,576,90.7C672,85,768,107,864,112C960,117,1056,107,1152,101.3C1248,96,1344,96,1392,96L1440,96L1440,320L0,320Z">
-            </path>
-        </svg>
 
     </section>
 
     <!-- DARK CONTENT -->
 
-    <section class="main-dark">
+    <section class="dark-wrapper">
 
         <div class="container">
 
             <!-- TOOLS -->
 
-            <div class="tools">
+            <div class="tools-wrapper">
 
                 <div class="row align-items-center">
 
                     <div class="col-lg-3">
-                        <div class="tool-title">
-                            HERRAMIENTAS QUE<br>
-                            TRABAJAMOS
+                        <div class="tools-title">
+                            Herramientas que trabajamos
                         </div>
                     </div>
 
                     <div class="col-lg-9">
 
-                        <span class="tool-badge">🟨 EXCEL</span>
-                        <span class="tool-badge">💜 PYTHON</span>
-                        <span class="tool-badge">📉 STATA</span>
-                        <span class="tool-badge">🟧 SQL</span>
-                        <span class="tool-badge">⚡ POWER BI</span>
+                        <span class="tool-item"><i class="fas fa-table"></i> Excel</span>
+                        <span class="tool-item"><i class="fab fa-python"></i> Python</span>
+                        <span class="tool-item"><i class="fas fa-chart-line"></i> Stata</span>
+                        <span class="tool-item"><i class="fas fa-database"></i> SQL</span>
+                        <span class="tool-item"><i class="fas fa-bolt"></i> Power BI</span>
 
                     </div>
 
@@ -577,23 +477,28 @@
 
             <!-- SECTION -->
 
-            <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-5">
 
                 <div>
-                    <div class="section-mini">● SIN COSTO</div>
+
+                    <div class="section-label">
+                        ● SIN COSTO
+                    </div>
 
                     <h2 class="section-title">
-                        ASESORÍAS
-                        <span>GRATUITAS</span>
+                        ASESORÍAS <span>GRATUITAS</span>
                     </h2>
+
                 </div>
 
-                <div class="filters">
+                <div class="filter-box">
+
                     <button class="filter-btn active">TODOS</button>
                     <button class="filter-btn">EXCEL</button>
                     <button class="filter-btn">PYTHON</button>
                     <button class="filter-btn">DATOS</button>
                     <button class="filter-btn">STATA</button>
+
                 </div>
 
             </div>
@@ -606,13 +511,13 @@
 
                 <div class="service-card">
 
-                    <div class="card-top gradient-purple">
+                    <div class="card-top grad-purple">
 
                         <div class="icon-box">
                             <i class="fas fa-table"></i>
                         </div>
 
-                        <div class="type-badge">
+                        <div class="card-badge">
                             ASESORÍA GRATUITA
                         </div>
 
@@ -620,22 +525,24 @@
 
                     <div class="card-body-custom">
 
-                        <div class="small-category">
-                            ▶ Excel
+                        <div class="card-mini">
+                            <span>▶ Excel</span>
                             <span>Básico a avanzado</span>
                         </div>
 
-                        <div class="card-title">
-                            NIVELACIÓN EN INFORMÁTICA
-                        </div>
+                        <h3 class="card-title">
+                            Nivelación en Informática
+                        </h3>
 
-                        <div class="card-desc">
+                        <div class="card-text">
                             Asesorías enfocadas en el manejo de Excel desde funciones básicas hasta herramientas avanzadas.
                         </div>
 
-                        <span class="tag">FÓRMULAS</span>
-                        <span class="tag">TABLAS DINÁMICAS</span>
-                        <span class="tag">DASHBOARDS</span>
+                        <div class="tags">
+                            <span class="tag">Fórmulas</span>
+                            <span class="tag">Tablas dinámicas</span>
+                            <span class="tag">Dashboards</span>
+                        </div>
 
                     </div>
 
@@ -645,13 +552,13 @@
 
                 <div class="service-card">
 
-                    <div class="card-top gradient-red">
+                    <div class="card-top grad-pink">
 
                         <div class="icon-box">
                             <i class="fab fa-python"></i>
                         </div>
 
-                        <div class="type-badge">
+                        <div class="card-badge">
                             ASESORÍA GRATUITA
                         </div>
 
@@ -659,100 +566,24 @@
 
                     <div class="card-body-custom">
 
-                        <div class="small-category">
-                            ▶ Python
+                        <div class="card-mini">
+                            <span>▶ Python</span>
                             <span>Programación</span>
                         </div>
 
-                        <div class="card-title">
-                            HERRAMIENTAS DE PROGRAMACIÓN
-                        </div>
+                        <h3 class="card-title">
+                            Herramientas de Programación
+                        </h3>
 
-                        <div class="card-desc">
+                        <div class="card-text">
                             Curso enfocado en Python desde conceptos básicos hasta automatización y análisis de datos.
                         </div>
 
-                        <span class="tag">FUNDAMENTOS</span>
-                        <span class="tag">AUTOMATIZACIÓN</span>
-                        <span class="tag">PROBLEMAS</span>
-
-                    </div>
-
-                </div>
-
-                <!-- CARD -->
-
-                <div class="service-card">
-
-                    <div class="card-top gradient-gold">
-
-                        <div class="icon-box">
-                            <i class="fas fa-chart-bar"></i>
+                        <div class="tags">
+                            <span class="tag">Fundamentos</span>
+                            <span class="tag">Automatización</span>
+                            <span class="tag">Problemas</span>
                         </div>
-
-                        <div class="type-badge">
-                            ASESORÍA GRATUITA
-                        </div>
-
-                    </div>
-
-                    <div class="card-body-custom">
-
-                        <div class="small-category">
-                            ▶ Excel y Python
-                            <span>Datos</span>
-                        </div>
-
-                        <div class="card-title">
-                            ANALÍTICA DE DATOS
-                        </div>
-
-                        <div class="card-desc">
-                            Curso orientado al análisis e interpretación de datos usando Excel y Python.
-                        </div>
-
-                        <span class="tag">LIMPIEZA</span>
-                        <span class="tag">VISUALIZACIÓN</span>
-                        <span class="tag">REPORTES</span>
-
-                    </div>
-
-                </div>
-
-                <!-- CARD -->
-
-                <div class="service-card">
-
-                    <div class="card-top gradient-blue">
-
-                        <div class="icon-box">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-
-                        <div class="type-badge">
-                            ASESORÍA GRATUITA
-                        </div>
-
-                    </div>
-
-                    <div class="card-body-custom">
-
-                        <div class="small-category">
-                            ▶ Stata
-                            <span>Estadística</span>
-                        </div>
-
-                        <div class="card-title">
-                            ESTADÍSTICA APLICADA
-                        </div>
-
-                        <div class="card-desc">
-                            Curso orientado al uso de Stata para análisis descriptivo e inferencial.
-                        </div>
-
-                        <span class="tag">DESCRIPTIVA</span>
-                        <span class="tag">INFERENCIA</span>
-                        <span class="tag">BASES DE DATOS</span>
 
                     </div>
 
@@ -765,5 +596,339 @@
     </section>
 
 </body>
-
 </html>
+
+
+<!-- ================= TALLERES APLICADOS ================= -->
+
+<section class="main-dark pt-0">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+
+            <div>
+                <div class="section-mini">● PRÁCTICOS</div>
+
+                <h2 class="section-title">
+                    TALLERES
+                    <span>APLICADOS</span>
+                </h2>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active">TODOS</button>
+                <button class="filter-btn">SQL</button>
+                <button class="filter-btn">EXCEL</button>
+                <button class="filter-btn">POWER BI</button>
+            </div>
+
+        </div>
+
+        <!-- CARDS -->
+
+        <div class="cards-grid">
+
+            <!-- CARD SQL -->
+
+            <div class="service-card">
+
+                <div class="card-top gradient-blue2">
+
+                    <div class="icon-box">
+                        <i class="fas fa-database"></i>
+                    </div>
+
+                    <div class="type-badge">
+                        TALLER
+                    </div>
+
+                </div>
+
+                <div class="card-body-custom">
+
+                    <div class="small-category">
+                        ▶ SQL
+                        <span>Bases de datos</span>
+                    </div>
+
+                    <div class="card-title">
+                        TALLER DE SQL
+                    </div>
+
+                    <div class="card-desc">
+                        Taller práctico para consultar bases de datos mediante filtros,
+                        joins, subconsultas y manejo de información.
+                    </div>
+
+                    <span class="tag">CONSULTAS</span>
+                    <span class="tag">JOINS</span>
+                    <span class="tag">SUBCONSULTAS</span>
+
+                </div>
+
+            </div>
+
+            <!-- CARD EXCEL -->
+
+            <div class="service-card">
+
+                <div class="card-top gradient-green">
+
+                    <div class="icon-box">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+
+                    <div class="type-badge">
+                        TALLER
+                    </div>
+
+                </div>
+
+                <div class="card-body-custom">
+
+                    <div class="small-category">
+                        ▶ Excel
+                        <span>Productividad</span>
+                    </div>
+
+                    <div class="card-title">
+                        TALLER DE EXCEL
+                    </div>
+
+                    <div class="card-desc">
+                        Taller para organizar, analizar y visualizar datos con fórmulas,
+                        tablas dinámicas, gráficos y automatización.
+                    </div>
+
+                    <span class="tag">GRÁFICOS</span>
+                    <span class="tag">TABLAS</span>
+                    <span class="tag">AUTOMATIZACIÓN</span>
+
+                </div>
+
+            </div>
+
+            <!-- CARD POWER BI -->
+
+            <div class="service-card">
+
+                <div class="card-top gradient-orange">
+
+                    <div class="icon-box">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+
+                    <div class="type-badge">
+                        TALLER
+                    </div>
+
+                </div>
+
+                <div class="card-body-custom">
+
+                    <div class="small-category">
+                        ▶ Power BI
+                        <span>Dashboards</span>
+                    </div>
+
+                    <div class="card-title">
+                        TALLER DE POWER BI
+                    </div>
+
+                    <div class="card-desc">
+                        Taller orientado a crear dashboards e informes interactivos
+                        para transformar datos en reportes de decisión.
+                    </div>
+
+                    <span class="tag">POWER QUERY</span>
+                    <span class="tag">VISUALES</span>
+                    <span class="tag">REPORTES</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CTA SECTION ================= -->
+
+<section class="cta">
+
+    <!-- WAVE TOP -->
+
+    <svg class="footer-wave" viewBox="0 0 1440 170">
+        <path fill="#0b0320"
+            d="M0,96L48,106.7C96,117,192,139,288,133.3C384,128,480,96,576,90.7C672,85,768,107,864,112C960,117,1056,107,1152,101.3C1248,96,1344,96,1392,96L1440,96L1440,0L0,0Z">
+        </path>
+    </svg>
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6 mb-5 mb-lg-0">
+
+                <div class="section-mini">
+                    ● PARTICIPA
+                </div>
+
+                <h2>
+                    ¿QUIERES<br>
+                    REFORZAR UN<br>
+                    CURSO O APRENDER<br>
+                    UNA HERRAMIENTA?
+                </h2>
+
+            </div>
+
+            <div class="col-lg-5 offset-lg-1">
+
+                <div class="cta-box">
+
+                    <div class="cta-right">
+
+                        <h4>
+                            Escríbenos para conocer las próximas fechas
+                        </h4>
+
+                        <p>
+                            Publicamos convocatorias, horarios y formularios
+                            de inscripción en nuestras redes.
+                        </p>
+
+                        <p class="mb-2">
+                            <i class="fa fa-envelope mr-2"></i>
+                            clubcodeup@gmail.com
+                        </p>
+
+                        <p class="mb-0">
+                            <i class="fab fa-instagram mr-2"></i>
+                            @clubcodeup
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <!-- WAVE -->
+
+    <svg class="footer-wave" viewBox="0 0 1440 170">
+        <path fill="#0b0320"
+            d="M0,96L48,106.7C96,117,192,139,288,133.3C384,128,480,96,576,90.7C672,85,768,107,864,112C960,117,1056,107,1152,101.3C1248,96,1344,96,1392,96L1440,96L1440,0L0,0Z">
+        </path>
+    </svg>
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- LEFT -->
+
+            <div class="col-lg-6 mb-5">
+
+                <div class="footer-title">
+                    CODE UP
+                </div>
+
+                <p class="mb-5">
+                    Aprende tus primeros pasos en la programación
+                </p>
+
+                <h5 class="text-white mb-4">
+                    Encuéntranos
+                </h5>
+
+                <p>
+                    <i class="fa fa-map-marker-alt mr-2"></i>
+                    Universidad del Pacífico
+                </p>
+
+                <p>
+                    <i class="fa fa-envelope mr-2"></i>
+                    clubcodeup@gmail.com
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="#" class="text-white mr-4">
+                        <i class="fab fa-tiktok fa-lg"></i>
+                    </a>
+
+                    <a href="#" class="text-white mr-4">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </a>
+
+                    <a href="#" class="text-white mr-4">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                    </a>
+
+                    <a href="#" class="text-white">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="col-lg-5 offset-lg-1">
+
+                <h4 class="text-white mb-4">
+                    Newsletter
+                </h4>
+
+                <div class="newsletter d-flex">
+
+                    <input type="text" placeholder="Correo">
+
+                    <button>
+                        Suscribirte
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BOTTOM -->
+
+        <div class="footer-bottom d-flex justify-content-between flex-wrap">
+
+            <div>
+                Copyright © <strong>CODEUP</strong>. All Rights Reserved.
+            </div>
+
+            <div>
+                Designed by HTML Codex
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ================= JS ================= -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
