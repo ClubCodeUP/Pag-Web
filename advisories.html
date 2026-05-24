@@ -14,55 +14,25 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        /* ── Forzar que el jumbotron NO deje espacio blanco debajo ── */
-        .jumbotron {
-            margin-bottom: 0 !important;
-        }
+        .jumbotron { margin-bottom: 0 !important; }
 
-   
-        /* ── Título: "Talleres" en blanco ── */
-        .hero-title-white span {
-            color: #ffffff !important;
-        }
+        .hero-title-white span { color: #ffffff !important; }
 
-        /* ── Sección oscura principal: empieza sin padding-top extra ── */
-        .dark-bg-main {
-            background: #0e0b1f;
-            margin-top: 0;
-            padding-top: 0;
-        }
+        .dark-bg-main { background: #0e0b1f; margin-top: 0; padding-top: 0; }
 
-        /* ── TOOLS BAR ── */
-        .tools-bar {
-            background: #0e0b1f;
-            padding: 36px 0 40px;
-        }
+        .tools-bar { background: #0e0b1f; padding: 36px 0 40px; }
 
         .tools-bar .label {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            font-family: 'Jost', sans-serif;
-            margin-bottom: 14px;
+            font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+            color: rgba(255,255,255,0.5); font-family: 'Jost', sans-serif; margin-bottom: 14px;
         }
 
         .tool-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 8px;
-            padding: 7px 16px;
-            font-size: 13px;
-            font-weight: 600;
-            font-family: 'Jost', sans-serif;
-            margin: 4px 5px;
-            cursor: default;
-            transition: background 0.2s;
+            display: inline-flex; align-items: center; gap: 7px;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px; padding: 7px 16px; font-size: 13px; font-weight: 600;
+            font-family: 'Jost', sans-serif; margin: 4px 5px; cursor: default; transition: background 0.2s;
         }
-
         .tool-badge:hover { background: rgba(255,255,255,0.12); }
         .tool-badge.excel   { color: #22c55e; }
         .tool-badge.python  { color: #60a5fa; }
@@ -70,105 +40,46 @@
         .tool-badge.sql     { color: #e879f9; }
         .tool-badge.powerbi { color: #facc15; }
 
-        /* ── SECCIONES OSCURAS ── */
         .dark-section { background: #0e0b1f; padding: 30px 0 60px; }
 
         .section-eyebrow {
-            font-family: 'Jost', sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; font-weight: 600; margin-bottom: 6px;
         }
-
         .section-eyebrow.free-tag { color: #f97316; }
         .section-eyebrow.paid-tag { color: #a78bfa; }
 
         .section-heading {
-            font-family: 'Jost', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #fff;
-            margin-bottom: 0;
-            letter-spacing: 1px;
+            font-family: 'Jost', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800; text-transform: uppercase; color: #fff; margin-bottom: 0; letter-spacing: 1px;
         }
-
         .section-heading span { color: #a78bfa; }
 
-        /* ── FILTER TABS ── */
         .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 
         .filter-tab {
-            padding: 6px 18px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            font-family: 'Jost', sans-serif;
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.6);
-            background: transparent;
-            transition: all 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 6px 18px; border-radius: 6px; font-size: 12px; font-weight: 600;
+            font-family: 'Jost', sans-serif; cursor: pointer; border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.6); background: transparent; transition: all 0.2s;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
+        .filter-tab:hover, .filter-tab.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
 
-        .filter-tab:hover,
-        .filter-tab.active {
-            background: #7c3aed;
-            border-color: #7c3aed;
-            color: #fff;
-        }
+        .cards-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 28px; }
+        .cards-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
 
-        /* ── GRIDS ── */
-        .cards-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 28px;
-        }
+        @media (max-width: 767px) { .cards-grid-2, .cards-grid-3 { grid-template-columns: 1fr; } }
+        @media (min-width: 768px) and (max-width: 991px) { .cards-grid-3 { grid-template-columns: repeat(2, 1fr); } }
 
-        .cards-grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 28px;
-        }
-
-        @media (max-width: 767px) {
-            .cards-grid-2,
-            .cards-grid-3 { grid-template-columns: 1fr; }
-        }
-
-        @media (min-width: 768px) and (max-width: 991px) {
-            .cards-grid-3 { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        /* ── SERVICE CARD ── */
         .service-card {
-            border-radius: 14px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background: #1a1535;
-            border: none;
-            transition: transform 0.25s, box-shadow 0.25s;
+            border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+            background: #1a1535; border: none; transition: transform 0.25s, box-shadow 0.25s;
         }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 32px rgba(124,58,237,0.25);
-        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(124,58,237,0.25); }
 
         .card-header-img {
-            height: 148px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            height: 148px; display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
         }
 
         .grad-excel   { background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%); }
@@ -180,199 +91,84 @@
         .grad-powerbi { background: linear-gradient(135deg, #78350f 0%, #b45309 100%); }
 
         .card-type-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 6px;
-            padding: 4px 10px;
-            font-size: 10px;
-            font-weight: 600;
-            color: #fff;
-            font-family: 'Jost', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 4px 10px;
+            font-size: 10px; font-weight: 600; color: #fff; font-family: 'Jost', sans-serif;
+            text-transform: uppercase; letter-spacing: 0.5px;
         }
 
         .card-icon-circle {
-            width: 62px;
-            height: 62px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 27px;
-            color: #fff;
+            width: 62px; height: 62px; border-radius: 14px; background: rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center; font-size: 27px; color: #fff;
         }
 
-        .card-body {
-            padding: 18px 20px 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+        .card-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
 
-        .card-category-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
+        .card-category-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 
-        .card-category {
-            font-size: 11px;
-            font-weight: 600;
-            font-family: 'Jost', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
+        .card-category { font-size: 11px; font-weight: 600; font-family: 'Jost', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
         .cat-excel  { color: #60a5fa; }
         .cat-python { color: #c084fc; }
         .cat-datos  { color: #f9a8d4; }
         .cat-stata  { color: #67e8f9; }
         .cat-sql    { color: #86efac; }
 
-        .card-level {
-            font-size: 11px;
-            color: rgba(255,255,255,0.45);
-            font-family: 'Jost', sans-serif;
-        }
+        .card-level { font-size: 11px; color: rgba(255,255,255,0.45); font-family: 'Jost', sans-serif; }
 
         .card-title-text {
-            font-family: 'Jost', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-            line-height: 1.3;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+            font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 700; color: #fff;
+            margin-bottom: 8px; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.3px;
         }
 
-        .card-desc {
-            font-size: 13px;
-            color: rgba(255,255,255,0.55);
-            line-height: 1.6;
-            margin-bottom: 14px;
-            flex: 1;
-        }
+        .card-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 14px; flex: 1; }
 
         .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
         .card-tag {
-            background: rgba(255,255,255,0.07);
-            border-radius: 5px;
-            padding: 3px 10px;
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.55);
-            font-family: 'Jost', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+            background: rgba(255,255,255,0.07); border-radius: 5px; padding: 3px 10px;
+            font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.55);
+            font-family: 'Jost', sans-serif; text-transform: uppercase; letter-spacing: 0.3px;
         }
 
-        /* ── DIVIDER ── */
         .wave-divider {
             height: 2px;
             background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
             margin: 10px 0 50px;
         }
 
-        /* ── CTA — fondo BLANCO, comienza recto, termina en rasgado ── */
+        /* ── CTA: fondo blanco, sin rasgado propio ── */
         .cta-section {
             background: #fff;
-            padding: 80px 0 0;        /* sin padding-bottom: el overlay-bottom lo ocupa */
-            position: relative;
+            padding: 80px 0 80px;
         }
 
-        /* El rasgado inferior de la CTA usa la misma imagen overlay-bottom del style.css */
-        .cta-section .overlay-bottom-cta {
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background-image: url("img/overlay-bottom-purple.png");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: bottom center;
-        }
-
-        .cta-inner { padding-bottom: 140px; } /* espacio para el rasgado */
-
-        .cta-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
-        }
-
+        .cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
         @media (max-width: 767px) { .cta-box { grid-template-columns: 1fr; } }
 
         .cta-left h2 {
-            font-family: 'Jost', sans-serif;
-            font-size: clamp(1.6rem, 4vw, 2.6rem);
-            font-weight: 800;
-            color: #140b3d;
-            text-transform: uppercase;
-            line-height: 1.15;
-            margin-bottom: 0;
+            font-family: 'Jost', sans-serif; font-size: clamp(1.6rem, 4vw, 2.6rem);
+            font-weight: 800; color: #140b3d; text-transform: uppercase; line-height: 1.15; margin-bottom: 0;
         }
 
         .cta-eyebrow {
-            font-family: 'Jost', sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: #a78bfa;
-            margin-bottom: 10px;
+            font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 3px;
+            text-transform: uppercase; font-weight: 600; color: #a78bfa; margin-bottom: 10px;
         }
 
-        .cta-right {
-            background: #f4f6fb;
-            border-radius: 14px;
-            padding: 28px 30px;
-        }
+        .cta-right { background: #f4f6fb; border-radius: 14px; padding: 28px 30px; }
 
-        .cta-right h4 {
-            font-family: 'Jost', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #140b3d;
-            margin-bottom: 8px;
-        }
-
-        .cta-right p {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 14px;
-        }
+        .cta-right h4 { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 700; color: #140b3d; margin-bottom: 8px; }
+        .cta-right p  { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 14px; }
 
         .cta-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #140b3d;
-            font-weight: 600;
-            margin-bottom: 6px;
+            display: flex; align-items: center; gap: 8px; font-size: 13px;
+            color: #140b3d; font-weight: 600; margin-bottom: 6px;
         }
-
         .cta-contact-item i { color: #7c3aed; }
 
-        /* ── HEADER/FILTER ROW ── */
         .section-header-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 4px;
+            display: flex; flex-wrap: wrap; align-items: center;
+            justify-content: space-between; gap: 12px; margin-bottom: 4px;
         }
     </style>
 </head>
@@ -422,7 +218,7 @@
         </nav>
     </div>
 
-    <!-- ===== HERO — jumbotron igual que proyectos ===== -->
+    <!-- HERO -->
     <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom:0;">
         <div class="container text-center py-4" style="margin-top:2.5rem; margin-bottom:2.5rem;">
             <p class="text-white mb-3" style="font-family:'Jost',sans-serif;font-size:13px;letter-spacing:4px;">CLUB CODE UP</p>
@@ -437,11 +233,9 @@
         </div>
     </div>
 
-    <!-- ===== BLOQUE OSCURO: tools + asesorías + talleres ===== -->
-    <!-- Sin margen ni padding extra arriba para que el morado empiece justo tras el rasgado -->
+    <!-- BLOQUE OSCURO -->
     <div class="dark-bg-main">
 
-        <!-- TOOLS BAR -->
         <div class="tools-bar">
             <div class="container">
                 <div class="label">Herramientas que trabajamos</div>
@@ -469,7 +263,6 @@
                         <button class="filter-tab" onclick="filterCards('asesorias','stata',this)">Stata</button>
                     </div>
                 </div>
-
                 <div class="cards-grid-2" id="asesorias-grid">
 
                     <div class="service-card" data-section="asesorias" data-tag="excel">
@@ -570,7 +363,6 @@
                         <button class="filter-tab" onclick="filterCards('talleres','powerbi',this)">Power BI</button>
                     </div>
                 </div>
-
                 <div class="cards-grid-3" id="talleres-grid">
 
                     <div class="service-card" data-section="talleres" data-tag="sql">
@@ -640,9 +432,9 @@
     </div>
     <!-- fin .dark-bg-main -->
 
-    <!-- ===== CTA — fondo BLANCO, inicia recto, termina rasgado ===== -->
-    <div class="cta-section position-relative">
-        <div class="cta-inner container">
+    <!-- CTA — fondo blanco, sin rasgado propio -->
+    <div class="cta-section">
+        <div class="container">
             <div class="cta-box">
                 <div class="cta-left">
                     <p class="cta-eyebrow">● Participa</p>
@@ -656,12 +448,10 @@
                 </div>
             </div>
         </div>
-        <!-- Rasgado inferior de la sección CTA -->
-        <div class="overlay-bottom-cta"></div>
     </div>
 
-    <!-- Footer — idéntico a las otras páginas -->
-    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top:0;">
+    <!-- Footer — el overlay-top genera el único rasgado -->
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top:90px;">
         <div class="container mt-5 pt-5">
             <div class="row align-items-start justify-content-between">
                 <div class="col-lg-5 col-md-6 mb-5 mb-md-0 text-center text-md-left">
