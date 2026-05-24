@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Club CODE UP - Proyectos</title>
+    <title>Club CODE UP - PROYECTOS</title>
     <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Proyectos desarrollados por CODE UP" name="description">
@@ -257,6 +257,27 @@
             margin-bottom: 24px;
         }
 
+        .project-image {
+            display: block;
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .project-preview-grid {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            background: #f5f1ff;
+            padding: 10px;
+        }
+
+        .project-preview-grid .project-image {
+            height: 115px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
         .project-card h3 {
             color: var(--code-dark);
             font-size: 1.65rem;
@@ -508,6 +529,14 @@
                 min-height: 210px;
             }
 
+            .project-image {
+                height: 210px;
+            }
+
+            .project-preview-grid .project-image {
+                height: 90px;
+            }
+
             .contact-box {
                 padding: 34px 28px;
             }
@@ -594,7 +623,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content container">
             <p class="hero-eyebrow">Club Code UP</p>
-            <h1>Nuestros Proyectos</h1>
+            <h1>NUESTROS PROYECTOS</h1>
             <p>Creamos soluciones digitales para la comunidad universitaria, desde apps web hasta videojuegos, todo desarrollado por estudiantes de la UP.</p>
         </div>
     </section>
@@ -647,12 +676,9 @@
             <div class="row project-row">
                 <div class="col-lg-5 mb-4 mb-lg-0">
                     <div class="project-card">
-                        <div class="project-preview review-mockup">
-                            <div class="review-panel">
-                                <span class="mini-title">¡Ayúdanos con tu experiencia!</span>
-                                <div class="review-option"><i class="fa fa-school"></i> Califica a tu profe</div>
-                                <div class="review-option"><i class="fa fa-id-card"></i> Profesores</div>
-                            </div>
+                        <div class="project-preview project-preview-grid">
+                            <img class="project-image" src="img/projects/mi-profe-up-califica.png" alt="Pantalla para calificar a tu profe en Mi Profe UP">
+                            <img class="project-image" src="img/projects/mi-profe-up-profesores.png" alt="Pantalla de profesores en Mi Profe UP">
                         </div>
                         <h3>Mi Profe UP</h3>
                         <p class="meta">App de reseñas - Activo</p>
@@ -697,14 +723,16 @@
                             <div class="project-icon bg-warning"><i class="fa fa-users"></i></div>
                             <div>
                                 <h3>Equipo</h3>
-                                <p>Alyssa Trujillo, Anderson Rua, Vladislav Bringas, Matías Desmonteix, Luciana Carpio y Johao Mendoza.</p>
+                                <p>Vladislav Bringas, Alyssa Trujillo, Tania Chavez, Gianella Silvestre y Matías Desmonteix.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 mb-4 mb-lg-0 order-1 order-lg-2">
                     <div class="project-card">
-                        <div class="project-preview game-mockup"></div>
+                        <div class="project-preview">
+                            <img class="project-image" src="img/projects/videojuego-desarrollo.jpeg" alt="Vista previa del videojuego en desarrollo">
+                        </div>
                         <h3>Nuevo videojuego</h3>
                         <p class="meta">Videojuego - En desarrollo</p>
                     </div>
@@ -719,7 +747,9 @@
             <div class="row project-row">
                 <div class="col-lg-5 mb-4 mb-lg-0">
                     <div class="project-card">
-                        <div class="project-preview runner-mockup"></div>
+                        <div class="project-preview">
+                            <img class="project-image" src="img/projects/ayuda-ccat.jpeg" alt="Pantalla de puntajes de Ayuda a C.cat">
+                        </div>
                         <h3>Ayuda a C.cat</h3>
                         <p class="meta">Videojuego - 2021 · Segundo semestre</p>
                     </div>
@@ -730,7 +760,7 @@
                             <div class="project-icon bg-secondary"><i class="fa fa-cat"></i></div>
                             <div>
                                 <h3>Descripción</h3>
-                                <p>C.cat quiere graduarse de la UP. Recoge exámenes en la plaza Geis, esquiva cuchillos y machetes, y sobrevive con sus 3 vidas para llegar a la ceremonia de graduación.</p>
+                                <p>C.cat quiere graduarse de la UP. Recoge exámenes en la plaza Geis, esquiva plumones, y sobrevive con sus 3 vidas para llegar a la ceremonia de graduación.</p>
                             </div>
                         </div>
                         <div class="project-detail">
@@ -751,22 +781,24 @@
                             <div class="project-icon bg-primary"><i class="fa fa-map"></i></div>
                             <div>
                                 <h3>Descripción</h3>
-                                <p>Recorre los establecimientos de la Universidad del Pacífico de manera virtual. Un tour interactivo que te permite explorar la UP desde una perspectiva diferente.</p>
+                                <p>Recorre las instalaciones de la Universidad del Pacífico de manera virtual. Un tour interactivo que te permite explorar la UP desde una perspectiva diferente.</p>
                             </div>
                         </div>
                         <div class="project-detail">
                             <div class="project-icon bg-success"><i class="fa fa-book"></i></div>
                             <div>
                                 <h3>Misión del juego</h3>
-                                <p>Ayuda a la bibliotecaria luego de tus finales y descubre todos los rincones de la UP en esta aventura de exploración.</p>
+                                <p>Recoger los libros y marcadores dispersos por todo el edificio dentro del tiempo límite. Al completar eso los jugadores podrán acceder a una sala secreta donde se encuentran las imágenes de los profesores más reconocidos e icónicos de la universidad. Finalmente, deberán abrir un cofre para obtener el gran premio.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 mb-4 mb-lg-0 order-1 order-lg-2">
                     <div class="project-card">
-                        <div class="project-preview tour-mockup"></div>
-                        <h3>Recorre la UP</h3>
+                        <div class="project-preview">
+                            <img class="project-image" src="img/projects/bookchase-up.jpeg" alt="Portada de Bookchase UP">
+                        </div>
+                        <h3>Bookchase UP</h3>
                         <p class="meta">Tour virtual - 2021 · Primer semestre</p>
                     </div>
                 </div>
