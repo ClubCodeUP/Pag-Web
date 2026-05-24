@@ -14,87 +14,28 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        /* ========== HERO ========== */
-        .advisories-hero {
-            position: relative;
-            overflow: hidden;
-            min-height: 420px;
+        /* ── Forzar que el jumbotron NO deje espacio blanco debajo ── */
+        .jumbotron {
+            margin-bottom: 0 !important;
+        }
+
+        /* El overlay-bottom del jumbotron tiene fondo blanco nativo del style.css.
+           Necesitamos que el color oscuro empiece JUSTO después del rasgado.
+           Sobreescribimos el fondo del bloque que sigue al jumbotron. */
+
+        /* ── Título: "Talleres" en blanco ── */
+        .hero-title-white span {
+            color: #ffffff !important;
+        }
+
+        /* ── Sección oscura principal: empieza sin padding-top extra ── */
+        .dark-bg-main {
             background: #0e0b1f;
+            margin-top: 0;
+            padding-top: 0;
         }
 
-        /* Foto de fondo con overlay morado igual que proyectos */
-        .advisories-hero .hero-bg-photo {
-            position: absolute;
-            inset: 0;
-            background-image: url('img/hero-advisories.jpg'); /* reemplaza con tu foto */
-            background-size: cover;
-            background-position: center top;
-            z-index: 0;
-        }
-
-        .advisories-hero .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(83,74,183,0.82) 0%, rgba(14,11,31,0.90) 100%);
-            z-index: 1;
-        }
-
-        /* Borde rasgado inferior igual que las otras páginas */
-        .advisories-hero::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background-image: url("img/overlay-bottom.png");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: bottom center;
-            z-index: 3;
-        }
-
-        .advisories-hero .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            padding: 110px 20px 150px;
-        }
-
-        .advisories-hero .hero-eyebrow {
-            font-family: 'Jost', sans-serif;
-            font-size: 11px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 16px;
-        }
-
-        .advisories-hero h1 {
-            font-family: 'Jost', sans-serif;
-            font-size: clamp(2.6rem, 7vw, 4.5rem);
-            font-weight: 800;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.05;
-            margin-bottom: 20px;
-        }
-
-        .advisories-hero h1 span { color: #a78bfa; }
-
-        .advisories-hero p.hero-sub {
-            color: rgba(255,255,255,0.80);
-            font-size: 1rem;
-            line-height: 1.7;
-            max-width: 620px;
-            margin: 0 auto;
-        }
-
-        /* ========== DARK BG ========== */
-        .dark-bg { background: #0e0b1f; }
-
-        /* ========== TOOL BADGES ========== */
+        /* ── TOOLS BAR ── */
         .tools-bar {
             background: #0e0b1f;
             padding: 36px 0 40px;
@@ -126,13 +67,13 @@
         }
 
         .tool-badge:hover { background: rgba(255,255,255,0.12); }
-        .tool-badge.excel  { color: #22c55e; }
-        .tool-badge.python { color: #60a5fa; }
-        .tool-badge.stata  { color: #f97316; }
-        .tool-badge.sql    { color: #e879f9; }
-        .tool-badge.powerbi{ color: #facc15; }
+        .tool-badge.excel   { color: #22c55e; }
+        .tool-badge.python  { color: #60a5fa; }
+        .tool-badge.stata   { color: #f97316; }
+        .tool-badge.sql     { color: #e879f9; }
+        .tool-badge.powerbi { color: #facc15; }
 
-        /* ========== SECTION COMMONS ========== */
+        /* ── SECCIONES OSCURAS ── */
         .dark-section { background: #0e0b1f; padding: 30px 0 60px; }
 
         .section-eyebrow {
@@ -144,8 +85,8 @@
             margin-bottom: 6px;
         }
 
-        .section-eyebrow.free-tag  { color: #f97316; }
-        .section-eyebrow.paid-tag  { color: #a78bfa; }
+        .section-eyebrow.free-tag { color: #f97316; }
+        .section-eyebrow.paid-tag { color: #a78bfa; }
 
         .section-heading {
             font-family: 'Jost', sans-serif;
@@ -159,7 +100,7 @@
 
         .section-heading span { color: #a78bfa; }
 
-        /* ========== FILTER TABS ========== */
+        /* ── FILTER TABS ── */
         .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 
         .filter-tab {
@@ -184,7 +125,7 @@
             color: #fff;
         }
 
-        /* ========== CARDS GRID — SIEMPRE 2 COLUMNAS ========== */
+        /* ── GRIDS ── */
         .cards-grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -208,7 +149,7 @@
             .cards-grid-3 { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* ========== SERVICE CARD ========== */
+        /* ── SERVICE CARD ── */
         .service-card {
             border-radius: 14px;
             overflow: hidden;
@@ -336,15 +277,34 @@
             letter-spacing: 0.3px;
         }
 
-        /* ========== DIVIDER ========== */
+        /* ── DIVIDER ── */
         .wave-divider {
             height: 2px;
             background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
             margin: 10px 0 50px;
         }
 
-        /* ========== CTA ========== */
-        .cta-section { background: #0e0b1f; padding: 10px 0 80px; }
+        /* ── CTA — fondo BLANCO, comienza recto, termina en rasgado ── */
+        .cta-section {
+            background: #fff;
+            padding: 80px 0 0;        /* sin padding-bottom: el overlay-bottom lo ocupa */
+            position: relative;
+        }
+
+        /* El rasgado inferior de la CTA usa la misma imagen overlay-bottom del style.css */
+        .cta-section .overlay-bottom-cta {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background-image: url("img/overlay-bottom.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+        }
+
+        .cta-inner { padding-bottom: 140px; } /* espacio para el rasgado */
 
         .cta-box {
             display: grid;
@@ -357,17 +317,26 @@
 
         .cta-left h2 {
             font-family: 'Jost', sans-serif;
-            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
             font-weight: 800;
-            color: #fff;
+            color: #140b3d;
             text-transform: uppercase;
             line-height: 1.15;
             margin-bottom: 0;
         }
 
+        .cta-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #a78bfa;
+            margin-bottom: 10px;
+        }
+
         .cta-right {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: #f4f6fb;
             border-radius: 14px;
             padding: 28px 30px;
         }
@@ -375,14 +344,14 @@
         .cta-right h4 {
             font-family: 'Jost', sans-serif;
             font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
+            font-weight: 700;
+            color: #140b3d;
             margin-bottom: 8px;
         }
 
         .cta-right p {
             font-size: 13px;
-            color: rgba(255,255,255,0.55);
+            color: #666;
             line-height: 1.6;
             margin-bottom: 14px;
         }
@@ -392,13 +361,14 @@
             align-items: center;
             gap: 8px;
             font-size: 13px;
-            color: rgba(255,255,255,0.7);
+            color: #140b3d;
+            font-weight: 600;
             margin-bottom: 6px;
         }
 
-        .cta-contact-item i { color: #a78bfa; }
+        .cta-contact-item i { color: #7c3aed; }
 
-        /* ========== HEADER/FILTER ROW ========== */
+        /* ── HEADER/FILTER ROW ── */
         .section-header-row {
             display: flex;
             flex-wrap: wrap;
@@ -412,7 +382,7 @@
 
 <body class="internal-page">
 
-    <!-- Topbar Start -->
+    <!-- Topbar -->
     <div class="container-fluid bg-dark">
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
@@ -431,9 +401,8 @@
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
 
-    <!-- Navbar Start — igual que alianzas y proyectos -->
+    <!-- Navbar -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
@@ -455,239 +424,231 @@
             </div>
         </nav>
     </div>
-    <!-- Navbar End -->
 
-    <!-- ===== HERO — mismo estilo que Nuestros Proyectos ===== -->
-    <!-- El jumbotron usa la clase del css/style.css que ya aplica la foto de fondo
-         y el borde rasgado inferior (overlay-bottom). Si tu página de proyectos
-         usa .jumbotron con overlay-bottom, replica exactamente eso aquí: -->
+    <!-- ===== HERO — jumbotron igual que proyectos ===== -->
     <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom:0;">
-        <div class="container text-center py-4" style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
+        <div class="container text-center py-4" style="margin-top:2.5rem; margin-bottom:2.5rem;">
             <p class="text-white mb-3" style="font-family:'Jost',sans-serif;font-size:13px;letter-spacing:4px;">CLUB CODE UP</p>
-            <h1 class="text-white display-1 mb-4" style="font-weight:800;font-size:clamp(2.4rem,6vw,4.5rem);">
-                Asesorías y <span style="color:#a78bfa;">Talleres</span>
+            <h1 class="text-white display-1 mb-4 hero-title-white"
+                style="font-weight:800;font-size:clamp(2.4rem,6vw,4.5rem);">
+                Asesorías y <span style="color:#ffffff;">Talleres</span>
             </h1>
             <p class="text-white" style="max-width:620px;margin:0 auto;">
-                Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales: Excel, Python, Stata, SQL y Power BI.
+                Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales:<br>
+                Excel, Python, Stata, SQL y Power BI.
             </p>
         </div>
     </div>
 
-    <!-- ===== TOOLS BAR ===== -->
-    <div class="tools-bar">
-        <div class="container">
-            <div class="label">Herramientas que trabajamos</div>
-            <div>
-                <span class="tool-badge excel"><i class="fas fa-table fa-sm"></i> Excel</span>
-                <span class="tool-badge python"><i class="fab fa-python fa-sm"></i> Python</span>
-                <span class="tool-badge stata"><i class="fas fa-chart-line fa-sm"></i> Stata</span>
-                <span class="tool-badge sql"><i class="fas fa-database fa-sm"></i> SQL</span>
-                <span class="tool-badge powerbi"><i class="fas fa-bolt fa-sm"></i> Power BI</span>
+    <!-- ===== BLOQUE OSCURO: tools + asesorías + talleres ===== -->
+    <!-- Sin margen ni padding extra arriba para que el morado empiece justo tras el rasgado -->
+    <div class="dark-bg-main">
+
+        <!-- TOOLS BAR -->
+        <div class="tools-bar">
+            <div class="container">
+                <div class="label">Herramientas que trabajamos</div>
+                <div>
+                    <span class="tool-badge excel"><i class="fas fa-table fa-sm"></i> Excel</span>
+                    <span class="tool-badge python"><i class="fab fa-python fa-sm"></i> Python</span>
+                    <span class="tool-badge stata"><i class="fas fa-chart-line fa-sm"></i> Stata</span>
+                    <span class="tool-badge sql"><i class="fas fa-database fa-sm"></i> SQL</span>
+                    <span class="tool-badge powerbi"><i class="fas fa-bolt fa-sm"></i> Power BI</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- ===== ASESORÍAS GRATUITAS ===== -->
-    <div class="dark-section" id="section-asesorias">
-        <div class="container">
-
-            <p class="section-eyebrow free-tag">● Sin costo</p>
-            <div class="section-header-row">
-                <h2 class="section-heading">Asesorías <span>Gratuitas</span></h2>
-                <div class="filter-tabs">
-                    <button class="filter-tab active" onclick="filterCards('asesorias','todos',this)">Todos</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','excel',this)">Excel</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','python',this)">Python</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','datos',this)">Datos</button>
-                    <button class="filter-tab" onclick="filterCards('asesorias','stata',this)">Stata</button>
-                </div>
-            </div>
-
-            <!-- GRID 2x2 fijo -->
-            <div class="cards-grid-2" id="asesorias-grid">
-
-                <!-- Card 1: Nivelación en Informática -->
-                <div class="service-card" data-section="asesorias" data-tag="excel">
-                    <div class="card-header-img grad-excel">
-                        <div class="card-icon-circle"><i class="fas fa-table"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-excel">▶ Excel</span>
-                            <span class="card-level">Básico a avanzado</span>
-                        </div>
-                        <h5 class="card-title-text">Nivelación en Informática</h5>
-                        <p class="card-desc">Asesorías enfocadas en el manejo de Excel desde funciones básicas hasta herramientas avanzadas para organizar, analizar y automatizar datos.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Fórmulas</span>
-                            <span class="card-tag">Tablas dinámicas</span>
-                            <span class="card-tag">Dashboards</span>
-                        </div>
+        <!-- ASESORÍAS GRATUITAS -->
+        <div class="dark-section" id="section-asesorias">
+            <div class="container">
+                <p class="section-eyebrow free-tag">● Sin costo</p>
+                <div class="section-header-row">
+                    <h2 class="section-heading">Asesorías <span>Gratuitas</span></h2>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" onclick="filterCards('asesorias','todos',this)">Todos</button>
+                        <button class="filter-tab" onclick="filterCards('asesorias','excel',this)">Excel</button>
+                        <button class="filter-tab" onclick="filterCards('asesorias','python',this)">Python</button>
+                        <button class="filter-tab" onclick="filterCards('asesorias','datos',this)">Datos</button>
+                        <button class="filter-tab" onclick="filterCards('asesorias','stata',this)">Stata</button>
                     </div>
                 </div>
 
-                <!-- Card 2: Herramientas de Programación -->
-                <div class="service-card" data-section="asesorias" data-tag="python">
-                    <div class="card-header-img grad-python">
-                        <div class="card-icon-circle"><i class="fab fa-python"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-python">▶ Python</span>
-                            <span class="card-level">Programación</span>
-                        </div>
-                        <h5 class="card-title-text">Herramientas de Programación</h5>
-                        <p class="card-desc">Curso enfocado en Python, desde conceptos básicos hasta estructuras aplicadas a automatización, análisis de datos y resolución de problemas computacionales.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Fundamentos</span>
-                            <span class="card-tag">Automatización</span>
-                            <span class="card-tag">Problemas</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="cards-grid-2" id="asesorias-grid">
 
-                <!-- Card 3: Analítica de Datos -->
-                <div class="service-card" data-section="asesorias" data-tag="datos">
-                    <div class="card-header-img grad-data">
-                        <div class="card-icon-circle"><i class="fas fa-chart-bar"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-datos">▶ Excel y Python</span>
-                            <span class="card-level">Datos</span>
+                    <div class="service-card" data-section="asesorias" data-tag="excel">
+                        <div class="card-header-img grad-excel">
+                            <div class="card-icon-circle"><i class="fas fa-table"></i></div>
+                            <span class="card-type-badge">Asesoría Gratuita</span>
                         </div>
-                        <h5 class="card-title-text">Analítica de Datos</h5>
-                        <p class="card-desc">Curso orientado al análisis e interpretación de datos usando Excel y Python para limpiar información, visualizar hallazgos y crear reportes útiles.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Limpieza</span>
-                            <span class="card-tag">Visualización</span>
-                            <span class="card-tag">Reportes</span>
+                        <div class="card-body">
+                            <div class="card-category-row">
+                                <span class="card-category cat-excel">▶ Excel</span>
+                                <span class="card-level">Básico a avanzado</span>
+                            </div>
+                            <h5 class="card-title-text">Nivelación en Informática</h5>
+                            <p class="card-desc">Asesorías enfocadas en el manejo de Excel desde funciones básicas hasta herramientas avanzadas para organizar, analizar y automatizar datos.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Fórmulas</span>
+                                <span class="card-tag">Tablas dinámicas</span>
+                                <span class="card-tag">Dashboards</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 4: Estadística Aplicada -->
-                <div class="service-card" data-section="asesorias" data-tag="stata">
-                    <div class="card-header-img grad-stata">
-                        <div class="card-icon-circle"><i class="fas fa-chart-line"></i></div>
-                        <span class="card-type-badge">Asesoría Gratuita</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-stata">▶ Stata</span>
-                            <span class="card-level">Estadística</span>
+                    <div class="service-card" data-section="asesorias" data-tag="python">
+                        <div class="card-header-img grad-python">
+                            <div class="card-icon-circle"><i class="fab fa-python"></i></div>
+                            <span class="card-type-badge">Asesoría Gratuita</span>
                         </div>
-                        <h5 class="card-title-text">Estadística Aplicada</h5>
-                        <p class="card-desc">Curso orientado al uso de Stata para análisis descriptivo, inferencial y manejo de bases de datos en investigaciones y proyectos académicos.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Descriptiva</span>
-                            <span class="card-tag">Inferencia</span>
-                            <span class="card-tag">Bases de datos</span>
+                        <div class="card-body">
+                            <div class="card-category-row">
+                                <span class="card-category cat-python">▶ Python</span>
+                                <span class="card-level">Programación</span>
+                            </div>
+                            <h5 class="card-title-text">Herramientas de Programación</h5>
+                            <p class="card-desc">Curso enfocado en Python, desde conceptos básicos hasta estructuras aplicadas a automatización, análisis de datos y resolución de problemas computacionales.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Fundamentos</span>
+                                <span class="card-tag">Automatización</span>
+                                <span class="card-tag">Problemas</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                    <div class="service-card" data-section="asesorias" data-tag="datos">
+                        <div class="card-header-img grad-data">
+                            <div class="card-icon-circle"><i class="fas fa-chart-bar"></i></div>
+                            <span class="card-type-badge">Asesoría Gratuita</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-category-row">
+                                <span class="card-category cat-datos">▶ Excel y Python</span>
+                                <span class="card-level">Datos</span>
+                            </div>
+                            <h5 class="card-title-text">Analítica de Datos</h5>
+                            <p class="card-desc">Curso orientado al análisis e interpretación de datos usando Excel y Python para limpiar información, visualizar hallazgos y crear reportes útiles.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Limpieza</span>
+                                <span class="card-tag">Visualización</span>
+                                <span class="card-tag">Reportes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-section="asesorias" data-tag="stata">
+                        <div class="card-header-img grad-stata">
+                            <div class="card-icon-circle"><i class="fas fa-chart-line"></i></div>
+                            <span class="card-type-badge">Asesoría Gratuita</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-category-row">
+                                <span class="card-category cat-stata">▶ Stata</span>
+                                <span class="card-level">Estadística</span>
+                            </div>
+                            <h5 class="card-title-text">Estadística Aplicada</h5>
+                            <p class="card-desc">Curso orientado al uso de Stata para análisis descriptivo, inferencial y manejo de bases de datos en investigaciones y proyectos académicos.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Descriptiva</span>
+                                <span class="card-tag">Inferencia</span>
+                                <span class="card-tag">Bases de datos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- ===== TALLERES APLICADOS ===== -->
-    <div class="dark-section" id="section-talleres" style="padding-top: 10px;">
-        <div class="container">
-
-            <div class="wave-divider"></div>
-
-            <p class="section-eyebrow paid-tag">● Prácticos</p>
-            <div class="section-header-row">
-                <h2 class="section-heading">Talleres <span>Aplicados</span></h2>
-                <div class="filter-tabs">
-                    <button class="filter-tab active" onclick="filterCards('talleres','todos',this)">Todos</button>
-                    <button class="filter-tab" onclick="filterCards('talleres','sql',this)">SQL</button>
-                    <button class="filter-tab" onclick="filterCards('talleres','excel',this)">Excel</button>
-                    <button class="filter-tab" onclick="filterCards('talleres','powerbi',this)">Power BI</button>
-                </div>
-            </div>
-
-            <!-- GRID 3 columnas -->
-            <div class="cards-grid-3" id="talleres-grid">
-
-                <!-- Card: Taller de SQL -->
-                <div class="service-card" data-section="talleres" data-tag="sql">
-                    <div class="card-header-img grad-sql">
-                        <div class="card-icon-circle"><i class="fas fa-database"></i></div>
-                        <span class="card-type-badge">Taller</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-sql">▶ SQL</span>
-                            <span class="card-level">Bases de datos</span>
-                        </div>
-                        <h5 class="card-title-text">Taller de SQL</h5>
-                        <p class="card-desc">Taller práctico para consultar bases de datos mediante filtros, joins, subconsultas y manejo de información.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Consultas</span>
-                            <span class="card-tag">Joins</span>
-                            <span class="card-tag">Subconsultas</span>
-                        </div>
+        <!-- TALLERES APLICADOS -->
+        <div class="dark-section" id="section-talleres" style="padding-top:10px;">
+            <div class="container">
+                <div class="wave-divider"></div>
+                <p class="section-eyebrow paid-tag">● Prácticos</p>
+                <div class="section-header-row">
+                    <h2 class="section-heading">Talleres <span>Aplicados</span></h2>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" onclick="filterCards('talleres','todos',this)">Todos</button>
+                        <button class="filter-tab" onclick="filterCards('talleres','sql',this)">SQL</button>
+                        <button class="filter-tab" onclick="filterCards('talleres','excel',this)">Excel</button>
+                        <button class="filter-tab" onclick="filterCards('talleres','powerbi',this)">Power BI</button>
                     </div>
                 </div>
 
-                <!-- Card: Taller de Excel -->
-                <div class="service-card" data-section="talleres" data-tag="excel">
-                    <div class="card-header-img grad-excelws">
-                        <div class="card-icon-circle"><i class="fas fa-file-excel"></i></div>
-                        <span class="card-type-badge">Taller</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-excel">▶ Excel</span>
-                            <span class="card-level">Productividad</span>
-                        </div>
-                        <h5 class="card-title-text">Taller de Excel</h5>
-                        <p class="card-desc">Taller para organizar, analizar y visualizar datos con fórmulas, tablas dinámicas, gráficos y automatización.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Gráficos</span>
-                            <span class="card-tag">Tablas</span>
-                            <span class="card-tag">Automatización</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="cards-grid-3" id="talleres-grid">
 
-                <!-- Card: Taller de Power BI -->
-                <div class="service-card" data-section="talleres" data-tag="powerbi">
-                    <div class="card-header-img grad-powerbi">
-                        <div class="card-icon-circle"><i class="fas fa-bolt"></i></div>
-                        <span class="card-type-badge">Taller</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category-row">
-                            <span class="card-category cat-datos">▶ Power BI</span>
-                            <span class="card-level">Dashboards</span>
+                    <div class="service-card" data-section="talleres" data-tag="sql">
+                        <div class="card-header-img grad-sql">
+                            <div class="card-icon-circle"><i class="fas fa-database"></i></div>
+                            <span class="card-type-badge">Taller</span>
                         </div>
-                        <h5 class="card-title-text">Taller de Power BI</h5>
-                        <p class="card-desc">Taller orientado a crear dashboards e informes interactivos para transformar datos en reportes de decisión.</p>
-                        <div class="card-tags">
-                            <span class="card-tag">Power Query</span>
-                            <span class="card-tag">Visuales</span>
-                            <span class="card-tag">Reportes</span>
+                        <div class="card-body">
+                            <div class="card-category-row">
+                                <span class="card-category cat-sql">▶ SQL</span>
+                                <span class="card-level">Bases de datos</span>
+                            </div>
+                            <h5 class="card-title-text">Taller de SQL</h5>
+                            <p class="card-desc">Taller práctico para consultar bases de datos mediante filtros, joins, subconsultas y manejo de información.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Consultas</span>
+                                <span class="card-tag">Joins</span>
+                                <span class="card-tag">Subconsultas</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                    <div class="service-card" data-section="talleres" data-tag="excel">
+                        <div class="card-header-img grad-excelws">
+                            <div class="card-icon-circle"><i class="fas fa-file-excel"></i></div>
+                            <span class="card-type-badge">Taller</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-category-row">
+                                <span class="card-category cat-excel">▶ Excel</span>
+                                <span class="card-level">Productividad</span>
+                            </div>
+                            <h5 class="card-title-text">Taller de Excel</h5>
+                            <p class="card-desc">Taller para organizar, analizar y visualizar datos con fórmulas, tablas dinámicas, gráficos y automatización.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Gráficos</span>
+                                <span class="card-tag">Tablas</span>
+                                <span class="card-tag">Automatización</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-section="talleres" data-tag="powerbi">
+                        <div class="card-header-img grad-powerbi">
+                            <div class="card-icon-circle"><i class="fas fa-bolt"></i></div>
+                            <span class="card-type-badge">Taller</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-category-row">
+                                <span class="card-category cat-datos">▶ Power BI</span>
+                                <span class="card-level">Dashboards</span>
+                            </div>
+                            <h5 class="card-title-text">Taller de Power BI</h5>
+                            <p class="card-desc">Taller orientado a crear dashboards e informes interactivos para transformar datos en reportes de decisión.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Power Query</span>
+                                <span class="card-tag">Visuales</span>
+                                <span class="card-tag">Reportes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- ===== CTA ===== -->
-    <div class="cta-section">
-        <div class="container">
-            <div class="wave-divider" style="margin-bottom: 40px;"></div>
+    </div>
+    <!-- fin .dark-bg-main -->
+
+    <!-- ===== CTA — fondo BLANCO, inicia recto, termina rasgado ===== -->
+    <div class="cta-section position-relative">
+        <div class="cta-inner container">
             <div class="cta-box">
                 <div class="cta-left">
-                    <p class="section-eyebrow paid-tag">● Participa</p>
+                    <p class="cta-eyebrow">● Participa</p>
                     <h2>¿Quieres reforzar un curso o aprender una herramienta?</h2>
                 </div>
                 <div class="cta-right">
@@ -698,10 +659,12 @@
                 </div>
             </div>
         </div>
+        <!-- Rasgado inferior de la sección CTA -->
+        <div class="overlay-bottom-cta"></div>
     </div>
 
-    <!-- Footer Start — idéntico a las otras páginas -->
-    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+    <!-- Footer — idéntico a las otras páginas -->
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top:0;">
         <div class="container mt-5 pt-5">
             <div class="row align-items-start justify-content-between">
                 <div class="col-lg-5 col-md-6 mb-5 mb-md-0 text-center text-md-left">
@@ -724,7 +687,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256,256,256,.1) !important;">
+    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color:rgba(256,256,256,.1) !important;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
@@ -736,11 +699,9 @@
             </div>
         </div>
     </div>
-    <!-- Footer End -->
 
     <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-    <!-- JavaScript Libraries — idéntico a las otras páginas -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
@@ -753,15 +714,10 @@
             var allBtns = btn.parentElement.querySelectorAll('.filter-tab');
             allBtns.forEach(function(b){ b.classList.remove('active'); });
             btn.classList.add('active');
-
             var grid = document.getElementById(section + '-grid');
             var cards = grid.querySelectorAll('.service-card');
             cards.forEach(function(card) {
-                if (tag === 'todos' || card.getAttribute('data-tag') === tag) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = (tag === 'todos' || card.getAttribute('data-tag') === tag) ? 'flex' : 'none';
             });
         }
     </script>
