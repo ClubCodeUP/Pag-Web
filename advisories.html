@@ -170,6 +170,23 @@
             display: flex; flex-wrap: wrap; align-items: center;
             justify-content: space-between; gap: 12px; margin-bottom: 4px;
         }
+
+        /* ── overlay-bottom-purple: reemplaza el blanco del hero por el morado ── */
+        .overlay-bottom-purple {
+            position: relative;
+        }
+        .overlay-bottom-purple::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 80px;
+            background: url(./img/overlay-bottom-purple.png) bottom center no-repeat;
+            background-size: 100% 100%;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -218,8 +235,8 @@
         </nav>
     </div>
 
-    <!-- HERO -->
-    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom:0;">
+    <!-- HERO — cambiado overlay-bottom → overlay-bottom-purple -->
+    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom-purple" style="margin-bottom:0;">
         <div class="container text-center py-4" style="margin-top:2.5rem; margin-bottom:2.5rem;">
             <p class="text-white mb-3" style="font-family:'Jost',sans-serif;font-size:13px;letter-spacing:4px;">CLUB CODE UP</p>
             <h1 class="text-white display-1 mb-4 hero-title-white"
@@ -450,7 +467,7 @@
         </div>
     </div>
 
-    <!-- Footer — el overlay-top genera el único rasgado -->
+    <!-- Footer — overlay-top genera el rasgado oscuro (se mantiene igual) -->
     <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top:90px;">
         <div class="container mt-5 pt-5">
             <div class="row align-items-start justify-content-between">
