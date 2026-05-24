@@ -7,928 +7,683 @@
     <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-
-        body.internal-page{
-            background:#0f0830;
-            font-family:'Open Sans',sans-serif;
-            overflow-x:hidden;
+        /* Base Styles */
+        body {
+            background-color: #0f0830;
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        /* ================= HERO ================= */
-
-        .hero-section{
-            position:relative;
-            min-height:540px;
-            background:#f8f8fb;
-            overflow:hidden;
+        h1, h2, h3, h4, h5, .jost-font {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
         }
 
-        .hero-section::after{
-            content:"";
-            position:absolute;
-            bottom:-2px;
-            left:0;
-            width:100%;
-            height:120px;
-            background:url('img/overlay-bottom.png');
-            background-size:cover;
-            background-repeat:no-repeat;
-            z-index:4;
+        p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
         }
 
-        .hero-bg{
-            position:absolute;
-            inset:0;
-            background:
-            linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)),
-            url('img/bg.jpg');
-            background-size:cover;
-            background-position:center;
-            opacity:.9;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .hero-content{
-            position:relative;
-            z-index:3;
-            padding-top:120px;
-            text-align:center;
+        a:hover {
+            color: inherit;
         }
 
-        .hero-mini{
-            color:#8c6bdb;
-            letter-spacing:6px;
-            font-size:11px;
-            text-transform:uppercase;
-            font-family:'Jost',sans-serif;
-            margin-bottom:20px;
+        /* Top Bar */
+        .top-bar {
+            background-color: #0a0320;
+            font-size: 12px;
+            padding: 10px 0;
         }
 
-        .hero-title{
-            font-family:'Jost',sans-serif;
-            font-size:72px;
-            font-weight:700;
-            text-transform:uppercase;
-            line-height:1;
-            color:#140b3d;
-            margin-bottom:22px;
+        .top-bar a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-left: 15px;
         }
 
-        .hero-title span{
-            color:#8b5cf6;
+        /* Navbar */
+        .navbar {
+            background-color: white;
+            padding: 15px 0;
         }
 
-        .hero-sub{
-            max-width:650px;
-            margin:auto;
-            font-size:14px;
-            color:#666;
-            line-height:1.8;
+        .navbar-nav .nav-link {
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            color: #140b3d !important;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin: 0 10px;
         }
 
-        /* ================= SECTION ================= */
-
-        .dark-wrapper{
-            background:#0f0830;
-            padding:70px 0;
+        .navbar-nav .nav-link.active {
+            color: #8b5cf6 !important;
         }
 
-        .section-label{
-            color:#ff7b7b;
-            text-transform:uppercase;
-            font-size:11px;
-            letter-spacing:4px;
-            margin-bottom:18px;
-            font-family:'Jost',sans-serif;
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background-color: white;
+            color: #140b3d;
+            padding: 100px 0 180px;
+            text-align: center;
         }
 
-        .section-title{
-            font-family:'Jost',sans-serif;
-            color:white;
-            font-size:58px;
-            text-transform:uppercase;
-            font-weight:700;
-            line-height:1;
-            margin-bottom:40px;
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-color: #f8f8fb;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                /* You would put the path to your background pattern here, 
+                   or use an embed code for a similar pattern. Example: */
+                url('https://t3.ftcdn.net/jpg/03/17/74/71/360_F_317747195_oK78c66lK9w7zWb60rK9W8bK9w8zK9z.jpg');
+            background-size: contain;
+            background-position: center;
+            opacity: 0.8;
         }
 
-        .section-title span{
-            color:#9d6cff;
+        .hero-content {
+            position: relative;
+            z-index: 3;
         }
 
-        /* ================= FILTER ================= */
-
-        .filter-box{
-            display:flex;
-            gap:10px;
-            flex-wrap:wrap;
+        .hero-mini {
+            color: #8c6bdb;
+            letter-spacing: 6px;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .filter-btn{
-            background:#2a1d62;
-            border:none;
-            color:#d0c7ff;
-            padding:10px 18px;
-            font-size:11px;
-            text-transform:uppercase;
-            font-weight:700;
-            letter-spacing:1px;
-            font-family:'Jost',sans-serif;
-            transition:.3s;
+        .hero-title {
+            font-size: 64px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 25px;
         }
 
-        .filter-btn.active,
-        .filter-btn:hover{
-            background:#8b5cf6;
-            color:white;
+        .hero-title span {
+            color: #8b5cf6;
         }
 
-        /* ================= TOOLS ================= */
-
-        .tools-wrapper{
-            border-top:1px solid rgba(255,255,255,.08);
-            border-bottom:1px solid rgba(255,255,255,.08);
-            padding:30px 0;
-            margin-bottom:70px;
+        .hero-sub {
+            max-width: 650px;
+            margin: auto;
+            color: #666;
         }
 
-        .tools-title{
-            color:white;
-            font-size:12px;
-            text-transform:uppercase;
-            font-weight:700;
-            letter-spacing:2px;
-            margin-bottom:18px;
-            font-family:'Jost',sans-serif;
+        /* Wave Effect - Shared Bottom Overlay */
+        .hero-wave-overlay {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230b0320" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,181.3C384,203,480,213,576,197.3C672,181,768,139,864,133.3C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 4;
         }
 
-        .tool-item{
-            display:inline-flex;
-            align-items:center;
-            gap:7px;
-            background:#1d124f;
-            color:white;
-            border:1px solid rgba(255,255,255,.08);
-            padding:9px 18px;
-            margin-right:10px;
-            font-size:12px;
-            font-family:'Jost',sans-serif;
-            text-transform:uppercase;
+        /* Main Dark Section */
+        .main-dark {
+            background-color: #0b0320;
+            padding: 80px 0;
         }
 
-        /* ================= CARDS ================= */
-
-        .cards-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-            gap:30px;
+        /* Tools */
+        .tools-section {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 30px;
+            margin-bottom: 70px;
         }
 
-        .service-card{
-            background:#291160;
-            overflow:hidden;
-            transition:.35s;
+        .tools-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 18px;
         }
 
-        .service-card:hover{
-            transform:translateY(-6px);
+        .tool-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #1d124f;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 9px 18px;
+            margin: 0 10px 10px 0;
+            font-size: 12px;
+            text-transform: uppercase;
         }
 
-        .card-top{
-            height:185px;
-            position:relative;
-            padding:28px;
+        /* Section Headings and Filters */
+        .section-label {
+            color: #ff7b7b;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
         }
 
-        .grad-purple{
-            background:linear-gradient(135deg,#6d28d9,#7c3aed,#9333ea);
+        .section-title {
+            font-size: 56px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 40px;
         }
 
-        .grad-pink{
-            background:linear-gradient(135deg,#e11d48,#db2777,#9333ea);
+        .section-title span {
+            color: #9d6cff;
         }
 
-        .grad-yellow{
-            background:linear-gradient(135deg,#facc15,#fb923c,#9333ea);
+        .filter-btn {
+            background: #2a1d62;
+            border: none;
+            color: #d0c7ff;
+            padding: 10px 18px;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0 5px 10px 0;
+            transition: 0.3s;
         }
 
-        .grad-blue{
-            background:linear-gradient(135deg,#0ea5e9,#2563eb,#4338ca);
+        .filter-btn.active, .filter-btn:hover {
+            background: #8b5cf6;
+            color: white;
         }
 
-        .grad-green{
-            background:linear-gradient(135deg,#16a34a,#059669,#2563eb);
+        /* Card System */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        .icon-box{
-            width:52px;
-            height:52px;
-            background:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:#8b5cf6;
-            font-size:22px;
+        .service-card {
+            background: #291160;
+            overflow: hidden;
+            transition: 0.35s;
         }
 
-        .card-badge{
-            position:absolute;
-            right:20px;
-            bottom:20px;
-            background:#160b3f;
-            color:white;
-            font-size:10px;
-            padding:7px 14px;
-            text-transform:uppercase;
-            font-family:'Jost',sans-serif;
-            letter-spacing:1px;
+        .service-card:hover {
+            transform: translateY(-6px);
         }
 
-        .card-body-custom{
-            padding:28px;
+        .card-top {
+            height: 185px;
+            position: relative;
+            padding: 28px;
         }
 
-        .card-mini{
-            display:flex;
-            justify-content:space-between;
-            color:#c6b8ff;
-            font-size:11px;
-            margin-bottom:14px;
+        .card-badge {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            background: #160b3f;
+            color: white;
+            font-size: 10px;
+            padding: 7px 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .card-title{
-            color:white;
-            font-family:'Jost',sans-serif;
-            font-size:28px;
-            text-transform:uppercase;
-            margin-bottom:16px;
-            line-height:1.2;
+        .card-body-custom {
+            padding: 28px;
         }
 
-        .card-text{
-            color:rgba(255,255,255,.75);
-            line-height:1.8;
-            font-size:13px;
-            margin-bottom:22px;
+        .card-sub-info {
+            display: flex;
+            justify-content: space-between;
+            color: #c6b8ff;
+            font-size: 11px;
+            margin-bottom: 14px;
         }
 
-        .tags{
-            display:flex;
-            gap:10px;
-            flex-wrap:wrap;
+        .card-title {
+            color: white;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            line-height: 1.2;
         }
 
-        .tag{
-            border:1px solid rgba(255,255,255,.15);
-            color:white;
-            font-size:10px;
-            padding:6px 12px;
-            text-transform:uppercase;
-            font-family:'Jost',sans-serif;
+        .card-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 13px;
+            margin-bottom: 22px;
         }
 
-        /* ================= CTA ================= */
-
-        .cta-section{
-            background:#f5f5f8;
-            padding:120px 0;
-            position:relative;
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .cta-section::before{
-            content:"";
-            position:absolute;
-            top:-1px;
-            left:0;
-            width:100%;
-            height:120px;
-            background:url('img/overlay-top.png');
-            background-size:cover;
+        .tag {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 10px;
+            padding: 6px 12px;
+            text-transform: uppercase;
         }
 
-        .cta-title{
-            font-family:'Jost',sans-serif;
-            font-size:62px;
-            line-height:1;
-            text-transform:uppercase;
-            font-weight:700;
-            color:#140b3d;
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b5cf6;
+            font-size: 22px;
         }
 
-        .cta-box{
-            background:#eef1f7;
-            padding:40px;
+        /* Specific Gradients */
+        .grad-purple { background: linear-gradient(135deg, #6d28d9, #7c3aed, #9333ea); }
+        .grad-pink { background: linear-gradient(135deg, #e11d48, #db2777, #9333ea); }
+        .grad-orange { background: linear-gradient(135deg, #fb923c, #fb7185, #9333ea); }
+        .grad-blue { background: linear-gradient(135deg, #2563eb, #3b82f6, #9333ea); }
+        .grad-green { background: linear-gradient(135deg, #16a34a, #10b981); }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            background-color: white;
+            color: #140b3d;
+            padding: 120px 0;
         }
 
-        .cta-box h4{
-            font-family:'Jost',sans-serif;
-            font-weight:700;
-            color:#140b3d;
-            margin-bottom:15px;
+        .cta-title {
+            font-size: 62px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 0;
         }
 
-        .cta-box p{
-            color:#666;
-            line-height:1.8;
-            font-size:14px;
+        .cta-box {
+            background-color: #f4f6fb;
+            padding: 40px;
         }
 
-        @media(max-width:768px){
-
-            .hero-title{
-                font-size:42px;
-            }
-
-            .section-title{
-                font-size:40px;
-            }
-
-            .cta-title{
-                font-size:42px;
-                margin-bottom:40px;
-            }
-
+        .cta-box h4 {
+            font-size: 18px;
+            color: #140b3d;
+            margin-bottom: 15px;
         }
 
+        .cta-box p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .cta-box .contact-item {
+            color: #140b3d;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0b0320;
+            padding: 70px 0 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-title {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .newsletter input {
+            background: white;
+            border: none;
+            padding: 12px;
+            width: 70%;
+        }
+
+        .newsletter button {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #8b5cf6;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title, .section-title, .cta-title { font-size: 36px; }
+            .tools-title { text-align: center; }
+            .col-lg-9 { text-align: center; }
+        }
     </style>
-
 </head>
 
-<body class="internal-page">
+<body>
 
-    <!-- TOPBAR -->
-
-    <div class="container-fluid bg-dark">
-        <div class="row py-2 px-lg-5">
-
-            <div class="col-lg-6 text-center text-lg-left">
-                <div class="d-inline-flex align-items-center text-white">
-                    <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
-                </div>
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</div>
+            <div>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2"><i class="fab fa-facebook-f"></i></a>
-                    <a class="text-white px-2"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="text-white px-2"><i class="fab fa-instagram"></i></a>
-                    <a class="text-white px-2"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
         </div>
     </div>
 
-    <!-- NAVBAR -->
-
-    <div class="container-fluid p-0">
-
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-
-            <a href="" class="navbar-brand ml-lg-3">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a href="#" class="navbar-brand">
                 <img src="./img/GeneralUse/logo.png" width="90">
             </a>
-
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="" class="nav-item nav-link">INICIO</a>
-                    <a href="" class="nav-item nav-link">BLOG</a>
-                    <a href="" class="nav-item nav-link">ALIANZAS</a>
-                    <a href="" class="nav-item nav-link">PROYECTOS</a>
-                    <a href="" class="nav-item nav-link active">ASESORÍAS Y TALLERES</a>
-                    <a href="" class="nav-item nav-link">NOSOTROS</a>
-                    <a href="" class="nav-item nav-link">ÚNETE</a>
+            <div class="collapse navbar-collapse justify-content-center">
+                <div class="navbar-nav">
+                    <a href="#" class="nav-item nav-link">Inicio</a>
+                    <a href="#" class="nav-item nav-link">Blog</a>
+                    <a href="#" class="nav-item nav-link">Alianzas</a>
+                    <a href="#" class="nav-item nav-link">Proyectos</a>
+                    <a href="#" class="nav-item nav-link active">Asesorías y Talleres</a>
+                    <a href="#" class="nav-item nav-link">Nosotros</a>
+                    <a href="#" class="nav-item nav-link">Únete</a>
                 </div>
-
             </div>
-
-        </nav>
-
-    </div>
-
-    <!-- HERO -->
+        </div>
+    </nav>
 
     <section class="hero-section">
-
         <div class="hero-bg"></div>
-
         <div class="container hero-content">
-
-            <div class="hero-mini">CLUB CODE UP</div>
-
-            <h1 class="hero-title">
-                ASESORÍAS Y <span>TALLERES</span>
-            </h1>
-
-            <p class="hero-sub">
-                Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales: Excel, Python, Stata, SQL y Power BI.
-            </p>
-
+            <div class="hero-mini">Club Code UP</div>
+            <h1 class="hero-title">Asesorías y <span>Talleres</span></h1>
+            <p class="hero-sub">Refuerza tus cursos, aprende herramientas aplicadas y practica con datos reales: Excel, Python, Stata, SQL y Power BI.</p>
         </div>
-
+        <div class="hero-wave-overlay"></div>
     </section>
 
-    <!-- DARK CONTENT -->
-
-    <section class="dark-wrapper">
-
+    <section class="main-dark">
         <div class="container">
 
-            <!-- TOOLS -->
-
-            <div class="tools-wrapper">
-
-                <div class="row align-items-center">
-
-                    <div class="col-lg-3">
-                        <div class="tools-title">
-                            Herramientas que trabajamos
-                        </div>
-                    </div>
-
-                    <div class="col-lg-9">
-
-                        <span class="tool-item"><i class="fas fa-table"></i> Excel</span>
-                        <span class="tool-item"><i class="fab fa-python"></i> Python</span>
-                        <span class="tool-item"><i class="fas fa-chart-line"></i> Stata</span>
-                        <span class="tool-item"><i class="fas fa-database"></i> SQL</span>
-                        <span class="tool-item"><i class="fas fa-bolt"></i> Power BI</span>
-
-                    </div>
-
+            <div class="row align-items-center tools-section">
+                <div class="col-lg-3">
+                    <div class="tools-title">Herramientas que trabajamos</div>
                 </div>
-
+                <div class="col-lg-9">
+                    <span class="tool-item"><i class="fas fa-table"></i> Excel</span>
+                    <span class="tool-item"><i class="fab fa-python"></i> Python</span>
+                    <span class="tool-item"><i class="fas fa-chart-line"></i> Stata</span>
+                    <span class="tool-item"><i class="fas fa-database"></i> SQL</span>
+                    <span class="tool-item"><i class="fas fa-bolt"></i> Power BI</span>
+                </div>
             </div>
-
-            <!-- SECTION -->
 
             <div class="d-flex justify-content-between align-items-center flex-wrap mb-5">
-
                 <div>
-
-                    <div class="section-label">
-                        ● SIN COSTO
-                    </div>
-
-                    <h2 class="section-title">
-                        ASESORÍAS <span>GRATUITAS</span>
-                    </h2>
-
+                    <div class="section-label">● Sin Costo</div>
+                    <h2 class="section-title">Asesorías <span>Gratuitas</span></h2>
                 </div>
-
-                <div class="filter-box">
-
-                    <button class="filter-btn active">TODOS</button>
-                    <button class="filter-btn">EXCEL</button>
-                    <button class="filter-btn">PYTHON</button>
-                    <button class="filter-btn">DATOS</button>
-                    <button class="filter-btn">STATA</button>
-
+                <div>
+                    <button class="filter-btn active">Todos</button>
+                    <button class="filter-btn">Excel</button>
+                    <button class="filter-btn">Python</button>
+                    <button class="filter-btn">Datos</button>
+                    <button class="filter-btn">Stata</button>
                 </div>
-
             </div>
 
-            <!-- CARDS -->
-
             <div class="cards-grid">
-
-                <!-- CARD -->
-
                 <div class="service-card">
-
                     <div class="card-top grad-purple">
-
-                        <div class="icon-box">
-                            <i class="fas fa-table"></i>
-                        </div>
-
-                        <div class="card-badge">
-                            ASESORÍA GRATUITA
-                        </div>
-
+                        <div class="icon-box"><i class="fas fa-table"></i></div>
+                        <div class="card-badge">Asesoría Gratuita</div>
                     </div>
-
                     <div class="card-body-custom">
-
-                        <div class="card-mini">
+                        <div class="card-sub-info">
                             <span>▶ Excel</span>
                             <span>Básico a avanzado</span>
                         </div>
-
-                        <h3 class="card-title">
-                            Nivelación en Informática
-                        </h3>
-
-                        <div class="card-text">
-                            Asesorías enfocadas en el manejo de Excel desde funciones básicas hasta herramientas avanzadas.
-                        </div>
-
+                        <h3 class="card-title">Nivelación en Informática</h3>
+                        <p class="card-text">Asesorías enfocadas en el manejo de Excel desde funciones básicas hasta herramientas avanzadas.</p>
                         <div class="tags">
                             <span class="tag">Fórmulas</span>
                             <span class="tag">Tablas dinámicas</span>
                             <span class="tag">Dashboards</span>
                         </div>
-
                     </div>
-
                 </div>
 
-                <!-- CARD -->
-
                 <div class="service-card">
-
                     <div class="card-top grad-pink">
-
-                        <div class="icon-box">
-                            <i class="fab fa-python"></i>
-                        </div>
-
-                        <div class="card-badge">
-                            ASESORÍA GRATUITA
-                        </div>
-
+                        <div class="icon-box"><i class="fab fa-python"></i></div>
+                        <div class="card-badge">Asesoría Gratuita</div>
                     </div>
-
                     <div class="card-body-custom">
-
-                        <div class="card-mini">
+                        <div class="card-sub-info">
                             <span>▶ Python</span>
                             <span>Programación</span>
                         </div>
-
-                        <h3 class="card-title">
-                            Herramientas de Programación
-                        </h3>
-
-                        <div class="card-text">
-                            Curso enfocado en Python desde conceptos básicos hasta automatización y análisis de datos.
-                        </div>
-
+                        <h3 class="card-title">Herramientas de Programación</h3>
+                        <p class="card-text">Curso enfocado en Python desde conceptos básicos hasta automatización y análisis de datos.</p>
                         <div class="tags">
                             <span class="tag">Fundamentos</span>
                             <span class="tag">Automatización</span>
                             <span class="tag">Problemas</span>
                         </div>
-
                     </div>
-
                 </div>
 
+                <div class="service-card">
+                    <div class="card-top grad-orange">
+                        <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                        <div class="card-badge">Asesoría Gratuita</div>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="card-sub-info">
+                            <span>▶ Datos</span>
+                            <span>Análisis</span>
+                        </div>
+                        <h3 class="card-title">Analítica de Datos</h3>
+                        <p class="card-text">Uso de herramientas estadísticas para interpretar datos y obtener insights valiosos.</p>
+                        <div class="tags">
+                            <span class="tag">Limpieza</span>
+                            <span class="tag">Visualización</span>
+                            <span class="tag">Reportes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-top grad-blue">
+                        <div class="icon-box"><i class="fas fa-database"></i></div>
+                        <div class="card-badge">Asesoría Gratuita</div>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="card-sub-info">
+                            <span>▶ Stata</span>
+                            <span>Estadística</span>
+                        </div>
+                        <h3 class="card-title">Estadística Aplicada</h3>
+                        <p class="card-text">Taller de estadística descriptiva e inferencial para análisis de bases de datos.</p>
+                        <div class="tags">
+                            <span class="tag">Descriptiva</span>
+                            <span class="tag">Inferencia</span>
+                            <span class="tag">Proyectos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-5 mt-5">
+                <div>
+                    <div class="section-label">● Prácticos</div>
+                    <h2 class="section-title">Talleres <span>Aplicados</span></h2>
+                </div>
+                <div>
+                    <button class="filter-btn active">Todos</button>
+                    <button class="filter-btn">SQL</button>
+                    <button class="filter-btn">Excel</button>
+                    <button class="filter-btn">Power BI</button>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="service-card">
+                    <div class="card-top grad-blue">
+                        <div class="icon-box"><i class="fas fa-database"></i></div>
+                        <div class="card-badge">Taller</div>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="card-sub-info">
+                            <span>▶ SQL</span>
+                            <span>Bases de datos</span>
+                        </div>
+                        <h3 class="card-title">Taller de SQL</h3>
+                        <p class="card-text">Consultas a bases de datos mediante filtros, joins y subconsultas.</p>
+                        <div class="tags">
+                            <span class="tag">Consultas</span>
+                            <span class="tag">Joins</span>
+                            <span class="tag">Subconsultas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-top grad-green">
+                        <div class="icon-box"><i class="fas fa-file-excel"></i></div>
+                        <div class="card-badge">Taller</div>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="card-sub-info">
+                            <span>▶ Excel</span>
+                            <span>Productividad</span>
+                        </div>
+                        <h3 class="card-title">Taller de Excel</h3>
+                        <p class="card-text">Analizar y visualizar datos con fórmulas y tablas dinámicas.</p>
+                        <div class="tags">
+                            <span class="tag">Gráficos</span>
+                            <span class="tag">Tablas</span>
+                            <span class="tag">Automatización</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-top grad-orange">
+                        <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
+                        <div class="card-badge">Taller</div>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="card-sub-info">
+                            <span>▶ Power BI</span>
+                            <span>Dashboards</span>
+                        </div>
+                        <h3 class="card-title">Taller de Power BI</h3>
+                        <p class="card-text">Crear informes interactivos para transformar datos en reportes de decisión.</p>
+                        <div class="tags">
+                            <span class="tag">Power Query</span>
+                            <span class="tag">Visuales</span>
+                            <span class="tag">Reportes</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
-
     </section>
 
+    <section class="cta-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5">
+                    <div class="section-label">● Participa</div>
+                    <h2 class="cta-title">¿Quieres reforzar un curso o aprender una herramienta?</h2>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="cta-box">
+                        <h4>Escríbenos para conocer las próximas fechas</h4>
+                        <p>Publicamos convocatorias, horarios y formularios de inscripción en nuestras redes.</p>
+                        <p><i class="fa fa-envelope mr-2"></i> clubcodeup@gmail.com</p>
+                        <p class="contact-item mb-0"><i class="fab fa-instagram mr-2"></i> @clubcodeup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="footer-title">Code UP</div>
+                    <p>Aprende tus primeros pasos en la programación.</p>
+                    <h5 class="text-white mb-4">Encuéntranos</h5>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i> Universidad del Pacífico</p>
+                    <p><i class="fa fa-envelope mr-2"></i> clubcodeup@gmail.com</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white mr-4"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="text-white mr-4"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white mr-4"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <h5 class="text-white mb-4">Newsletter</h5>
+                    <div class="newsletter d-flex">
+                        <input type="email" placeholder="Correo">
+                        <button>Suscribirte</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6 text-md-left">Copyright © <strong>CODE UP</strong>. All Rights Reserved.</div>
+                <div class="col-md-6 text-md-right">Designed by HTML Codex</div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>
-
-
-<!-- ================= TALLERES APLICADOS ================= -->
-
-<section class="main-dark pt-0">
-
-    <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-
-            <div>
-                <div class="section-mini">● PRÁCTICOS</div>
-
-                <h2 class="section-title">
-                    TALLERES
-                    <span>APLICADOS</span>
-                </h2>
-            </div>
-
-            <div class="filters">
-                <button class="filter-btn active">TODOS</button>
-                <button class="filter-btn">SQL</button>
-                <button class="filter-btn">EXCEL</button>
-                <button class="filter-btn">POWER BI</button>
-            </div>
-
-        </div>
-
-        <!-- CARDS -->
-
-        <div class="cards-grid">
-
-            <!-- CARD SQL -->
-
-            <div class="service-card">
-
-                <div class="card-top gradient-blue2">
-
-                    <div class="icon-box">
-                        <i class="fas fa-database"></i>
-                    </div>
-
-                    <div class="type-badge">
-                        TALLER
-                    </div>
-
-                </div>
-
-                <div class="card-body-custom">
-
-                    <div class="small-category">
-                        ▶ SQL
-                        <span>Bases de datos</span>
-                    </div>
-
-                    <div class="card-title">
-                        TALLER DE SQL
-                    </div>
-
-                    <div class="card-desc">
-                        Taller práctico para consultar bases de datos mediante filtros,
-                        joins, subconsultas y manejo de información.
-                    </div>
-
-                    <span class="tag">CONSULTAS</span>
-                    <span class="tag">JOINS</span>
-                    <span class="tag">SUBCONSULTAS</span>
-
-                </div>
-
-            </div>
-
-            <!-- CARD EXCEL -->
-
-            <div class="service-card">
-
-                <div class="card-top gradient-green">
-
-                    <div class="icon-box">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-
-                    <div class="type-badge">
-                        TALLER
-                    </div>
-
-                </div>
-
-                <div class="card-body-custom">
-
-                    <div class="small-category">
-                        ▶ Excel
-                        <span>Productividad</span>
-                    </div>
-
-                    <div class="card-title">
-                        TALLER DE EXCEL
-                    </div>
-
-                    <div class="card-desc">
-                        Taller para organizar, analizar y visualizar datos con fórmulas,
-                        tablas dinámicas, gráficos y automatización.
-                    </div>
-
-                    <span class="tag">GRÁFICOS</span>
-                    <span class="tag">TABLAS</span>
-                    <span class="tag">AUTOMATIZACIÓN</span>
-
-                </div>
-
-            </div>
-
-            <!-- CARD POWER BI -->
-
-            <div class="service-card">
-
-                <div class="card-top gradient-orange">
-
-                    <div class="icon-box">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-
-                    <div class="type-badge">
-                        TALLER
-                    </div>
-
-                </div>
-
-                <div class="card-body-custom">
-
-                    <div class="small-category">
-                        ▶ Power BI
-                        <span>Dashboards</span>
-                    </div>
-
-                    <div class="card-title">
-                        TALLER DE POWER BI
-                    </div>
-
-                    <div class="card-desc">
-                        Taller orientado a crear dashboards e informes interactivos
-                        para transformar datos en reportes de decisión.
-                    </div>
-
-                    <span class="tag">POWER QUERY</span>
-                    <span class="tag">VISUALES</span>
-                    <span class="tag">REPORTES</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= CTA SECTION ================= -->
-
-<section class="cta">
-
-    <!-- WAVE TOP -->
-
-    <svg class="footer-wave" viewBox="0 0 1440 170">
-        <path fill="#0b0320"
-            d="M0,96L48,106.7C96,117,192,139,288,133.3C384,128,480,96,576,90.7C672,85,768,107,864,112C960,117,1056,107,1152,101.3C1248,96,1344,96,1392,96L1440,96L1440,0L0,0Z">
-        </path>
-    </svg>
-
-    <div class="container">
-
-        <div class="row align-items-center">
-
-            <div class="col-lg-6 mb-5 mb-lg-0">
-
-                <div class="section-mini">
-                    ● PARTICIPA
-                </div>
-
-                <h2>
-                    ¿QUIERES<br>
-                    REFORZAR UN<br>
-                    CURSO O APRENDER<br>
-                    UNA HERRAMIENTA?
-                </h2>
-
-            </div>
-
-            <div class="col-lg-5 offset-lg-1">
-
-                <div class="cta-box">
-
-                    <div class="cta-right">
-
-                        <h4>
-                            Escríbenos para conocer las próximas fechas
-                        </h4>
-
-                        <p>
-                            Publicamos convocatorias, horarios y formularios
-                            de inscripción en nuestras redes.
-                        </p>
-
-                        <p class="mb-2">
-                            <i class="fa fa-envelope mr-2"></i>
-                            clubcodeup@gmail.com
-                        </p>
-
-                        <p class="mb-0">
-                            <i class="fab fa-instagram mr-2"></i>
-                            @clubcodeup
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-    <!-- WAVE -->
-
-    <svg class="footer-wave" viewBox="0 0 1440 170">
-        <path fill="#0b0320"
-            d="M0,96L48,106.7C96,117,192,139,288,133.3C384,128,480,96,576,90.7C672,85,768,107,864,112C960,117,1056,107,1152,101.3C1248,96,1344,96,1392,96L1440,96L1440,0L0,0Z">
-        </path>
-    </svg>
-
-    <div class="container">
-
-        <div class="row">
-
-            <!-- LEFT -->
-
-            <div class="col-lg-6 mb-5">
-
-                <div class="footer-title">
-                    CODE UP
-                </div>
-
-                <p class="mb-5">
-                    Aprende tus primeros pasos en la programación
-                </p>
-
-                <h5 class="text-white mb-4">
-                    Encuéntranos
-                </h5>
-
-                <p>
-                    <i class="fa fa-map-marker-alt mr-2"></i>
-                    Universidad del Pacífico
-                </p>
-
-                <p>
-                    <i class="fa fa-envelope mr-2"></i>
-                    clubcodeup@gmail.com
-                </p>
-
-                <div class="mt-4">
-
-                    <a href="#" class="text-white mr-4">
-                        <i class="fab fa-tiktok fa-lg"></i>
-                    </a>
-
-                    <a href="#" class="text-white mr-4">
-                        <i class="fab fa-facebook-f fa-lg"></i>
-                    </a>
-
-                    <a href="#" class="text-white mr-4">
-                        <i class="fab fa-linkedin-in fa-lg"></i>
-                    </a>
-
-                    <a href="#" class="text-white">
-                        <i class="fab fa-instagram fa-lg"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- RIGHT -->
-
-            <div class="col-lg-5 offset-lg-1">
-
-                <h4 class="text-white mb-4">
-                    Newsletter
-                </h4>
-
-                <div class="newsletter d-flex">
-
-                    <input type="text" placeholder="Correo">
-
-                    <button>
-                        Suscribirte
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- BOTTOM -->
-
-        <div class="footer-bottom d-flex justify-content-between flex-wrap">
-
-            <div>
-                Copyright © <strong>CODEUP</strong>. All Rights Reserved.
-            </div>
-
-            <div>
-                Designed by HTML Codex
-            </div>
-
-        </div>
-
-    </div>
-
-</footer>
-
-<!-- ================= JS ================= -->
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
