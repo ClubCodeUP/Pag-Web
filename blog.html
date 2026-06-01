@@ -1,30 +1,381 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
-    <title>Club CODE UP</title>
+    <title>Club CODE UP - Blog</title>
     <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta content="Articulos y aprendizajes del Club CODE UP" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
-
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="img/css/style.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --code-dark: #120f2d;
+            --code-purple: #7546e8;
+            --code-purple-deep: #2b1663;
+            --code-blue: #2878eb;
+            --code-red: #f14d5d;
+            --blog-text: #171239;
+            --blog-muted: #6b6a75;
+            --blog-soft: #f7f5ff;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            color: var(--blog-text);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Jost", sans-serif;
+        }
+
+        .blog-hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            margin-bottom: 0;
+        }
+
+        .blog-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 92px;
+            background: url("img/overlay-bottom.png") no-repeat bottom center;
+            background-size: cover;
+            z-index: 3;
+        }
+
+        .blog-hero .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 52%;
+        }
+
+        .blog-hero .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(126, 98, 200, 0.72), rgba(42, 33, 122, 0.88));
+            z-index: 1;
+        }
+
+        .blog-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 116px 20px 146px;
+        }
+
+        .hero-eyebrow,
+        .blog-label,
+        .blog-card-kicker {
+            font-family: "Jost", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero-eyebrow {
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 22px;
+        }
+
+        .blog-hero h1 {
+            color: #fff;
+            font-size: clamp(3.3rem, 7vw, 5.2rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+
+        .blog-hero p:last-child {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .blog-listing {
+            background:
+                linear-gradient(180deg, #fff 0%, #fff 58%, var(--blog-soft) 100%);
+            padding: 88px 0 104px;
+        }
+
+        .blog-listing h2 {
+            color: var(--code-dark);
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+        }
+
+        .blog-card {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 18px 35px rgba(28, 22, 72, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 44px rgba(28, 22, 72, 0.16);
+        }
+
+        .blog-cover {
+            position: relative;
+            min-height: 282px;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(31, 15, 83, 0.96) 0 36%, rgba(47, 25, 113, 0.98) 36% 100%),
+                radial-gradient(circle at 18% 18%, rgba(117, 70, 232, 0.45), transparent 32%);
+        }
+
+        .blog-cover::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+            background-size: 26px 26px;
+            opacity: 0.22;
+        }
+
+        .phishing-window {
+            position: absolute;
+            top: 54px;
+            left: 46px;
+            width: 45%;
+            min-width: 230px;
+            padding: 24px 22px;
+            background: #fff7d7;
+            border: 4px solid #ffcf46;
+            box-shadow: 0 9px 0 rgba(18, 15, 45, 0.34);
+        }
+
+        .phishing-input {
+            height: 27px;
+            margin-bottom: 14px;
+            border-radius: 4px;
+            background: #fff;
+            border: 1px solid #e1dfef;
+            color: #6b6a75;
+            font-size: 12px;
+            line-height: 27px;
+            padding: 0 10px;
+        }
+
+        .phishing-alert {
+            height: 25px;
+            margin-bottom: 15px;
+            background: #ffe6ea;
+            color: #f14d5d;
+            font-size: 12px;
+            line-height: 25px;
+            padding: 0 10px;
+        }
+
+        .phishing-lines span {
+            display: block;
+            height: 8px;
+            margin-bottom: 10px;
+            background: #c6b1ff;
+        }
+
+        .phishing-lines span:nth-child(2) {
+            width: 86%;
+        }
+
+        .phishing-lines span:nth-child(3) {
+            width: 75%;
+        }
+
+        .phishing-button {
+            display: inline-block;
+            margin-top: 2px;
+            padding: 7px 18px;
+            color: #fff;
+            background: var(--code-purple);
+            font-family: "Jost", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .phishing-badge {
+            position: absolute;
+            top: 46px;
+            right: 58px;
+            z-index: 2;
+            padding: 8px 16px;
+            border-radius: 3px;
+            color: #fff;
+            background: var(--code-red);
+            font-family: "Jost", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .cursor-shape {
+            position: absolute;
+            right: 58px;
+            top: 96px;
+            width: 156px;
+            height: 156px;
+            z-index: 2;
+            background: #fff;
+            clip-path: polygon(0 0, 100% 30%, 62% 44%, 84% 91%, 63% 100%, 41% 52%, 12% 84%);
+            filter: drop-shadow(8px 10px 0 rgba(18, 15, 45, 0.45));
+        }
+
+        .blog-cover-title {
+            position: absolute;
+            left: 38px;
+            right: 24px;
+            bottom: 28px;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .blog-card .blog-cover-title h3 {
+            max-width: 520px;
+            color: #fff;
+            font-size: clamp(1.55rem, 3vw, 2rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin: 0 0 6px;
+            text-transform: uppercase;
+        }
+
+        .blog-card .blog-cover-title p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.95rem;
+        }
+
+        .blog-card-body {
+            padding: 28px 28px 30px;
+        }
+
+        .blog-card-kicker {
+            display: block;
+            color: var(--code-purple);
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .blog-card h3 {
+            color: var(--code-dark);
+            font-size: 1.48rem;
+            font-weight: 800;
+            line-height: 1.18;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .blog-card p {
+            color: var(--blog-muted);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .blog-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 0 20px;
+            border-radius: 999px;
+            color: #fff;
+            background: var(--code-purple);
+            font-family: "Jost", sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 10px 18px rgba(117, 70, 232, 0.24);
+        }
+
+        .blog-btn:hover {
+            color: #fff;
+            background: var(--code-blue);
+            text-decoration: none;
+        }
+
+        .footer-social a {
+            font-size: 1.45rem;
+        }
+
+        @media (max-width: 991px) {
+            .blog-hero {
+                min-height: 430px;
+            }
+
+            .blog-hero .hero-content {
+                padding: 96px 20px 126px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .blog-listing {
+                padding: 70px 0 82px;
+            }
+
+            .blog-cover {
+                min-height: 430px;
+            }
+
+            .phishing-window {
+                top: 42px;
+                left: 24px;
+                width: 56%;
+                min-width: 184px;
+                padding: 18px 16px;
+            }
+
+            .phishing-badge {
+                top: 34px;
+                right: 24px;
+                font-size: 10px;
+                padding: 7px 10px;
+            }
+
+            .cursor-shape {
+                right: 22px;
+                top: 92px;
+                width: 112px;
+                height: 112px;
+            }
+
+            .blog-cover-title {
+                left: 24px;
+                bottom: 22px;
+            }
+
+            .blog-card .blog-cover-title h3 {
+                font-size: 1.28rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="internal-page">
@@ -33,199 +384,157 @@
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center text-white">
-                    <!--<small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
-                    <small class="px-3">|</small>-->
                     <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    
-                    <!--
-                    <a class="text-white px-2" href="">     
-                        <i class="fab fa-twitter"></i>
-                    </a>-->
-                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-white pl-2" href="" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a class="text-white pl-2" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
 
-
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="index.html" class="navbar-brand ml-lg-3">
-                    <img src="./img/GeneralUse/logo.png" width="100" height="100" >  
+                <img src="./img/GeneralUse/logo.png" width="100" height="100" alt="Code UP">
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-label="Abrir menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link ">INICIO</a>
+                    <a href="index.html" class="nav-item nav-link">INICIO</a>
                     <a href="blog.html" class="nav-item nav-link active">BLOG</a>
                     <a href="course.html" class="nav-item nav-link">ALIANZAS</a>
-                    <!--|
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">PAGINAS</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="detail.html" class="dropdown-item">Course Detail</a>
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="team.html" class="dropdown-item">Instructors</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        </div>
-                    </div>-->
                     <a href="projects.html" class="nav-item nav-link">PROYECTOS</a>
                     <a href="advisories.html" class="nav-item nav-link">ASESORIAS Y CURSOS</a>
                     <a href="team.html" class="nav-item nav-link">NOSOTROS</a>
-                    <a href="contact.html" class="nav-item nav-link">ÚNETE</a>
-                    </div>
-                    <!--<a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>-->
+                    <a href="contact.html" class="nav-item nav-link">&Uacute;NETE</a>
+                </div>
             </div>
         </nav>
     </div>
     <!-- Navbar End -->
 
-
-    <div class="container py-5">
-        <div class="row">
-        <!-- Blog Principal -->
-        <div class="col-md-8">
-            <div id="blog-container" class="row"></div>
+    <!-- Header Start -->
+    <section class="blog-hero">
+        <img class="hero-bg" src="img/code.jpeg" alt="Comunidad de Code UP">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <p class="hero-eyebrow">Club Code UP</p>
+            <h1>BLOG</h1>
+            <p>Ideas, alertas y aprendizajes sobre tecnolog&iacute;a, programaci&oacute;n y cultura digital. Lee nuestros art&iacute;culos y entra al detalle desde cada tarjeta.</p>
         </div>
+    </section>
+    <!-- Header End -->
 
-        <!-- Sidebar -->
-        <div class="col-md-4">
-            <!-- Categorías -->
-            <div class="mb-4">
-            <h4 class="text-uppercase mb-3">Categorías</h4>
-            <ul id="category-list" class="list-group list-group-flush"></ul>
-            </div>
+    <!-- Blog Cards Start -->
+    <section class="blog-listing">
+        <div class="container">
+            <h2>Puedes leerlos aqu&iacute;:</h2>
 
-            <!-- Entradas recientes -->
-            <div class="mb-4">
-            <h4 class="text-uppercase mb-3">Recientes</h4>
-            <div id="recent-posts"></div>
-            </div>
-
-            <!-- Tags -->
-            <div class="mb-4">
-            <h4 class="text-uppercase mb-3">Tags</h4>
-            <div id="tag-cloud" class="d-flex flex-wrap gap-1"></div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 mb-4">
+                    <article class="blog-card">
+                        <div class="blog-cover" aria-hidden="true">
+                            <div class="phishing-window">
+                                <div class="phishing-input">support@banco-seguro.com</div>
+                                <div class="phishing-alert">Verifica tu cuenta ahora</div>
+                                <div class="phishing-lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="phishing-button">Abrir link</span>
+                            </div>
+                            <span class="phishing-badge">Alerta phishing</span>
+                            <span class="cursor-shape"></span>
+                            <div class="blog-cover-title">
+                                <h3>Un clic y lo perdiste todo</h3>
+                                <p>El funcionamiento del phishing en 2026</p>
+                            </div>
+                        </div>
+                        <div class="blog-card-body">
+                            <span class="blog-card-kicker">Blog 1</span>
+                            <h3>Un clic y lo perdiste todo: el funcionamiento del phishing en 2026</h3>
+                            <p>Una mirada clara a las trampas digitales, la ingenier&iacute;a social y el rol de la IA en los ataques actuales.</p>
+                            <a class="blog-btn" href="Blog/blog_phishing.html">
+                                Leer blog
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
+    </section>
+    <!-- Blog Cards End -->
 
-    <script src="js/script.js"></script>
-
-
-     <!-- Footer Start -->
-     <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
+    <!-- Footer Start -->
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5">
         <div class="container mt-5 pt-5">
-            <div class="row">
+            <div class="row align-items-start">
                 <div class="col-md-6 mb-5">
                     <a href="index.html" class="navbar-brand">
                         <h1 class="mt-n2 text-uppercase text-white">CODE UP</h1>
                     </a>
-                    <p class="m-0">Aprende tus primeros pasos en la programación</p>
+                    <p class="m-0">Aprende tus primeros pasos en la programaci&oacute;n.</p>
                 </div>
                 <div class="col-md-6 mb-5">
                     <h3 class="text-white mb-4">Newsletter</h3>
                     <div class="w-100">
                         <div class="input-group">
-                            <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Correo">
+                            <input type="email" class="form-control border-light" style="padding: 30px;" placeholder="Correo" aria-label="Correo">
                             <div class="input-group-append">
-                                <button class="btn btn-primary px-4">Subscribete</button>
+                                <button class="btn btn-primary px-4">Suscr&iacute;bete</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-5">
-                    <h3 class="text-white mb-4">Encuentranos</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Pronto...</p>
+                <div class="col-md-5 mb-5">
+                    <h3 class="text-white mb-4">Encu&eacute;ntranos</h3>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pac&iacute;fico</p>
                     <p><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
-                    <div class="d-flex justify-content-start mt-4">
-                        <a class="text-white mr-4" href="#"><i class="fab fa-2x fa-twitter"></i></a>
-                        <a class="text-white mr-4" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-2x fa-facebook-f"></i></a>
-                        <a class="text-white mr-4" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-2x fa-linkedin-in"></i></a>
-                        <a class="text-white" href="https://www.instagram.com/clubcodeup/" target="_blank"> <i class="fab fa-2x fa-instagram"></i></a>
-                    </div>
-                </div>
-                <!--
-                <div class="col-md-4 mb-5">
-                    <h3 class="text-white mb-4">Our Courses</h3>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Web Design</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Apps Design</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Marketing</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Research</a>
-                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>SEO</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <h3 class="text-white mb-4">Quick Links</h3>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Terms & Condition</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Regular FAQs</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Help & Support</a>
-                        <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                    <div class="d-flex justify-content-start mt-4 footer-social">
+                        <a class="text-white mr-4" href="https://www.facebook.com/clubcodeup" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="text-white mr-4" href="https://www.linkedin.com/company/club-code-up/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="text-white mr-4" href="https://www.instagram.com/clubcodeup/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="text-white" href="https://www.tiktok.com/@clubcode.up" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    -->
+
     <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">CODEUP</a>. All Rights Reserved.
-                    </p>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a>
-                    </p>
+                <div class="col-md-12 text-center">
+                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">CODEUP</a>. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Footer End -->
 
-
-    <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-
-    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 
