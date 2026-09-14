@@ -39,11 +39,15 @@
   let pendingPointer = null, renderCount = 0;
   let dot = null;
 
-  function canTrackPointer() {
-    return finePointer.matches && !mobile.matches && !reducedMotion.matches;
+  function canAnimateGaze() {
+    return !mobile.matches && !reducedMotion.matches;
   }
 
-  if (canTrackPointer()) {
+  function canUseCustomCursor() {
+    return finePointer.matches && canAnimateGaze();
+  }
+
+  if (canUseCustomCursor()) {
     dot = document.createElement("div");
     dot.className = "ide-pointer";
     dot.setAttribute("aria-hidden", "true");
@@ -119,7 +123,7 @@
   }
 
   function follow(event) {
-    if (!canTrackPointer() || !ready || !geometry || event.pointerType === "touch") return;
+    if (!canAnimateGaze() || !ready || !geometry || event.pointerType === "touch") return;
     const dx = event.clientX - bounds.left - geometry.headX;
     const dy = event.clientY - bounds.top - geometry.headY;
     const radius = Math.max(40, Math.min(80, Math.min(bounds.width, bounds.height) * .09));
@@ -141,7 +145,7 @@
   }
 
   stage.addEventListener("pointermove", (event) => {
-    if (!canTrackPointer()) {
+    if (!canAnimateGaze() || event.pointerType === "touch") {
       pendingPointer = null;
       return;
     }
@@ -204,26 +208,14 @@
       image.src = url;
     });
     if (image.decode) await image.decode();
-    const result = [];
-    let decodedAtlas = null;
-    if (window.createImageBitmap) {
-      try { decodedAtlas = await createImageBitmap(image); }
-      catch (_) { /* Image drawing remains available if bitmap decoding fails. */ }
-    }
-    // Small, predecoded textures avoid uploading a 4400x3600 atlas during
-    // pointer movement. Each atlas can be released after slicing it.
-    for (let index = 0; index < count; index++) {
-      const x = (index % 4) * ASSET_WIDTH;
-      const y = Math.floor(index / 4) * ASSET_HEIGHT;
-      let cropped = null;
-      if (window.createImageBitmap) {
-        try { cropped = await createImageBitmap(decodedAtlas || image, x, y, ASSET_WIDTH, ASSET_HEIGHT); }
-        catch (_) { /* Keep the original atlas as the compatibility fallback. */ }
-      }
-      result.push(cropped ? { image: cropped, x: 0, y: 0 } : { image, x, y });
-    }
-    if (decodedAtlas) decodedAtlas.close();
-    return result;
+    // Keep one decoded texture per atlas and select each frame with source
+    // coordinates. Creating 96 additional ImageBitmaps delayed interaction
+    // by several seconds on hybrid Windows devices without adding detail.
+    return Array.from({ length: count }, (_, index) => ({
+      image,
+      x: (index % 4) * ASSET_WIDTH,
+      y: Math.floor(index / 4) * ASSET_HEIGHT
+    }));
   }
 
   async function prepare() {
@@ -247,12 +239,12 @@
     await Promise.all([worker(), worker()]);
     ready = true;
     if (debug) stage.dataset.gazeReady = "96";
-    if (pendingPointer && stage.matches(":hover")) follow(pendingPointer);
+    if (pendingPointer) follow(pendingPointer);
   }
   // On phones and other touch-first devices the original film is the base
   // animation. The interactive atlas is desktop-only, so mobile neither
   // follows taps/pointer emulation nor downloads and decodes its 96 frames.
-  if (canTrackPointer()) {
+  if (canAnimateGaze()) {
     prepare().catch(() => {
       document.documentElement.classList.add("cat-assets-failed");
       // If directions fail, the already-loaded neutral pose stays visible.

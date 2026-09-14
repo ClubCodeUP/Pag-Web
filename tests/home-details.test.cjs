@@ -33,7 +33,19 @@ test("mobile hero keeps the full cat below the copy and never enables pointer tr
   assert.match(css, /\.hero-environment \{[\s\S]*?inset: auto 0 0; height: clamp\(350px, 105vw, 560px\);/);
   assert.match(css, /\.hero-environment img, \.hero-environment video \{ object-position: right center; \}/);
   assert.match(css, /\.hero-motion-root \{ display: none; \}/);
-  assert.match(gaze, /return finePointer\.matches && !mobile\.matches && !reducedMotion\.matches;/);
-  assert.match(gaze, /if \(!canTrackPointer\(\)\) \{\s*pendingPointer = null;\s*return;/);
-  assert.match(gaze, /if \(canTrackPointer\(\)\) \{\s*prepare\(\)/);
+  assert.match(gaze, /function canAnimateGaze\(\) \{\s*return !mobile\.matches && !reducedMotion\.matches;/);
+  assert.match(gaze, /if \(!canAnimateGaze\(\) \|\| event\.pointerType === "touch"\) \{\s*pendingPointer = null;\s*return;/);
+  assert.match(gaze, /if \(canAnimateGaze\(\)\) \{\s*prepare\(\)/);
+});
+
+test("desktop gaze does not depend on the browser advertising hover capability", () => {
+  assert.match(gaze, /function canUseCustomCursor\(\) \{\s*return finePointer\.matches && canAnimateGaze\(\);/);
+  assert.match(gaze, /if \(!canAnimateGaze\(\) \|\| !ready \|\| !geometry \|\| event\.pointerType === "touch"\) return;/);
+  assert.doesNotMatch(gaze, /return finePointer\.matches && !mobile\.matches/);
+});
+
+test("desktop gaze draws from decoded atlases without creating 96 duplicate bitmaps", () => {
+  assert.match(gaze, /Keep one decoded texture per atlas/);
+  assert.match(gaze, /return Array\.from\(\{ length: count \}/);
+  assert.doesNotMatch(gaze, /createImageBitmap/);
 });
