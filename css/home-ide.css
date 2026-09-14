@@ -511,10 +511,25 @@ body.home-page {
   .ide-topbar .site-social { display: none; }
   .ide-topbar__inner { justify-content: center; }
   .ide-logo span { display: none; }
-  .ide-hero { min-height: 740px; }
-  .ide-hero__grid { min-height: 740px; grid-template-columns: 1fr; align-content: start; padding-top: 3rem; padding-bottom: 3rem; }
+  /* Mobile is a vertical composition instead of a cropped desktop canvas:
+     the copy comes first and the complete ambient cat scene gets its own
+     centred stage underneath. Its near-square viewport intentionally shows
+     the right-hand portion of the 16:9 film, where the whole cat lives. */
+  .ide-hero { min-height: auto; background: linear-gradient(180deg, #0c0d1e 0%, #10142f 100%); }
+  .ide-hero__grid {
+    min-height: auto; grid-template-columns: 1fr; align-content: start;
+    gap: clamp(1.25rem, 5vw, 2rem); padding-top: 2rem; padding-bottom: 0;
+  }
   .ide-file-panel { max-width: 100%; }
-  .hero-environment img, .hero-environment video { object-position: 68% center; }
+  .ide-hero__visual-space { min-height: clamp(350px, 105vw, 560px); }
+  .hero-environment {
+    inset: auto 0 0; height: clamp(350px, 105vw, 560px);
+    background: #111532;
+  }
+  .hero-environment img, .hero-environment video { object-position: right center; }
+  /* Touch devices use the original film as their base animation. Hiding the
+     pointer-controlled canvas also avoids decoding 96 desktop-only frames. */
+  .hero-motion-root { display: none; }
   .ide-hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
   .hero-proof { gap: 1rem; flex-direction: column; }
   .ide-section { padding: 3.5rem 0; }

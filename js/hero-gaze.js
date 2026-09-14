@@ -39,7 +39,11 @@
   let pendingPointer = null, renderCount = 0;
   let dot = null;
 
-  if (finePointer.matches) {
+  function canTrackPointer() {
+    return finePointer.matches && !mobile.matches && !reducedMotion.matches;
+  }
+
+  if (canTrackPointer()) {
     dot = document.createElement("div");
     dot.className = "ide-pointer";
     dot.setAttribute("aria-hidden", "true");
@@ -115,7 +119,7 @@
   }
 
   function follow(event) {
-    if (!ready || !geometry || reducedMotion.matches || event.pointerType === "touch") return;
+    if (!canTrackPointer() || !ready || !geometry || event.pointerType === "touch") return;
     const dx = event.clientX - bounds.left - geometry.headX;
     const dy = event.clientY - bounds.top - geometry.headY;
     const radius = Math.max(40, Math.min(80, Math.min(bounds.width, bounds.height) * .09));
@@ -137,6 +141,10 @@
   }
 
   stage.addEventListener("pointermove", (event) => {
+    if (!canTrackPointer()) {
+      pendingPointer = null;
+      return;
+    }
     pendingPointer = event;
     if (dot && event.pointerType !== "touch") {
       dot.style.transform = "translate3d(" + event.clientX + "px," + event.clientY + "px,0)";
@@ -241,9 +249,16 @@
     if (debug) stage.dataset.gazeReady = "96";
     if (pendingPointer && stage.matches(":hover")) follow(pendingPointer);
   }
-  prepare().catch(() => {
-    document.documentElement.classList.add("cat-assets-failed");
-    // If directions fail, the already-loaded neutral pose stays visible.
-    if (debug) stage.dataset.gazeReady = "failed";
-  });
+  // On phones and other touch-first devices the original film is the base
+  // animation. The interactive atlas is desktop-only, so mobile neither
+  // follows taps/pointer emulation nor downloads and decodes its 96 frames.
+  if (canTrackPointer()) {
+    prepare().catch(() => {
+      document.documentElement.classList.add("cat-assets-failed");
+      // If directions fail, the already-loaded neutral pose stays visible.
+      if (debug) stage.dataset.gazeReady = "failed";
+    });
+  } else if (debug) {
+    stage.dataset.gazeReady = "ambient-only";
+  }
 })();
