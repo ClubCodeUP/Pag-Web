@@ -21,6 +21,12 @@ test("closing copy stays whole instead of splitting or resizing as it is typed",
   assert.doesNotMatch(html, /data-anim="part"|data-typewriter/);
 });
 
+test("the primary hero action opens the team directory instead of looping within home", () => {
+  assert.match(html, /class="ide-run-btn" href="team\.html"/);
+  assert.match(html, /> conoce-a-la-familia<span class="ide-caret"/);
+  assert.doesNotMatch(html, /class="ide-run-btn" href="#conocenos"/);
+});
+
 test("mobile hero keeps the full cat below the copy and never enables pointer tracking", () => {
   assert.match(css, /@media \(max-width: 767\.98px\)[\s\S]*?\.ide-hero \{ min-height: auto;/);
   assert.match(css, /\.ide-hero__visual-space \{ min-height: clamp\(350px, 105vw, 560px\); \}/);
