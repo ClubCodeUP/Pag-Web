@@ -1,0 +1,447 @@
+{
+  "period": "2026-2",
+  "groups": [
+    {
+      "id": "directiva-2026",
+      "name": "Directiva 2026-2"
+    },
+    {
+      "id": "gestion-del-aprendizaje",
+      "name": "Gestión del Aprendizaje"
+    },
+    {
+      "id": "gestion-de-talento",
+      "name": "Gestión del Talento"
+    },
+    {
+      "id": "eventos",
+      "name": "Eventos"
+    },
+    {
+      "id": "marketing-y-diseno",
+      "name": "Marketing e Imagen · Diseño"
+    },
+    {
+      "id": "marketing-redes-sociales",
+      "name": "Marketing e Imagen · Redes sociales"
+    },
+    {
+      "id": "proyectos",
+      "name": "Proyectos"
+    },
+    {
+      "id": "finanzas-y-legal",
+      "name": "Finanzas"
+    },
+    {
+      "id": "consulting",
+      "name": "Consulting"
+    },
+    {
+      "id": "investigacion-y-divulgacion",
+      "name": "Investigación y Divulgación"
+    }
+  ],
+  "members": [
+    {
+      "id": "ivanna-toulier",
+      "name": "Ivanna Toulier",
+      "role": "Miembro",
+      "group": "gestion-de-talento",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/ivanna-toulier.webp"
+    },
+    {
+      "id": "angella-tavara",
+      "name": "Angella Távara",
+      "role": "Miembro",
+      "group": "gestion-de-talento",
+      "career": "Finanzas",
+      "image": "media/pages/members-2026-2/angella-tavara.webp"
+    },
+    {
+      "id": "manuel-sebastian-taco",
+      "name": "Manuel Sebastian Taco",
+      "role": "Director",
+      "group": "gestion-del-aprendizaje",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/manuel-sebastian-taco.webp"
+    },
+    {
+      "id": "joel-pariona",
+      "name": "Joel Pariona",
+      "role": "Miembro",
+      "group": "gestion-de-talento",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/joel-pariona.webp"
+    },
+    {
+      "id": "jorge-poma",
+      "name": "Jorge Poma",
+      "role": "Miembro",
+      "group": "proyectos",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/jorge-poma.webp"
+    },
+    {
+      "id": "gianella-silvestre",
+      "name": "Gianella Silvestre",
+      "role": "Vicepresidenta",
+      "group": "directiva-2026",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/gianella-silvestre.webp"
+    },
+    {
+      "id": "arturo-alvarez-de-la-torre",
+      "name": "Arturo Alvarez de la Torre",
+      "role": "Presidente",
+      "group": "directiva-2026",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/arturo-alvarez-de-la-torre.webp"
+    },
+    {
+      "id": "matias-desmonteix",
+      "name": "Matias Desmonteix",
+      "role": "Director",
+      "group": "consulting",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/matias-desmonteix.webp"
+    },
+    {
+      "id": "fernando-torres",
+      "name": "Fernando Torres",
+      "role": "Miembro",
+      "group": "proyectos",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/fernando-torres.webp"
+    },
+    {
+      "id": "abigail-chia",
+      "name": "Abigaíl Chia",
+      "role": "Miembro",
+      "group": "gestion-de-talento",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/abigail-chia.webp"
+    },
+    {
+      "id": "gianpietro-palacios",
+      "name": "Gianpietro Palacios",
+      "role": "Coordinador",
+      "group": "finanzas-y-legal",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/gianpietro-palacios.webp"
+    },
+    {
+      "id": "carlos-ramirez",
+      "name": "Carlos Ramirez",
+      "role": "Miembro",
+      "group": "consulting",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/carlos-ramirez.webp"
+    },
+    {
+      "id": "valentino-montes",
+      "name": "Valentino Montes",
+      "role": "Miembro",
+      "group": "eventos",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/valentino-montes.webp"
+    },
+    {
+      "id": "joselyn-guerreros",
+      "name": "Joselyn Guerreros",
+      "role": "Miembro",
+      "group": "marketing-y-diseno",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/joselyn-guerreros.webp"
+    },
+    {
+      "id": "sebastian-garcia",
+      "name": "Sebastian Garcia",
+      "role": "Miembro",
+      "group": "finanzas-y-legal",
+      "career": "Administración",
+      "image": "media/pages/members-2026-2/sebastian-garcia.webp"
+    },
+    {
+      "id": "gaby-perez",
+      "name": "Gaby Pérez",
+      "role": "Miembro",
+      "group": "marketing-y-diseno",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/gaby-perez.webp"
+    },
+    {
+      "id": "paula-romero",
+      "name": "Paula Romero",
+      "role": "Coordinador",
+      "group": "consulting",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/paula-romero.webp"
+    },
+    {
+      "id": "mario-tirado",
+      "name": "Mario Tirado",
+      "role": "Miembro",
+      "group": "proyectos",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/mario-tirado.webp"
+    },
+    {
+      "id": "rosa-maria-coaquira",
+      "name": "Rosa Maria Coaquira",
+      "role": "Miembro",
+      "group": "investigacion-y-divulgacion",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/rosa-maria-coaquira.webp"
+    },
+    {
+      "id": "alejandro-carrillo",
+      "name": "Alejandro Carrillo",
+      "role": "Miembro",
+      "group": "consulting",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/alejandro-carrillo.webp"
+    },
+    {
+      "id": "luz-marina-calderon",
+      "name": "Luz Marina Calderón",
+      "role": "Miembro",
+      "group": "investigacion-y-divulgacion",
+      "career": "Derecho",
+      "image": "media/pages/members-2026-2/luz-marina-calderon.webp"
+    },
+    {
+      "id": "matias-salcedo",
+      "name": "Matias Salcedo",
+      "role": "Miembro",
+      "group": "investigacion-y-divulgacion",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/matias-salcedo.webp"
+    },
+    {
+      "id": "alexandra-requis",
+      "name": "Alexandra Requis",
+      "role": "Miembro",
+      "group": "investigacion-y-divulgacion",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/alexandra-requis.webp"
+    },
+    {
+      "id": "massiel-quispe",
+      "name": "Massiel Quispe",
+      "role": "Miembro",
+      "group": "investigacion-y-divulgacion",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/massiel-quispe.webp"
+    },
+    {
+      "id": "manuel-fidel-serna",
+      "name": "Manuel Fidel Serna",
+      "role": "Miembro",
+      "group": "investigacion-y-divulgacion",
+      "career": "Ingeniería empresarial",
+      "image": null
+    },
+    {
+      "id": "alvaro-torres",
+      "name": "Alvaro Torres",
+      "role": "Miembro",
+      "group": "eventos",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/alvaro-torres.webp"
+    },
+    {
+      "id": "diego-huertas",
+      "name": "Diego Huertas",
+      "role": "Miembro",
+      "group": "gestion-del-aprendizaje",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/diego-huertas.webp"
+    },
+    {
+      "id": "william-soria",
+      "name": "William Soria",
+      "role": "Miembro",
+      "group": "gestion-del-aprendizaje",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/william-soria.webp"
+    },
+    {
+      "id": "camila-bravo",
+      "name": "Camila Bravo",
+      "role": "Miembro",
+      "group": "gestion-del-aprendizaje",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/camila-bravo.webp"
+    },
+    {
+      "id": "jhan-ulloa",
+      "name": "Jhan Ulloa",
+      "role": "Miembro",
+      "group": "finanzas-y-legal",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/jhan-ulloa.webp"
+    },
+    {
+      "id": "cesar-amanzo",
+      "name": "César Amanzo",
+      "role": "Miembro",
+      "group": "finanzas-y-legal",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/cesar-amanzo.webp"
+    },
+    {
+      "id": "jose-miguel-chavez",
+      "name": "José Miguel Chávez",
+      "role": "Miembro",
+      "group": "finanzas-y-legal",
+      "career": "Finanzas",
+      "image": "media/pages/members-2026-2/jose-miguel-chavez.webp"
+    },
+    {
+      "id": "daniella-cabrera",
+      "name": "Daniella Cabrera",
+      "role": "Miembro",
+      "group": "eventos",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/daniella-cabrera.webp"
+    },
+    {
+      "id": "oscar-daniel-perez",
+      "name": "Oscar Daniel Perez",
+      "role": "Miembro",
+      "group": "gestion-del-aprendizaje",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/oscar-daniel-perez.webp"
+    },
+    {
+      "id": "brayan-anderson-rua",
+      "name": "Brayan Anderson Rua",
+      "role": "Miembro",
+      "group": "proyectos",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/brayan-anderson-rua.webp"
+    },
+    {
+      "id": "tania-chavez",
+      "name": "Tania Chavez",
+      "role": "Miembro",
+      "group": "proyectos",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/tania-chavez.webp"
+    },
+    {
+      "id": "margarita-maclena",
+      "name": "Margarita Maclena",
+      "role": "Miembro",
+      "group": "gestion-de-talento",
+      "career": "Marketing",
+      "image": "media/pages/members-2026-2/margarita-maclena.webp"
+    },
+    {
+      "id": "sofia-montesinos",
+      "name": "Sofía Montesinos",
+      "role": "Miembro",
+      "group": "gestion-del-aprendizaje",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/sofia-montesinos.webp"
+    },
+    {
+      "id": "lizeth-alarcon",
+      "name": "Lizeth Alarcón",
+      "role": "Coordinador",
+      "group": "marketing-y-diseno",
+      "career": "Administración",
+      "image": "media/pages/members-2026-2/lizeth-alarcon.webp"
+    },
+    {
+      "id": "kimberlin-lujan",
+      "name": "Kimberlin Lujan",
+      "role": "Miembro",
+      "group": "marketing-y-diseno",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/kimberlin-lujan.webp"
+    },
+    {
+      "id": "leonor-balabarca",
+      "name": "Leonor Balabarca",
+      "role": "Miembro",
+      "group": "marketing-redes-sociales",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/leonor-balabarca.webp"
+    },
+    {
+      "id": "pamela-geraldine-malpartida",
+      "name": "Pamela Geraldine Malpartida",
+      "role": "Miembro",
+      "group": "gestion-de-talento",
+      "career": "Administración",
+      "image": "media/pages/members-2026-2/pamela-geraldine-malpartida.webp"
+    },
+    {
+      "id": "kyara-parraga",
+      "name": "Kyara Parraga",
+      "role": "Miembro",
+      "group": "marketing-y-diseno",
+      "career": "Ingeniería en innovación y diseño",
+      "image": "media/pages/members-2026-2/kyara-parraga.webp"
+    },
+    {
+      "id": "naomi-torres",
+      "name": "Naomi Torres",
+      "role": "Miembro",
+      "group": "marketing-y-diseno",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/naomi-torres.webp"
+    },
+    {
+      "id": "sergio-rivas",
+      "name": "Sergio Rivas",
+      "role": "Miembro",
+      "group": "marketing-redes-sociales",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/sergio-rivas.webp"
+    },
+    {
+      "id": "omar-da-silva",
+      "name": "Omar Da Silva",
+      "role": "Miembro",
+      "group": "marketing-redes-sociales",
+      "career": "Ingeniería de la información",
+      "image": "media/pages/members-2026-2/omar-da-silva.webp"
+    },
+    {
+      "id": "lesly-campos",
+      "name": "Lesly Campos",
+      "role": "Miembro",
+      "group": "marketing-redes-sociales",
+      "career": "Marketing",
+      "image": "media/pages/members-2026-2/lesly-campos.webp"
+    },
+    {
+      "id": "ruth-guizado",
+      "name": "Ruth Guizado",
+      "role": "Miembro",
+      "group": "marketing-redes-sociales",
+      "career": "Economía",
+      "image": "media/pages/members-2026-2/ruth-guizado.webp"
+    },
+    {
+      "id": "joseph-pineda",
+      "name": "Joseph Pineda",
+      "role": "Coordinador",
+      "group": "marketing-redes-sociales",
+      "career": "Negocios internacionales",
+      "image": "media/pages/members-2026-2/joseph-pineda.webp"
+    },
+    {
+      "id": "verika-hinostroza",
+      "name": "Verika Hinostroza",
+      "role": "Miembro",
+      "group": "marketing-y-diseno",
+      "career": "Ingeniería empresarial",
+      "image": "media/pages/members-2026-2/verika-hinostroza.webp"
+    }
+  ]
+}

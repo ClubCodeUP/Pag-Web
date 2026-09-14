@@ -1,562 +1,63 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <title>Club CODE UP - Alianzas</title>
-    <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <style>
-        /* ── Variables ── */
-        :root {
-            --navy:   #12133a;
-            --purple: #7c3fe4;
-            --red:    #e84545;
-            --bg-ally: #e8eef8;
-        }
-
-        body { font-family: 'Open Sans', sans-serif; }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Jost', sans-serif; }
-
-        /* ──────────────────────────────────────
-           LABELS con línea punteada CORTA centrada
-        ────────────────────────────────────── */
-        .section-label {
-            font-family: 'Jost', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            display: block;
-            text-align: center;
-            margin-bottom: 4px;
-        }
-        /* Línea punteada corta centrada */
-        .section-label::after {
-            content: '';
-            display: block;
-            width: 120px;
-            border-bottom: 2px dashed currentColor;
-            margin: 5px auto 0;
-        }
-        /* Labels alineados a la izquierda (secciones 1 y 3) */
-        .section-label.left {
-            text-align: left;
-        }
-        .section-label.left::after {
-            margin: 5px 0 0;
-        }
-
-        .lbl-purple { color: var(--purple); }
-        .lbl-red    { color: var(--red); }
-
-        /* ──────────────────────────────────────
-           SECCIÓN 1 — Crecemos junto a la UP
-        ────────────────────────────────────── */
-        .section-grow { background: #fff; padding: 80px 0; }
-
-        .feature-icon {
-            width: 52px; height: 52px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px; color: #fff; flex-shrink: 0; margin-right: 18px;
-        }
-
-        .stats-image-wrapper img { width: 100%; height: auto; display: block; }
-
-        /* ──────────────────────────────────────
-           SECCIÓN 2 — Aliados
-           Fondo azul claro, triángulos, cards blancas rectas
-        ────────────────────────────────────── */
-        .section-aliados {
-            background: var(--bg-ally);
-            position: relative; overflow: hidden; padding: 80px 0;
-        }
-        .tri-deco {
-            position: absolute; opacity: 0.20;
-            pointer-events: none; z-index: 0;
-        }
-        .tri-deco svg { display: block; }
-        .section-aliados .container { position: relative; z-index: 1; }
-
-        .ally-block { margin-bottom: 28px; }
-
-        /* Card logo — blanco, esquinas RECTAS */
-        .ally-logo-card {
-            background: #fff;
-            border-radius: 0;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            padding: 48px 28px; height: 100%; min-height: 240px;
-        }
-        /* Logo CIRCULAR */
-        .ally-logo-card img {
-            width: 130px; height: 130px;
-            object-fit: cover; border-radius: 50%;
-            margin-bottom: 18px;
-        }
-        .ally-logo-card .a-name {
-            font-weight: 700; font-size: 17px;
-            color: var(--navy); text-align: center; margin-bottom: 4px;
-        }
-        .ally-logo-card .a-type {
-            font-size: 9px; color: #aaa;
-            text-transform: uppercase; letter-spacing: 2px; text-align: center;
-        }
-
-        /* Card info — BLANCA, esquinas RECTAS (igual que la logo card) */
-        .ally-info-card {
-            background: #fff;          /* ← BLANCO */
-            border-radius: 0;          /* ← ESQUINAS RECTAS */
-            padding: 40px 32px; height: 100%; min-height: 240px;
-            display: flex; flex-direction: column;
-            justify-content: center; gap: 28px;
-        }
-        .ally-info-item { display: flex; align-items: flex-start; gap: 16px; }
-        .ally-ibox {
-            width: 42px; height: 42px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 16px; color: #fff; flex-shrink: 0; margin-top: 2px;
-        }
-        /* "Beneficio" / "Actividades": navy, negrita, SIN subrayado */
-        .ally-info-text .i-title {
-            font-family: 'Jost', sans-serif;
-            font-weight: 700; font-size: 16px;
-            color: var(--navy); margin-bottom: 5px;
-        }
-        .ally-info-text p { font-size: 13.5px; color: #555; margin: 0; line-height: 1.65; }
-
-        /* ──────────────────────────────────────
-           SECCIÓN 3 — CTA
-        ────────────────────────────────────── */
-        .section-cta { background: #fff; padding: 80px 0; }
-
-        .contact-box { background: var(--bg-ally); padding: 36px 40px; }
-
-        .contact-pill { display: flex; align-items: center; gap: 20px; margin-bottom: 26px; }
-        .contact-pill:last-child { margin-bottom: 0; }
-        .pill-icon {
-            width: 54px; height: 54px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px; color: #fff; flex-shrink: 0;
-        }
-        .pill-icon.mail  { background: #4285f4; }
-        .pill-icon.insta { background: var(--red); }
-        .contact-pill .pill-label {
-            font-family: 'Jost', sans-serif; font-weight: 700;
-            font-size: 17px; color: var(--navy); display: block; margin-bottom: 3px;
-        }
-        .contact-pill .pill-value { font-size: 14px; color: #555; }
-
-        /* ──────────────────────────────────────
-           RESPONSIVE
-        ────────────────────────────────────── */
-        @media(max-width:767px){
-            .ally-logo-card, .ally-info-card { min-height: unset; }
-            .contact-box { margin-top: 30px; }
-        }
-    </style>
-</head>
-
-<body class="internal-page">
-
-    <!-- ── TOPBAR ── -->
-    <div class="container-fluid bg-dark">
-        <div class="row py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center text-white">
-                    <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a class="text-white pl-2" href="" target="_blank"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alianzas | Club CODE UP</title>
+<meta name="description" content="Conoce a las organizaciones con las que CODE UP comparte talleres, proyectos y nuevas oportunidades para la comunidad UP."><meta name="theme-color" content="#14172a">
+<link rel="icon" href="img/GeneralUse/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+<link href="css/pages-ide.css?v=6" rel="stylesheet">
+<link href="css/site-header.css?v=1" rel="stylesheet">
+<script src="js/pages-ide.js?v=5" defer></script>
+</head><body class="club-page">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<div class="page-progress" aria-hidden="true"><span></span></div>
+<div class="ide-topbar">
+    <div class="container ide-topbar__inner">
+        <a href="mailto:clubcodeup@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> clubcodeup@gmail.com</a>
+        <div class="site-social" aria-label="Redes sociales de CODE UP">
+            <a href="https://www.tiktok.com/@clubcode.up" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/clubcodeup" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/club-code-up/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/clubcodeup/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
+</div>
 
-    <!-- ── NAVBAR ── -->
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
-                <img src="./img/GeneralUse/logo.png" width="100" height="100" alt="Code UP">
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link">INICIO</a>
-                    <a href="blog.html" class="nav-item nav-link">BLOG</a>
-                    <a href="course.html" class="nav-item nav-link active">ALIANZAS</a>
-                    <a href="projects.html" class="nav-item nav-link">PROYECTOS</a>
-                    <a href="advisories.html" class="nav-item nav-link">ASESORIAS Y TALLERES</a>
-                    <a href="team.html" class="nav-item nav-link">NOSOTROS</a>
-                    <a href="contact.html" class="nav-item nav-link">ÚNETE</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-
-    <!-- ── JUMBOTRON HEADER ── -->
-    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom:0;">
-        <div class="container text-center py-4" style="margin-top: 2.5rem; margin-bottom: 2.5rem;">
-            <p class="text-white mb-3" style="font-family:'Jost',sans-serif;font-size:13px;letter-spacing:4px;">CLUB CODE UP</p>
-            <h1 class="text-white display-1 mb-4" style="font-weight:800;font-size:clamp(2.4rem, 6vw, 4.5rem);">Nuestras Alianzas</h1>
-            <p class="text-white">Trabajamos junto a organizaciones y áreas de la Universidad del Pacífico para potenciar <br>el impacto de nuestras actividades</p>
-        </div>
-    </div>
-
-    <!-- ══════════════════════════════════════
-         SECCIÓN 1 — Crecemos junto a la UP
-    ══════════════════════════════════════ -->
-    <div class="section-grow">
-        <div class="container">
-            <div class="row align-items-center">
-
-                <!-- Izquierda -->
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <span class="section-label lbl-purple left">ALIANZAS ESTRATÉGICAS</span>
-                    <h1 style="font-size:46px;font-weight:800;color:var(--navy);margin:16px 0 20px;line-height:1.15;">
-                        Crecemos junto a la comunidad UP
-                    </h1>
-                    <p style="color:#555;font-size:14px;line-height:1.75;margin-bottom:28px;">
-                        Nuestras alianzas nos permiten ampliar el alcance de lo que hacemos: desde talleres de refuerzo académico y eventos de integración, hasta hackathones y proyectos colaborativos con otras organizaciones de la universidad.
-                    </p>
-
-                    <div class="d-flex align-items-start mb-4">
-                        <div class="feature-icon" style="background:#4285f4;"><i class="fa fa-handshake"></i></div>
-                        <div>
-                            <h5 style="font-weight:700;color:var(--navy);margin-bottom:6px;">Colaboración real</h5>
-                            <p style="color:#555;font-size:14px;margin:0;line-height:1.65;">Cada alianza tiene actividades concretas en conjunto que benefician a ambas partes y a la comunidad.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start mb-4">
-                        <div class="feature-icon" style="background:#e84545;"><i class="fa fa-bullseye"></i></div>
-                        <div>
-                            <h5 style="font-weight:700;color:var(--navy);margin-bottom:6px;">Visibilidad y alcance</h5>
-                            <p style="color:#555;font-size:14px;margin:0;line-height:1.65;">Llegamos a más estudiantes a través del respaldo compartido con nuestros aliados.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-start">
-                        <div class="feature-icon" style="background:#f5a623;"><i class="fa fa-rocket"></i></div>
-                        <div>
-                            <h5 style="font-weight:700;color:var(--navy);margin-bottom:6px;">Impacto en la UP</h5>
-                            <p style="color:#555;font-size:14px;margin:0;line-height:1.65;">Juntos generamos eventos, talleres y hackathones que marcan la diferencia en la comunidad universitaria.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Derecha: imagen -->
-                <div class="col-lg-6">
-                    <div class="stats-image-wrapper">
-                        <img src="img/imagen para aliados.jpg" alt="Alianzas Code UP"
-                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                        <div style="display:none;background:#e9ecef;height:320px;align-items:center;justify-content:center;flex-direction:column;color:#aaa;">
-                            <i class="fa fa-image fa-3x"></i>
-                            <p style="margin-top:12px;font-size:13px;">img/imagen para aliados.jpg</p>
-                        </div>
-                    </div>
-                </div>
-
+<header class="ide-header">
+    <nav class="navbar navbar-expand-lg navbar-light container ide-tabbar" aria-label="Navegación principal">
+        <a href="index.html" class="navbar-brand ide-logo" aria-label="CODE UP, inicio">
+            <img src="img/GeneralUse/logo.png" width="40" height="40" alt="">
+            <span>code<strong>up</strong></span>
+        </a>
+        <button type="button" class="navbar-toggler ide-menu-toggle" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Abrir menú">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+        <div class="collapse navbar-collapse ide-tabs-wrap" id="navbarCollapse">
+            <div class="navbar-nav ide-tabs">
+                <a href="index.html" class="nav-item nav-link ide-tab"><i class="fa fa-house" aria-hidden="true"></i>inicio<span class="ide-ext" aria-hidden="true">.tsx</span></a>
+                <a href="blog.html" class="nav-item nav-link ide-tab"><i class="fa fa-file-lines" aria-hidden="true"></i>blog<span class="ide-ext" aria-hidden="true">.md</span></a>
+                <a href="course.html" class="nav-item nav-link ide-tab is-active" aria-current="page"><i class="fa fa-handshake" aria-hidden="true"></i>alianzas<span class="ide-ext" aria-hidden="true">.json</span></a>
+                <a href="projects.html" class="nav-item nav-link ide-tab"><i class="fa fa-diagram-project" aria-hidden="true"></i>proyectos<span class="ide-ext" aria-hidden="true">/</span></a>
+                <a href="advisories.html" class="nav-item nav-link ide-tab"><i class="fa fa-graduation-cap" aria-hidden="true"></i>cursos<span class="ide-ext" aria-hidden="true">.yml</span></a>
+                <a href="team.html" class="nav-item nav-link ide-tab"><i class="fa fa-users" aria-hidden="true"></i>equipo<span class="ide-ext" aria-hidden="true">.team</span></a>
+                <a href="contact.html" class="nav-item nav-link ide-tab ide-tab--run"><i class="fa fa-play" aria-hidden="true"></i>únete()</a>
             </div>
         </div>
-    </div>
-
-    <!-- ══════════════════════════════════════
-         SECCIÓN 2 — Organizaciones aliadas
-    ══════════════════════════════════════ -->
-    <div class="section-aliados">
-
-        <!-- Triángulos decorativos -->
-        <div class="tri-deco" style="top:4%;right:5%;width:120px;height:120px;">
-            <svg viewBox="0 0 100 100"><polygon points="50,0 100,100 0,100" fill="#7c9ed8"/></svg>
-        </div>
-        <div class="tri-deco" style="top:30%;left:1%;width:80px;height:80px;">
-            <svg viewBox="0 0 100 100"><polygon points="0,0 100,0 0,100" fill="#7c9ed8"/></svg>
-        </div>
-        <div class="tri-deco" style="bottom:20%;right:2%;width:90px;height:90px;">
-            <svg viewBox="0 0 100 100"><polygon points="100,0 100,100 0,100" fill="#7c9ed8"/></svg>
-        </div>
-        <div class="tri-deco" style="bottom:4%;left:4%;width:70px;height:70px;">
-            <svg viewBox="0 0 100 100"><polygon points="0,100 100,0 100,100" fill="#7c9ed8"/></svg>
-        </div>
-        <div class="tri-deco" style="top:55%;right:10%;width:55px;height:55px;opacity:0.12;">
-            <svg viewBox="0 0 100 100"><polygon points="50,0 100,100 0,100" fill="#7c9ed8"/></svg>
-        </div>
-
-        <div class="container">
-
-            <div class="text-center mb-5">
-                <!-- Label rojo con punteado corto centrado -->
-                <span class="section-label lbl-red">NUESTROS ALIADOS</span>
-                <h1 style="font-size:44px;font-weight:800;color:var(--navy);margin-top:16px;">
-                    Organizaciones que nos acompañan
-                </h1>
-            </div>
-
-            <!-- 1. Programa REA — logo IZQ, info DER -->
-            <div class="ally-block">
-                <div class="row no-gutters align-items-stretch">
-                    <div class="col-md-5">
-                        <div class="ally-logo-card">
-                            <img src="img/LOGO PROGRAMA REA.jpg" alt="Programa REA"
-                                 onerror="this.src='https://via.placeholder.com/130x130/4e73df/ffffff?text=REA'">
-                            <div class="a-name">Programa REA</div>
-                            <div class="a-type">Unidad Académica UP</div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="ally-info-card">
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#4285f4;"><i class="fa fa-eye"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Beneficio</div>
-                                    <p>Visibilidad con todos los salones de la UP, lo que nos permite llegar a más estudiantes de diversas carreras.</p>
-                                </div>
-                            </div>
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#e84545;"><i class="fa fa-exchange-alt"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Actividades</div>
-                                    <p>Comunicación constante y apoyo con refuerzo en talleres académicos y técnicos.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. IEEE — info IZQ, logo DER -->
-            <div class="ally-block">
-                <div class="row no-gutters align-items-stretch">
-                    <div class="col-md-7">
-                        <div class="ally-info-card">
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#f5a623;"><i class="fa fa-desktop"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Beneficio</div>
-                                    <p>Alianza con una organización directamente relacionada a la tecnología que complementa nuestra visión.</p>
-                                </div>
-                            </div>
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#28a745;"><i class="fa fa-code"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Actividades</div>
-                                    <p>Brindar apoyo en sus proyectos y actividades de programación de manera conjunta.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="ally-logo-card">
-                            <img src="img/LOGO IEEE.jpg" alt="IEEE"
-                                 onerror="this.src='https://via.placeholder.com/130x130/003087/ffffff?text=IEEE'">
-                            <div class="a-name">IEEE</div>
-                            <div class="a-type">Organización de Tecnología</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Proyectos UP — logo IZQ, info DER -->
-            <div class="ally-block">
-                <div class="row no-gutters align-items-stretch">
-                    <div class="col-md-5">
-                        <div class="ally-logo-card">
-                            <img src="img/LOGO PROYECTOS UP.jpg" alt="Proyectos UP"
-                                 onerror="this.src='https://via.placeholder.com/130x130/007bff/ffffff?text=PUP'">
-                            <div class="a-name">Proyectos UP</div>
-                            <div class="a-type">Gestión de Proyectos</div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="ally-info-card">
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#4285f4;"><i class="fa fa-share-alt"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Beneficio</div>
-                                    <p>Organización orientada a la gestión de proyectos, complementando nuestro enfoque técnico con metodologías de gestión.</p>
-                                </div>
-                            </div>
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#ffc107;"><i class="fa fa-trophy"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Actividades</div>
-                                    <p>Hackathon conjunto a medio año para fomentar la innovación y el trabajo colaborativo.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Gaming UP — info IZQ, logo DER -->
-            <div class="ally-block">
-                <div class="row no-gutters align-items-stretch">
-                    <div class="col-md-7">
-                        <div class="ally-info-card">
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#28a745;"><i class="fa fa-users"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Beneficio</div>
-                                    <p>Organización orientada al gaming y al entretenimiento, conectando la programación con el mundo de los videojuegos.</p>
-                                </div>
-                            </div>
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#ffc107;"><i class="fa fa-trophy"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Actividades</div>
-                                    <p>Hackathon conjunto a medio año enfocado en desarrollo de videojuegos y soluciones creativas.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="ally-logo-card">
-                            <img src="img/LOGO GAMING UP.jpg" alt="Gaming UP"
-                                 onerror="this.src='https://via.placeholder.com/130x130/6f42c1/ffffff?text=GUP'">
-                            <div class="a-name">Gaming UP</div>
-                            <div class="a-type">Organización de Gaming</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. CEUP — logo IZQ, info DER -->
-            <div class="ally-block">
-                <div class="row no-gutters align-items-stretch">
-                    <div class="col-md-5">
-                        <div class="ally-logo-card">
-                            <img src="img/LOGO CEUP.jpg" alt="CEUP"
-                                 onerror="this.src='https://via.placeholder.com/130x130/28a745/ffffff?text=CEUP'">
-                            <div class="a-name">CEUP</div>
-                            <div class="a-type">Centro Estudiantil UP</div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="ally-info-card">
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#e84545;"><i class="fa fa-bullhorn"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Beneficio</div>
-                                    <p>Mayor alcance con la comunidad UP al contar con el respaldo del centro estudiantil.</p>
-                                </div>
-                            </div>
-                            <div class="ally-info-item">
-                                <div class="ally-ibox" style="background:#f5a623;"><i class="fa fa-briefcase"></i></div>
-                                <div class="ally-info-text">
-                                    <div class="i-title">Actividades</div>
-                                    <p>Talleres de empleabilidad "top" dirigidos a preparar a los estudiantes para la vida profesional.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ══════════════════════════════════════
-         SECCIÓN 3 — ¿Quieres ser nuestro aliado?
-    ══════════════════════════════════════ -->
-    <div class="section-cta">
-        <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <span class="section-label lbl-purple left">COLABORA CON NOSOTROS</span>
-                    <h1 style="font-size:46px;font-weight:800;color:var(--navy);line-height:1.15;margin:16px 0 20px;">
-                        ¿Quieres ser nuestro próximo aliado?
-                    </h1>
-                    <p style="color:#555;font-size:14px;line-height:1.75;">
-                        Si representas una organización dentro de la UP y deseas generar actividades en conjunto, escríbenos. Estamos abiertos a nuevas alianzas que sumen a la comunidad.
-                    </p>
-                </div>
-
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="contact-box">
-                        <div class="contact-pill">
-                            <div class="pill-icon mail"><i class="fa fa-envelope"></i></div>
-                            <div>
-                                <span class="pill-label">Correo</span>
-                                <span class="pill-value">clubcodeup@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="contact-pill">
-                            <div class="pill-icon insta"><i class="fab fa-instagram"></i></div>
-                            <div>
-                                <span class="pill-label">Instagram</span>
-                                <span class="pill-value">@clubcodeup</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer Start -->
-    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
-        <div class="container mt-5 pt-5">
-            <div class="row align-items-start justify-content-between">
-                <div class="col-lg-5 col-md-6 mb-5 mb-md-0 text-center text-md-left">
-                    <a href="index.html" class="navbar-brand d-inline-block mb-3">
-                        <h1 class="mt-n2 text-uppercase text-white">CODE UP</h1>
-                    </a>
-                    <p class="m-0">Aprende tus primeros pasos en la programación</p>
-                </div>
-
-                <div class="col-lg-4 col-md-6 text-center text-md-right">
-                    <h3 class="text-white mb-4">Encuéntranos</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pacífico</p>
-                    <p><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
-                    <div class="d-flex justify-content-center justify-content-md-end mt-4">
-                        <a class="text-white mr-3" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a class="text-white mr-3" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a class="text-white mr-3" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="text-white" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">CODEUP</a>. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-
-    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+    </nav>
+</header>
+<main id="contenido">
+<nav class="page-shell page-crumb" aria-label="Ruta de navegación"><a href="index.html">inicio.tsx</a><span aria-hidden="true">/</span><span aria-current="page">alianzas.json</span></nav>
+<section class="page-shell page-intro alliance-intro"><div><h1>Las buenas ideas <span class="page-title-accent">nos encuentran.</span></h1><p class="page-lead">Cuando distintas organizaciones se reúnen, aparecen nuevas oportunidades para aprender, crear y compartir. Así vivimos nuestras alianzas.</p><div class="page-actions"><a class="page-button" href="#aliados">Conoce a nuestros aliados <i class="fa fa-arrow-right" aria-hidden="true"></i></a><a class="page-link" href="mailto:clubcodeup@gmail.com">Conversemos <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div></div><figure class="page-photo "><img src="media/pages/alliances.webp" alt="Participantes de un encuentro de CODE UP y su comunidad universitaria" fetchpriority="high" decoding="async"></figure></section>
+<section class="page-shell page-section" id="aliados"><div class="page-section-head"><h2>Personas y organizaciones<br>con las que sumamos.</h2><p>Cada colaboración aporta algo distinto a la vida del club.</p></div><div class="alliance-directory"><article class="alliance-row page-reveal"><div class="alliance-logo"><img src="img/LOGO PROGRAMA REA.jpg" alt="Logo de Programa REA" loading="lazy" decoding="async"></div><div><h3>Programa REA</h3><p class="alliance-row__type">Unidad académica UP</p></div><div class="alliance-row__body"><p>Nos conecta con estudiantes de distintas carreras y aulas de la Universidad del Pacífico.</p><p>Compartimos difusión y apoyo académico y técnico para nuestros talleres.</p></div></article><article class="alliance-row page-reveal"><div class="alliance-logo"><img src="img/LOGO IEEE.jpg" alt="Logo de IEEE" loading="lazy" decoding="async"></div><div><h3>IEEE</h3><p class="alliance-row__type">Organización de tecnología</p></div><div class="alliance-row__body"><p>Una organización que complementa nuestra pasión por la tecnología.</p><p>Colaboramos para impulsar proyectos de programación y actividades tecnológicas.</p></div></article><article class="alliance-row page-reveal"><div class="alliance-logo"><img src="img/LOGO PROYECTOS UP.jpg" alt="Logo de Proyectos UP" loading="lazy" decoding="async"></div><div><h3>Proyectos UP</h3><p class="alliance-row__type">Gestión de proyectos</p></div><div class="alliance-row__body"><p>El encuentro entre las herramientas tecnológicas y la gestión de proyectos.</p><p>Trabajamos juntos en la hackathon de mitad de año, convirtiendo ideas en soluciones.</p></div></article><article class="alliance-row page-reveal"><div class="alliance-logo"><img src="img/LOGO GAMING UP.jpg" alt="Logo de Gaming UP" loading="lazy" decoding="async"></div><div><h3>Gaming UP</h3><p class="alliance-row__type">Organización de gaming</p></div><div class="alliance-row__body"><p>La programación también se encuentra con el entretenimiento y los videojuegos.</p><p>Compartimos la hackathon de mitad de año, con desarrollo de juegos y soluciones creativas.</p></div></article><article class="alliance-row page-reveal"><div class="alliance-logo"><img src="img/LOGO CEUP.jpg" alt="Logo de CEUP" loading="lazy" decoding="async"></div><div><h3>CEUP</h3><p class="alliance-row__type">Centro de Estudiantes UP</p></div><div class="alliance-row__body"><p>Un puente con la comunidad estudiantil para que más personas puedan participar.</p><p>Colaboramos en talleres orientados a la empleabilidad y al desarrollo de habilidades.</p></div></article></div></section>
+<div class="page-shell"><div class="page-cat-rail" data-scroll-cat aria-hidden="true"><span class="page-cat-rail__fill"></span><img src="media/cat-skate.webp" width="480" height="400" loading="lazy" decoding="async" alt="" draggable="false"></div></div><div class="page-shell"><section class="page-next"><div><h2>¿Y si hacemos algo juntos?</h2><p>Si tu organización quiere compartir una actividad, un taller o un proyecto con CODE UP, nos encantará conversar.</p></div><a class="page-button" href="mailto:clubcodeup@gmail.com">Escríbenos <i class="fa fa-arrow-right" aria-hidden="true"></i></a></section></div></main>
+<footer class="page-footer">
+<div class="page-status"><div class="page-shell"><span><i class="fa fa-code-branch" aria-hidden="true"></i> main · CODE UP</span><span>Universidad del Pacífico</span><span>UTF-8</span><span>Hecho en comunidad</span></div></div>
+<div class="page-shell page-footer__grid">
+<div><a class="page-footer__brand" href="index.html">code<strong>up</strong></a><p>Una organización estudiantil, muchas ideas y una familia con la que compartir el camino.</p></div>
+<div class="page-footer__links"><h2>Explora</h2><a href="advisories.html">Cursos y talleres</a><a href="projects.html">Proyectos</a><a href="team.html">Nuestro equipo</a><a href="course.html">Alianzas</a><a href="blog.html">Blog</a></div>
+<div><h2>Encuéntranos</h2><p>Universidad del Pacífico<br><a href="mailto:clubcodeup@gmail.com">clubcodeup@gmail.com</a></p><div class="page-social" aria-label="Redes de CODE UP"><a href="https://www.tiktok.com/@clubcode.up" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a><a href="https://www.facebook.com/clubcodeup" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.linkedin.com/company/club-code-up/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a><a href="https://www.instagram.com/clubcodeup/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></div><a class="page-link" href="contact.html">Sé parte de CODE UP <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+</div><div class="page-shell page-footer__bottom"><span>© 2026 Club CODE UP</span><span>Hecho por la comunidad, para la comunidad.</span></div></footer>
+<a class="page-top" href="#contenido" aria-label="Volver arriba"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+</body></html>

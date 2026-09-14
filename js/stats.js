@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     anios: 8,
     lenguajes: 7,
     talleres: 10,
-    miembros: 74
+    miembros: 50
   };
 
   // Asigna los valores a los elementos correspondientes

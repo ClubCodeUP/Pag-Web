@@ -1,0 +1,16 @@
+{
+  "name": "pag-web",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClubCodeUP/Pag-Web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ClubCodeUP/Pag-Web/issues"
+  },
+  "homepage": "https://github.com/ClubCodeUP/Pag-Web#readme"
+}

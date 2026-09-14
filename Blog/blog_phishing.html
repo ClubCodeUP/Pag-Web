@@ -1,437 +1,76 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <title>Club CODE UP - Phishing en 2026</title>
-    <link rel="icon" href="../img/GeneralUse/logo.png" type="image/icon type">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Articulo de CODE UP sobre phishing, ingenieria social e IA" name="description">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-
-    <style>
-        :root {
-            --code-dark: #120f2d;
-            --code-purple: #7546e8;
-            --code-purple-deep: #2b1663;
-            --code-blue: #2878eb;
-            --code-red: #f14d5d;
-            --blog-text: #171239;
-            --blog-muted: #656174;
-            --blog-soft: #f8f6ff;
-        }
-
-        body {
-            font-family: "Open Sans", sans-serif;
-            color: var(--blog-text);
-            background:
-                linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.98)),
-                linear-gradient(rgba(117, 70, 232, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(117, 70, 232, 0.08) 1px, transparent 1px);
-            background-size: auto, 62px 62px, 62px 62px;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Jost", sans-serif;
-        }
-
-        .article-wrap {
-            padding: 72px 0 112px;
-        }
-
-        .article-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-            margin-bottom: 44px;
-        }
-
-        .pill-nav {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            min-height: 45px;
-            padding: 0 20px;
-            border-radius: 999px;
-            color: #fff;
-            background: var(--code-purple);
-            font-family: "Jost", sans-serif;
-            font-size: 0.86rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            box-shadow: 0 10px 18px rgba(117, 70, 232, 0.2);
-        }
-
-        .pill-nav:hover {
-            color: #fff;
-            background: var(--code-blue);
-            text-decoration: none;
-        }
-
-        .article-kicker,
-        .side-kicker {
-            display: inline-block;
-            color: var(--code-purple);
-            font-family: "Jost", sans-serif;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-
-        .article-title {
-            max-width: 760px;
-            color: var(--code-dark);
-            font-size: clamp(2.25rem, 4.7vw, 4.05rem);
-            font-weight: 800;
-            line-height: 1.05;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-        }
-
-        .article-body {
-            max-width: 760px;
-        }
-
-        .article-body p,
-        .article-body li {
-            color: var(--blog-muted);
-            font-size: 1rem;
-            line-height: 1.82;
-        }
-
-        .article-body p {
-            margin-bottom: 20px;
-        }
-
-        .article-body h2 {
-            color: var(--code-dark);
-            font-size: 1.55rem;
-            font-weight: 800;
-            line-height: 1.22;
-            text-transform: uppercase;
-            margin: 40px 0 16px;
-        }
-
-        .article-body strong {
-            color: var(--code-dark);
-            font-weight: 800;
-        }
-
-        .sources {
-            margin-top: 42px;
-            padding-top: 16px;
-        }
-
-        .sources ul {
-            padding-left: 20px;
-            margin-bottom: 34px;
-        }
-
-        .sources li {
-            margin-bottom: 13px;
-        }
-
-        .author-line {
-            border-top: 1px solid rgba(18, 15, 45, 0.12);
-            padding-top: 22px;
-            color: var(--blog-muted);
-        }
-
-        .article-side {
-            position: sticky;
-            top: 28px;
-        }
-
-        .side-card {
-            overflow: hidden;
-            border-radius: 6px;
-            background: #fff;
-            box-shadow: 0 18px 35px rgba(28, 22, 72, 0.12);
-            margin-bottom: 22px;
-        }
-
-        .mini-cover {
-            position: relative;
-            min-height: 174px;
-            overflow: hidden;
-            background:
-                linear-gradient(90deg, rgba(31, 15, 83, 0.96) 0 36%, rgba(47, 25, 113, 0.98) 36% 100%),
-                radial-gradient(circle at 18% 18%, rgba(117, 70, 232, 0.45), transparent 32%);
-        }
-
-        .mini-cover::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.22;
-        }
-
-        .mini-window {
-            position: absolute;
-            top: 34px;
-            left: 36px;
-            width: 120px;
-            padding: 12px;
-            background: #fff7d7;
-            border: 3px solid #ffcf46;
-            box-shadow: 0 6px 0 rgba(18, 15, 45, 0.34);
-        }
-
-        .mini-window span {
-            display: block;
-            height: 6px;
-            margin-bottom: 7px;
-            background: #c6b1ff;
-        }
-
-        .mini-window span:first-child {
-            height: 16px;
-            background: #fff;
-            border: 1px solid #e1dfef;
-        }
-
-        .mini-window span:nth-child(2) {
-            background: #ffe6ea;
-        }
-
-        .mini-badge {
-            position: absolute;
-            top: 26px;
-            right: 28px;
-            z-index: 2;
-            padding: 6px 10px;
-            border-radius: 3px;
-            color: #fff;
-            background: var(--code-red);
-            font-family: "Jost", sans-serif;
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .mini-cursor {
-            position: absolute;
-            right: 30px;
-            top: 64px;
-            width: 78px;
-            height: 78px;
-            z-index: 2;
-            background: #fff;
-            clip-path: polygon(0 0, 100% 30%, 62% 44%, 84% 91%, 63% 100%, 41% 52%, 12% 84%);
-            filter: drop-shadow(6px 7px 0 rgba(18, 15, 45, 0.45));
-        }
-
-        .mini-title {
-            position: absolute;
-            left: 24px;
-            right: 20px;
-            bottom: 16px;
-            z-index: 2;
-        }
-
-        .mini-title h3 {
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 800;
-            line-height: 1.05;
-            margin: 0 0 4px;
-            text-transform: uppercase;
-        }
-
-        .mini-title p {
-            color: rgba(255, 255, 255, 0.82);
-            font-size: 0.72rem;
-            margin: 0;
-        }
-
-        .side-note {
-            position: relative;
-            padding: 28px 30px 28px 34px;
-            background: var(--code-dark);
-            color: #fff;
-        }
-
-        .side-note::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 6px;
-            background: #ffc107;
-        }
-
-        .side-note h3 {
-            color: #ffc107;
-            font-size: 1rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .side-note p {
-            color: rgba(255, 255, 255, 0.88);
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        .chart-card {
-            padding: 28px;
-        }
-
-        .bar-chart {
-            height: 150px;
-            display: flex;
-            align-items: flex-end;
-            gap: 14px;
-            padding: 16px 14px 8px;
-            border-left: 2px solid rgba(18, 15, 45, 0.15);
-            border-bottom: 2px solid rgba(18, 15, 45, 0.15);
-        }
-
-        .bar-chart span {
-            display: block;
-            flex: 1;
-            min-width: 18px;
-            background: #477ca5;
-        }
-
-        .bar-chart span:nth-child(1) { height: 20%; }
-        .bar-chart span:nth-child(2) { height: 30%; }
-        .bar-chart span:nth-child(3) { height: 42%; }
-        .bar-chart span:nth-child(4) { height: 76%; }
-        .bar-chart span:nth-child(5) { height: 54%; }
-
-        .footer-social a {
-            font-size: 1.45rem;
-        }
-
-        @media (max-width: 991px) {
-            .article-wrap {
-                padding-top: 52px;
-            }
-
-            .article-side {
-                position: static;
-                margin-top: 48px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .article-nav {
-                margin-bottom: 34px;
-            }
-
-            .pill-nav {
-                min-height: 40px;
-                padding: 0 16px;
-                font-size: 0.78rem;
-            }
-
-            .article-title {
-                font-size: 2.05rem;
-            }
-
-            .article-body h2 {
-                font-size: 1.32rem;
-            }
-        }
-    </style>
-</head>
-
-<body class="internal-page">
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark">
-        <div class="row py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center text-white">
-                    <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a class="text-white pl-2" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Un clic y lo perdiste todo: el funcionamiento del phishing en 2026 | Club CODE UP</title>
+<meta name="description" content="Un artículo del Grupo 8 CODE UP sobre el phishing, sus técnicas y su evolución con la inteligencia artificial."><meta name="theme-color" content="#14172a">
+<link rel="icon" href="../img/GeneralUse/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
+<link href="../css/pages-ide.css?v=6" rel="stylesheet">
+<link href="../css/site-header.css?v=1" rel="stylesheet">
+<script src="../js/pages-ide.js?v=5" defer></script>
+</head><body class="club-page">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<div class="page-progress" aria-hidden="true"><span></span></div>
+<div class="ide-topbar">
+    <div class="container ide-topbar__inner">
+        <a href="mailto:clubcodeup@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> clubcodeup@gmail.com</a>
+        <div class="site-social" aria-label="Redes sociales de CODE UP">
+            <a href="https://www.tiktok.com/@clubcode.up" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/clubcodeup" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/club-code-up/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/clubcodeup/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
-    <!-- Topbar End -->
+</div>
 
-    <!-- Navbar Start -->
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="../index.html" class="navbar-brand ml-lg-3">
-                <img src="../img/GeneralUse/logo.png" width="100" height="100" alt="Code UP">
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-label="Abrir menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="../index.html" class="nav-item nav-link">INICIO</a>
-                    <a href="../blog.html" class="nav-item nav-link active">BLOG</a>
-                    <a href="../course.html" class="nav-item nav-link">ALIANZAS</a>
-                    <a href="../projects.html" class="nav-item nav-link">PROYECTOS</a>
-                    <a href="../advisories.html" class="nav-item nav-link">ASESORIAS Y CURSOS</a>
-                    <a href="../team.html" class="nav-item nav-link">NOSOTROS</a>
-                    <a href="../contact.html" class="nav-item nav-link">&Uacute;NETE</a>
-                </div>
+<header class="ide-header">
+    <nav class="navbar navbar-expand-lg navbar-light container ide-tabbar" aria-label="Navegación principal">
+        <a href="../index.html" class="navbar-brand ide-logo" aria-label="CODE UP, inicio">
+            <img src="../img/GeneralUse/logo.png" width="40" height="40" alt="">
+            <span>code<strong>up</strong></span>
+        </a>
+        <button type="button" class="navbar-toggler ide-menu-toggle" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Abrir menú">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+        <div class="collapse navbar-collapse ide-tabs-wrap" id="navbarCollapse">
+            <div class="navbar-nav ide-tabs">
+                <a href="../index.html" class="nav-item nav-link ide-tab"><i class="fa fa-house" aria-hidden="true"></i>inicio<span class="ide-ext" aria-hidden="true">.tsx</span></a>
+                <a href="../blog.html" class="nav-item nav-link ide-tab is-active" aria-current="page"><i class="fa fa-file-lines" aria-hidden="true"></i>blog<span class="ide-ext" aria-hidden="true">.md</span></a>
+                <a href="../course.html" class="nav-item nav-link ide-tab"><i class="fa fa-handshake" aria-hidden="true"></i>alianzas<span class="ide-ext" aria-hidden="true">.json</span></a>
+                <a href="../projects.html" class="nav-item nav-link ide-tab"><i class="fa fa-diagram-project" aria-hidden="true"></i>proyectos<span class="ide-ext" aria-hidden="true">/</span></a>
+                <a href="../advisories.html" class="nav-item nav-link ide-tab"><i class="fa fa-graduation-cap" aria-hidden="true"></i>cursos<span class="ide-ext" aria-hidden="true">.yml</span></a>
+                <a href="../team.html" class="nav-item nav-link ide-tab"><i class="fa fa-users" aria-hidden="true"></i>equipo<span class="ide-ext" aria-hidden="true">.team</span></a>
+                <a href="../contact.html" class="nav-item nav-link ide-tab ide-tab--run"><i class="fa fa-play" aria-hidden="true"></i>únete()</a>
             </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
+        </div>
+    </nav>
+</header>
+<main id="contenido">
+<nav class="page-shell page-crumb" aria-label="Ruta de navegación"><a href="../index.html">inicio.tsx</a><span aria-hidden="true">/</span><span aria-current="page">blog.md / lectura</span></nav>
+<div class="page-shell"><header class="article-heading"><h1>Un clic y lo perdiste todo: el funcionamiento del phishing en 2026</h1><div class="page-meta"><span>Ciberseguridad</span><span>Grupo 8 CODE UP</span></div></header>
+<figure class="page-photo article-cover"><img src="../media/pages/workshop.webp" alt="Sesión de CODE UP con estudiantes trabajando en computadoras" fetchpriority="high" decoding="async"></figure>
+<div class="article-layout"><aside class="article-aside"><h2>En esta lectura</h2><nav aria-label="Contenido del artículo"><ol class="article-toc"><li><a href="#seccion-1">Definici&oacute;n de phishing</a></li><li><a href="#seccion-2">Un clic y todo estar&aacute; perdido: c&oacute;mo ataca el phishing actualmente</a></li><li><a href="#seccion-3">La evoluci&oacute;n del phishing y la IA</a></li><li><a href="#seccion-4">Fuentes</a></li></ol></nav><a class="page-link" href="../blog.html">Todos los artículos <i class="fa fa-arrow-right" aria-hidden="true"></i></a><p>Ideas y preguntas compartidas por la comunidad CODE UP.</p></aside><article class="article-body">
 
-    <!-- Article Start -->
-    <main class="article-wrap">
-        <div class="container">
-            <div class="article-nav">
-                <a class="pill-nav" href="../blog.html"><i class="fa fa-arrow-left"></i> Atr&aacute;s</a>
-                <a class="pill-nav" href="../blog.html">Siguiente <i class="fa fa-arrow-right"></i></a>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-8">
-                    <article class="article-body">
-                        <span class="article-kicker">Blog 1</span>
-                        <h1 class="article-title">Un clic y lo perdiste todo: el funcionamiento del phishing en 2026</h1>
 
                         <p>En un mundo donde la tecnolog&iacute;a domina gran parte de nuestra vida, el peligro de ser atacado por la ciberdelincuencia va en aumento. En este art&iacute;culo se analizar&aacute; el impacto del phishing en la vida cotidiana.</p>
 
-                        <h2>Definici&oacute;n de phishing</h2>
+                        <h2 id="seccion-1">Definici&oacute;n de phishing</h2>
                         <p>El phishing es un delito inform&aacute;tico que consiste en captar a usuarios a trav&eacute;s de p&aacute;ginas web falsas que buscan, con enga&ntilde;os psicol&oacute;gicos, conseguir datos personales o instalar programas maliciosos inconscientemente. Desafortunadamente, el phishing ha evolucionado su eficiencia amenazante en los &uacute;ltimos a&ntilde;os, tal como se menciona en un estudio realizado en la Universidad Sains de Malasia (2023).</p>
 
-                        <h2>Un clic y todo estar&aacute; perdido: c&oacute;mo ataca el phishing actualmente</h2>
+                        <h2 id="seccion-2">Un clic y todo estar&aacute; perdido: c&oacute;mo ataca el phishing actualmente</h2>
                         <p>Seg&uacute;n Cisco Systems, es una t&eacute;cnica de ingenier&iacute;a social en la que los piratas inform&aacute;ticos utilizan correos electr&oacute;nicos o mensajes de texto aparentemente inofensivos para enga&ntilde;ar a usuarios descuidados y lograr que realicen acciones como descargar programas malignos, visitar un sitio web falso de una instituci&oacute;n o revelar informaci&oacute;n personal. Estas t&eacute;cnicas digitales llevan al mismo objetivo: robar datos personales o causar alg&uacute;n otro da&ntilde;o. Algunos t&eacute;rminos t&eacute;cnicos relacionados con el phishing son los siguientes.</p>
                         <p><strong>Phishing toolkits:</strong> la Universidad Sains de Malasia brinda este t&eacute;rmino para definir que los atacantes usan kits de software que permiten crear sitios falsos sin necesidad de tener conocimientos t&eacute;cnicos.</p>
                         <p><strong>Cloaking:</strong> los sitios maliciosos muestran contenido inofensivo a los sistemas de detecci&oacute;n, pero el contenido real encubierto es peligroso para los usuarios. Esto les permite evadir listas negras y crawlers. Adem&aacute;s, algunos de sus ataques tambi&eacute;n se dirigen a individuos u organizaciones espec&iacute;ficas mediante informaci&oacute;n adaptada para aumentar la credibilidad. Un ejemplo de esto fue el ataque al Colonial Pipeline en 2021 mediante, probablemente, spear-phishing: ataques personalizados de phishing.</p>
 
-                        <h2>La evoluci&oacute;n del phishing y la IA</h2>
+                        <h2 id="seccion-3">La evoluci&oacute;n del phishing y la IA</h2>
                         <p>Cisco Systems y un estudio realizado por la Universidad de Malasia mencionan que el uso de la IA para detectar ataques de phishing no se hace correctamente. Sin embargo, sigue siendo una gran herramienta contra este ciberataque. Por ello, Cisco Systems utiliza IA para crear softwares como Cisco Secure Email Threat Defense.</p>
                         <p>Desafortunadamente, la IA tambi&eacute;n se usa para potenciar la eficiencia de estos ataques y hacerlos m&aacute;s personalizados e indetectables, de modo que lleguen de forma masiva a sus v&iacute;ctimas.</p>
 
                         <section class="sources">
-                            <h2>Fuentes</h2>
+                            <h2 id="seccion-4">Fuentes</h2>
                             <ul>
                                 <li>Tejada, L. (2021). El phishing como riesgo inform&aacute;tico, t&eacute;cnicas y prevenci&oacute;n en los canales electr&oacute;nicos: un mapeo sistem&aacute;tico.</li>
                                 <li>Jari, M. (2022). An Overview of Phishing Victimization: Human Factors, Training and the Role of Emotions.</li>
@@ -442,108 +81,14 @@
 
                             <p class="author-line"><strong>Blog realizado por:</strong> Grupo 8 CODE UP</p>
                         </section>
-                    </article>
-                </div>
-
-                <aside class="col-lg-4">
-                    <div class="article-side">
-                        <div class="side-card">
-                            <div class="mini-cover" aria-hidden="true">
-                                <div class="mini-window">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <span class="mini-badge">Alerta phishing</span>
-                                <span class="mini-cursor"></span>
-                                <div class="mini-title">
-                                    <h3>Un clic y lo perdiste todo</h3>
-                                    <p>El funcionamiento del phishing en 2026</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="side-card side-note">
-                            <span class="side-kicker">Ciberseguridad</span>
-                            <h3>Antes de hacer clic</h3>
-                            <p>La &uacute;ltima barrera de seguridad sigue siendo el factor humano: pensar antes de hacer clic.</p>
-                        </div>
-
-                        <div class="side-card chart-card" aria-hidden="true">
-                            <div class="bar-chart">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </main>
-    <!-- Article End -->
-
-    <!-- Footer Start -->
-    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5">
-        <div class="container mt-5 pt-5">
-            <div class="row align-items-start">
-                <div class="col-md-6 mb-5">
-                    <a href="../index.html" class="navbar-brand">
-                        <h1 class="mt-n2 text-uppercase text-white">CODE UP</h1>
-                    </a>
-                    <p class="m-0">Aprende tus primeros pasos en la programaci&oacute;n.</p>
-                </div>
-                <div class="col-md-6 mb-5">
-                    <h3 class="text-white mb-4">Newsletter</h3>
-                    <div class="w-100">
-                        <div class="input-group">
-                            <input type="email" class="form-control border-light" style="padding: 30px;" placeholder="Correo" aria-label="Correo">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary px-4">Suscr&iacute;bete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-5 mb-5">
-                    <h3 class="text-white mb-4">Encu&eacute;ntranos</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pac&iacute;fico</p>
-                    <p><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
-                    <div class="d-flex justify-content-start mt-4 footer-social">
-                        <a class="text-white mr-4" href="https://www.facebook.com/clubcodeup" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="text-white mr-4" href="https://www.linkedin.com/company/club-code-up/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="text-white mr-4" href="https://www.instagram.com/clubcodeup/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a class="text-white" href="https://www.tiktok.com/@clubcode.up" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">CODEUP</a>. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="../lib/counterup/counterup.min.js"></script>
-    <script src="../lib/waypoints/waypoints.min.js"></script>
-    <script src="../js/main.js"></script>
-</body>
-
-</html>
+                    </article></div></div>
+<div class="page-shell"><section class="page-next"><div><h2>Sigue la conversación.</h2><p>Hay más ideas por descubrir y una comunidad con la que compartirlas.</p></div><a class="page-button" href="../blog.html">Explora el blog <i class="fa fa-arrow-right" aria-hidden="true"></i></a></section></div></main>
+<footer class="page-footer">
+<div class="page-status"><div class="page-shell"><span><i class="fa fa-code-branch" aria-hidden="true"></i> main · CODE UP</span><span>Universidad del Pacífico</span><span>UTF-8</span><span>Hecho en comunidad</span></div></div>
+<div class="page-shell page-footer__grid">
+<div><a class="page-footer__brand" href="../index.html">code<strong>up</strong></a><p>Una organización estudiantil, muchas ideas y una familia con la que compartir el camino.</p></div>
+<div class="page-footer__links"><h2>Explora</h2><a href="../advisories.html">Cursos y talleres</a><a href="../projects.html">Proyectos</a><a href="../team.html">Nuestro equipo</a><a href="../course.html">Alianzas</a><a href="../blog.html">Blog</a></div>
+<div><h2>Encuéntranos</h2><p>Universidad del Pacífico<br><a href="mailto:clubcodeup@gmail.com">clubcodeup@gmail.com</a></p><div class="page-social" aria-label="Redes de CODE UP"><a href="https://www.tiktok.com/@clubcode.up" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok" aria-hidden="true"></i></a><a href="https://www.facebook.com/clubcodeup" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.linkedin.com/company/club-code-up/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a><a href="https://www.instagram.com/clubcodeup/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></div><a class="page-link" href="../contact.html">Sé parte de CODE UP <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+</div><div class="page-shell page-footer__bottom"><span>© 2026 Club CODE UP</span><span>Hecho por la comunidad, para la comunidad.</span></div></footer>
+<a class="page-top" href="#contenido" aria-label="Volver arriba"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+</body></html>

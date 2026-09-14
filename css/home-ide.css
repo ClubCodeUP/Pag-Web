@@ -1,0 +1,576 @@
+/*
+THESIS: Club CODE UP's homepage becomes its own dark code-editor theme, not a
+marketing page about a coding club — refusing the generic violet/night
+SaaS-card arrangement the old site used.
+OWN-WORLD: warm dark-navy ground pulled from the hero illustration itself;
+four named accents lifted from the cat's own design (harness magenta,
+ear-tip cyan, lamp amber, diff mint). Martian Mono for structural chrome
+(tabs, buttons, labels, gutters), Manrope for reading prose — mono is literal
+editor furniture here, never a "tech" costume.
+STORY: a visiting student reads file tabs as navigation, courses as
+directory entries, the team as contributors, and joins by "running" a
+command — the club feels like a real workspace, not a pitch.
+FIRST VIEWPORT: the unchanged hero video/canvas, now framed by a tab-bar nav
+above and an open-file copy panel beside it; the primary action renders as a
+runnable terminal line.
+FORM: terminal/code-editor world, candidate 4 of 7, user-pinned over the
+assigned roll (index 6, combi/street-signage world); seed key c730d3c3.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the
+finish review, the verdict, and DESIGN.md.
+*/
+
+:root {
+  --ide-bg: #14172a;
+  --ide-bg-raised: #1c2038;
+  --ide-bg-raised-2: #202545;
+  --ide-border: #333a5c;
+  --ide-border-soft: rgba(226, 228, 250, 0.1);
+  --ide-ink: #f2f1f8;
+  --ide-ink-soft: #acafce;
+  --ide-ink-faint: #74799e;
+  --ide-magenta: #f0568f;
+  --ide-cyan: #5fd6ec;
+  --ide-amber: #f5bb4c;
+  --ide-mint: #6fe3aa;
+  --ide-radius: 10px;
+  --ide-radius-lg: 14px;
+  --ide-mono: "Martian Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --ide-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --ide-ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* Structural aliases for the pin/flight/about/team cards — kept dark, in
+     this world's own navy, not the reference's cream palette (design stays
+     ours; only the reveal/slide/draw motion timing was ever meant to be
+     ported from that reference). */
+  --paper: #14172a;
+  --paper-2: #1c2038;
+  --line: #333a5c;
+  --ink-p: #f2f1f8;
+  --ink-p-soft: #acafce;
+  --radius-crisp: 14px;
+  --glow: none;
+}
+
+.home-page { background: var(--ide-bg); }
+.home-page body,
+body.home-page {
+  overflow-x: hidden;
+  color: var(--ide-ink);
+  background: var(--ide-bg);
+  font-family: var(--ide-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.home-page h1, .home-page h2, .home-page h3 { color: var(--ide-ink); letter-spacing: -.01em; text-wrap: balance; font-family: var(--ide-sans); font-weight: 800; }
+.home-page a { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s var(--ide-ease), opacity .2s ease; }
+.home-page a:focus-visible, .home-page button:focus-visible { outline: 2px solid var(--ide-cyan) !important; outline-offset: 3px; }
+.home-page .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .75rem 1rem; color: var(--ide-bg); background: var(--ide-cyan); border-radius: 6px; font-family: var(--ide-mono); }
+.home-page .skip-link:focus { top: 1rem; }
+
+.ide-scroll-progress { position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: 3px; background: rgba(255, 255, 255, .06); }
+.ide-scroll-progress span { display: block; height: 100%; width: 100%; background: var(--ide-magenta); transform: scaleX(0); transform-origin: left; transition: transform .08s linear; }
+
+[data-parallax] { will-change: transform; }
+
+/* Continuous scroll-scrub: --p is a live 0-1 value driven by scroll position
+   every frame (js/redesign.js), not a one-shot "entered viewport" trigger —
+   scrolling back up reverses it exactly like scrolling down played it. */
+[data-reveal] {
+  --p: 0;
+  opacity: var(--p);
+  transform: translateY(calc((1 - var(--p)) * 34px)) scale(calc(.965 + .035 * var(--p)));
+  filter: blur(calc((1 - var(--p)) * 4px));
+}
+[data-reveal][data-reveal-side="left"] {
+  transform: translateX(calc((1 - var(--p)) * -40px)) scale(calc(.965 + .035 * var(--p)));
+}
+
+/* Split-word headings: the heading itself stays put (no block-level fade —
+   js/redesign.js drives each .ide-word span instead, cascading off the same
+   --p the block reveals use, so it's the same scrub, just per-word). */
+[data-reveal][data-split-words] { opacity: 1; transform: none; filter: none; }
+.ide-word { display: inline-block; opacity: 0; will-change: transform, opacity; }
+
+/* Scene items start in the reference's own "set()" state so nothing flashes
+   at its final position before the first frame runs. */
+[data-anim] { will-change: transform, opacity; }
+[data-anim="expand"] { opacity: 0; transform: scale(.92); clip-path: inset(0% 23% 0% 23% round var(--about-round, 20px)); }
+[data-anim="dissolve"] { opacity: 1; }
+[data-anim="slide-left"] { opacity: 0; transform: translate3d(-101%, 0, 0); }
+[data-anim="pop"] { opacity: 0; transform: scale(0); }
+[data-anim="rise"] { opacity: 0; transform: translate3d(0, 50px, 0); }
+.ide-part { display: inline-block; will-change: transform; }
+[data-anim="part"] { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+[data-anim="counter-x"] { transform: translate3d(-10%, 0, 0) scale(1.25); }
+
+[data-scrub-img] { transform: scale(var(--zoom, 1)); }
+
+/* Custom hero cursor: replaces the system pointer while over the hero — the
+   hero is a workspace you reach into, not a page you point at. */
+.ide-hero.has-dot,
+.ide-hero.has-dot a,
+.ide-hero.has-dot button { cursor: none; }
+/* A solid accent color only stays visible against backgrounds it contrasts
+   with — the first version was magenta, the exact hue of the cat's own
+   harness, so it visually vanished into it. mix-blend-mode: difference
+   inverts whatever is underneath instead of competing with it, so it reads
+   against the navy hero, the video, AND every color on the cat itself. No
+   position transition or easing — those are what make custom cursors feel
+   laggy — so it stays pinned exactly on the real pointer. */
+.ide-pointer {
+  position: fixed; top: 0; left: 0; z-index: 90; pointer-events: none;
+  opacity: 0; transition: opacity .18s ease; mix-blend-mode: difference;
+}
+.ide-pointer.is-visible { opacity: 1; }
+.ide-pointer__ring {
+  position: absolute; top: -13px; left: -13px; width: 26px; height: 26px;
+  border: 1.5px solid #fff; border-radius: 50%;
+  transition: transform .18s var(--ide-ease), opacity .18s ease;
+}
+.ide-pointer__core {
+  position: absolute; top: -3px; left: -3px; width: 6px; height: 6px;
+  border-radius: 50%; background: #fff;
+  transition: transform .18s var(--ide-ease);
+}
+.ide-pointer.is-active .ide-pointer__ring { transform: scale(1.3); opacity: .6; }
+.ide-pointer.is-active .ide-pointer__core { transform: scale(1.6); }
+@media (prefers-reduced-motion: reduce) { .ide-pointer { display: none; } }
+
+/* A code comment doing the "random tagline" job — quiet, no chip, no glow. */
+.ide-code-comment { margin: 1.4rem 0 0; color: var(--ide-ink-faint); font-family: var(--ide-mono); font-size: .78rem; font-style: italic; }
+
+/* One owned corner-radius language instead of a randomized organic blob —
+   a single large radius on two opposite corners, sharp on the other two.
+   Reads as a deliberate cut, not a CSS-blob cliché, at any scale. Photos
+   also breathe on a slow continuous drift so the page never sits still. */
+.ide-blob {
+  position: relative; z-index: 2; object-fit: cover; filter: saturate(.92);
+  animation: ide-blob-sway 10s ease-in-out infinite;
+}
+.ide-blob--1 { border-radius: 0 clamp(48px, 9vw, 160px) 0 clamp(48px, 9vw, 160px); animation-delay: 0s; }
+.ide-blob--2 { border-radius: clamp(48px, 9vw, 160px) 0 clamp(48px, 9vw, 160px) 0; animation-delay: -3.3s; }
+.ide-blob--3 { border-radius: 0 0 clamp(48px, 9vw, 160px) 0; animation-delay: -6.6s; }
+@keyframes ide-blob-sway {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(var(--zoom, 1)); }
+  50% { transform: translate3d(0, -8px, 0) scale(var(--zoom, 1)); }
+}
+
+/* An endless marquee band — motion with no scroll or cursor dependency at
+   all, the clearest possible signal that this page is not a static poster. */
+.ide-marquee { overflow: hidden; background: var(--ide-magenta); padding: 1.1rem 0; }
+.ide-marquee__track { display: flex; width: max-content; gap: 2.5rem; animation: ide-marquee 22s linear infinite; }
+.ide-marquee__track span { color: var(--ide-bg); font-family: var(--ide-mono); font-size: clamp(1.3rem, 3vw, 2.2rem); font-weight: 800; white-space: nowrap; }
+.ide-marquee__track span::after { content: "//"; margin-left: 2.5rem; opacity: .5; }
+@keyframes ide-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- about: image dominates, copy overlaps it, nothing boxed ---------- */
+/* No overflow clipping on this section: it now holds a sticky stage, and an
+   `overflow: hidden` ancestor silently stops `position: sticky` from ever
+   sticking. The clipping lives on the sticky stage itself instead. */
+/* The frame owns a fixed height on purpose: the expand move animates width,
+   and if height were derived from it (aspect-ratio), every frame would
+   change the section's layout height, move its own rect.top, and feed a
+   different scroll progress back into the animation driving it — the
+   values oscillate instead of advancing. Fixed height breaks that loop. */
+/* The section is 2.4 viewports tall and pins a single stage inside it; that
+   extra height is the scroll timeline. Nothing here is stacked — the panel,
+   the copy and the figures are placed in one composition and overlap. */
+.ide-about {
+  --about-round: clamp(14px, 1.6vw, 26px);
+  position: relative; height: 240vh; padding: 0;
+}
+.ide-about__sticky {
+  position: sticky; top: 0; height: 100vh; overflow: hidden; display: grid; align-items: center;
+}
+.ide-about__stage { position: relative; height: 76vh; }
+
+/* Panel: left-weighted, and the copy deliberately crosses over its edge. */
+.ide-about__panel {
+  position: absolute; left: 0; top: 2%; width: 66%; height: 52%; z-index: 1;
+  border-radius: var(--about-round); will-change: clip-path, transform, opacity;
+}
+.ide-about__img {
+  position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: center; border-radius: var(--about-round);
+  will-change: transform, opacity;
+}
+.ide-about__img--over { z-index: 2; }
+
+.ide-about__text {
+  position: absolute; right: 0; top: 16%; width: 46%; z-index: 4;
+  padding: clamp(1.4rem, 2.4vw, 2.2rem);
+  background: rgba(11, 13, 26, .88); backdrop-filter: blur(18px);
+  border-radius: var(--ide-radius-lg);
+}
+
+/* Figures sit at different heights instead of a tidy row of three. */
+.ide-about__strip { position: absolute; left: 0; bottom: 0; width: 74%; z-index: 3; display: flex; gap: clamp(.7rem, 1.6vw, 1.4rem); }
+.ide-about__shot { flex: 1; margin: 0; will-change: transform; }
+.ide-about__shot--1 { transform-origin: left center; margin-top: 2.5rem; }
+.ide-about__shot--2 { margin-top: 0; }
+.ide-about__shot--3 { margin-top: 4rem; }
+
+.ide-about__shot img {
+  display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover;
+  border-radius: var(--ide-radius-lg); filter: saturate(.92);
+}
+.ide-about__shot figcaption {
+  margin-top: .6rem; color: var(--ink-p-soft); font-family: var(--ide-mono); font-size: .74rem;
+}
+
+/* A soft aura pulsing outward behind a portrait — a photo that feels present
+   rather than a static headshot pasted onto the layout. */
+@keyframes ide-radiate {
+  0% { transform: scale(1); opacity: .32; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+.ide-about__tag { display: inline-block; margin-bottom: 1rem; padding: .35rem .7rem; color: var(--ide-bg); background: var(--ide-mint); border-radius: 6px; font-family: var(--ide-mono); font-size: .74rem; font-weight: 700; }
+.ide-about__text h2 { margin-bottom: 1.1rem; font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
+.ide-about__text > p { margin: 0 0 1.4rem; color: var(--ink-p-soft); font-size: .96rem; }
+.ide-about__stats { display: flex; flex-wrap: wrap; gap: clamp(1rem, 2.4vw, 2rem); margin-bottom: 1.4rem; }
+.ide-about__stats div { display: flex; flex-direction: column; }
+.ide-about__stats strong { color: var(--ide-amber); font-family: var(--ide-mono); font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.ide-about__stats span { color: var(--ink-p-soft); font-family: var(--ide-mono); font-size: .74rem; }
+
+/* ---------- team: scattered, overlapping, never a grid ---------- */
+.ide-scatter { position: relative; display: flex; flex-wrap: wrap; gap: clamp(1rem, 3vw, 2rem) clamp(2rem, 5vw, 4rem); padding: 1rem 0 2rem; }
+.ide-scatter__item { position: relative; width: clamp(150px, 20vw, 220px); text-align: center; }
+.ide-scatter__item img { position: relative; z-index: 2; width: 100%; aspect-ratio: 1/1; box-shadow: 0 20px 40px -20px rgba(5, 6, 20, .65); }
+.ide-scatter__item::before {
+  content: ""; position: absolute; inset: -8%; z-index: 1; opacity: .22;
+  animation: ide-radiate 3.4s ease-out infinite; pointer-events: none;
+}
+.ide-scatter__item--1::before { background: var(--ide-magenta); border-radius: clamp(48px, 9vw, 160px) 0 clamp(48px, 9vw, 160px) 0; animation-delay: -.5s; }
+.ide-scatter__item--2::before { background: var(--ide-cyan); border-radius: clamp(24px, 6vw, 90px); animation-delay: -1.5s; }
+.ide-scatter__item--3::before { background: var(--ide-amber); border-radius: 0 clamp(48px, 9vw, 160px) 0 clamp(48px, 9vw, 160px); animation-delay: -2.3s; }
+.ide-scatter__item--4::before { background: var(--ide-mint); border-radius: clamp(48px, 9vw, 160px) 0 clamp(48px, 9vw, 160px) 0; animation-delay: -3s; }
+.ide-scatter__item h3 { margin: 1rem 0 .2rem; font-size: 1.05rem; color: var(--ink-p); }
+.ide-scatter__item p { margin: 0; color: var(--ink-p-soft); font-family: var(--ide-mono); font-size: .76rem; }
+.ide-scatter__item--1 { top: 0; }
+.ide-scatter__item--2 { top: 2.4rem; }
+.ide-scatter__item--3 { top: -.6rem; }
+.ide-scatter__item--4 { top: 1.6rem; }
+.ide-scatter__item--1 .ide-contributor__badge { top: -.6rem; right: -.6rem; }
+.ide-contributor__badge { position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .6rem; color: var(--ide-bg); background: var(--ide-magenta); border-radius: 999px; font-family: var(--ide-mono); font-size: .64rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+
+/* ---------- top strip ---------- */
+.ide-topbar { color: var(--ide-ink-soft); background: var(--ide-bg-raised); border-bottom: 1px solid var(--ide-border-soft); font-family: var(--ide-mono); font-size: .74rem; letter-spacing: .01em; }
+.ide-topbar__inner { min-height: 36px; display: flex; align-items: center; justify-content: space-between; }
+.ide-topbar a { color: var(--ide-ink-soft); }
+.ide-topbar a:hover { color: var(--ide-cyan); text-decoration: none; }
+.ide-topbar .site-social { display: flex; align-items: center; gap: .2rem; }
+.ide-topbar .site-social a { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 4px; }
+.ide-topbar .site-social a:hover { background: var(--ide-bg-raised-2); }
+
+/* ---------- tab bar (nav) ---------- */
+.ide-header { position: relative; z-index: 20; background: var(--ide-bg-raised); border-bottom: 1px solid var(--ide-border); }
+.ide-tabbar.navbar { min-height: 72px; padding: 0 15px; align-items: stretch; }
+.ide-logo.navbar-brand { display: inline-flex; align-items: center; gap: .65rem; color: var(--ide-ink) !important; font-family: var(--ide-mono); font-size: 1.05rem; font-weight: 700; }
+.ide-logo img { width: 40px; height: 40px; object-fit: contain; border-radius: 8px; background: var(--ide-bg-raised-2); padding: 4px; }
+.ide-logo strong { color: var(--ide-magenta); }
+.ide-menu-toggle.navbar-toggler { color: var(--ide-ink); border: 1px solid var(--ide-border); border-radius: 6px; }
+.ide-tabs-wrap.navbar-collapse { align-items: stretch; }
+.ide-tabs.navbar-nav { flex-direction: row; align-items: stretch; margin-left: auto; }
+.ide-tab.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 0 1.05rem !important;
+  height: 72px;
+  color: var(--ide-ink-soft) !important;
+  background: transparent;
+  border-right: 1px solid var(--ide-border-soft);
+  font-family: var(--ide-mono);
+  font-size: .82rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.ide-tab.nav-link i { font-size: .78rem; opacity: .75; }
+.ide-tab.nav-link .ide-ext { color: var(--ide-ink-faint); }
+.ide-tab.nav-link:hover { color: var(--ide-ink) !important; background: var(--ide-bg-raised-2); }
+.ide-tab.nav-link.is-active { color: var(--ide-ink) !important; background: var(--ide-bg); }
+.ide-tab.nav-link.is-active::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--ide-cyan); }
+.ide-tab--run.nav-link { color: var(--ide-bg) !important; background: var(--ide-magenta); font-weight: 700; border-right: 0; }
+.ide-tab--run.nav-link:hover { background: #f57aa4; }
+.ide-tab--run.nav-link i { opacity: 1; }
+
+/* ---------- hero ---------- */
+.ide-hero { position: relative; min-height: clamp(680px, calc(100vh - 108px), 900px); overflow: hidden; color: var(--ide-ink); background: #0c0d1e; isolation: isolate; }
+.hero-environment, .hero-motion-root { position: absolute; inset: 0; }
+.hero-environment { z-index: 0; overflow: hidden; background: #111532; }
+.hero-environment img, .hero-environment video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
+.hero-environment img { z-index: 0; }
+/* The clip's own lighting dims across its full 10s (windows and fountain
+   genuinely go dark by the end, not just darker) — a quick opacity snap back
+   to the lit poster read as the lights slamming back on. A slow fade, spread
+   over roughly the same pace as the rest of the clip's changes, reads as
+   intentional instead of like a seam being patched. */
+.hero-environment__motion { z-index: 1; transition: opacity 1.1s ease; }
+.hero-environment__motion.is-looping { opacity: 0; }
+.hero-motion-root { z-index: 2; pointer-events: none; }
+.hero-cat-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; }
+.hero-cat-canvas.is-ready.is-active { opacity: 1; }
+
+.ide-hero__grid {
+  position: relative; z-index: 3; min-height: clamp(680px, calc(100vh - 108px), 900px);
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr); align-items: center;
+  gap: clamp(2rem, 6vw, 6rem); padding-top: clamp(3rem, 6vw, 4.5rem); padding-bottom: clamp(3.5rem, 7vw, 5.5rem);
+  pointer-events: none;
+}
+.ide-hero__visual-space { min-height: 480px; }
+.ide-file-panel {
+  position: relative; z-index: 3; max-width: 720px; pointer-events: auto;
+  background: rgba(11, 13, 26, .93); border: 1px solid var(--ide-border-soft); border-radius: var(--ide-radius-lg);
+  backdrop-filter: blur(22px) saturate(1.1); overflow: hidden;
+}
+.ide-file-panel__head {
+  display: grid; grid-template-columns: 52px minmax(0,1fr) 52px; align-items: center; gap: .6rem; min-height: 44px; padding: .65rem 1.1rem;
+  background: rgba(28, 32, 56, .8); border-bottom: 1px solid var(--ide-border-soft);
+  font-family: var(--ide-mono); font-size: .74rem; color: var(--ide-ink-soft);
+}
+.ide-file-panel__filename { text-align: center; white-space: nowrap; }
+/* Decorative macOS window chrome; it must not dismiss the homepage content. */
+.ide-window-controls { display: flex; align-items: center; gap: 8px; pointer-events: none; }
+.ide-window-controls > span { display: block; width: 12px; height: 12px; flex: none; border-radius: 50%; }
+.ide-window-control--close { background: #ff5f57; }
+.ide-window-control--minimize { background: #febc2e; }
+.ide-window-control--zoom { background: #28c840; }
+.ide-file-panel__body { padding: clamp(1.7rem, 4vw, 2.75rem); }
+.ide-hero h1 { margin-bottom: 1.4rem; font-size: clamp(2.3rem, 3vw, 3.15rem); font-weight: 800; line-height: 1.08; letter-spacing: -.015em; }
+.ide-hero h1 .ide-kw { color: var(--ide-magenta); }
+.ide-hero h1 .ide-str { color: var(--ide-cyan); }
+.hero-lead { max-width: 34rem; margin-bottom: 1.9rem; color: var(--ide-ink-soft); font-size: clamp(1rem, 1.3vw, 1.08rem); }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.3rem; margin-bottom: 2.1rem; }
+
+.ide-run-btn {
+  display: inline-flex; align-items: center; gap: .55rem; height: 50px; padding: 0 1.3rem;
+  color: var(--ide-bg); background: var(--ide-magenta); border: 0; border-radius: 8px;
+  font-family: var(--ide-mono); font-weight: 700; font-size: .92rem;
+}
+.ide-run-btn:hover { color: var(--ide-bg); background: #f57aa4; text-decoration: none; transform: translateY(-2px); }
+.ide-run-btn:active { transform: translateY(0); }
+.ide-run-btn__prompt { opacity: .6; }
+.ide-caret { display: inline-block; width: 8px; height: 1.1em; margin-left: .15rem; background: currentColor; vertical-align: -2px; animation: ide-blink 1s steps(1) infinite; }
+@keyframes ide-blink { 0%, 45% { opacity: 1; } 50%, 95% { opacity: 0; } 100% { opacity: 1; } }
+.ide-run-btn--ghost { color: var(--ide-ink); background: transparent; border: 1px solid var(--ide-border); }
+.ide-run-btn--ghost:hover { color: var(--ide-ink); background: var(--ide-bg-raised-2); border-color: var(--ide-ink-faint); }
+
+.ide-textlink {
+  display: inline-flex; align-items: center; gap: .4rem; color: var(--ide-ink-soft);
+  font-family: var(--ide-mono); font-size: .88rem; font-weight: 500;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat; background-position: 0 100%; background-size: 0% 1px;
+}
+/* .home-page a already sets a transition list (0,1,1) that would otherwise
+   beat this single-class selector and silently drop background-size from
+   the animated properties, so this override needs the higher-specificity
+   compound selector, not just .ide-textlink. */
+.home-page .ide-textlink { transition: color .2s ease, gap .2s ease, background-size .4s var(--ide-ease); }
+.ide-textlink:hover { color: var(--ide-cyan); gap: .6rem; background-size: 100% 1px; text-decoration: none; }
+
+.hero-proof { display: flex; gap: 1.8rem; color: var(--ide-ink-faint); font-family: var(--ide-mono); font-size: .78rem; }
+.hero-proof span { display: flex; align-items: baseline; gap: .4rem; }
+.hero-proof strong { color: var(--ide-amber); font-size: 1.1rem; }
+
+/* ---------- generic section rhythm ---------- */
+.ide-section { padding: clamp(4.5rem, 8vw, 7rem) 0; }
+/* Post-hero sections switch to the reference's bright paper system; only
+   the hero, header and footer stay in the cat's night-navy world. */
+.ide-about, .ide-flight, .ide-cta-section { background: var(--paper); }
+.ide-section--raised { background: var(--paper-2); }
+.ide-about h2, .ide-about p, .ide-flight h2, .ide-section--raised h2, .ide-section--raised h3,
+.ide-cta-section h2 { color: var(--ink-p); }
+.ide-about .ide-textlink, .ide-flight .ide-textlink, .ide-section--raised .ide-textlink, .ide-cta-section .ide-textlink { color: var(--ink-p-soft); }
+.ide-about .ide-textlink:hover, .ide-flight .ide-textlink:hover, .ide-section--raised .ide-textlink:hover, .ide-cta-section .ide-textlink:hover { color: var(--ide-cyan); }
+.ide-about .ide-code-comment, .ide-flight .ide-code-comment { color: var(--ink-p-soft); }
+.ide-section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2.2rem, 4vw, 3.2rem); }
+.ide-section__head h2 { margin: 0; }
+.ide-section h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.08; margin: 0 0 clamp(2.2rem, 4vw, 3.2rem); max-width: 34ch; }
+.ide-section__head h2 { margin-bottom: 0; }
+
+/* ---------- pinned scrollytelling (learning paths) ---------- */
+/* The section is 300vh tall; its sticky inner face pins to the viewport
+/* Card stack, ported from the reference's pinned ScrollTrigger: every card
+   sticks at the same offset, so each new one rises and covers the previous,
+   and the covered card darkens toward 50% black (their exact figure) before
+   the next takes the frame. */
+.ide-stack { position: relative; padding: clamp(4rem, 8vw, 6rem) 0 0; background: var(--paper); border-top: 1px solid var(--line); }
+.ide-stack__head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.ide-stack__head h2 { margin: 0; color: var(--ink-p); }
+.ide-stack__cards { display: flex; flex-direction: column; gap: 2.5vh; padding-bottom: 45vh; }
+.ide-stack__card {
+  position: sticky; top: 13vh; display: block; overflow: hidden;
+  min-height: 56vh; border-radius: var(--ide-radius-lg); border: 1px solid var(--line);
+}
+.ide-stack__card:hover { text-decoration: none; }
+.ide-stack__card--magenta { background: var(--ide-magenta); }
+.ide-stack__card--cyan { background: var(--ide-cyan); }
+.ide-stack__card--mint { background: var(--ide-mint); }
+.ide-stack__inner { position: relative; z-index: 2; padding: clamp(1.6rem, 4vw, 3rem); }
+.ide-stack__darken {
+  position: absolute; inset: 0; z-index: 3; background: #000; opacity: 0; pointer-events: none;
+}
+.ide-stack__badge { display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 2.6rem; margin-bottom: 1.6rem; background: var(--paper); border: 1px solid var(--line); border-radius: 50%; font-family: var(--ide-mono); font-weight: 700; color: var(--ink-p); }
+.ide-stack__card i { display: none; }
+.ide-stack__card h3 { margin: 0 0 1rem; font-family: var(--ide-mono); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--ink-p); }
+.ide-stack__card p { margin: 0; max-width: 34rem; color: rgba(20, 23, 42, .9); font-size: clamp(1rem, 1.4vw, 1.1rem); }
+
+/* ---------- flight path (benefits) ---------- */
+/* A hand-drawn route the cat flies while you scroll, replacing the generic
+   "list of three cards" with the same connective, illustrated language the
+   RothFinder reference uses — scroll position drives both the path draw-on
+   and the cat's position along it via SVGPathElement.getPointAtLength. */
+.ide-flight__stage { position: relative; min-height: 640px; }
+.ide-flight__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ide-flight__svg path { fill: none; stroke: var(--line); stroke-opacity: .35; stroke-width: .6; stroke-linecap: round; }
+.ide-flight__cat {
+  position: absolute; top: 0; left: 0; z-index: 2; width: 46px; height: 46px; margin: -23px 0 0 -23px;
+  display: grid; place-items: center; color: var(--ide-bg); background: var(--ide-magenta); border: 1px solid var(--line); border-radius: 50%;
+  box-shadow: var(--glow); font-size: 1.3rem;
+}
+.ide-flight__note {
+  position: absolute; display: block; max-width: 320px; padding: 1.1rem 1.3rem; color: var(--ink-p);
+  background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--ide-radius);
+}
+.ide-flight__note:hover { border-color: var(--ide-magenta); text-decoration: none; }
+.ide-flight__note:hover h3 { color: var(--ide-magenta); }
+.ide-flight__note h3 { margin: 0 0 .4rem; font-size: 1.1rem; color: var(--ink-p); transition: color .2s ease; }
+.ide-flight__note p { margin: 0; color: var(--ink-p-soft); font-size: .92rem; }
+/* The reference tints its boxes from one colour to another as the scroll
+   passes them, staggered, on a linear ease — the cat's flight does the
+   same thing here as it reaches each note. */
+.ide-flight__note::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; border-radius: inherit;
+  background: var(--note-accent, var(--ide-magenta)); opacity: calc(var(--tint, 0) * .17);
+  pointer-events: none;
+}
+.ide-flight__note > * { position: relative; z-index: 1; }
+.ide-flight__note--1 { top: 4%; left: 14%; --note-accent: var(--ide-magenta); }
+.ide-flight__note--2 { top: 35%; left: 62%; --note-accent: var(--ide-cyan); }
+.ide-flight__note--3 { top: 70%; left: 62%; --note-accent: var(--ide-mint); }
+
+/* ---------- command banner (join) ---------- */
+.ide-cta { text-align: center; max-width: 760px; margin: 0 auto; }
+.ide-cta[data-reveal] { opacity: calc(.75 + var(--p) * .25); transform: translateY(calc((1 - var(--p)) * 12px)); filter: none; }
+.ide-section .ide-cta h2 { max-width: 24ch; margin: 0 auto 1.75rem; text-align: center; line-height: 1.16; }
+.ide-command { display: inline-flex; align-items: center; gap: .8rem; margin-bottom: 1.6rem; padding: .85rem 1.2rem; color: var(--ink-p); background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--ide-radius); font-family: var(--ide-mono); font-size: .92rem; }
+.ide-command__prompt { color: var(--ide-mint); }
+.ide-command__text { min-width: 0; color: var(--ink-p); background: none; font: inherit; line-height: 1.6; }
+.ide-command__copy { display: grid; place-items: center; width: 30px; height: 30px; color: var(--ink-p-soft); background: transparent; border: 1px solid var(--line); border-radius: 6px; }
+.ide-command__copy:hover { color: var(--ink-p); border-color: var(--ide-magenta); }
+.ide-command__copy.is-copied { color: var(--ide-mint); border-color: var(--ide-mint); }
+.ide-cta .ide-run-btn { display: flex; margin: 0 auto; width: max-content; }
+
+/* ---------- footer / status bar ---------- */
+.ide-footer { color: var(--ide-ink-soft); background: var(--ide-bg-raised); border-top: 1px solid var(--ide-border); }
+.ide-statusbar { background: var(--ide-bg-raised-2); font-family: var(--ide-mono); font-size: .74rem; color: var(--ide-ink-soft); }
+.ide-statusbar__inner { display: flex; flex-wrap: wrap; column-gap: 1.4rem; row-gap: .65rem; min-height: 44px; padding-top: .7rem; padding-bottom: .7rem; align-items: center; }
+.ide-statusbar__inner > span { white-space: nowrap; }
+.ide-statusbar__inner i { margin-right: .35rem; color: var(--ide-mint); }
+.ide-footer__grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,.7fr) minmax(0,1fr); gap: 3rem; padding-top: 3.5rem; padding-bottom: 2.5rem; align-items: start; }
+.ide-footer__grid > div { min-width: 0; }
+.ide-footer__grid p { line-height: 1.75; overflow-wrap: anywhere; }
+.ide-footer__brand { display: inline-block; margin-bottom: 1rem; color: var(--ide-ink); font-family: var(--ide-mono); font-size: 1.5rem; font-weight: 700; }
+.ide-footer__brand strong { color: var(--ide-magenta); }
+.ide-footer__brand:hover { color: var(--ide-ink); text-decoration: none; }
+.ide-footer__grid > div:first-child p { max-width: 26rem; }
+.ide-footer h2 { margin-bottom: 1.1rem; color: var(--ide-ink); font-family: var(--ide-mono); font-size: .82rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.ide-footer__grid > div > a:not(.ide-footer__brand) {
+  display: block; width: fit-content; padding-block: .3rem; margin-bottom: .35rem; color: var(--ide-ink-soft); line-height: 1.65;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat; background-position: 0 100%; background-size: 0% 1px;
+  transition: color .2s ease, background-size .4s var(--ide-ease);
+}
+.ide-footer__grid > div > a:hover { color: var(--ide-cyan); background-size: 100% 1px; text-decoration: none; }
+.ide-footer .site-social { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1rem; }
+.ide-footer .site-social a { display: grid; place-items: center; width: 40px; height: 40px; flex: none; color: var(--ide-ink-soft); background: var(--ide-bg-raised-2); border-radius: 6px; line-height: 1; }
+.ide-footer .site-social a:hover { color: var(--ide-ink); }
+.ide-footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; padding-bottom: 1.25rem; border-top: 1px solid var(--ide-border-soft); font-family: var(--ide-mono); font-size: .74rem; line-height: 1.8; color: var(--ide-ink-soft); }
+
+.back-to-top { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 30; width: 42px; height: 42px; display: grid; place-items: center; color: var(--ide-ink); background: var(--ide-bg-raised); border: 1px solid var(--ide-border); border-radius: 8px; opacity: 0; pointer-events: none; transform: translateY(10px); font-family: var(--ide-mono); }
+.back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.back-to-top:hover { color: var(--ide-bg); background: var(--ide-cyan); border-color: var(--ide-cyan); text-decoration: none; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1199.98px) {
+  .ide-hero__grid { grid-template-columns: minmax(0, 1.3fr) minmax(200px, .7fr); gap: 2rem; }
+  .ide-hero h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  .ide-tab.nav-link { padding: 0 .8rem !important; font-size: .76rem; }
+}
+@media (max-width: 991.98px) {
+  .ide-tabbar.navbar { min-height: 64px; }
+  .ide-tabs-wrap.navbar-collapse { border-top: 1px solid var(--ide-border); background: var(--ide-bg-raised); }
+  .ide-tabs.navbar-nav { flex-direction: column; margin-left: 0; }
+  .ide-tab.nav-link { height: auto; padding: .95rem 1rem !important; border-right: 0; border-bottom: 1px solid var(--ide-border-soft); width: 100%; }
+  .ide-hero__grid { grid-template-columns: minmax(0, 1.4fr) minmax(140px, .6fr); padding-top: 3.5rem; }
+  .ide-footer__grid { grid-template-columns: 1.2fr .8fr; }
+  .ide-footer__grid > div:last-child { grid-column: 1/-1; }
+}
+@media (max-width: 767.98px) {
+  .ide-topbar .site-social { display: none; }
+  .ide-topbar__inner { justify-content: center; }
+  .ide-logo span { display: none; }
+  .ide-hero { min-height: 740px; }
+  .ide-hero__grid { min-height: 740px; grid-template-columns: 1fr; align-content: start; padding-top: 3rem; padding-bottom: 3rem; }
+  .ide-file-panel { max-width: 100%; }
+  .hero-environment img, .hero-environment video { object-position: 68% center; }
+  .ide-hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+  .hero-proof { gap: 1rem; flex-direction: column; }
+  .ide-section { padding: 3.5rem 0; }
+  .ide-section h2, .ide-section__head h2 { font-size: 1.7rem; }
+  .ide-section__head { align-items: flex-start; flex-direction: column; gap: 1rem; }
+  .ide-stack__card h3 { font-size: 1.7rem; }
+  .ide-stack__card p { font-size: .95rem; }
+  /* A pinned stage needs viewport height to hold a composition; below this
+     width it doesn't have it, so the scene unpins and the same pieces read
+     as ordinary flow — the moves still play, they just don't hold. */
+  .ide-about { height: auto; padding: 2.5rem 0 3.5rem; }
+  .ide-about__sticky { position: static; height: auto; overflow: visible; }
+  .ide-about__stage { height: auto; display: flex; flex-direction: column; gap: 1.5rem; }
+  .ide-about__panel { position: relative; width: 100%; height: clamp(180px, 50vw, 280px); top: 0; }
+  .ide-about__text { position: relative; width: 100%; top: 0; padding: 1.3rem; }
+  .ide-about__text h2 { font-size: 1.6rem; }
+  .ide-about__strip { position: relative; width: 100%; gap: .6rem; }
+  .ide-about__shot--1, .ide-about__shot--2, .ide-about__shot--3 { margin-top: 0; }
+  /* All three photos stay — they just get smaller. Hiding one would drop
+     real content to save layout width, which is the wrong trade. */
+  .ide-about__shot figcaption { font-size: .68rem; }
+  .ide-about__stats strong { font-size: 1.4rem; }
+  .ide-stack__card { min-height: 48vh; }
+  .ide-flight__stage { min-height: 720px; }
+  .ide-flight__note { max-width: 220px; padding: .8rem 1rem; }
+  .ide-flight__note h3 { font-size: .95rem; }
+  .ide-flight__note p { font-size: .82rem; }
+  .ide-flight__note--1 { left: 34%; }
+  .ide-flight__note--3 { left: 34%; }
+  .ide-scatter { justify-content: center; }
+  .ide-scatter__item { width: 130px; }
+  .ide-marquee { padding: .7rem 0; }
+  .ide-marquee__track span { font-size: 1rem; }
+  .ide-cta h2 { font-size: 1.7rem; }
+  .ide-command { font-size: .78rem; padding: .6rem .9rem; }
+  .ide-cta .ide-command { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .6rem; max-width: 100%; text-align: left; }
+  .ide-file-panel__head { grid-template-columns: 52px minmax(0,1fr); padding-inline: 1rem; }
+  .ide-file-panel__filename { font-size: .7rem; }
+  .ide-footer__grid { grid-template-columns: 1fr; gap: 2rem; padding-top: 2.6rem; text-align: center; }
+  .ide-footer__grid > div > a:not(.ide-footer__brand), .ide-footer__grid > div:first-child p { margin-inline: auto; }
+  .ide-footer .site-social { justify-content: center; }
+  .ide-footer__grid > div:last-child { grid-column: auto; }
+  .ide-footer__bottom { flex-direction: column; gap: .5rem; text-align: center; padding-bottom: 4.5rem; }
+  .ide-statusbar__inner { display: grid; grid-template-columns: repeat(2,max-content); justify-content: center; text-align: center; column-gap: 1.25rem; }
+}
+@media (max-width: 479.98px) {
+  .hero-actions { align-items: stretch; flex-direction: column; }
+  .ide-run-btn { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .home-page *, .home-page *::before, .home-page *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .home-page [data-reveal] { --p: 1; filter: none; }
+  .home-page [data-scrub-img] { transform: none; }
+  .home-page [data-anim] { opacity: 1 !important; transform: none !important; }
+  .home-page [data-anim="expand"] { clip-path: none !important; }
+  .home-page [data-anim="dissolve"] { opacity: 0 !important; }
+  .home-page .ide-word { opacity: 1 !important; transform: none !important; }
+}

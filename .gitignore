@@ -1,0 +1,25 @@
+node_modules/
+npm-debug.log*
+
+# Local agent and editor workspaces: never publish these.
+/.claude/
+/.codex/
+/.impeccable/
+/DESIGN.md
+/PRODUCT.md
+
+# Secrets and machine-local files.
+.env
+.env.*
+!.env.example
+*.local
+*.crdownload
+Thumbs.db
+Desktop.ini
+
+# Original photo drops remain local; the site uses metadata-free derivatives.
+/images/WhatsApp Image 2026-09-07*.jpeg
+/img/Equipo/web/
+/media/pages/people/
+/media/pages/people-sources.json
+/media/pages/README.md

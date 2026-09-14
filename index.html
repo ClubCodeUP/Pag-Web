@@ -1,667 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Club CODE UP</title>
-    <link rel="icon" href="./img/GeneralUse/logo.png" type="image/icon type">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
-
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Somos CODE UP, una organización estudiantil de la Universidad del Pacífico. Una familia que comparte experiencias, impulsa proyectos y crece unida por la tecnología.">
+    <meta name="theme-color" content="#14172a">
+    <title>Club CODE UP | Una comunidad, una familia</title>
+    <link rel="icon" href="img/GeneralUse/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="img/css/style.css" rel="stylesheet">
-    <style>
-        #randomMessage {
-            font-size: clamp(2.8rem, 4.6vw, 4.6rem);
-            line-height: 1.1;
-        }
-    </style>
+    <link href="css/home-ide.css?v=2" rel="stylesheet">
+    <link href="css/site-header.css?v=1" rel="stylesheet">
+    <link href="css/member-wall.css?v=3" rel="stylesheet">
+    <link href="css/community-refinements.css?v=7" rel="stylesheet">
 </head>
+<body class="home-page">
+    <!--
+    THESIS: Club CODE UP's homepage becomes its own dark code-editor theme, not
+    a marketing page about a coding club — refusing the generic violet/night
+    SaaS-card arrangement the old site used.
+    OWN-WORLD: warm dark-navy ground pulled from the hero illustration itself;
+    four named accents lifted from the cat's own design (harness magenta,
+    ear-tip cyan, lamp amber, diff mint). Martian Mono for structural chrome,
+    Manrope for reading prose — mono is literal editor furniture here.
+    STORY: a visiting student reads file tabs as navigation, courses as
+    directory entries, the team as contributors, and joins by "running" a
+    command — the club feels like a workspace, not a pitch.
+    FIRST VIEWPORT: the unchanged hero video/canvas, framed by a tab-bar nav
+    and an open-file copy panel; the primary action renders as a runnable line.
+    FORM: terminal/code-editor world, candidate 4 of 7, user-pinned over the
+    assigned roll (index 6, combi/street-signage world); seed key c730d3c3.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with
+    the finish review, the verdict, and DESIGN.md.
+    -->
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="ide-scroll-progress" aria-hidden="true"><span></span></div>
 
-<body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark">
-        <div class="row py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center text-white">
-                    <!--<small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
-                    <small class="px-3">|</small>-->
-                    <small><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</small>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="https://www.tiktok.com/@clubcode.up" target="_blank">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a class="text-white px-2" href="https://www.facebook.com/clubcodeup" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    
-                    <!--
-                    <a class="text-white px-2" href="">     
-                        <i class="fab fa-twitter"></i>
-                    </a>-->
-                    <a class="text-white px-2" href="https://www.linkedin.com/company/club-code-up/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-white px-2" href="https://www.instagram.com/clubcodeup/" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-white pl-2" href="" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
+    <div class="ide-topbar">
+        <div class="container ide-topbar__inner">
+            <a href="mailto:clubcodeup@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> clubcodeup@gmail.com</a>
+            <div class="site-social" aria-label="Redes sociales de CODE UP">
+                <a href="https://www.tiktok.com/@clubcode.up" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/clubcodeup" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/company/club-code-up/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/clubcodeup/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
 
-
-    <!-- Navbar Start -->
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand ml-lg-3">
-                    <img src="./img/GeneralUse/logo.png" width="100" height="100" >  
+    <header class="ide-header">
+        <nav class="navbar navbar-expand-lg navbar-light container ide-tabbar" aria-label="Navegación principal">
+            <a href="index.html" class="navbar-brand ide-logo" aria-label="CODE UP, inicio">
+                <img src="img/GeneralUse/logo.png" width="40" height="40" alt="">
+                <span>code<strong>up</strong></span>
             </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
+            <button type="button" class="navbar-toggler ide-menu-toggle" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Abrir menú">
+                <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
-            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">INICIO</a>
-                    <a href="blog.html" class="nav-item nav-link">BLOG</a>
-                    <a href="course.html" class="nav-item nav-link">ALIANZAS</a>
-                    <!--|
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">PAGINAS</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="detail.html" class="dropdown-item">Course Detail</a>
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="team.html" class="dropdown-item">Instructors</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        </div>
-                    </div>-->
-                    <a href="projects.html" class="nav-item nav-link">PROYECTOS</a>
-                    <a href="advisories.html" class="nav-item nav-link">ASESORIAS Y TALLERES</a>
-                    <a href="team.html" class="nav-item nav-link">NOSOTROS</a>
-                    <a href="contact.html" class="nav-item nav-link">ÚNETE</a>
-                    </div>
-                    <!--<a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>-->
+            <div class="collapse navbar-collapse ide-tabs-wrap" id="navbarCollapse">
+                <div class="navbar-nav ide-tabs">
+                    <a href="index.html" class="nav-item nav-link ide-tab is-active" aria-current="page"><i class="fa fa-house" aria-hidden="true"></i>inicio<span class="ide-ext" aria-hidden="true">.tsx</span></a>
+                    <a href="blog.html" class="nav-item nav-link ide-tab"><i class="fa fa-file-lines" aria-hidden="true"></i>blog<span class="ide-ext" aria-hidden="true">.md</span></a>
+                    <a href="course.html" class="nav-item nav-link ide-tab"><i class="fa fa-handshake" aria-hidden="true"></i>alianzas<span class="ide-ext" aria-hidden="true">.json</span></a>
+                    <a href="projects.html" class="nav-item nav-link ide-tab"><i class="fa fa-diagram-project" aria-hidden="true"></i>proyectos<span class="ide-ext" aria-hidden="true">/</span></a>
+                    <a href="advisories.html" class="nav-item nav-link ide-tab"><i class="fa fa-graduation-cap" aria-hidden="true"></i>cursos<span class="ide-ext" aria-hidden="true">.yml</span></a>
+                    <a href="team.html" class="nav-item nav-link ide-tab"><i class="fa fa-users" aria-hidden="true"></i>equipo<span class="ide-ext" aria-hidden="true">.team</span></a>
+                    <a href="contact.html" class="nav-item nav-link ide-tab ide-tab--run"><i class="fa fa-play" aria-hidden="true"></i>únete()</a>
+                </div>
             </div>
         </nav>
-    </div>
-    <!-- Navbar End -->
+    </header>
 
-
-    <!-- Header Start -->
-    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom " style="margin-bottom: 45px;">
-        <div class="container text-center my-5 py-5">
-            <h1 class="text-white mt-4 mb-4">Bienvenida comunidad UP</h1>
-            <h1 class="text-white display-1 mb-5" id="randomMessage"><br><br></h1>
-            <script src="js/randomMessages.js"></script>
-            <!-- <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
-                <div class="input-group">
-
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle" type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Cursos</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Courses 1</a>
-                            <a class="dropdown-item" href="#">Courses 2</a>
-                            <a class="dropdown-item" href="#">Courses 3</a>
+    <main id="contenido">
+        <section class="ide-hero" data-hero-scene aria-labelledby="hero-title">
+            <div class="hero-environment" aria-hidden="true">
+                <img src="media/gatito-codeup-poster.webp" alt="">
+                <video class="hero-environment__motion" autoplay muted loop playsinline preload="auto">
+                    <source src="media/gatito-codeup.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id="hero-motion-root" class="hero-motion-root"></div>
+            <div class="container ide-hero__grid">
+                <div class="ide-file-panel" data-reveal>
+                    <div class="ide-file-panel__head">
+                        <span class="ide-window-controls" aria-hidden="true"><span class="ide-window-control--close"></span><span class="ide-window-control--minimize"></span><span class="ide-window-control--zoom"></span></span>
+                        <span class="ide-file-panel__filename">codeup / inicio.tsx</span>
+                    </div>
+                    <div class="ide-file-panel__body">
+                        <h1 id="hero-title">Somos <span class="ide-kw">CODE UP</span>. Somos <span class="ide-str">familia</span>.</h1>
+                        <p class="hero-lead">Una organización estudiantil de la Universidad del Pacífico, unida por la tecnología y por su gente. Compartimos talleres, proyectos y momentos que nos hacen crecer juntos, dentro y fuera del aula.</p>
+                        <div class="hero-actions">
+                            <a class="ide-run-btn" href="#conocenos"><span class="ide-run-btn__prompt">$</span> conoce-codeup<span class="ide-caret" aria-hidden="true"></span></a>
+                            <a class="ide-textlink" href="contact.html">// sé parte de la familia →</a>
                         </div>
-                    </div>
-                    <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="...">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary px-4 px-lg-5">Buscar</button>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </div>
-    <!-- Header End -->
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="img/index/about.jpg" style="object-fit: cover;">
+                        <div class="hero-proof" aria-label="Datos del club">
+                            <span><strong data-count="8">0</strong> años creciendo juntos</span>
+                            <span><strong data-member-total data-count="50">0</strong> integrantes</span>
+                        </div>
+                        <p class="ide-code-comment" id="heroPhrase" aria-hidden="true"></p>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Sobre Nosotros</h6>
-                        <h1 class="display-4">Somos el Club de Programación de la Universidad del Pacífico</h1>
-                    </div>
-                    <p>Buscamos brindar un espacio y material para los alumnos UP con ganas de aprender herramientas tecnológicas, con las cuales puedan 
-                        potenciar sus competencias para su desarrollo profesional
-                    </p>
-                    <div class="row pt-3 mx-0">
-                        <div class="col-3 px-0">
-                            <div class="bg-success text-center p-4">
-                                <h1 class="text-white" id="stat-anios" data-toggle="counter-up">0</h1>
-                                <h6 class="text-uppercase text-white">Años<span class="d-block">Presentes</span></h6>
-                            </div>
-                        </div>
-                        <div class="col-3 px-0">
-                            <div class="bg-primary text-center p-4">
-                                <h1 class="text-white" id="stat-lenguajes" data-toggle="counter-up">0</h1>
-                                <h6 class="text-uppercase text-white">Lenguajes<span class="d-block">Enseñados</span></h6>
-                            </div>
-                        </div>
-                        <div class="col-3 px-0">
-                            <div class="bg-secondary text-center p-4">
-                                <h1 class="text-white" id="stat-talleres" data-toggle="counter-up">0</h1>
-                                <h6 class="text-uppercase text-white">Tipos de<span class="d-block">Talleres</span></h6>
-                            </div>
-                        </div>
-                        <div class="col-3 px-0">
-                            <div class="bg-warning text-center p-4">
-                                <h1 class="text-white" id="stat-miembros" data-toggle="counter-up">0</h1>
-                                <h6 class="text-uppercase text-white">Miembros<span class="d-block">Activos</span></h6>
-                            </div>
-                        </div>
-                    </div>
+                <div class="ide-hero__visual-space" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <!-- The reference's card stack: each card pins in place, the next one
+             scrolls up over it, and the one underneath darkens to 50% black as
+             it gets covered before dropping away. -->
+        <section class="ide-stack ide-stack--photos" id="compartimos" aria-labelledby="learning-title">
+            <div class="container">
+                <div class="ide-stack__head">
+                    <h2 id="learning-title" data-reveal data-split-words>Lo que compartimos en CODE UP</h2>
                 </div>
+                <div class="ide-stack__cards">
+                <a class="ide-stack__card ide-stack__card--magenta" data-stack-card href="advisories.html">
+                    <div class="ide-stack__visual"><img src="media/pages/home-auditorio.webp" width="1280" height="960" alt="Presentación de CODE UP en un auditorio" loading="lazy" decoding="async"></div>
+                    <div class="ide-stack__inner">
+                        <span class="ide-stack__badge">01</span>
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <h3>cursos-y-talleres.md</h3>
+                        <p>Compartimos lo que sabemos en talleres y asesorías. Nos acompañamos para aprender y crecer juntos.</p>
+                    </div>
+                    <span class="ide-stack__darken" aria-hidden="true"></span>
+                </a>
+                <a class="ide-stack__card ide-stack__card--cyan" data-stack-card href="projects.html">
+                    <div class="ide-stack__visual"><img src="media/pages/project-stand.webp" width="1600" height="900" alt="Integrantes compartiendo sus proyectos en el stand de CODE UP" loading="lazy" decoding="async"></div>
+                    <div class="ide-stack__inner">
+                        <span class="ide-stack__badge">02</span>
+                        <i class="fa fa-diagram-project" aria-hidden="true"></i>
+                        <h3>proyectos/</h3>
+                        <p>Unimos ideas y talentos para crear en equipo e impulsar proyectos que aporten a nuestra comunidad.</p>
+                    </div>
+                    <span class="ide-stack__darken" aria-hidden="true"></span>
+                </a>
+                <a class="ide-stack__card ide-stack__card--mint" data-stack-card href="contact.html">
+                    <div class="ide-stack__visual"><img src="media/pages/community-selfie.webp" width="1600" height="1200" alt="El grupo de CODE UP reunido para una selfie" loading="lazy" decoding="async"></div>
+                    <div class="ide-stack__inner">
+                        <span class="ide-stack__badge">03</span>
+                        <i class="fa fa-people-group" aria-hidden="true"></i>
+                        <h3>comunidad.md</h3>
+                        <p>Bienvenidas, integraciones y momentos entre amigos. Ser parte de CODE UP también es sentirte en casa.</p>
+                    </div>
+                    <span class="ide-stack__darken" aria-hidden="true"></span>
+                </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="ide-marquee" aria-hidden="true">
+            <div class="ide-marquee__track">
+                <span>COMUNIDAD</span><span>AMISTAD</span><span>PROYECTOS</span><span>TALLERES</span><span>TECNOLOGÍA</span><span>EQUIPO</span>
+                <span>COMUNIDAD</span><span>AMISTAD</span><span>PROYECTOS</span><span>TALLERES</span><span>TECNOLOGÍA</span><span>EQUIPO</span>
             </div>
         </div>
-    </div>
-    <!-- About End -->
 
+        <!-- Not a stack of blocks: a stage you scroll *through*. The section is
+             taller than the viewport, holds a sticky composition, and the extra
+             height is the timeline — panel, copy, photos and figures each claim
+             their own slice of it, the way the reference sequences a section. -->
+        <section class="ide-section--raised ide-about" id="conocenos" data-scroll-scene="pin" data-scroll-lead=".55" aria-labelledby="about-title">
+            <div class="ide-about__sticky">
+                <div class="container ide-about__stage">
+                    <div class="ide-about__panel" data-anim="expand" data-anim-at="0,.42">
+                        <img class="ide-about__img" src="img/code.jpeg" alt="El Club CODE UP reunido al completo tras una sesión" loading="lazy" data-anim="counter-x" data-anim-at="0,.55">
+                        <img class="ide-about__img ide-about__img--over" src="img/index/about.jpg" alt="Dos integrantes de CODE UP trabajando en un ejercicio de programación" loading="lazy" data-anim="dissolve" data-anim-at=".28,.58">
+                    </div>
 
-    <!-- Feature Start -->
-    <div class="container-fluid bg-image" style="margin: 90px 0;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 my-5 pt-5 pb-lg-5">
-                    <div class="section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">CODE UP</h6>
-                        <h1 class="display-4">Benificios de ser parte de Code UP</h1>
+                    <div class="ide-about__text">
+                        <span class="ide-about__tag" data-anim="pop" data-anim-at=".14,.4">desde 2018</span>
+                        <h2 id="about-title" data-anim="converge" data-anim-at=".16,.58">La tecnología nos reúne. Nuestra gente nos une.</h2>
+                        <p data-anim="rise" data-anim-at=".26,.62">Somos el Club de Programación de la Universidad del Pacífico. Detrás de cada taller, evento y proyecto hay personas que se apoyan, comparten sus ideas y celebran juntas. Eso es lo que hace de CODE UP una familia.</p>
+                        <div class="ide-about__stats">
+                            <div data-anim="pop" data-anim-at=".34,.6" data-anim-i="0"><strong data-count="8">0</strong><span>años</span></div>
+                            <div data-anim="pop" data-anim-at=".34,.6" data-anim-i="1"><strong data-count="7">0</strong><span>lenguajes</span></div>
+                            <div data-anim="pop" data-anim-at=".34,.6" data-anim-i="2"><strong data-count="10">0</strong><span>talleres</span></div>
+                            <div data-anim="pop" data-anim-at=".34,.6" data-anim-i="3"><strong data-member-total data-count="50">0</strong><span>miembros</span></div>
+                        </div>
+                        <a class="ide-run-btn ide-run-btn--ghost" href="team.html" data-anim="rise" data-anim-at=".46,.7">conocer-equipo()</a>
                     </div>
-                    <p class="mb-4 pb-2"></p>
-                    <div class="d-flex mb-3">
-                        <div class="btn-icon bg-primary mr-4">
-                            <i class="fa fa-2x fa-graduation-cap text-white"></i>
-                        </div>
-                        <div class="mt-n1">
-                            <h4>Crecimiento y Desarrollo</h4>
-                            <p>Súmate a talleres, asesorías, programas de mentoring y buddies que te ayudan a desarrollar nuevas habilidades y a sacar lo mejor de ti.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-3">
-                        <div class="btn-icon bg-secondary mr-4">
-                            <i class="fa fa-2x fa-certificate text-white"></i>
-                        </div>
-                        <div class="mt-n1">
-                            <h4>Conexión y Comunidad</h4>
-                            <p>Vive bienvenidas, fiestas de integración y asambleas que hacen que ser parte de la comunidad se sienta como estar entre amigos.</p>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="btn-icon bg-warning mr-4">
-                            <i class="fa fa-2x fa-book-reader text-white"></i>
-                        </div>
-                        <div class="mt-n1">
-                            <h4>Reconocimiento y Celebración</h4>
-                            <p class="m-0">Desde el "Codito del mes" hasta tu cumple, acá reconocemos tus logros y celebramos quién eres. Porque tu esfuerzo se nota, y se aplaude.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="img/index/beneficios.jpg" style="object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Feature End -->
 
+                    <div class="ide-about__strip">
+                        <figure class="ide-about__shot ide-about__shot--1" data-anim="slide-left" data-anim-at=".6,.97" data-anim-i="0">
+                            <img src="img/index/beneficios.jpg" alt="Sesión de trabajo del club" loading="lazy">
+                            <figcaption>aprendemos juntos</figcaption>
+                        </figure>
+                        <figure class="ide-about__shot ide-about__shot--2" data-anim="slide-left" data-anim-at=".6,.97" data-anim-i="1">
+                            <img src="img/directivanosotros.jpg" alt="Directiva de CODE UP reunida" loading="lazy">
+                            <figcaption>personas que nos unen</figcaption>
+                        </figure>
+                        <figure class="ide-about__shot ide-about__shot--3" data-anim="slide-left" data-anim-at=".6,.97" data-anim-i="2">
+                            <img src="img/projects/mi-profe-up-califica.png" alt="Interfaz del proyecto Mi Profe UP" loading="lazy">
+                            <figcaption>ideas que compartimos</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Courses Start -->
-    <!-- <div class="container-fluid px-0 py-5">
-        <div class="row mx-0 justify-content-center pt-5">
-            <div class="col-lg-6">
-                <div class="section-title text-center position-relative mb-4">
-                    <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nuestros Cursos</h6>
-                    <h1 class="display-4">Revisa algunos de nuestros cursos gratuitos</h1>
-                </div>
-            </div>
-        </div>
-        <div class="owl-carousel courses-carousel">
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="img/courses-1.jpg" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Introducción a Python</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Gota Uribe</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="curso_intro_python.html">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="img/courses-2.jpg" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Excel intermedio</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Max Cabezas</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="curso_excel_inter.html">Ver detalles</a>
-                    </div>  
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="img/courses-3.jpg" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Introducción a R</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Jose Carlos Salinas</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="curso_intro_r.html">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="img/courses-4.jpg" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">SQL for dummies</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Antonio Sebastián</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="curso_sql_dummies.html">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="img/courses-5.jpg" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Visual Basic for Applications</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Benjamin Arriaga</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="curso_vba.html">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-            <div class="courses-item position-relative">
-                <img class="img-fluid" src="img/courses-6.jpg" alt="">
-                <div class="courses-text">
-                    <h4 class="text-center text-white px-3">Web design for dummies</h4>
-                    <div class="border-top w-100 mt-3">
-                        <div class="d-flex justify-content-between p-4">
-                            <span class="text-white"><i class="fa fa-user mr-2"></i>Nuevo XD</span>
-                            <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div class="w-100 bg-white text-center p-4" >
-                        <a class="btn btn-primary" href="curso_web_design.html">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center bg-image mx-0 mb-5">
-            <div class="col-lg-6 py-5">
-                <div class="bg-white p-5 my-5">
-                    <h1 class="text-center mb-4">30% Off For New Students</h1>
-                    <form>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="padding: 30px 20px;">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="padding: 30px 20px;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <select class="custom-select bg-light border-0 px-3" style="height: 60px;">
-                                        <option selected>Select A courses</option>
-                                        <option value="1">courses 1</option>
-                                        <option value="2">courses 1</option>
-                                        <option value="3">courses 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <button class="btn btn-primary btn-block" type="submit" style="height: 60px;">Sign Up Now</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Courses End -->
-
-
-    <!-- Team Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative mb-5">
-                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Nuestro Equipo</h6>
-                <h1 class="display-4">Directiva 2026</h1>
-            </div>
-            <div class="owl-carousel team-carousel position-relative" style="padding: 0 30px;">
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/Directiva/Shirley García.JPG" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Arturo Álvarez</h5>
-                        <p class="mb-2"><b>Presidente</b></p>
-                        <p class="mb-2">Ingeniería Empresarial</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/Directiva/Megumi Wakabayashi.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Gianella Silvestre</h5>
-                        <p class="mb-2"><b>Vice. y Direc. de Proyectos</b></p>
-                        <p class="mb-2">Ingeniería de la Información</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/Directiva/Sergio Martinez.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Jean Trujillo</h5>
-                        <p class="mb-2"><b>Director de Gestión del Aprendizaje</b></p>
-                        <p class="mb-2">Ingeniería de la Información</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/Directiva/Mayra Chacaliaza.jpeg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Kassey Bautista</h5>
-                        <p class="mb-2"><b>Directora de Gestión del Talento</b></p>
-                        <p class="mb-2">Ingeniería de la Información</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/Directiva/Valeria Lucio.png" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Romy Tipacti</h5>
-                        <p class="mb-2"><b>Director de Eventos</b></p>
-                        <p class="mb-2">Ingeniería de la Información</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="https://twitter.com/cynthia_zhouu?s=11&t=Yy67UdmwydggIG2Bl4NK4g" target="_blank"><i class="fab fa-twitter"></i></a>
-                            <a class="mx-1 p-1" href="https://www.facebook.com/cynthia.zhou.lin1314?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a class="mx-1 p-1" href="https://www.linkedin.com/in/cynthia-zhou-lin-4753ab235" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="mx-1 p-1" href="https://instagram.com/cynthia.zhouu?igshid=YmMyMTA2M2Y=" target="_blank"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/Directiva/Estela Alvarez.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Mildred Bautista</h5>
-                        <p class="mb-2"><b>Directora de Marketing e Imagen</b></p>
-                        <p class="mb-2">Ingeniería de la Información</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-instagram"></i></a>
-                            <a class="mx-1 p-1" href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-item">
-                    <img class="img-fluid w-100" src="img/Directiva/Meel Alvarado.jpg" alt="">
-                    <div class="bg-light text-center p-4">
-                        <h5 class="mb-3">Nathalia Villalobos</h5>
-                        <p class="mb-2"><b>Directora de Finanzas</b></p>
-                        <p class="mb-2">Ingeniería Empresarial</p>
-                        <div class="d-flex justify-content-center">
-                            <a class="mx-1 p-1" href="https://www.tiktok.com/@kharlafloresr" target="_blank"><i class="fab fa-tiktok"></i></a>
-                            <a class="mx-1 p-1" href="https://instagram.com/kharlaflore?igshid=YmMyMTA2M2Y=" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a class="mx-1 p-1" href="https://www.youtube.com/channel/UCo1mpEniFbUP9PJ9PehfGYw" target="_blank"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
-
-
-    <!-- Testimonial Start 
-    <div class="container-fluid bg-image py-5" style="margin: 90px 0;">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <div class="section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Testimonial</h6>
-                        <h1 class="display-4">What Say Our Students</h1>
-                    </div>
-                    <p class="m-0">Dolor est dolores et nonumy sit labore dolores est sed rebum amet, justo duo ipsum sanctus dolore magna rebum sit et. Diam lorem ea sea at. Nonumy et at at sed justo est nonumy tempor. Vero sea ea eirmod, elitr ea amet diam ipsum at amet. Erat sed stet eos ipsum diam</p>
-                </div>
-                <div class="col-lg-7">
-                    <div class="owl-carousel testimonial-carousel">
-                        <div class="bg-white p-5">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
-                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                <img class="img-fluid mr-4" src="img/testimonial-2.jpg" alt="">
-                                <div>
-                                    <h5>Student Name</h5>
-                                    <span>Web Design</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-5">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
-                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                <img class="img-fluid mr-4" src="img/testimonial-1.jpg" alt="">
-                                <div>
-                                    <h5>Student Name</h5>
-                                    <span>Web Design</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
-
-
-    <!-- Contact Start 
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <div class="bg-light d-flex flex-column justify-content-center px-5" style="height: 450px;">
-                        <div class="d-flex align-items-center mb-5">
-                            <div class="btn-icon bg-primary mr-4">
-                                <i class="fa fa-2x fa-map-marker-alt text-white"></i>
-                            </div>
-                            <div class="mt-n1">
-                                <h4>Our Location</h4>
-                                <p class="m-0">123 Street, New York, USA</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mb-5">
-                            <div class="btn-icon bg-secondary mr-4">
-                                <i class="fa fa-2x fa-phone-alt text-white"></i>
-                            </div>
-                            <div class="mt-n1">
-                                <h4>Call Us</h4>
-                                <p class="m-0">+012 345 6789</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="btn-icon bg-warning mr-4">
-                                <i class="fa fa-2x fa-envelope text-white"></i>
-                            </div>
-                            <div class="mt-n1">
-                                <h4>Email Us</h4>
-                                <p class="m-0">info@example.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="section-title position-relative mb-4">
-                        <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Need Help?</h6>
-                        <h1 class="display-4">Send Us A Message</h1>
-                    </div>
-                    <div class="contact-form">
-                        <form>
-                            <div class="row">
-                                <div class="col-6 form-group">
-                                    <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Name" required="required">
-                                </div>
-                                <div class="col-6 form-group">
-                                    <input type="email" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Your Email" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control border-top-0 border-right-0 border-left-0 p-0" placeholder="Subject" required="required">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control border-top-0 border-right-0 border-left-0 p-0" rows="5" placeholder="Message" required="required"></textarea>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-     -->
-
-        <!-- Footer Start -->
-    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 90px;">
-        <div class="container mt-5 pt-5">
-            <div class="row align-items-start justify-content-between">
-                <div class="col-lg-5 col-md-6 mb-5 mb-md-0 text-center text-md-left">
-                    <a href="index.html" class="navbar-brand d-inline-block mb-3">
-                        <h1 class="mt-n2 text-uppercase text-white">CODE UP</h1>
+        <section class="ide-section ide-flight ide-flight--photos" id="nuestro-camino" data-scroll-scene="80,20" aria-labelledby="benefits-title">
+            <div class="container">
+                <h2 id="benefits-title" data-reveal data-split-words>Ser parte se siente<br>en lo que vivimos juntos.</h2>
+                <div class="ide-flight__stage">
+                    <svg class="ide-flight__svg" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                        <path class="ide-flight__track" />
+                        <path id="flightPath" class="ide-flight__trail" />
+                    </svg>
+                    <div class="ide-flight__cat" aria-hidden="true"><img src="media/cat-skate.webp" width="480" height="400" alt="" decoding="async" draggable="false"></div>
+                    <a class="ide-flight__note ide-flight__note--1" data-reveal data-anim="tint" data-anim-at=".1,.55" data-anim-i="0" href="advisories.html">
+                        <img class="ide-flight__photo" src="media/pages/workshop.webp" width="1280" height="960" alt="Estudiantes trabajando con sus laptops durante una sesión" loading="lazy" decoding="async">
+                        <div class="ide-flight__copy"><span class="ide-flight__index" aria-hidden="true">01</span><h3>Crecemos acompañados</h3><p>En talleres, asesorías, mentoring y buddies compartimos lo que sabemos y nos ayudamos a dar el siguiente paso.</p><span class="ide-flight__more" aria-hidden="true">Compartir lo que sabemos →</span></div>
                     </a>
-                    <p class="m-0">Aprende tus primeros pasos en la programación</p>
+                    <a class="ide-flight__note ide-flight__note--2" data-reveal data-anim="tint" data-anim-at=".1,.55" data-anim-i="1" href="contact.html">
+                        <img class="ide-flight__photo" src="media/pages/community-friends.webp" width="1600" height="1200" alt="Amigos de CODE UP compartiendo una comida" loading="lazy" decoding="async">
+                        <div class="ide-flight__copy"><span class="ide-flight__index" aria-hidden="true">02</span><h3>Nos encontramos como amigos</h3><p>Bienvenidas, integraciones y asambleas para conocernos, compartir y disfrutar de ser parte.</p><span class="ide-flight__more" aria-hidden="true">Ser parte del club →</span></div>
+                    </a>
+                    <a class="ide-flight__note ide-flight__note--3" data-reveal data-anim="tint" data-anim-at=".1,.55" data-anim-i="2" href="projects.html">
+                        <img class="ide-flight__photo" src="media/pages/home-reconocimientos.webp" width="1280" height="960" alt="Integrantes celebrando sus reconocimientos en una feria" loading="lazy" decoding="async">
+                        <div class="ide-flight__copy"><span class="ide-flight__index" aria-hidden="true">03</span><h3>Celebramos a nuestra gente</h3><p>Del Codito del mes a los cumpleaños: reconocemos el esfuerzo y celebramos a quienes hacen especial al equipo.</p><span class="ide-flight__more" aria-hidden="true">Conocer nuestros proyectos →</span></div>
+                    </a>
                 </div>
+            </div>
+        </section>
 
-                <div class="col-lg-4 col-md-6 text-center text-md-right">
-                    <h3 class="text-white mb-4">Encuéntranos</h3>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>Universidad del Pacífico</p>
-                    <p><i class="fa fa-envelope mr-2"></i>clubcodeup@gmail.com</p>
-                    <div class="d-flex justify-content-center justify-content-md-end mt-4">
-                        <a class="text-white mr-3" href="https://www.tiktok.com/@clubcode.up" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a class="text-white mr-3" href="https://www.facebook.com/clubcodeup" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a class="text-white mr-3" href="https://www.linkedin.com/company/club-code-up/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="text-white" href="https://www.instagram.com/clubcodeup/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
+    <section class="ide-section ide-community" id="comunidad" aria-labelledby="community-title">
+      <div class="container">
+        <div class="ide-section__head"><h2 id="community-title">El club tiene<br>estas caras.</h2><a class="ide-textlink" href="team.html">// ver todo el equipo <span aria-hidden="true">→</span></a></div>
+        <div class="member-wall" aria-label="Algunas de las personas que forman CODE UP">
+          <ul class="member-wall__row">
+            <li><a class="member-wall__tile" href="team.html#tania-chavez"><img src="media/pages/members-2026-2/tania-chavez.webp" width="560" height="700" alt="Tania Chavez" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Tania Chavez</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#gianella-silvestre"><img src="media/pages/members-2026-2/gianella-silvestre.webp" width="560" height="700" alt="Gianella Silvestre" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Gianella Silvestre</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#matias-desmonteix"><img src="media/pages/members-2026-2/matias-desmonteix.webp" width="560" height="700" alt="Matias Desmonteix" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Matias Desmonteix</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#luz-marina-calderon"><img src="media/pages/members-2026-2/luz-marina-calderon.webp" width="560" height="700" alt="Luz Marina Calderón" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Luz Marina Calderón</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#joel-pariona"><img src="media/pages/members-2026-2/joel-pariona.webp" width="560" height="700" alt="Joel Pariona" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Joel Pariona</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#manuel-sebastian-taco"><img src="media/pages/members-2026-2/manuel-sebastian-taco.webp" width="560" height="700" alt="Manuel Sebastian Taco" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Manuel Sebastian Taco</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#valentino-montes"><img src="media/pages/members-2026-2/valentino-montes.webp" width="560" height="700" alt="Valentino Montes" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Valentino Montes</span></a></li>
+          </ul>
+          <ul class="member-wall__row">
+            <li><a class="member-wall__tile" href="team.html#naomi-torres"><img src="media/pages/members-2026-2/naomi-torres.webp" width="560" height="700" alt="Naomi Torres" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Naomi Torres</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#leonor-balabarca"><img src="media/pages/members-2026-2/leonor-balabarca.webp" width="560" height="700" alt="Leonor Balabarca" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Leonor Balabarca</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#lesly-campos"><img src="media/pages/members-2026-2/lesly-campos.webp" width="560" height="700" alt="Lesly Campos" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Lesly Campos</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#gaby-perez"><img src="media/pages/members-2026-2/gaby-perez.webp" width="560" height="700" alt="Gaby Pérez" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Gaby Pérez</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#gianpietro-palacios"><img src="media/pages/members-2026-2/gianpietro-palacios.webp" width="560" height="700" alt="Gianpietro Palacios" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Gianpietro Palacios</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#paula-romero"><img src="media/pages/members-2026-2/paula-romero.webp" width="560" height="700" alt="Paula Romero" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Paula Romero</span></a></li>
+            <li><a class="member-wall__tile" href="team.html#verika-hinostroza"><img src="media/pages/members-2026-2/verika-hinostroza.webp" width="560" height="700" alt="Verika Hinostroza" loading="lazy" decoding="async"><span class="member-wall__name" aria-hidden="true">Verika Hinostroza</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+        <div class="ide-skate-divider" id="equipo-en-camino" aria-hidden="true">
+            <div class="container">
+                <div class="ide-skate-divider__stage">
+                    <span class="ide-skate-divider__track"></span>
+                    <span class="ide-skate-divider__fill"></span>
+                    <img class="ide-skate-divider__cat" src="media/cat-skate.webp" width="480" height="400" alt="" decoding="async" draggable="false">
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                    <p class="m-0">Copyright &copy; <a class="text-white" href="#">CODEUP</a>. All Rights Reserved.</p>
+        <section class="ide-section ide-section--raised ide-directiva" aria-labelledby="team-title">
+            <div class="container">
+                <div class="ide-section__head" data-reveal>
+                    <h2 id="team-title" data-reveal data-split-words>Directiva 2026-2</h2>
+                    <a class="ide-textlink" href="team.html">// ver todo el equipo →</a>
                 </div>
-                <div class="col-md-6 text-center text-md-right">
-                    <p class="m-0">Designed by <a class="text-white" href="https://htmlcodex.com">HTML Codex</a></p>
+                <div class="ide-scatter ide-scatter--leadership">
+                    <article class="ide-scatter__item ide-scatter__item--1" data-reveal><img src="media/pages/members-2026-2/arturo-alvarez-de-la-torre.webp" alt="Arturo Alvarez de la Torre, presidente de CODE UP" loading="lazy" decoding="async"><h3>Arturo Alvarez de la Torre</h3><p>presidente</p></article>
+                    <article class="ide-scatter__item ide-scatter__item--2" data-reveal><img src="media/pages/members-2026-2/gianella-silvestre.webp" alt="Gianella Silvestre, vicepresidenta de CODE UP" loading="lazy" decoding="async"><h3>Gianella Silvestre</h3><p>vicepresidenta</p></article>
                 </div>
             </div>
+        </section>
+
+        <section class="ide-section ide-cta-section" aria-labelledby="join-title">
+            <div class="container ide-cta" data-reveal>
+                <h2 id="join-title">Tu lugar en la familia empieza aquí.</h2>
+                <div class="ide-command">
+                    <span class="ide-command__prompt">$</span>
+                    <code class="ide-command__text">Siempre hay espacio para alguien más.</code>
+                    <button class="ide-command__copy" type="button" data-copy="Siempre hay espacio para alguien más." aria-label="Copiar mensaje"><i class="fa fa-copy" aria-hidden="true"></i></button>
+                </div>
+                <a class="ide-run-btn" href="contact.html"><i class="fa fa-play" aria-hidden="true"></i> únete()</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="ide-footer">
+        <div class="ide-statusbar">
+            <div class="container ide-statusbar__inner">
+                <span><i class="fa fa-code-branch" aria-hidden="true"></i>main · desde 2018</span>
+                <span data-member-total>50 integrantes</span>
+                <span>UTF-8</span>
+                <span>7 lenguajes</span>
+            </div>
         </div>
-    </div>
-    <!-- Footer End -->
+        <div class="container ide-footer__grid">
+            <div><a href="index.html" class="ide-footer__brand">code<strong>up</strong></a><p>Una organización estudiantil, muchas ideas y una familia con la que compartir el camino.</p></div>
+            <div><h2>Explora</h2><a href="advisories.html">Cursos y talleres</a><a href="projects.html">Proyectos</a><a href="blog.html">Blog</a></div>
+            <div><h2>Encuéntranos</h2><p>Universidad del Pacífico<br>clubcodeup@gmail.com</p><div class="site-social site-social--footer"><a href="https://www.tiktok.com/@clubcode.up" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a><a href="https://www.linkedin.com/company/club-code-up/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="https://www.instagram.com/clubcodeup/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
+        </div>
+        <div class="container ide-footer__bottom"><span>© 2026 Club CODE UP</span><span>Hecho por la comunidad, para la comunidad.</span></div>
+    </footer>
 
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary rounded-0 btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
+    <a href="#contenido" class="back-to-top" aria-label="Volver arriba"><i class="fa fa-arrow-up"></i></a>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    <script src="js/stats.js"></script>
+    <script src="js/redesign.js?v=5"></script>
+    <script src="js/club-flight.js?v=4"></script>
+    <script src="js/gaze-motion.js?v=1"></script>
+    <script src="js/hero-gaze.js?v=7"></script>
+    <script src="js/member-wall.js?v=3"></script>
 </body>
-
 </html>
